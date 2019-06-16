@@ -188,7 +188,7 @@ const Landing = () => (
    </section>
 
 
-      <section className="new_product_area section_gap_top section_gap_bottom_custom" id="product">
+      <section className="new_product_area section_gap_top section_gap_bottom_custo" id="products">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-12">
