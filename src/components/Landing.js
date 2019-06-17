@@ -8,6 +8,7 @@ const Landing = () => (
 
 
     <div className ="body">
+    <button type="button" id="mobile-nav-toggle"><i className="fa fa-bars"></i></button>
 
     <header id="header">
       <div className="container-fluid">
@@ -19,7 +20,7 @@ const Landing = () => (
         </div>
 
         <nav id="nav-menu-container">
-          <ul className="nav-menu">
+          <ul className="nav-menu sf-js-enabled sf-arrows">
             <li className="menu-active"><a href="#intro">Home</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#products">Products</a></li>
@@ -49,16 +50,18 @@ const Landing = () => (
           <div className="carousel-inner" role="listbox">
 
             <div className="carousel-item active animated fadeIn">
-              <div className="carousel-background"><img  src="./img/Logo_Greenhouses_Horizontal.jpg" alt=""/></div>
+              <div className="carousel-background"><img  src="./img/farm.jpg" alt=""/></div>
               <div className="carousel-container">
-                <div className="carousel-content">
-
-                </div>
+              <div className="carousel-content animated fadeInRight">
+                <h2>Lost Coast Plant Therapy</h2>
+                <h5>The plant healthy - planet healthy solution you have been looking for! </h5>
+                <a href="#featured-services" className="btn-get-started scrollto">Get Started</a>
+              </div>
               </div>
             </div>
 
             <div className="carousel-item">
-              <div className="carousel-background"><img src="./img/Grapes_Horizontal.jpg" alt=""/></div>
+              <div className="carousel-background"><img src="./img/dog.jpg" alt=""/></div>
               <div className="carousel-container">
                 <div className="carousel-content animated fadeInLeft">
                   <h2>100% Organic</h2>
@@ -68,27 +71,7 @@ const Landing = () => (
               </div>
             </div>
 
-            <div className="carousel-item">
-              <div className="carousel-background"><img src="./img/Pink_Roses_Horizontal.jpg" alt=""/></div>
-              <div className="carousel-container">
-                <div className="carousel-content animated fadeInRight">
-                  <h2>It's INCREDIBLE!</h2>
-                  <h5>Natural Care for your house plants, yard, garden or commercial farming.</h5>
-                  <a href="#featured-services" className="btn-get-started scrollto">Get Started</a>
-                </div>
-              </div>
-            </div>
 
-            <div className="carousel-item">
-              <div className="carousel-background"><img src="./img/Spinach_Field_Horizontal.jpg" alt=""/></div>
-              <div className="carousel-container">
-                <div className="carousel-content animated fadeIn">
-                  <h2>AVAILABLE AT A STORE NEAR YOU</h2>
-                  <p>Protect your valuable crops from damaging pests, mold and mildew with Lost Coast Plant Therapy non-toxic solution.</p>
-                  <a href="#featured-services" className="btn-get-started scrollto">Get Started</a>
-                </div>
-              </div>
-            </div>
 
           </div>
 
