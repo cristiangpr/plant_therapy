@@ -49,7 +49,7 @@ const Landing = () => (
           <div className="carousel-inner" role="listbox">
 
             <div className="carousel-item active animated fadeIn">
-              <div className="carousel-background"><img src="./img/Logo_Greenhouses_Horizontal.jpg" alt=""/></div>
+              <div className="carousel-background"><img  src="./img/Logo_Greenhouses_Horizontal.jpg" alt=""/></div>
               <div className="carousel-container">
                 <div className="carousel-content">
 
