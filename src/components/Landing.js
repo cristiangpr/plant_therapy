@@ -1,13 +1,13 @@
 import React from 'react';
 import '../App.css';
 
-  import { Route, Link } from 'react-router-dom';
+
 const Landing = () => (
 
 
 
 
-    <body className ="body">
+    <div className ="body">
 
     <header id="header">
       <div className="container-fluid">
@@ -25,7 +25,7 @@ const Landing = () => (
             <li><a href="#products">Products</a></li>
             <li><a href="#blog">Blog</a></li>
             <li><a href="#team">Sign In</a></li>
-            <li class="menu-has-children"><a href="">Drop Down</a>
+            <li className="menu-has-children"><a href="">Drop Down</a>
               <ul>
                 <li><a href="#">Drop Down 1</a></li>
                 <li><a href="#">Drop Down 3</a></li>
@@ -331,11 +331,11 @@ const Landing = () => (
         </div>
       </section>
 
-      <section id="call-to-action" class="wow fadeIn">
-        <div class="container text-center">
+      <section id="call-to-action" className="wow fadeIn">
+        <div className="container text-center">
           <h3>Distributors and Farms</h3>
           <p> Create an account to access our colaborators area</p>
-          <a class="cta-btn" href="#">Create Account</a>
+          <a className="cta-btn" href="#">Create Account</a>
         </div>
       </section>
 
@@ -489,8 +489,8 @@ const Landing = () => (
 
         </div>
       </footer>
-        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-      </body>
+        <a href="#" className="back-to-top"><i className="fa fa-chevron-up"></i></a>
+      </div>
 
 );
 export default Landing;
