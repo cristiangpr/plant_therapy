@@ -418,7 +418,7 @@ const Landing = () => (
             <div className="row">
 
               <div className="col-lg-3 col-md-6 footer-info">
-                <h3>BizPage</h3>
+                <h3>Lost Coast Plant Therapy</h3>
                 <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
               </div>
 
@@ -467,7 +467,7 @@ const Landing = () => (
 
         <div className="container">
           <div className="copyright">
-            &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
+            &copy; Copyright <strong>Lost Coast Plant Therapy</strong>. All Rights Reserved
           </div>
 
         </div>
