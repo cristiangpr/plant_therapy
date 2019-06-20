@@ -50,7 +50,7 @@ const Landing = () => (
           <div className="carousel-inner" role="listbox">
 
             <div className="carousel-item active animated fadeIn">
-              <div className="carousel-background"><img  src="./img/farm.jpg" alt=""/></div>
+              <div className="carousel-background"><img  src="./img/farm2.jpg" alt=""/></div>
               <div className="carousel-container">
               <div className="carousel-content animated fadeInRight">
                 <h2>Lost Coast Plant Therapy</h2>
@@ -61,7 +61,7 @@ const Landing = () => (
             </div>
 
             <div className="carousel-item">
-              <div className="carousel-background"><img src="./img/dog.jpg" alt=""/></div>
+              <div className="carousel-background"><img src="./img/flower.jpg" alt=""/></div>
               <div className="carousel-container">
                 <div className="carousel-content animated fadeInLeft">
                   <h2>100% Organic</h2>
