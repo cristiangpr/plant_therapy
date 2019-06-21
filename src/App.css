@@ -33,5 +33,8 @@
 #call-to-action .cta-btn:hover {
   background: #18d26e;
   border: 2px solid #18d26e;
-  
+
+}
+#about-container{
+  background-color: black;
 }
