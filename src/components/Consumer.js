@@ -41,7 +41,9 @@ render(){
 
     <header className="section-header">
       <h3>About Us</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>For over 45 years we have been enthusiastic organic gardeners. Our love of plants and the environment inspired the creation of
+
+</p><h4>Lost Coast Plant Therapy</h4>
     </header>
 
     <div className="row about-cols">
@@ -54,7 +56,7 @@ render(){
           </div>
           <h2 className="title"><a href="#">Our Mission</a></h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          We have all seen the devastating effects of poisonous pesticides, insecticides and fungicides that contaminate the water, soil, food and crops they are used on.  We are proud to provide an alternative solution to some of the agricultural industry's biggest challenges.
           </p>
         </div>
       </div>
@@ -67,7 +69,7 @@ render(){
           </div>
           <h2 className="title"><a href="#">Our Plan</a></h2>
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          We found the available products on the market for insect and disease control unsatisfactory in effectiveness. We took all our knowledge and years of experience, two years developing our formula, along with eighteen months of field testing to bring you an all natural solution.
           </p>
         </div>
       </div>
@@ -80,7 +82,7 @@ render(){
           </div>
           <h2 className="title"><a href="#">Our Vision</a></h2>
           <p>
-            Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+          We trust in nature's solutions to thriving and believe in creating a sustainable future by the daily actions we take with the products we use. Both organic and conventional farmers can be proud of taking care of the environment and their workers
           </p>
         </div>
       </div>
@@ -118,7 +120,7 @@ render(){
          <div className="col-lg-6 mt-5 mt-lg-0">
            <div className="row">
              <div className="col-lg-6 col-md-6">
-               <div className="single-product wow fadeIn" data-wow-duration="2s">
+               <div className="single-product wow fadeInRight" data-wow-duration="1s">
                  <div className="product-img">
                    <img className="img-fluid w-100" src="./img/product2.jpg" alt="" />
                    <div className="p_icon">
@@ -146,7 +148,7 @@ render(){
              </div>
 
              <div className="col-lg-6 col-md-6">
-               <div className="single-product wow fadeIn"  data-wow-duration="2s">
+               <div className="single-product wow fadeInRight"  data-wow-duration="1s">
                  <div className="product-img">
                    <img className="img-fluid w-100" src="./img/gallon.jpg" alt="" />
                    <div className="p_icon">
@@ -166,7 +168,7 @@ render(){
                      <h4>1 Gallon</h4>
                    </a>
                    <div className="mt-3">
-                     <span className="mr-4">&169.99</span>
+                     <span className="mr-4">$169.99</span>
                      <del>$200.00</del>
                    </div>
                  </div>
@@ -236,12 +238,167 @@ render(){
 
    <section id="call-to-action" className="wow fadeIn">
      <div className="container text-center">
-       <h3>Distributors and Farms</h3>
-       <p> Create an account to access our colaborators area</p>
-       <a className="cta-btn" href="#">Create Account</a>
+       <h3>Store Finder</h3>
+       <p> Find a retail location near you</p>
+       <a className="cta-btn" href="#">Find Stores</a>
      </div>
    </section>
 
+   <section id="testimonials" className="section-bg wow fadeInUp">
+     <div className="container">
+
+       <header className="section-header">
+         <h3>Testimonials</h3>
+       </header>
+
+       <div className="owl-carousel testimonials-carousel">
+
+         <div className="testimonial-item">
+           <img src="img/testimonial-1.jpg" className="testimonial-img" alt=""/>
+           <h3>Saul Goodman</h3>
+           <h4>Ceo &amp; Founder</h4>
+           <p>
+             <img src="img/quote-sign-left.png" className="quote-sign-left" alt=""/>
+             Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+             <img src="img/quote-sign-right.png" className="quote-sign-right" alt=""/>
+           </p>
+         </div>
+
+         <div className="testimonial-item">
+           <img src="img/testimonial-2.jpg" className="testimonial-img" alt=""/>
+           <h3>Sara Wilsson</h3>
+           <h4>Designer</h4>
+           <p>
+             <img src="img/quote-sign-left.png" className="quote-sign-left" alt=""/>
+             Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+             <img src="img/quote-sign-right.png" className="quote-sign-right" alt=""/>
+           </p>
+         </div>
+
+         <div className="testimonial-item">
+           <img src="img/testimonial-3.jpg" className="testimonial-img" alt=""/>
+           <h3>Jena Karlis</h3>
+           <h4>Store Owner</h4>
+           <p>
+             <img src="img/quote-sign-left.png" className="quote-sign-left" alt=""/>
+             Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+             <img src="img/quote-sign-right.png" className="quote-sign-right" alt=""/>
+           </p>
+         </div>
+
+         <div className="testimonial-item">
+           <img src="img/testimonial-4.jpg" className="testimonial-img" alt=""/>
+           <h3>Matt Brandon</h3>
+           <h4>Freelancer</h4>
+           <p>
+             <img src="img/quote-sign-left.png" className="quote-sign-left" alt=""/>
+             Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+             <img src="img/quote-sign-right.png" className="quote-sign-right" alt=""/>
+           </p>
+         </div>
+
+         <div className="testimonial-item">
+           <img src="img/testimonial-5.jpg" className="testimonial-img" alt=""/>
+           <h3>John Larson</h3>
+           <h4>Entrepreneur</h4>
+           <p>
+             <img src="img/quote-sign-left.png" className="quote-sign-left" alt=""/>
+             Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+             <img src="img/quote-sign-right.png" className="quote-sign-right" alt=""/>
+           </p>
+         </div>
+
+       </div>
+
+     </div>
+   </section>
+
+
+   <section id="team">
+     <div className="container">
+       <div className="section-header wow fadeInUp">
+         <h3>Team</h3>
+         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+       </div>
+
+       <div className="row">
+
+         <div className="col-lg-3 col-md-6 wow fadeInUp">
+           <div className="member">
+             <img src="img/team-1.jpg" className="img-fluid" alt=""/>
+             <div className="member-info">
+               <div className="member-info-content">
+                 <h4>Walter White</h4>
+                 <span>Chief Executive Officer</span>
+                 <div className="social">
+                   <a href=""><i className="fa fa-twitter"></i></a>
+                   <a href=""><i className="fa fa-facebook"></i></a>
+                   <a href=""><i className="fa fa-google-plus"></i></a>
+                   <a href=""><i className="fa fa-linkedin"></i></a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+
+         <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+           <div className="member">
+             <img src="img/team-2.jpg" className="img-fluid" alt=""/>
+             <div className="member-info">
+               <div className="member-info-content">
+                 <h4>Sarah Jhonson</h4>
+                 <span>Product Manager</span>
+                 <div className="social">
+                   <a href=""><i className="fa fa-twitter"></i></a>
+                   <a href=""><i className="fa fa-facebook"></i></a>
+                   <a href=""><i className="fa fa-google-plus"></i></a>
+                   <a href=""><i className="fa fa-linkedin"></i></a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+
+         <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+           <div className="member">
+             <img src="img/team-3.jpg" className="img-fluid" alt=""/>
+             <div className="member-info">
+               <div className="member-info-content">
+                 <h4>William Anderson</h4>
+                 <span>CTO</span>
+                 <div className="social">
+                   <a href=""><i className="fa fa-twitter"></i></a>
+                   <a href=""><i className="fa fa-facebook"></i></a>
+                   <a href=""><i className="fa fa-google-plus"></i></a>
+                   <a href=""><i className="fa fa-linkedin"></i></a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+
+         <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+           <div className="member">
+             <img src="img/team-4.jpg" className="img-fluid" alt=""/>
+             <div className="member-info">
+               <div className="member-info-content">
+                 <h4>Amanda Jepson</h4>
+                 <span>Accountant</span>
+                 <div className="social">
+                   <a href=""><i className="fa fa-twitter"></i></a>
+                   <a href=""><i className="fa fa-facebook"></i></a>
+                   <a href=""><i className="fa fa-google-plus"></i></a>
+                   <a href=""><i className="fa fa-linkedin"></i></a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+
+       </div>
+
+     </div>
+   </section>
 
 
    <section className="blog-area section-gap" id="blog">

@@ -23,20 +23,25 @@ const Landing = () => (
               <div className="carousel-background">
               <picture>
               <source srcset="./img/farm2.jpg" media="(min-width: 769px)" alt=""/>
-                <source srcset="./img/farm.jpg" media="(min-width: 400px)" alt=""/>
+                <source srcset="./img/farm.jpg" media="(min-width: 1px)" alt=""/>
                       <img srcset="./img/farm2.jpg" alt="responsive image" class="d-block img-fluid"/>
               </picture></div>
               <div className="carousel-container">
               <div className="carousel-content animated fadeInRight">
                 <h2>Lost Coast Plant Therapy</h2>
-                <h5>The plant healthy - planet healthy solution you have been looking for! </h5>
+                <h5>Natural Care for your house plants, yard, garden or commercial farming.</h5>
                 <a href="#featured-services" className="btn-get-started scrollto">Get Started</a>
               </div>
               </div>
             </div>
 
             <div className="carousel-item">
-              <div className="carousel-background"><img src="./img/flower.jpg" alt=""/></div>
+              <div className="carousel-background">
+                         <picture>
+                          <source srcset="./img/flower.jpg" media="(min-width: 769px)" alt=""/>
+                            <source srcset="./img/flower_mobile.jpg" media="(min-width: 1px)" alt=""/>
+                                  <img srcset="./img/flower.jpg" alt="responsive image" class="d-block img-fluid"/>
+                          </picture></div>
               <div className="carousel-container">
                 <div className="carousel-content animated fadeInLeft">
                   <h2>Organic Ingredients</h2>
@@ -47,15 +52,16 @@ const Landing = () => (
             </div>
 
             <div className="carousel-item">
-              <div className="carousel-background">    <picture>
+              <div className="carousel-background">
+               <picture>
                   <source srcset="./img/dog2.jpg" media="(min-width: 769px)" alt=""/>
-                    <source srcset="./img/dog.jpg" media="(min-width: 360px)" alt=""/>
+                    <source srcset="./img/dog.jpg" media="(min-width: 1px)" alt=""/>
                           <img srcset="./img/farm2.jpg" alt="responsive image" class="d-block img-fluid"/>
                   </picture></div>
               <div className="carousel-container">
                 <div className="carousel-content animated fadeInLeft">
                   <h2>No Poison</h2>
-                  <h5>The plant healthy - planet healthy solution you have been looking for! </h5>
+                  <h5>Clean and healthy gardens from start to finish! </h5>
                   <a href="#featured-services" className="btn-get-started scrollto">Get Started</a>
                 </div>
               </div>

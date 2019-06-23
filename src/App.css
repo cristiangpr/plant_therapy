@@ -2,7 +2,8 @@
 #call-to-action {
   background: linear-gradient(rgba(0, 142, 99, 0.1), rgba(0, 0, 0, 0.1)), url(./call-to-action-bg.jpg) fixed center center;
   background-size: cover;
-  padding: 60px 0;
+  padding: 60px 0 ;
+  padding-bottom: 50px;
 }
 
 #call-to-action h3 {
@@ -37,4 +38,11 @@
 }
 #about-container{
   background-color: black;
+}
+.new_product h3, h4  {
+  color: gray;
+}
+
+#blog {
+  padding-top: 50px;
 }
