@@ -1288,7 +1288,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #contact .contact-info address,
 #contact .contact-info p {
   margin-bottom: 0;
-  color: #000;
+  color: #999;
 }
 
 #contact .contact-info h3 {
@@ -1300,7 +1300,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .contact-info a {
-  color: #000;
+  color: #999;
 }
 
 #contact .contact-info a:hover {

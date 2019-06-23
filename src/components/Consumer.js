@@ -1,7 +1,51 @@
 import React, { Component } from 'react';
-
+import $ from "jquery";
 
 class Consumer extends Component {
+  componentDidMount() {
+    if ($('#nav-menu-container').length) {
+      var $mobile_nav = $('#nav-menu-container').clone().prop({
+        id: 'mobile-nav'
+      });
+      $mobile_nav.find('> ul').attr({
+        'class': '',
+        'id': ''
+      });
+      $('body').append($mobile_nav);
+      $('body').prepend('<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>');
+      $('body').append('<div id="mobile-body-overly"></div>');
+      $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
+
+      $(document).on('click', '.menu-has-children i', function(e) {
+        $(this).next().toggleClass('menu-item-active');
+        $(this).nextAll('ul').eq(0).slideToggle();
+        $(this).toggleClass("fa-chevron-up fa-chevron-down");
+      });
+
+      $(document).on('click', '#mobile-nav-toggle', function(e) {
+        $('body').toggleClass('mobile-nav-active');
+        $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+        $('#mobile-body-overly').toggle();
+      });
+
+      $(document).click(function(e) {
+        var container = $("#mobile-nav, #mobile-nav-toggle");
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+          if ($('body').hasClass('mobile-nav-active')) {
+            $('body').removeClass('mobile-nav-active');
+            $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+            $('#mobile-body-overly').fadeOut();
+          }
+        }
+      });
+    } else if ($("#mobile-nav, #mobile-nav-toggle").length) {
+      $("#mobile-nav, #mobile-nav-toggle").hide();
+    }
+
+
+
+ }
+
 
 
 
@@ -17,7 +61,7 @@ render(){
     <div className="container-fluid">
 
       <div id="logo" className="pull-left">
-        <h1><a href="#intro" className="scrollto"><img src="./img/logo.jpg" alt="" title="" /></a></h1>
+        <h1><a href="/" className="scrollto"><img src="./img/logo.jpg" alt="" title="" /></a></h1>
 
    <a href="#intro"></a>
       </div>
@@ -30,7 +74,7 @@ render(){
           <li><a href="#blog">Blog</a></li>
           <li><a href="#footer">Sign In</a></li>
 
-          <li><a href="#footer">Contact</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -106,7 +150,7 @@ render(){
 
        <div className="row">
          <div className="col-lg-6">
-           <div className="new_product wow fadeInLeft">
+           <div className="new_product wow fadeIn">
 
              <h3 className="text-uppercase" id="dark">Plant Therapy Gift Pack</h3>
              <div className="product-img">
@@ -120,7 +164,7 @@ render(){
          <div className="col-lg-6 mt-5 mt-lg-0">
            <div className="row">
              <div className="col-lg-6 col-md-6">
-               <div className="single-product wow fadeInRight" data-wow-duration="1s">
+               <div className="single-product wow fadeIn" >
                  <div className="product-img">
                    <img className="img-fluid w-100" src="./img/product2.jpg" alt="" />
                    <div className="p_icon">
@@ -148,7 +192,7 @@ render(){
              </div>
 
              <div className="col-lg-6 col-md-6">
-               <div className="single-product wow fadeInRight"  data-wow-duration="1s">
+               <div className="single-product wow fadeIn" >
                  <div className="product-img">
                    <img className="img-fluid w-100" src="./img/gallon.jpg" alt="" />
                    <div className="p_icon">
@@ -176,7 +220,7 @@ render(){
              </div>
 
              <div className="col-lg-6 col-md-6">
-               <div className="single-product  wow fadeIn"  data-wow-duration="2s">
+               <div className="single-product  wow fadeIn"  >
                  <div className="product-img">
                    <img className="img-fluid w-100" src="./img/12oz.jpg" alt="" />
                    <div className="p_icon">
@@ -204,7 +248,7 @@ render(){
              </div>
 
              <div className="col-lg-6 col-md-6">
-               <div className="single-product  wow fadeIn" data-wow-duration="2s" >
+               <div className="single-product  wow fadeIn" >
                  <div className="product-img">
                    <img className="img-fluid w-100" src="./img/32oz.jpg" alt="" />
                    <div className="p_icon">
@@ -258,7 +302,7 @@ render(){
 
          <div className="col-lg-3 col-md-6 wow fadeInUp">
            <div className="member">
-             <img src="img/team-1.jpg" className="img-fluid" alt=""/>
+             <img src="img/jd.jpg" className="img-fluid" alt=""/>
              <div className="member-info">
                <div className="member-info-content">
                  <h4>James Davidson</h4>
@@ -419,6 +463,71 @@ render(){
            </div>
          </div>
        </div>
+     </div>
+   </section>
+
+   <section id="contact" className="section-bg wow fadeInUp">
+     <div className="container">
+
+       <div className="section-header">
+         <h3>Contact Us</h3>
+         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+       </div>
+
+       <div className="row contact-info">
+
+         <div className="col-md-4">
+           <div className="contact-address">
+             <i className="ion-ios-location-outline"></i>
+             <h3>Address</h3>
+             <address>A108 Adam Street, NY 535022, USA</address>
+           </div>
+         </div>
+
+         <div className="col-md-4">
+           <div className="contact-phone">
+             <i className="ion-ios-telephone-outline"></i>
+             <h3>Phone Number</h3>
+             <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+           </div>
+         </div>
+
+         <div className="col-md-4">
+           <div className="contact-email">
+             <i className="ion-ios-email-outline"></i>
+             <h3>Email</h3>
+             <p><a href="mailto:info@example.com">info@example.com</a></p>
+           </div>
+         </div>
+
+       </div>
+
+       <div className="form">
+         <div id="sendmessage">Your message has been sent. Thank you!</div>
+         <div id="errormessage"></div>
+         <form action="" method="post" role="form" className="contactForm">
+           <div className="form-row">
+             <div className="form-group col-md-6">
+               <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+               <div className="validation"></div>
+             </div>
+             <div className="form-group col-md-6">
+               <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+               <div className="validation"></div>
+             </div>
+           </div>
+           <div className="form-group">
+             <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+             <div className="validation"></div>
+           </div>
+           <div className="form-group">
+             <textarea className="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+             <div className="validation"></div>
+           </div>
+           <div className="text-center"><button type="submit">Send Message</button></div>
+         </form>
+       </div>
+
      </div>
    </section>
 
