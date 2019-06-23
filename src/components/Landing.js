@@ -23,7 +23,7 @@ const Landing = () => (
               <div className="carousel-background">
               <picture>
               <source srcset="./img/farm2.jpg" media="(min-width: 769px)" alt=""/>
-                <source srcset="./img/farm.jpg" media="(min-width: 1px)" alt=""/>
+                <source srcset="./img/farm2_mobile.jpg" media="(min-width: 1px)" alt=""/>
                       <img srcset="./img/farm2.jpg" alt="responsive image" class="d-block img-fluid"/>
               </picture></div>
               <div className="carousel-container">
@@ -55,7 +55,7 @@ const Landing = () => (
               <div className="carousel-background">
                <picture>
                   <source srcset="./img/dog2.jpg" media="(min-width: 769px)" alt=""/>
-                    <source srcset="./img/dog.jpg" media="(min-width: 1px)" alt=""/>
+                    <source srcset="./img/dog2_mobile.jpg" media="(min-width: 1px)" alt=""/>
                           <img srcset="./img/farm2.jpg" alt="responsive image" class="d-block img-fluid"/>
                   </picture></div>
               <div className="carousel-container">

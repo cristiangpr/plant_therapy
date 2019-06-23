@@ -244,81 +244,14 @@ render(){
      </div>
    </section>
 
-   <section id="testimonials" className="section-bg wow fadeInUp">
-     <div className="container">
 
-       <header className="section-header">
-         <h3>Testimonials</h3>
-       </header>
-
-       <div className="owl-carousel testimonials-carousel">
-
-         <div className="testimonial-item">
-           <img src="img/testimonial-1.jpg" className="testimonial-img" alt=""/>
-           <h3>Saul Goodman</h3>
-           <h4>Ceo &amp; Founder</h4>
-           <p>
-             <img src="img/quote-sign-left.png" className="quote-sign-left" alt=""/>
-             Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-             <img src="img/quote-sign-right.png" className="quote-sign-right" alt=""/>
-           </p>
-         </div>
-
-         <div className="testimonial-item">
-           <img src="img/testimonial-2.jpg" className="testimonial-img" alt=""/>
-           <h3>Sara Wilsson</h3>
-           <h4>Designer</h4>
-           <p>
-             <img src="img/quote-sign-left.png" className="quote-sign-left" alt=""/>
-             Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-             <img src="img/quote-sign-right.png" className="quote-sign-right" alt=""/>
-           </p>
-         </div>
-
-         <div className="testimonial-item">
-           <img src="img/testimonial-3.jpg" className="testimonial-img" alt=""/>
-           <h3>Jena Karlis</h3>
-           <h4>Store Owner</h4>
-           <p>
-             <img src="img/quote-sign-left.png" className="quote-sign-left" alt=""/>
-             Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-             <img src="img/quote-sign-right.png" className="quote-sign-right" alt=""/>
-           </p>
-         </div>
-
-         <div className="testimonial-item">
-           <img src="img/testimonial-4.jpg" className="testimonial-img" alt=""/>
-           <h3>Matt Brandon</h3>
-           <h4>Freelancer</h4>
-           <p>
-             <img src="img/quote-sign-left.png" className="quote-sign-left" alt=""/>
-             Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-             <img src="img/quote-sign-right.png" className="quote-sign-right" alt=""/>
-           </p>
-         </div>
-
-         <div className="testimonial-item">
-           <img src="img/testimonial-5.jpg" className="testimonial-img" alt=""/>
-           <h3>John Larson</h3>
-           <h4>Entrepreneur</h4>
-           <p>
-             <img src="img/quote-sign-left.png" className="quote-sign-left" alt=""/>
-             Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-             <img src="img/quote-sign-right.png" className="quote-sign-right" alt=""/>
-           </p>
-         </div>
-
-       </div>
-
-     </div>
-   </section>
 
 
    <section id="team">
      <div className="container">
        <div className="section-header wow fadeInUp">
-         <h3>Team</h3>
-         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+         <h3>Abassadors</h3>
+         <p>Plant Therapy sponsored athletes</p>
        </div>
 
        <div className="row">
@@ -328,8 +261,8 @@ render(){
              <img src="img/team-1.jpg" className="img-fluid" alt=""/>
              <div className="member-info">
                <div className="member-info-content">
-                 <h4>Walter White</h4>
-                 <span>Chief Executive Officer</span>
+                 <h4>James Davidson</h4>
+                 <span>Indycar</span>
                  <div className="social">
                    <a href=""><i className="fa fa-twitter"></i></a>
                    <a href=""><i className="fa fa-facebook"></i></a>
@@ -347,7 +280,7 @@ render(){
              <div className="member-info">
                <div className="member-info-content">
                  <h4>Sarah Jhonson</h4>
-                 <span>Product Manager</span>
+                 <span>Snowboard</span>
                  <div className="social">
                    <a href=""><i className="fa fa-twitter"></i></a>
                    <a href=""><i className="fa fa-facebook"></i></a>
@@ -365,7 +298,7 @@ render(){
              <div className="member-info">
                <div className="member-info-content">
                  <h4>William Anderson</h4>
-                 <span>CTO</span>
+                 <span>Surfer</span>
                  <div className="social">
                    <a href=""><i className="fa fa-twitter"></i></a>
                    <a href=""><i className="fa fa-facebook"></i></a>
@@ -383,7 +316,7 @@ render(){
              <div className="member-info">
                <div className="member-info-content">
                  <h4>Amanda Jepson</h4>
-                 <span>Accountant</span>
+                 <span>Formula 1</span>
                  <div className="social">
                    <a href=""><i className="fa fa-twitter"></i></a>
                    <a href=""><i className="fa fa-facebook"></i></a>

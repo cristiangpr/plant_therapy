@@ -1185,14 +1185,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------*/
 
 #team {
-  background: #fff;
+
   padding: 60px 0;
 }
 
 #team .member {
   text-align: center;
   margin-bottom: 20px;
-  background: #000;
+
   position: relative;
 }
 
