@@ -141,8 +141,8 @@ render(){
      <div className="container">
        <div className="row justify-content-center">
          <div className="col-lg-12">
-           <div className="main_title">
-             <h2><span>products</span></h2>
+           <div className="section-header">
+             <h3>PRODUCTS</h3>
              <p>Find a presentation to fit your needs</p>
            </div>
          </div>
@@ -382,8 +382,8 @@ render(){
      <div className="container">
        <div className="row justify-content-center">
          <div className="col-lg-12">
-           <div className="main_title">
-             <h2><span>blog</span></h2>
+           <div className="section-header">
+             <h3>BLOG</h3>
 
            </div>
          </div>
@@ -480,7 +480,7 @@ render(){
            <div className="contact-address">
              <i className="ion-ios-location-outline"></i>
              <h3>Address</h3>
-             <address>A108 Adam Street, NY 535022, USA</address>
+             <address> P.O. Box 662, Calistoga, Ca 94515 USA</address>
            </div>
          </div>
 
@@ -488,7 +488,7 @@ render(){
            <div className="contact-phone">
              <i className="ion-ios-telephone-outline"></i>
              <h3>Phone Number</h3>
-             <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+             <p><a href="tel:+155895548855">+1 (877) 558-0808</a></p>
            </div>
          </div>
 
@@ -496,7 +496,7 @@ render(){
            <div className="contact-email">
              <i className="ion-ios-email-outline"></i>
              <h3>Email</h3>
-             <p><a href="mailto:info@example.com">info@example.com</a></p>
+             <p><a href="mailto:info@example.com"> contact@loscoastplanttherapy.com</a></p>
            </div>
          </div>
 
@@ -555,11 +555,11 @@ render(){
            <div className="col-lg-3 col-md-6 footer-contact">
              <h4>Contact Us</h4>
              <p>
-               A108 Adam Street <br/>
-               New York, NY 535022<br/>
+              P.O. Box 662<br/>
+                Calistoga, Ca 94515<br/>
                United States <br/>
-               <strong>Phone:</strong> +1 5589 55488 55<br/>
-               <strong>Email:</strong> info@example.com<br/>
+               <strong>Phone:</strong>+1 (877) 558-0808<br/>
+               <strong>Email:</strong>  contact@loscoastplanttherapy.com<br/>
              </p>
 
              <div className="social-links">
@@ -574,7 +574,7 @@ render(){
 
            <div className="col-lg-3 col-md-6 footer-newsletter">
              <h4>Our Newsletter</h4>
-             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+             <p>Sign up to recieve updates on our products</p>
              <form action="" method="post">
                <input type="email" name="email"/><input type="submit"  value="Subscribe"/>
              </form>

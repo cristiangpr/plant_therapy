@@ -44,7 +44,7 @@ h6 {
   font-weight: 400;
   margin: 0 0 20px 0;
   padding: 0;
-  color: white;
+  color: #fff;
 }
 
 /* Back to top button */
@@ -561,7 +561,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .section-header h3 {
   font-size: 32px;
-  color: white;
+  color: #fff;
   text-transform: uppercase;
   text-align: center;
   font-weight: 700;
@@ -594,7 +594,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .section-header p {
   text-align: center;
   padding-bottom: 30px;
-  color: white;
+  color: #fff;
 }
 
 /* Section with background
@@ -803,10 +803,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* Call To Action Section
 --------------------------------*/
 
+
 #call-to-action {
-  background: linear-gradient(rgba(0, 142, 99, 0.1), rgba(0, 0, 0, 0.1)), url(../img/call-to-action-b.jpg) fixed center center;
+  background: linear-gradient(rgba(0, 142, 99, 0.1), rgba(0, 0, 0, 0.1)), url(../img/call-to-action-bg.jpg) fixed center center;
   background-size: cover;
-  padding: 60px 0;
+  padding: 60px 0 ;
+  padding-bottom: 50px;
 }
 
 #call-to-action h3 {
@@ -837,6 +839,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #call-to-action .cta-btn:hover {
   background: #18d26e;
   border: 2px solid #18d26e;
+
 }
 
 /* Call To Action Section
@@ -1288,7 +1291,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #contact .contact-info address,
 #contact .contact-info p {
   margin-bottom: 0;
-  color: #999;
+  color: #fff;
 }
 
 #contact .contact-info h3 {
@@ -1296,11 +1299,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 15px;
   font-weight: bold;
   text-transform: uppercase;
-  color: #999;
+  color: #fff;
 }
 
 #contact .contact-info a {
-  color: #999;
+  color: #fff;
 }
 
 #contact .contact-info a:hover {

@@ -43,15 +43,134 @@ class Distributors extends Component {
       </div>
     </header>
 
-  <section id="about">
-    <div className="container" id="about-container">
+    <section id="contact" className="section-bg wow fadeInUp">
+      <div className="container">
 
-      <header className="section-header">
-        <h3>Distributors PAGE WILL GO HERE</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </header>
+        <div className="section-header">
+          <h3>Create Account</h3>
+          <p>
+Stores Fill In Details Below To
+Apply For Wholesale Pricing</p>
+        </div>
+
+        <div className="row contact-info">
+
+          <div className="col-md-4">
+            <div className="contact-address">
+              <i className="ion-ios-location-outline"></i>
+              <h3>Address</h3>
+              <address> P.O. Box 662, Calistoga, Ca 94515 USA</address>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="contact-phone">
+              <i className="ion-ios-telephone-outline"></i>
+              <h3>Phone Number</h3>
+              <p><a href="tel:+155895548855">+1 (877) 558-0808</a></p>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="contact-email">
+              <i className="ion-ios-email-outline"></i>
+              <h3>Email</h3>
+              <p><a href="mailto:info@example.com"> contact@loscoastplanttherapy.com</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="form">
+          <div id="sendmessage">Your message has been sent. Thank you!</div>
+          <div id="errormessage"></div>
+          <form action="" method="post" role="form" className="contactForm">
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div className="validation"></div>
+              </div>
+              <div className="form-group col-md-6">
+                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div className="validation"></div>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <input type="password" name="password" className="form-control" id="password" placeholder="Create a password" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div className="validation"></div>
+              </div>
+              <div className="form-group col-md-6">
+                <input type="password" className="form-control" name="password-conf" id="password-conf" placeholder="Confirm password" data-rule="email" data-msg="Please enter a valid email" />
+                <div className="validation"></div>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <input type="password" name="password" className="form-control" id="password" placeholder="Business Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div className="validation"></div>
+              </div>
+              <div className="form-group col-md-6">
+                <input type="password" className="form-control" name="password-conf" id="password-conf" placeholder="Store Name" data-rule="email" data-msg="Please enter a valid email" />
+                <div className="validation"></div>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <input type="password" name="password" className="form-control" id="password" placeholder="Seller Permit # | Tax ID #" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div className="validation"></div>
+              </div>
+              <div className="form-group col-md-6">
+                <input type="password" className="form-control" name="password-conf" id="password-conf" placeholder="Phone" data-rule="email" data-msg="Please enter a valid email" />
+                <div className="validation"></div>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <input type="password" name="password" className="form-control" id="password" placeholder="Address Line 1" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div className="validation"></div>
+              </div>
+              <div className="form-group col-md-6">
+                <input type="password" className="form-control" name="password-conf" id="password-conf" placeholder="Address Line 2" data-rule="email" data-msg="Please enter a valid email" />
+                <div className="validation"></div>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <input type="password" name="password" className="form-control" id="password" placeholder="City" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div className="validation"></div>
+              </div>
+              <div className="form-group col-md-6">
+                <input type="password" className="form-control" name="password-conf" id="password-conf" placeholder="State" data-rule="email" data-msg="Please enter a valid email" />
+                <div className="validation"></div>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <input type="password" name="password" className="form-control" id="password" placeholder="Country" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div className="validation"></div>
+              </div>
+              <div className="form-group col-md-6">
+                <input type="password" className="form-control" name="password-conf" id="password-conf" placeholder="Zip" data-rule="email" data-msg="Please enter a valid email" />
+                <div className="validation"></div>
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <input type="password" name="password" className="form-control" id="password" placeholder="Website URL" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div className="validation"></div>
+              </div>
+              <div className="form-group col-md-6">
+                <input type="password" className="form-control" name="password-conf" id="password-conf" placeholder="How did you hear about us?" data-rule="email" data-msg="Please enter a valid email" />
+                <div className="validation"></div>
+              </div>
+            </div>
+            <div className="text-center"><button type="submit">Submit Application</button></div>
+          </form>
+        </div>
+
       </div>
-  </section>
+    </section>
 
      <footer id="footer">
        <div className="footer-top">
