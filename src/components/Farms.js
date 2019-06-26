@@ -9,39 +9,7 @@ render(){
   return (
 
   <div>
-  <button type="button" id="mobile-nav-toggle"><i className="fa fa-bars"></i></button>
 
-
-
-  <header id="header">
-    <div className="container-fluid">
-
-      <div id="logo" className="pull-left">
-        <h1><a href="/" className="scrollto"><img src="./img/logo.jpg" alt="" title="" /></a></h1>
-
-   <a href="#intro"></a>
-      </div>
-
-      <nav id="nav-menu-container">
-        <ul className="nav-menu sf-js-enabled sf-arrows">
-          <li className="menu-active"><a href="#intro">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#team">Sign In</a></li>
-          <li className="menu-has-children"><a href="">Drop Down</a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
   <section id="contact" className="section-bg wow fadeInUp">
     <div className="container">
