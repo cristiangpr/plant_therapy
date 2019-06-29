@@ -96,7 +96,7 @@ const Landing = () => (
 
          <div className="col-lg-4 box box-bg">
           <Link to= "/distributors">   <i className="ion-earth"></i></Link>
-           <h4 className="title"><a href="/distributors">Distributors</a></h4>
+           <h4 className="title"><a href="/distributors">Distributors & Stores</a></h4>
            <p className="description">Wholesale and retail distributors go here</p>
          </div>
 

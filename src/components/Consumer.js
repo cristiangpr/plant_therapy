@@ -84,11 +84,11 @@ render(){
          <div className="col-lg-6">
            <div className="new_product wow fadeIn">
 
-             <h3 className="text-uppercase" id="dark">Plant Therapy Gift Pack</h3>
+             <h3 className="text-uppercase" id="dark">Free 2 oz Sample</h3>
              <div className="product-img">
-               <img className="img-fluid" src="./img/product1.jpg" alt="" />
+               <img className="img-fluid" src="./img/sample.jpg" alt="" />
              </div>
-             <h4 id="dark">$499.99</h4>
+             <h4 id="dark">Pay only shipping cost</h4>
              <a href="#" className="main_btn">Add to cart</a>
            </div>
          </div>
@@ -98,7 +98,7 @@ render(){
              <div className="col-lg-6 col-md-6">
                <div className="single-product wow fadeIn" >
                  <div className="product-img">
-                   <img className="img-fluid w-100" src="./img/product2.jpg" alt="" />
+                   <img className="img-fluid w-100" src="./img/product1.jpg" alt="" />
                    <div className="p_icon">
                      <a href="#">
                        <i className="ti-eye"></i>
@@ -113,10 +113,10 @@ render(){
                  </div>
                  <div className="product-btm">
                    <a href="#" className="d-block">
-                     <h4>Variety Pack</h4>
+                     <h4>2.5 Gallon Bottle</h4>
                    </a>
                    <div className="mt-3">
-                     <span className="mr-4">$499.99</span>
+                     <span className="mr-4">$575.00</span>
                      <del>$600.00</del>
                    </div>
                  </div>
@@ -141,11 +141,11 @@ render(){
                  </div>
                  <div className="product-btm">
                    <a href="#" className="d-block">
-                     <h4>1 Gallon</h4>
+                     <h4>1 Gallon Bottle</h4>
                    </a>
                    <div className="mt-3">
-                     <span className="mr-4">$169.99</span>
-                     <del>$200.00</del>
+                     <span className="mr-4">$250.00</span>
+                     <del>$275.00</del>
                    </div>
                  </div>
                </div>
@@ -153,34 +153,6 @@ render(){
 
              <div className="col-lg-6 col-md-6">
                <div className="single-product  wow fadeIn"  >
-                 <div className="product-img">
-                   <img className="img-fluid w-100" src="./img/12oz.jpg" alt="" />
-                   <div className="p_icon">
-                     <a href="#">
-                       <i className="ti-eye"></i>
-                     </a>
-                     <a href="#">
-                       <i className="ti-heart"></i>
-                     </a>
-                     <a href="#">
-                       <i className="ti-shopping-cart"></i>
-                     </a>
-                   </div>
-                 </div>
-                 <div className="product-btm">
-                   <a href="#" className="d-block">
-                     <h4>12 oz Bottle</h4>
-                   </a>
-                   <div className="mt-3">
-                     <span className="mr-4">$25.00</span>
-                     <del>$35.00</del>
-                   </div>
-                 </div>
-               </div>
-             </div>
-
-             <div className="col-lg-6 col-md-6">
-               <div className="single-product  wow fadeIn" >
                  <div className="product-img">
                    <img className="img-fluid w-100" src="./img/32oz.jpg" alt="" />
                    <div className="p_icon">
@@ -200,8 +172,36 @@ render(){
                      <h4>32 oz Bottle</h4>
                    </a>
                    <div className="mt-3">
-                     <span className="mr-4">$79.99</span>
+                     <span className="mr-4">$90.00</span>
                      <del>$100.00</del>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+             <div className="col-lg-6 col-md-6">
+               <div className="single-product  wow fadeIn" >
+                 <div className="product-img">
+                   <img className="img-fluid w-100" src="./img/12oz.jpg" alt="" />
+                   <div className="p_icon">
+                     <a href="#">
+                       <i className="ti-eye"></i>
+                     </a>
+                     <a href="#">
+                       <i className="ti-heart"></i>
+                     </a>
+                     <a href="#">
+                       <i className="ti-shopping-cart"></i>
+                     </a>
+                   </div>
+                 </div>
+                 <div className="product-btm">
+                   <a href="#" className="d-block">
+                     <h4>12 oz Bottle</h4>
+                   </a>
+                   <div className="mt-3">
+                     <span className="mr-4">$40.00</span>
+                     <del>$50.00</del>
                    </div>
                  </div>
                </div>
@@ -227,7 +227,7 @@ render(){
      <div className="container">
        <div className="section-header wow fadeInUp">
          <h3>Abassadors</h3>
-         <p>Plant Therapy sponsored athletes</p>
+         <p> We are proud to sponsor these athletes who recognize that our farm practices have far reaching consequences for our future and that it matters how we grow our food and treat the environment. Non-toxic alternatives are key to creating a sustainable future. </p>
        </div>
 
        <div className="row">

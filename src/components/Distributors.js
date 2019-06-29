@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Navbar from "./Navbar.js"
 
 class Distributors extends Component {
 
@@ -9,6 +9,38 @@ class Distributors extends Component {
     return (
 
     <div>
+    <Navbar/>
+    <section id="contact" className="section-bg wow fadeInUp">
+      <div className="container">
+
+        <div className="section-header">
+          <h3>Sign In</h3>
+          <p>
+Stores and Distributors sign in below</p>
+        </div>
+
+
+                <div className="form">
+                  <div id="sendmessage">Your message has been sent. Thank you!</div>
+                  <div id="errormessage"></div>
+                  <form action="" method="post" role="form" className="contactForm">
+                    <div className="form-row">
+                      <div className="form-group col-md-6">
+                        <input type="text" name="name" className="form-control" id="name" placeholder="Enter username" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        <div className="validation"></div>
+                      </div>
+                      <div className="form-group col-md-6">
+                        <input type="email" className="form-control" name="email" id="email" placeholder="Enter password" data-rule="email" data-msg="Please enter a valid email" />
+                        <div className="validation"></div>
+                      </div>
+                    </div>
+
+                    <div className="text-center"><button type="submit">Sign In</button></div>
+                  </form>
+                </div>
+</div>
+
+</section>
 
 
     <section id="contact" className="section-bg wow fadeInUp">
