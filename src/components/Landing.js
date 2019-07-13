@@ -22,17 +22,11 @@ const Landing = () => (
             <div className="carousel-item active animated fadeIn">
               <div className="carousel-background">
               <picture>
-              <source srcset="./img/flower.jpg" media="(min-width: 769px)" alt=""/>
+              <source srcset="./img/producto.jpg" media="(min-width: 769px)" alt=""/>
                 <source srcset="./img/flower_mobile.jpg" media="(min-width: 1px)" alt=""/>
                       <img srcset="./img/farm2.jpg" alt="responsive image" class="d-block img-fluid"/>
               </picture></div>
-              <div className="carousel-container">
-              <div className="carousel-content animated fadeInRight">
-                <h2>Lost Coast Plant Therapy</h2>
-                <h5>Natural Care for your house plants, yard, garden or commercial farming.</h5>
-                <a href="#featured-services" className="btn-get-started scrollto">Get Started</a>
-              </div>
-              </div>
+
             </div>
 
             <div className="carousel-item">

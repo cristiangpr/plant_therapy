@@ -58,7 +58,7 @@ class Navbar extends Component {
   <div className="container-fluid">
 
     <div id="logo" className="pull-left">
-      <h1><a href="/" className="scrollto"><img src="./img/logo.jpg" alt="" title="" /></a></h1>
+      <h1><a href="/" className="scrollto"><img src="./img/logo.png" alt="" title="" /></a></h1>
 
  <a href="#intro"></a>
     </div>
