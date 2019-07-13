@@ -22,9 +22,8 @@ const Landing = () => (
             <div className="carousel-item active animated fadeIn">
               <div className="carousel-background">
               <picture>
-              <source srcset="./img/producto.jpg" media="(min-width: 769px)" alt=""/>
-                <source srcset="./img/flower_mobile.jpg" media="(min-width: 1px)" alt=""/>
-                      <img srcset="./img/farm2.jpg" alt="responsive image" class="d-block img-fluid"/>
+  
+                      <img srcset="./img/producto.jpg" alt="responsive image" class="d-block img-fluid"/>
               </picture></div>
 
             </div>
