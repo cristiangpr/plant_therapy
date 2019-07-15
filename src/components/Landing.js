@@ -90,13 +90,13 @@ const Landing = () => (
 
          <div className="col-lg-4 box box-bg">
           <Link to= "/DistributorsLanding">   <i className="ion-earth"></i></Link>
-           <h4 className="title"><a href="/distributors">Distributors & Stores</a></h4>
+           <h4 className="title"><a href="/DistributorsLanding">Distributors & Stores</a></h4>
            <p className="description">Wholesale and retail distributors go here</p>
          </div>
 
          <div className="col-lg-4 box">
           <Link to= "/FarmsLanding">   <i className="ion-leaf"></i></Link>
-           <h4 className="title"><a href="/farms">Farms</a></h4>
+           <h4 className="title"><a href="/FarmsLanding">Farms</a></h4>
            <p className="description">Learn about our special programs for producers</p>
          </div>
 
