@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from "./Navbar.js"
-  import { Route, Link } from 'react-router-dom';
+  import { Link } from 'react-router-dom';
 class FarmsLanding extends Component {
 
 
@@ -10,7 +10,7 @@ render(){
 
   <div>
   <Navbar/>
-  <section id="contact" className="section-bg wow fadeInUp">
+  <section id="sign-in" className="section-bg wow fadeInUp">
     <div className="container">
 
       <div className="section-header">
@@ -21,7 +21,7 @@ Affiliated Farms sign in below</p>
 
 
               <div className="form">
-                <div id="sendmessage">Your message has been sent. Thank you!</div>
+
                 <div id="errormessage"></div>
                 <form action="" method="post" role="form" className="contactForm">
                   <div className="form-row">
@@ -49,8 +49,8 @@ Affiliated Farms sign in below</p>
       <div className="section-header">
         <h3>Create Account</h3>
         <p>
-Stores Fill In Details Below To
-Apply For Wholesale Pricing</p>
+Farms Fill In Details Below To
+Apply For Special Pricing</p>
       </div>
 
       <div className="row contact-info">

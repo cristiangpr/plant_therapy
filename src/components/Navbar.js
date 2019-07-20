@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+  import {  Link } from 'react-router-dom';
 import $ from "jquery";
 
 class Navbar extends Component {
@@ -70,7 +71,8 @@ class Navbar extends Component {
         <li><a href="#products">Products</a></li>
         <li><a href="#blog">Blog</a></li>
         <li><a href="#footer">Sign In</a></li>
-
+        <li><Link to="/farmsLanding">Farms</Link></li>
+          <li><Link to="/distributorsLanding">Distributors</Link></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>

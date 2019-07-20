@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from "./Navbar.js"
-  import { Route, Link } from 'react-router-dom';
+  import {  Link } from 'react-router-dom';
 class DistributorsLanding extends Component {
 
 
@@ -10,7 +10,7 @@ class DistributorsLanding extends Component {
 
     <div>
     <Navbar/>
-    <section id="contact" className="section-bg wow fadeInUp">
+    <section id="sign-in" className="section-bg wow fadeInUp">
       <div className="container">
 
         <div className="section-header">
@@ -21,7 +21,7 @@ Stores and Distributors sign in below</p>
 
 
                 <div className="form">
-                  <div id="sendmessage">Your message has been sent. Thank you!</div>
+
                   <div id="errormessage"></div>
                   <form action="" method="post" role="form" className="contactForm">
                     <div className="form-row">
