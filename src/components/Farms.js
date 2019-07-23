@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from "./Navbar.js"
+import StoreNavbar from "./StoreNavbar.js"
 
 class Farms extends Component {
 
@@ -8,7 +8,7 @@ class Farms extends Component {
   render(){
     return (
       <div>
-      <Navbar/>
+      <StoreNavbar/>
       <section className="distributor_products">
         <div className="container">
           <div className="row justify-content-center">

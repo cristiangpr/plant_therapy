@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from "./Navbar.js"
+import StoreNavbar from "./StoreNavbar.js"
   import { Link } from 'react-router-dom';
 class FarmsLanding extends Component {
 
@@ -9,7 +9,7 @@ render(){
   return (
 
   <div>
-  <Navbar/>
+  <StoreNavbar/>
   <section id="sign-in" className="section-bg wow fadeInUp">
     <div className="container">
 
