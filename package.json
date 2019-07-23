@@ -13,11 +13,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
   },
   "browserslist": {
     "production": [
@@ -32,6 +37,9 @@
     ]
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "jasmine": "^3.4.0",
+
     "react-test-renderer": "^16.8.6"
   }
 }

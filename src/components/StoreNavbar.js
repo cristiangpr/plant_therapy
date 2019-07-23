@@ -2,7 +2,7 @@ import React, { Component } from 'react';
   import {  Link } from 'react-router-dom';
 import $ from "jquery";
 
-class Navbar extends Component {
+class StoreNavbar extends Component {
   componentDidMount() {
     if ($('#nav-menu-container').length) {
       var $mobile_nav = $('#nav-menu-container').clone().prop({
@@ -59,7 +59,7 @@ class Navbar extends Component {
   <div className="container-fluid">
 
     <div id="logo" className="pull-left">
-      <h1><a href="/" className="scrollto"><img src="./img/logo.png" alt="" title="" /></a></h1>
+      <h1><Link to="/" className="scrollto"><img src="./img/logo.png" alt="" title="" /></Link></h1>
 
  <a href="#intro"></a>
     </div>
@@ -67,12 +67,11 @@ class Navbar extends Component {
     <nav id="nav-menu-container">
       <ul className="nav-menu sf-js-enabled sf-arrows">
         <li className="menu-active"><a href="/">Home</a></li>
-        <li><a href="#about">About Us</a></li>
+
         <li><a href="#products">Products</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#footer">Sign In</a></li>
-        <li><Link to="/farmsLanding">Farms</Link></li>
-          <li><Link to="/distributorsLanding">Distributors</Link></li>
+
+        <li><a href="/">Sign Out</a></li>
+
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -82,4 +81,4 @@ class Navbar extends Component {
 );
 }
 }
-export default Navbar;
+export default StoreNavbar;
