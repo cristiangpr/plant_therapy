@@ -53,3 +53,15 @@ h4 {
   padding-top: 200px;
 
 }
+#map{
+  padding-left: 40%;
+  padding-top: 20%;
+  text-align: left;
+}
+#store-list {
+  text-align: left;
+}
+.centerBlock{
+  display: table;
+  margin: auto;
+}

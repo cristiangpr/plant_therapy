@@ -4331,6 +4331,11 @@ dotenv@6.2.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
   integrity sha512-HygQCKUBSFl8wKQZBSemMywRWcEDNidvNbjGVyZu3nbZ8qq9ubiPoGLMdRDpfSrpkkm9BXYFkpKxxFX38o/76w==
 
+dotenv@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.0.0.tgz#ed310c165b4e8a97bb745b0a9d99c31bda566440"
+  integrity sha512-30xVGqjLjiUOArT4+M5q9sYdvuR4riM6yK9wMcas9Vbp6zZa+ocC9dp6QoftuhTPhFAiLK/0C5Ni2nou/Bk8lg==
+
 duplexer3@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
@@ -5424,6 +5429,11 @@ globby@^6.1.0:
     object-assign "^4.0.1"
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
+
+google-maps-react@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/google-maps-react/-/google-maps-react-2.0.2.tgz#e03fbba032fe570fb38744bf9cd10b946c591cae"
+  integrity sha512-6cYauGwt22haDUrWxKQ6yoNOqjiuxHo8YYcmb+aBvNICokdXmZOUB6Ah4vD5VexMVlrwP2PFqA/D8sHpEB52KA==
 
 got@^8.3.1, got@^8.3.2:
   version "8.3.2"

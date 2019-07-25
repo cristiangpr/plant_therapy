@@ -7,6 +7,7 @@ import './App.css';
   import FarmsLanding from './components/FarmsLanding';
     import Distributors from './components/Distributors';
   import Farms from './components/Farms';
+  import StoreLocator from "./components/StoreLocator";
 
 
   function App() {
@@ -21,6 +22,8 @@ import './App.css';
                   <Route path="/DistributorsLanding" component={DistributorsLanding} />
                      <Route path="/FarmsLanding" component={FarmsLanding} />
                      <Route path="/Farms" component={Farms} />
+                     <Route path="/StoreLocator" component={StoreLocator} />
+
 
 
 
