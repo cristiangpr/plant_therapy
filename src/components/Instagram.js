@@ -6,7 +6,7 @@ import useAbortableFetch from 'use-abortable-fetch';
 
 
 const options = {
-accessToken: '92bedffba0f8495c8220ddb88c6b5ccb1913298339.92bedff.14e523580fd54980a28e7d719706ca0c',
+accessToken: '1913298339.92bedff.14e523580fd54980a28e7d719706ca0c',
   get: 'user',
   clientId: 	'92bedffba0f8495c8220ddb88c6b5ccb',
 
@@ -14,7 +14,7 @@ accessToken: '92bedffba0f8495c8220ddb88c6b5ccb1913298339.92bedff.14e523580fd5498
   resolution: 'standard_resolution', // thumbnail, low_resolution, standard_resolution
   sortBy: 'most-recent', // none, least-commented, least-liked, least-recent, most-commented, most-liked, most-recent, random
   tagName: null,
-  userId: 1425110473,
+  userId: 1913298339,
 }
 const Instagram = () => {
   const { json, loading, error, abort } = useAbortableFetch(buildUrl(options))
