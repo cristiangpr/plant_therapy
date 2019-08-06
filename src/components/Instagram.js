@@ -1,48 +1,57 @@
-import React, { Fragment, Component } from 'react'
-import { buildUrl } from 'react-instafeed'
-import useAbortableFetch from 'use-abortable-fetch';
+import React, { Component } from 'react';
+
+
+import Instafeed from "instafeed.js";
+class Instagram extends Component {
 
 
 
 
-const options = {
-accessToken: '1913298339.92bedff.14e523580fd54980a28e7d719706ca0c',
-  get: 'user',
-  clientId: 	'92bedffba0f8495c8220ddb88c6b5ccb',
+  componentDidMount(){
+    var feed = new Instafeed({
+      accessToken: '1913298339.92bedff.14e523580fd54980a28e7d719706ca0c',
+        get: 'user',
+        clientId: 	'92bedffba0f8495c8220ddb88c6b5ccb',
+         template:'<div className="col-lg-4 col-md-6">'+
+         '<div className="thumb">'+
+         '<a href="{{link}}" target="blank"><img className="img-fluid" id="insta" src="{{image}}" />' +
+         '</div>'+
+         '</div>'+
+         '<div className="insta-caption>"'+
+         '<p>"{{caption}}"</p>'+
+         '</div>'+
+        ' </a>',
+        limit: 3,
 
+        resolution: 'low_resolution', // thumbnail, low_resolution, standard_resolution
+        sortBy: 'most-recent', // none, least-commented, least-liked, least-recent, most-commented, most-liked, most-recent, random
+        tagName: null,
+        userId: 1913298339,
+  });
+  feed.run();
+  }
 
-  resolution: 'standard_resolution', // thumbnail, low_resolution, standard_resolution
-  sortBy: 'most-recent', // none, least-commented, least-liked, least-recent, most-commented, most-liked, most-recent, random
-  tagName: null,
-  userId: 1913298339,
-}
-const Instagram = () => {
-  const { json, loading, error, abort } = useAbortableFetch(buildUrl(options))
-  if (loading) return 'Loading...'
-  if (error) return `Error: ${error}`
-  if (!json) return null
+  render(){
+    return (
+<>
 
-  const { data, meta, pagination } = json
+    <section className="blog-area section-gap" id="blog">
+     <div className="container">
+     <div className="row justify-content-center">
+             <div className="col-lg-12">
+               <div className="section-header">
+                 <h3>INSTAGRAM</h3>
 
-  return (
-    <Fragment>
-      {// eslint-disable-next-line no-unused-vars
-      data &&
-        data.map(({ caption, id, images, tags }, index) => {
-          const image = images[options.resolution]
-          return (
-              <img
-                key={index}
-                url={image.url}
-                title={caption.text}
-                caption={caption.text}
-                width={image.width}
-                height={image.height}
-              />
+               </div>
+             </div>
+           </div>
+      <div className="row" id="instafeed">
 
-          )
-        })}
-    </Fragment>
-  )
-}
+      </div>
+      </div>
+    </section>
+    </>
+  );
+  };
+};
 export default Instagram;
