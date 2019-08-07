@@ -2,8 +2,8 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import React, { Component } from 'react';
 import Navbar from "./Navbar.js"
 const mapStyles = {
-  width: '60%',
-  height: '60%',
+  width: '50%',
+  height: '50%',
 
 };
 class StoreLocator extends Component {
