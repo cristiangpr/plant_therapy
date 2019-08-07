@@ -14,11 +14,13 @@ class Instagram extends Component {
         clientId: 	'92bedffba0f8495c8220ddb88c6b5ccb',
          template:'<div className="col-lg-4 col-md-6">'+
          '<div className="thumb">'+
-         '<a href="{{link}}" target="blank"><img className="img-fluid" id="insta" src="{{image}}" />' +
+         '<a href="{{link}}" target="blank"><img className="img-fluid" id="insta" src="{{image}}"  />' +
          '</div>'+
-         '</div>'+
+
          '<div className="insta-caption>"'+
-         '<p>"{{caption}}"</p>'+
+         '<p>{{caption}}</p>'+
+
+         '</div>'+
          '</div>'+
         ' </a>',
         limit: 3,
