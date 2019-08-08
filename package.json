@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "google-maps-react": "^2.0.2",
     "heroku": "^7.25.0",
+    "instafeed.js": "^1.4.1",
     "jquery": "^3.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -39,7 +41,6 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "jasmine": "^3.4.0",
-
     "react-test-renderer": "^16.8.6"
   }
 }

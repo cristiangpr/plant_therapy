@@ -5425,6 +5425,11 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+google-maps-react@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/google-maps-react/-/google-maps-react-2.0.2.tgz#e03fbba032fe570fb38744bf9cd10b946c591cae"
+  integrity sha512-6cYauGwt22haDUrWxKQ6yoNOqjiuxHo8YYcmb+aBvNICokdXmZOUB6Ah4vD5VexMVlrwP2PFqA/D8sHpEB52KA==
+
 got@^8.3.1, got@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/got/-/got-8.3.2.tgz#1d23f64390e97f776cac52e5b936e5f514d2e937"
@@ -6154,6 +6159,11 @@ inquirer@^6.2.2:
     string-width "^2.1.0"
     strip-ansi "^5.1.0"
     through "^2.3.6"
+
+instafeed.js@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/instafeed.js/-/instafeed.js-1.4.1.tgz#c29d7914563c11722b36cd921a91de2521f9cdaa"
+  integrity sha1-wp15FFY8EXIrNs2SGpHeJSH5zao=
 
 internal-ip@^4.2.0:
   version "4.3.0"
