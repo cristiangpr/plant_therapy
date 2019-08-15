@@ -1,102 +1,123 @@
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import React, { Component } from 'react';
-import Navbar from "./Navbar.js"
-const mapStyles = {
-  width: '50%',
-  height: '50%',
 
-};
+import React, { Component } from 'react'
+import { Map, Info } from 'react-store-locator'
+import Navbar from './Navbar.js'
+import myPin from '../myPin'
+import mapStyle from '../mapStyle.json'
+import locations from '../locations'
+import '../App.css'
+import clusterMarker from '../cluster-marker'
+
+
 class StoreLocator extends Component {
+	constructor(props) {
+		super(props)
 
+		this.state = {
+			locations: locations,
+			mapLoaded: false
+		}
 
-  constructor(props) {
-    super(props);
+		this.getLocations = this.getLocations.bind(this)
+	}
 
-    this.state = {
-      stores: [
-              {latitude: 39.359423, longitude: -123.021071},
-              {latitude: 39.2052192687988, longitude: -123.988426208496},
-              {latitude: 38.6307081, longitude: -123.1434325},
-              {latitude: 39.3084488, longitude: -122.2140121},
-              {latitude: 39.5524695, longitude: -121.0425407}],
-      myLatLng: {
-        lat: 0,
-        lng: 0
-      }
-    }
-  }
+	getLocations(locations) {
+		this.setState({ locations: locations })
+		console.log(locations)
+	}
 
-  displayMarkers = () => {
-    return this.state.stores.map((store, index) => {
-      return <Marker key={index} id={index} position={{
-       lat: store.latitude,
-       lng: store.longitude
-     }}
-     onClick={() => alert("You clicked me!")} />
-    })
-  }
+	render() {
+		const mapProps = {
+			mapOptions: {
+				styles: mapStyle,
+				gestureHandling: `cooperative`
+			},
+			onChange: this.getLocations,
+			locations: this.state.locations,
+			mapLoaded: () => {
+				this.setState({ mapLoaded: true })
+			},
+			pin: { component: myPin },
+			googleApiKey: "AIzaSyDySK3E9KkLRavps0lx1oY6L_DKKd4H8r0"
+			// enableClusters: true,
+			// cluster: {
+			// 	component: clusterMarker,
+			// 	radius: 100
+			// }
+		}
 
-  getLocation = () => {
-     if (navigator.geolocation) {
-       navigator.geolocation.getCurrentPosition(
-         position => {
-           this.setState(prevState => ({
-             currentLatLng: {
-               ...prevState.currentLatLng,
-               lat: position.coords.latitude,
-               lng: position.coords.longitude
-             },
-
-           }))
-         }
-       )
-     } else {
-       console.log("error")
-     }
-   }
-
-    componentDidMount(){
-      this.getLocation();
-      console.log(this.state.myLatLng)
-    }
-
-
-  render() {
-    return (
-<div><Navbar/>
-  <div className="container">
-      <div className= "row" id="map">
-     <div className="col-6-lg" >
-     <div className="centerBlock">
-       <ul id="store-list">
-         <li>store 1</li>
-         <li>store 2</li>
-         <li>store 3</li>
-         <li>store 4</li>
-        </ul>
-        </div>
-      </div>
-          <div className="col-6-lg" >
-  <Map
-    google={this.props.google}
-    zoom={8}
-    style={mapStyles}
-
-    center={this.state.myLatLng}
-  >
-    {this.displayMarkers()}
-  </Map>
-           </div>
-       </div>
-     </div>
-
-  </div>
-
-
-
-);
+		return (
+			<div className="App">
+		<Navbar/>
+				<Map {...mapProps}>
+					{(location, closeLocation) => {
+						return (
+							<Info
+								show={location.show}
+								style={{
+									height: '30px',
+									backgroundColor: '#696969',
+									width: '120px'
+								}}
+							>
+								<div
+									style={{
+										textAlign: 'left',
+										color: 'white',
+										height: '22px', // Info height - padding - border to show border
+										border: '1px solid white',
+										padding: '3px',
+										fontSize: '12px'
+									}}
+								>
+									{location.name}
+									<div
+										style={{
+											position: 'absolute',
+											top: 3,
+											right: 5,
+											cursor: 'pointer',
+											fontWeight: 800
+										}}
+										onClick={() => closeLocation(location.id)}
+									>
+										[x]
+									</div>
+								</div>
+							</Info>
+						)
+					}}
+				</Map>
+				<h2>Locations In Window</h2>
+				{this.state.locations.map(location => (
+					<div
+						key={location.id}
+						style={{
+							border: '1px solid #444',
+							width: '25%',
+							display: 'inline-block',
+							marginTop: '5px',
+							marginRight: '5px',
+							padding: '10px',
+							color: '#444',
+							backgroundColor: '#F1F1F1'
+						}}
+					>
+						<div>
+							<h3
+								style={{
+									margin: '8px'
+								}}
+							>
+								{location.name}
+							</h3>
+						</div>
+						<div>{location.distanceFromCenter} miles</div>
+					</div>
+				))}
+			</div>
+		)
+	}
 }
-}
-export default GoogleApiWrapper({
-apiKey: 'AIzaSyDySK3E9KkLRavps0lx1oY6L_DKKd4H8r0'
-})(StoreLocator);
+
+export default StoreLocator

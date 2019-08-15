@@ -56,7 +56,7 @@ h4 {
 #map{
   padding-left: 40%;
   padding-top: 20%;
-  text-align: left;
+  text-align: right;
 }
 #store-list {
   text-align: left;
@@ -64,4 +64,7 @@ h4 {
 .centerBlock{
   display: table;
   margin: auto;
+}
+#map-col{
+  width: 50%;
 }
