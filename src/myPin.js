@@ -9,7 +9,7 @@ export default props => (
       width: '25px',
       border: '2px solid white'
     }}
-    onClick={() => props.handleDealerClick(props.id)}
+    onClick={() => props.handleLocationClick(props.id)}
   >
     {props.children}
   </div>

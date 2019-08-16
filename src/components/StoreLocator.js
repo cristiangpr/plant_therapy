@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Map, Info } from 'react-store-locator'
+import { Map, Info, Search } from 'react-store-locator'
 import Navbar from './Navbar.js'
 import myPin from '../myPin'
 import mapStyle from '../mapStyle.json'
@@ -26,11 +26,16 @@ class StoreLocator extends Component {
 		console.log(locations)
 	}
 
+
 	render() {
 		const mapProps = {
 			mapOptions: {
 				styles: mapStyle,
-				gestureHandling: `cooperative`
+				gestureHandling: `cooperative`,
+				 fullscreenControl: false,
+				 storeLocatorControl: false
+
+
 			},
 			onChange: this.getLocations,
 			locations: this.state.locations,
@@ -38,7 +43,8 @@ class StoreLocator extends Component {
 				this.setState({ mapLoaded: true })
 			},
 			pin: { component: myPin },
-			googleApiKey: "AIzaSyDySK3E9KkLRavps0lx1oY6L_DKKd4H8r0"
+			googleApiKey: "AIzaSyDySK3E9KkLRavps0lx1oY6L_DKKd4H8r0",
+
 			// enableClusters: true,
 			// cluster: {
 			// 	component: clusterMarker,
@@ -48,13 +54,16 @@ class StoreLocator extends Component {
 
 		return (
 			<div className="App">
+
 		<Navbar/>
+      <div id="map">
 				<Map {...mapProps}>
 					{(location, closeLocation) => {
 						return (
 							<Info
 								show={location.show}
 								style={{
+
 									height: '30px',
 									backgroundColor: '#696969',
 									width: '120px'
@@ -88,6 +97,7 @@ class StoreLocator extends Component {
 						)
 					}}
 				</Map>
+</div>
 				<h2>Locations In Window</h2>
 				{this.state.locations.map(location => (
 					<div
@@ -100,7 +110,7 @@ class StoreLocator extends Component {
 							marginRight: '5px',
 							padding: '10px',
 							color: '#444',
-							backgroundColor: '#F1F1F1'
+							backgroundColor: "black"
 						}}
 					>
 						<div>
@@ -112,7 +122,7 @@ class StoreLocator extends Component {
 								{location.name}
 							</h3>
 						</div>
-						<div>{location.distanceFromCenter} miles</div>
+						<div id ="distance">{location.distanceFromCenter} miles</div>
 					</div>
 				))}
 			</div>
