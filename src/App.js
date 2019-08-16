@@ -8,6 +8,7 @@ import './App.css';
     import Distributors from './components/Distributors';
   import Farms from './components/Farms';
   import StoreLocator from "./components/StoreLocator";
+  require('dotenv').config()
 
 
   function App() {

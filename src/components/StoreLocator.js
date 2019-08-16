@@ -43,7 +43,7 @@ class StoreLocator extends Component {
 				this.setState({ mapLoaded: true })
 			},
 			pin: { component: myPin },
-			googleApiKey: "AIzaSyDySK3E9KkLRavps0lx1oY6L_DKKd4H8r0",
+			googleApiKey: process.env.REACT_APP_DEV_GOOGLE_MAPS_API
 
 			// enableClusters: true,
 			// cluster: {
