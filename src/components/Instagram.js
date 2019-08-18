@@ -14,7 +14,7 @@ class Instagram extends Component {
         clientId: 	'92bedffba0f8495c8220ddb88c6b5ccb',
          template:'<div class="col-lg-3  col-md-6   wow animated zoomIn "><a class="instagram-image" href="{{link}}" target="_blank"><img src="{{image}}"/><p>{{caption}}<p/></a></div>',
         limit: 4,
-  
+
         resolution: 'low_resolution', // thumbnail, low_resolution, standard_resolution
         sortBy: 'most-recent', // none, least-commented, least-liked, least-recent, most-commented, most-liked, most-recent, random
         tagName: null,
@@ -29,7 +29,7 @@ class Instagram extends Component {
 
     <section className="blog-area section-gap" id="blog">
      <div className="container">
-     <div className="row justify-content-center">
+     <div className="row">
              <div className="col-lg-12">
                <div className="section-header">
                  <h3>INSTAGRAM</h3>
