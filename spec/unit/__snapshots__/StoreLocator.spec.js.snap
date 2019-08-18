@@ -1,0 +1,308 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoreLocator renders correctly 1`] = `
+<div
+  className="App"
+>
+  <button
+    id="mobile-nav-toggle"
+    type="button"
+  >
+    <i
+      className="fa fa-bars"
+    />
+  </button>
+  <header
+    id="header"
+  >
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="pull-left"
+        id="logo"
+      >
+        <h1>
+          <a
+            className="scrollto"
+            href="/"
+          >
+            <img
+              alt=""
+              src="./img/logo.png"
+              title=""
+            />
+          </a>
+        </h1>
+        <a
+          href="#intro"
+        />
+      </div>
+      <nav
+        id="nav-menu-container"
+      >
+        <ul
+          className="nav-menu sf-js-enabled sf-arrows"
+        >
+          <li
+            className="menu-active"
+          >
+            <a
+              href="/"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="#about"
+            >
+              About Us
+            </a>
+          </li>
+          <li>
+            <a
+              href="#products"
+            >
+              Products
+            </a>
+          </li>
+          <li>
+            <a
+              href="#blog"
+            >
+              Blog
+            </a>
+          </li>
+          <li>
+            <a
+              href="#footer"
+            >
+              Sign In
+            </a>
+          </li>
+          <li>
+            <a
+              href="/farmsLanding"
+              onClick={[Function]}
+            >
+              Farms
+            </a>
+          </li>
+          <li>
+            <a
+              href="/distributorsLanding"
+              onClick={[Function]}
+            >
+              Distributors
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contact"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div
+    id="map"
+  >
+    <div>
+      Loading...
+    </div>
+  </div>
+  <h2>
+    Locations In Window
+  </h2>
+  <div
+    style={
+      Object {
+        "backgroundColor": "black",
+        "border": "1px solid #444",
+        "color": "#444",
+        "display": "inline-block",
+        "marginRight": "5px",
+        "marginTop": "5px",
+        "padding": "10px",
+        "width": "25%",
+      }
+    }
+  >
+    <div>
+      <h3
+        style={
+          Object {
+            "margin": "8px",
+          }
+        }
+      >
+        First Marker
+      </h3>
+    </div>
+    <div
+      id="distance"
+    >
+       miles
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "backgroundColor": "black",
+        "border": "1px solid #444",
+        "color": "#444",
+        "display": "inline-block",
+        "marginRight": "5px",
+        "marginTop": "5px",
+        "padding": "10px",
+        "width": "25%",
+      }
+    }
+  >
+    <div>
+      <h3
+        style={
+          Object {
+            "margin": "8px",
+          }
+        }
+      >
+        Second Marker
+      </h3>
+    </div>
+    <div
+      id="distance"
+    >
+       miles
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "backgroundColor": "black",
+        "border": "1px solid #444",
+        "color": "#444",
+        "display": "inline-block",
+        "marginRight": "5px",
+        "marginTop": "5px",
+        "padding": "10px",
+        "width": "25%",
+      }
+    }
+  >
+    <div>
+      <h3
+        style={
+          Object {
+            "margin": "8px",
+          }
+        }
+      >
+        Third Marker
+      </h3>
+    </div>
+    <div
+      id="distance"
+    >
+       miles
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "backgroundColor": "black",
+        "border": "1px solid #444",
+        "color": "#444",
+        "display": "inline-block",
+        "marginRight": "5px",
+        "marginTop": "5px",
+        "padding": "10px",
+        "width": "25%",
+      }
+    }
+  >
+    <div>
+      <h3
+        style={
+          Object {
+            "margin": "8px",
+          }
+        }
+      >
+        Fourth Marker
+      </h3>
+    </div>
+    <div
+      id="distance"
+    >
+       miles
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "backgroundColor": "black",
+        "border": "1px solid #444",
+        "color": "#444",
+        "display": "inline-block",
+        "marginRight": "5px",
+        "marginTop": "5px",
+        "padding": "10px",
+        "width": "25%",
+      }
+    }
+  >
+    <div>
+      <h3
+        style={
+          Object {
+            "margin": "8px",
+          }
+        }
+      >
+        Fifth Marker
+      </h3>
+    </div>
+    <div
+      id="distance"
+    >
+       miles
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "backgroundColor": "black",
+        "border": "1px solid #444",
+        "color": "#444",
+        "display": "inline-block",
+        "marginRight": "5px",
+        "marginTop": "5px",
+        "padding": "10px",
+        "width": "25%",
+      }
+    }
+  >
+    <div>
+      <h3
+        style={
+          Object {
+            "margin": "8px",
+          }
+        }
+      >
+        Sixth Marker
+      </h3>
+    </div>
+    <div
+      id="distance"
+    >
+       miles
+    </div>
+  </div>
+</div>
+`;

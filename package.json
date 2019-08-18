@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "dotenv": "^8.0.0",
+>>>>>>> store-locator
     "google-maps-react": "^2.0.2",
     "heroku": "^7.25.0",
     "instafeed.js": "^1.4.1",
@@ -10,7 +14,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-store-locator": "^0.19.0"
   },
   "scripts": {
     "start": "react-scripts start",

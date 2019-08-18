@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from "jquery";
 import Navbar from "./Navbar.js"
+  import {  Link } from 'react-router-dom';
 class Consumer extends Component {
 
 
@@ -216,7 +217,7 @@ render(){
      <div className="container text-center">
        <h3>Store Finder</h3>
        <p> Find a retail location near you</p>
-       <a className="cta-btn" href="#">Find Stores</a>
+       <Link className="cta-btn" to="/StoreLocator">Find Stores</Link>
      </div>
    </section>
 
