@@ -5581,8 +5581,6 @@ globby@^6.1.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-<<<<<<< HEAD
-=======
 google-map-react@^1.1.2:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/google-map-react/-/google-map-react-1.1.4.tgz#ebf649b3cb985c645a0b7a05eb4e1c3f80482c80"
@@ -5592,7 +5590,6 @@ google-map-react@^1.1.2:
     eventemitter3 "^1.1.0"
     scriptjs "^2.5.7"
 
->>>>>>> store-locator
 google-maps-react@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/google-maps-react/-/google-maps-react-2.0.2.tgz#e03fbba032fe570fb38744bf9cd10b946c591cae"
