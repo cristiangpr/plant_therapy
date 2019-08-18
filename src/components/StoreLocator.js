@@ -5,7 +5,7 @@ import Navbar from './Navbar.js'
 import myPin from '../myPin'
 import mapStyle from '../mapStyle.json'
 import locations from '../locations'
-import '../App.css'
+
 import clusterMarker from '../cluster-marker'
 
 
