@@ -9,7 +9,7 @@ class Instagram extends Component {
 
   componentDidMount(){
     var feed = new Instafeed({
-      accessToken: '1913298339.92bedff.14e523580fd54980a28e7d719706ca0c',
+      accessToken: '14251104739.1677ed0.4a9be2bf71d74ec89c136dfd53a90456',
         get: 'user',
         clientId: 	'92bedffba0f8495c8220ddb88c6b5ccb',
          template:'<div class="col-lg-3  col-md-6   wow animated zoomIn "><a class="instagram-image" href="{{link}}" target="_blank"><img src="{{image}}"/><p>{{caption}}<p/></a></div>',
@@ -18,7 +18,7 @@ class Instagram extends Component {
         resolution: 'low_resolution', // thumbnail, low_resolution, standard_resolution
         sortBy: 'most-recent', // none, least-commented, least-liked, least-recent, most-commented, most-liked, most-recent, random
         tagName: null,
-        userId: 1913298339,
+        userId: 14251104739,
   });
   feed.run();
   }

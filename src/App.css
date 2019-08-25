@@ -54,13 +54,13 @@ h4 {
 
 }
 .instagram-image img{
-  width: 295px;
-  height: 295px;
+  width: 320px;
+  height: 320px;
   margin-bottom: 30px;
   object-fit: cover;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 #instafeed {
-  padding-right: 50px;
+  padding-right: 80px;
 }

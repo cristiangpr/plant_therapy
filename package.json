@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dotenv": "^8.1.0",
     "heroku": "^7.25.0",
     "instafeed.js": "^1.4.1",
     "jquery": "^3.4.1",
