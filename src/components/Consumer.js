@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import $ from "jquery";
-import Navbar from "./Navbar.js"
-  import {  Link } from 'react-router-dom';
-class Consumer extends Component {
 
+
+  import {  Link } from 'react-router-dom';
+import Navbar from "./Navbar.js";
+import Instagram from "./Instagram.js";
+
+class Consumer extends Component {
 
 
 
@@ -213,6 +216,7 @@ render(){
      </div>
    </section>
 
+ <Instagram/>
    <section id="call-to-action" className="wow fadeIn">
      <div className="container text-center">
        <h3>Store Finder</h3>
@@ -311,93 +315,6 @@ render(){
    </section>
 
 
-   <section className="blog-area section-gap" id="blog">
-     <div className="container">
-       <div className="row justify-content-center">
-         <div className="col-lg-12">
-           <div className="section-header">
-             <h3>BLOG</h3>
-
-           </div>
-         </div>
-       </div>
-
-       <div className="row">
-         <div className="col-lg-4 col-md-6">
-           <div className="single-blog wow fadeIn">
-             <div className="thumb">
-               <img className="img-fluid" src="./img/blog1.jpg" alt=""/>
-             </div>
-             <div className="short_details">
-               <div className="meta-top d-flex">
-                 <a href="#">By Admin</a>
-                 <a href="#"><i className="ti-comments-smiley"></i>2 Comments</a>
-               </div>
-               <a className="d-block" href="single-blog.html">
-                 <h4>Plant Thearpy at CannaCon
-                 </h4>
-               </a>
-               <div className="text-wrap">
-                 <p>
-                   Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
-                   Forth.
-                 </p>
-               </div>
-               <a href="#" className="blog_btn">Learn More <span className="ml-2 ti-arrow-right"></span></a>
-             </div>
-           </div>
-         </div>
-
-         <div className="col-lg-4 col-md-6">
-           <div className="single-blog wow fadeIn" data-wow-delay=".3s">
-             <div className="thumb">
-               <img className="img-fluid" src="./img/blog2.jpg" alt=""/>
-             </div>
-             <div className="short_details">
-               <div className="meta-top d-flex">
-                 <a href="#">By Admin</a>
-                 <a href="#"><i className="ti-comments-smiley"></i>2 Comments</a>
-               </div>
-               <a className="d-block" href="single-blog.html">
-                 <h4>Awesome art is awesome</h4>
-               </a>
-               <div className="text-wrap">
-                 <p>
-                   Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
-                   Forth.
-                 </p>
-               </div>
-               <a href="#" className="blog_btn">Learn More <span className="ml-2 ti-arrow-right"></span></a>
-             </div>
-           </div>
-         </div>
-
-         <div className="col-lg-4 col-md-6">
-           <div className="single-blog wow fadeIn" data-wow-delay=".6s">
-             <div className="thumb">
-               <img className="img-fluid" src="./img/blog3.jpg" alt=""/>
-             </div>
-             <div className="short_details">
-               <div className="meta-top d-flex">
-                 <a href="#">By Admin</a>
-                 <a href="#"><i className="ti-comments-smiley"></i>2 Comments</a>
-               </div>
-               <a className="d-block" href="single-blog.html">
-                 <h4>Cannabis is a sacred plant</h4>
-               </a>
-               <div className="text-wrap">
-                 <p>
-                   Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
-                   Forth.
-                 </p>
-               </div>
-               <a href="#" className="blog_btn">Learn More <span className="ml-2 ti-arrow-right"></span></a>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
 
    <section id="contact" className="section-bg wow fadeInUp">
      <div className="container">

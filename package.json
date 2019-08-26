@@ -2,26 +2,25 @@
   "name": "plant_therapy",
   "version": "0.1.0",
   "private": true,
-
   "dependencies": {
-
-
-    "dotenv": "^8.0.0",
-
+    "dotenv": "^8.1.0",
+    "emotion": "^10.0.14",
     "google-maps-react": "^2.0.2",
     "heroku": "^7.25.0",
     "instafeed.js": "^1.4.1",
     "jquery": "^3.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-instafeed": "^1.0.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "react-store-locator": "^0.19.0"
+    "react-store-locator": "^0.19.0",
+    "use-abortable-fetch": "^2.6.3"
   },
   "engines": {
-   "node": "10.15.0",
-   "yarn": "1.16.0"
- },
+    "node": "10.15.0",
+    "yarn": "1.16.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

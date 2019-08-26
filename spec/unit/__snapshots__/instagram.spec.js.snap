@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Instagram renders correctly 1`] = `
+<section
+  className="blog-area section-gap"
+  id="blog"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="row justify-content-center"
+    >
+      <div
+        className="col-lg-12"
+      >
+        <div
+          className="section-header"
+        >
+          <h3>
+            INSTAGRAM
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+      id="instafeed"
+    />
+  </div>
+</section>
+`;

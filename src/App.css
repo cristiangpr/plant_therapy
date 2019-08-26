@@ -51,6 +51,7 @@ h4 {
   padding-top: 200px;
 
 }
+
 #map{
 
 
@@ -74,4 +75,20 @@ h4 {
    top: 650px;
     left: 5px;
      z-index: 2;
+   }
+.instagram-image img{
+  width: 320px;
+  height: 320px;
+  margin-bottom: 30px;
+  object-fit: cover;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+#instafeed {
+  padding-right: 80px;
+  padding-bottom: 50px;
+}
+#likes {
+  font-size: 1.5rem;
+
 }
