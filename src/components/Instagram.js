@@ -11,7 +11,7 @@ class Instagram extends Component {
     var feed = new Instafeed({
       accessToken: '14251104739.1677ed0.4a9be2bf71d74ec89c136dfd53a90456',
         get: 'user',
-        clientId: 	'92bedffba0f8495c8220ddb88c6b5ccb',
+        clientId: 	process.env.REACT_APP_INSTA_CLIENT,
          template:'<div class="col-lg-3  col-md-6   wow animated zoomIn "><a class="instagram-image" href="{{link}}" target="_blank"><img src="{{image}}"/> <div className="likes">&hearts; {{likes}}</div></a></div>',
         limit: 4,
 

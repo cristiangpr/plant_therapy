@@ -7,6 +7,7 @@ import './App.css';
   import FarmsLanding from './components/FarmsLanding';
     import Distributors from './components/Distributors';
   import Farms from './components/Farms';
+  require('dotenv').config()
 
 
   function App() {
