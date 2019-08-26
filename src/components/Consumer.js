@@ -212,6 +212,7 @@ render(){
      </div>
    </section>
 
+
    <section id="call-to-action" className="wow fadeIn">
      <div className="container text-center">
        <h3>Store Finder</h3>
@@ -220,7 +221,7 @@ render(){
      </div>
    </section>
 
-<Instagram/>
+
 
 
    <section id="team">
@@ -308,7 +309,9 @@ render(){
 
      </div>
    </section>
+   <Instagram/>
 
+  
    <section id="contact" className="section-bg wow fadeInUp">
      <div className="container">
 

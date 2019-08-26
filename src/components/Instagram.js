@@ -12,7 +12,7 @@ class Instagram extends Component {
       accessToken: '14251104739.1677ed0.4a9be2bf71d74ec89c136dfd53a90456',
         get: 'user',
         clientId: 	'92bedffba0f8495c8220ddb88c6b5ccb',
-         template:'<div class="col-lg-3  col-md-6   wow animated zoomIn "><a class="instagram-image" href="{{link}}" target="_blank"><img src="{{image}}"/><p>{{caption}}<p/></a></div>',
+         template:'<div class="col-lg-3  col-md-6   wow animated zoomIn "><a class="instagram-image" href="{{link}}" target="_blank"><img src="{{image}}"/> <div className="likes">&hearts; {{likes}}</div></a></div>',
         limit: 4,
 
         resolution: 'low_resolution', // thumbnail, low_resolution, standard_resolution
