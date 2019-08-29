@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StoreNavbar from "./StoreNavbar.js"
+import ScrollUpButton from "react-scroll-up-button";
 import '../App.css';
 class Distributors extends Component {
 
@@ -315,7 +316,7 @@ class Distributors extends Component {
 
   </div>
 </footer>
-  <a href="#" className="back-to-top"><i className="fa fa-chevron-up"></i></a>
+<ScrollUpButton/>
 </>
 );
 }

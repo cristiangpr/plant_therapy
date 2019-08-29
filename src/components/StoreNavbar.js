@@ -46,6 +46,10 @@ class StoreNavbar extends Component {
 
 
  }
+ compunentWiilUnmount(){
+     $("#mobile-nav, #mobile-nav-toggle").destroy();
+
+ }
 
  render(){
    return (

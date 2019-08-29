@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+
  import Landing from './components/Landing';
   import { Route, Link } from 'react-router-dom';
   import Consumer from './components/Consumer';

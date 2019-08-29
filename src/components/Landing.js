@@ -24,7 +24,7 @@ const Landing = () => (
               <picture>
               <source srcset="./img/product.jpg" media="(min-width: 769px)" alt=""/>
                 <source srcset="./img/product_mobile.jpg" media="(min-width: 1px)" alt=""/>
-                      <img srcset="./img/product.jpg" alt="responsive image" class="d-block img-fluid"/>
+                      <img srcset="./img/product.jpg" alt="responsive image" className="d-block img-fluid"/>
               </picture></div>
 
             </div>
@@ -34,7 +34,7 @@ const Landing = () => (
                          <picture>
                           <source srcset="./img/pink2.jpg" media="(min-width: 769px)" alt=""/>
                             <source srcset="./img/pink_mobile.jpg" media="(min-width: 1px)" alt=""/>
-                                  <img srcset="./img/pink2.jpg" alt="responsive image" class="d-block img-fluid"/>
+                                  <img srcset="./img/pink2.jpg" alt="responsive image" className="d-block img-fluid"/>
                           </picture></div>
               <div className="carousel-container">
                 <div className="carousel-content animated fadeInLeft">
@@ -50,7 +50,7 @@ const Landing = () => (
                <picture>
                   <source srcset="./img/farm2.jpg" media="(min-width: 769px)" alt=""/>
                     <source srcset="./img/farm2_mobile.jpg" media="(min-width: 1px)" alt=""/>
-                          <img srcset="./img/farm2.jpg" alt="responsive image" class="d-block img-fluid"/>
+                          <img srcset="./img/farm2.jpg" alt="responsive image" className="d-block img-fluid"/>
                   </picture></div>
               <div className="carousel-container">
                 <div className="carousel-content animated fadeInLeft">

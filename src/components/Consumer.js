@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import $ from "jquery";
 
+import ScrollUpButton from "react-scroll-up-button";
 
   import {  Link } from 'react-router-dom';
 import Navbar from "./Navbar.js";
 import Instagram from "./Instagram.js";
 
 class Consumer extends Component {
-
-
 
 render(){
   return (
@@ -441,7 +439,7 @@ render(){
 
      </div>
    </footer>
-     <a href="#" className="back-to-top"><i className="fa fa-chevron-up"></i></a>
+     <ScrollUpButton/>
    </div>
 
 );

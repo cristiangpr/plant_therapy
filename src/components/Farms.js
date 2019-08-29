@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StoreNavbar from "./StoreNavbar.js"
-
+import ScrollUpButton from "react-scroll-up-button";
 class Farms extends Component {
 
 
@@ -315,7 +315,7 @@ class Farms extends Component {
 
         </div>
       </footer>
-        <a href="#" className="back-to-top"><i className="fa fa-chevron-up"></i></a>
+        <ScrollUpButton/>
 </div>
 );
 }

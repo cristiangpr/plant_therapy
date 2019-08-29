@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StoreNavbar from "./StoreNavbar.js"
   import {  Link } from 'react-router-dom';
+  import ScrollUpButton from "react-scroll-up-button";
 class DistributorsLanding extends Component {
 
 
@@ -232,7 +233,7 @@ Apply For Wholesale Pricing</p>
 
        </div>
      </footer>
-       <a href="#" className="back-to-top"><i className="fa fa-chevron-up"></i></a>
+      <ScrollUpButton/>
      </div>
 
   );
