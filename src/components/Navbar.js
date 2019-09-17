@@ -64,7 +64,7 @@ compunentWiilUnmount(){
     <div id="logo" className="pull-left">
       <h1><a href="/" className="scrollto"><img src="./img/logo.png" alt="" title="" /></a></h1>
 
- <a href="#intro"></a>
+ 
     </div>
 
     <nav id="nav-menu-container">

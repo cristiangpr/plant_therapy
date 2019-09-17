@@ -24,7 +24,7 @@ Affiliated Farms sign in below</p>
               <div className="form">
 
                 <div id="errormessage"></div>
-                <form action="" method="post" role="form" className="contactForm">
+                <form action="" method="post"  className="contactForm">
                   <div className="form-row">
                     <div className="form-group col-md-6">
                       <input type="text" name="name" className="form-control" id="name" placeholder="Enter username" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -85,7 +85,7 @@ Apply For Special Pricing</p>
       <div className="form">
         <div id="sendmessage">Your message has been sent. Thank you!</div>
         <div id="errormessage"></div>
-        <form action="" method="post" role="form" className="contactForm">
+        <form action="" method="post"  className="contactForm">
           <div className="form-row">
             <div className="form-group col-md-6">
               <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -186,7 +186,7 @@ Apply For Special Pricing</p>
            <div className="col-lg-3 col-md-6 footer-links">
              <h4>Useful Links</h4>
              <ul>
-               <li><i className="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
+               <li><i className="ion-ios-arrow-right"></i> <a href="/">Home</a></li>
                <li><i className="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
                <li><i className="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
                <li><i className="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>

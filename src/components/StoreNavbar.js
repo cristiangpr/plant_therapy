@@ -65,7 +65,7 @@ class StoreNavbar extends Component {
     <div id="logo" className="pull-left">
       <h1><Link to="/" className="scrollto"><img src="./img/logo.png" alt="" title="" /></Link></h1>
 
- <a href="#intro"></a>
+ 
     </div>
 
     <nav id="nav-menu-container">
