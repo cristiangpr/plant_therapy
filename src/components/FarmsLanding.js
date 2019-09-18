@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import StoreNavbar from "./StoreNavbar.js"
-  import { Link } from 'react-router-dom';
-  import ScrollUpButton from "react-scroll-up-button";
+import { Link } from 'react-router-dom';
+import ScrollUpButton from "react-scroll-up-button";
+import {API} from "../config.js";
+
+
   const FarmsLanding = () => {
       const [values, setValues] = useState({
           name: "",
@@ -19,10 +22,37 @@ import StoreNavbar from "./StoreNavbar.js"
           success: false
       });
 
+      const { name, email, password, phone, permit, street_address, state, country, zip, website, about } = values;
+
       const handleChange = name => event => {
           setValues({ ...values, error: false, [name]: event.target.value });
       };
 
+      const signup = user => {
+          fetch(`${"http://localhost:8000/api"}/signup`, {
+              method: "POST",
+              headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify(user)
+
+          })
+              .then(response => {
+                  return response.json();
+
+              })
+              .catch(err => {
+                  console.log(err);
+              });
+      };
+
+      const clickSubmit = event => {
+          event.preventDefault()
+
+          signup({ name, email, password, phone, permit, street_address, state, country, zip, website, about });
+
+      };
 
 
   return (
@@ -45,11 +75,11 @@ Affiliated Farms sign in below</p>
                 <form action="" method="post"  className="contactForm">
                   <div className="form-row">
                     <div className="form-group col-md-6">
-                      <input type="text" name="name" className="form-control" id="name" placeholder="Enter username" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                      <input type="text"  className="form-control" placeholder="Enter username" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                       <div className="validation"></div>
                     </div>
                     <div className="form-group col-md-6">
-                      <input type="email" className="form-control" name="email" id="email" placeholder="Enter password" data-rule="email" data-msg="Please enter a valid email" />
+                      <input type="email" className="form-control"  placeholder="Enter password" data-rule="email" data-msg="Please enter a valid email" />
                       <div className="validation"></div>
                     </div>
                   </div>
@@ -103,7 +133,7 @@ Apply For Special Pricing</p>
       <div className="form">
         <div id="sendmessage">Your message has been sent. Thank you!</div>
         <div id="errormessage"></div>
-        <form action="" method="post"  className="contactForm">
+        <form  className="contactForm">
           <div className="form-row">
             <div className="form-group col-md-6">
               <input   onChange={handleChange("name")} type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -121,59 +151,59 @@ Apply For Special Pricing</p>
             </div>
 
             <div className="form-group col-md-6">
-              <input onChange={handleChange("phone")} type="text" className="form-control" name="phone" id="phone" placeholder="Phone" data-rule="email" data-msg="Please enter a valid email" />
+              <input onChange={handleChange("phone")} type="text" className="form-control" name="phone" id="phone" placeholder="Phone" data-rule="minlen:10" data-msg="Please enter a valid phone" />
               <div className="validation"></div>
             </div>
           </div>
 
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input onChange={handleChange("permit")} type="text" name="permit" className="form-control" id="permit" placeholder="Seller Permit # | Tax ID #" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <input onChange={handleChange("permit")} type="text" name="permit" className="form-control" id="permit" placeholder="Seller Permit # | Tax ID #" />
               <div className="validation"></div>
             </div>
             <div className="form-group col-md-6">
-              <input onChange={handleChange("business_name")} type="text" name="business_name" className="form-control" id="business_name" placeholder="Business Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <input onChange={handleChange("business_name")} type="text" name="business_name" className="form-control" id="business_name" placeholder="Business Name" />
               <div className="validation"></div>
             </div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-12">
-              <input onChange={handleChange("street_address")} type="text" name="street_address" className="form-control" id="street_address" placeholder="Street Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <input onChange={handleChange("street_address")} type="text" name="street_address" className="form-control" id="street_address" placeholder="Street Address"  />
               <div className="validation"></div>
             </div>
 
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input onChange={handleChange("city")} type="text" name="city" className="form-control" id="city" placeholder="City" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <input onChange={handleChange("city")} type="text" name="city" className="form-control" id="city" placeholder="City" />
               <div className="validation"></div>
             </div>
             <div className="form-group col-md-6">
-              <input onChange={handleChange("state")} type="text" className="form-control" name="state" id="state" placeholder="State" data-rule="email" data-msg="Please enter a valid email" />
+              <input onChange={handleChange("state")} type="text" className="form-control" name="state" id="state" placeholder="State"  />
               <div className="validation"></div>
             </div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input onChange={handleChange("country")} type="text" name="country" className="form-control" id="contry" placeholder="Country" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <input onChange={handleChange("country")} type="text" name="country" className="form-control" id="contry" placeholder="Country"  />
               <div className="validation"></div>
             </div>
             <div className="form-group col-md-6">
-              <input onChange={handleChange("zip")} type="text" className="form-control" name="zip" id="zip" placeholder="Zip" data-rule="email" data-msg="Please enter a valid email" />
+              <input onChange={handleChange("zip")} type="text" className="form-control" name="zip" id="zip" placeholder="Zip"  />
               <div className="validation"></div>
             </div>
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input onChange={handleChange("website")} type="text" name="website" className="form-control" id="website" placeholder="Website URL" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <input onChange={handleChange("website")} type="text" name="website" className="form-control" id="website" placeholder="Website URL" />
               <div className="validation"></div>
             </div>
             <div className="form-group col-md-6">
-              <input onChange={handleChange("about")} type="text" className="form-control" name="about" id="" placeholder="How did you hear about us?"  data-rule="minlen:4" data-msg="Please enter at least 4 chars"  />
+              <input onChange={handleChange("about")} type="text" className="form-control" name="about" id="" placeholder="How did you hear about us?"  />
               <div className="validation"></div>
             </div>
           </div>
-          <div className="text-center"><button type="submit">Submit Application</button></div>
+          <div className="text-center"><button onClick={clickSubmit} type="submit">Submit Application</button></div>
         </form>
       </div>
 

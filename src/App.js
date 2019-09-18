@@ -10,6 +10,7 @@ import './App.css';
   import Farms from './components/Farms';
 
   import StoreLocator from "./components/StoreLocator";
+import Signup from "./components/Signup";
 
   require('dotenv').config()
 
@@ -27,7 +28,7 @@ import './App.css';
             <Route path="/FarmsLanding" component={FarmsLanding} />
             <Route path="/Farms" component={Farms} />
             <Route path="/StoreLocator" component={StoreLocator} />
-
+              <Route path="/Signup" exact component={Signup} />
 
 
 
