@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-  import {  Link } from 'react-router-dom';
+  import {  Link, withRouter } from 'react-router-dom';
+  import { signout, isAuthenticated } from "../auth";
 import $ from "jquery";
 
-class StoreNavbar extends Component {
+class StoreNavbar extends Component   {
   componentDidMount() {
     if ($('#nav-menu-container').length) {
       var $mobile_nav = $('#nav-menu-container').clone().prop({
@@ -65,17 +66,27 @@ class StoreNavbar extends Component {
     <div id="logo" className="pull-left">
       <h1><Link to="/" className="scrollto"><img src="./img/logo.png" alt="" title="" /></Link></h1>
 
- 
+
     </div>
 
     <nav id="nav-menu-container">
       <ul className="nav-menu sf-js-enabled sf-arrows">
-        <li className="menu-active"><a href="/">Home</a></li>
+        <li className="menu-active"><Link to ="/">Home</Link></li>
 
-        <li><a href="#products">Products</a></li>
+        <li><Link to="#products">Products</Link></li>
+{isAuthenticated() && (
+        <li>  <Link to = "/"
+              className="menu-active"
 
-        <li><a href="/">Sign Out</a></li>
+              onClick={() =>
+                  signout(() => {
 
+                  })
+              }
+          >
+              Signout
+          </Link></li>
+)}
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -85,4 +96,4 @@ class StoreNavbar extends Component {
 );
 }
 }
-export default StoreNavbar;
+export default withRouter(StoreNavbar);
