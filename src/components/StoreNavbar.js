@@ -73,21 +73,20 @@ class StoreNavbar extends Component   {
       <ul className="nav-menu sf-js-enabled sf-arrows">
         <li className="menu-active"><Link to ="/">Home</Link></li>
 
-        <li><Link to="#products">Products</Link></li>
-{isAuthenticated() && (
-        <li>  <Link to = "/"
-              className="menu-active"
-
-              onClick={() =>
+        <li ><Link to="#products" className="menu-active">Products</Link></li>
+            {isAuthenticated() && (
+        <li>  <Link to = "/"    onClick={() =>
                   signout(() => {
-
-                  })
-              }
-          >
-              Signout
-          </Link></li>
-)}
-        <li><a href="#contact">Contact</a></li>
+                   })
+                   }>Signout</Link></li>
+            )}
+        <li ><Link to="#contact" className="menu-active">Contact</Link></li>
+        {!isAuthenticated() && (
+          <>
+          <li><Link to="#signup" className="menu-active">Sign up</Link></li>
+          <li><Link to="#signin" className="menu-active">Sign in</Link></li>
+          </>
+        )}
       </ul>
     </nav>
   </div>

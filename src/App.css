@@ -9,6 +9,15 @@
 #blog {
   padding-top: 50px;
 }
+#signin{
+  padding-top: 200px;
+}
+.section-header{
+  padding-top: 50px;
+}
+.section-header-signin {
+  padding-top: 200px;
+}
 .single-blog h4 {
     font-size: 20px;
     margin-top: 20px;
@@ -48,7 +57,7 @@ h4 {
 }
 
 #sign-in{
-  padding-top: 200px;
+
 
 }
 

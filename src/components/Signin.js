@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 
 import { signin, authenticate } from "../auth";
 
-const FarmSignin = () => {
+const Signin = () => {
     const [values, setValues] = useState({
         email: "a@a.com",
         password: "aaaaa1",
@@ -35,15 +35,11 @@ const FarmSignin = () => {
         });
     };
 
-    const signUpForm = () => (
+    const signInForm = () => (
       <section id="sign-in" className="section-bg wow fadeInUp">
         <div className="container">
 
-          <div className="section-header">
-            <h3>Sign In</h3>
-            <p>
-    Affiliated Farms sign in below</p>
-          </div>
+    
 
 
                   <div className="form">
@@ -96,10 +92,10 @@ const FarmSignin = () => {
         <div>
             {showLoading()}
             {showError()}
-            {signUpForm()}
+            {signInForm()}
             {redirectUser()}
         </div>
     );
 };
 
-export default FarmSignin;
+export default Signin;
