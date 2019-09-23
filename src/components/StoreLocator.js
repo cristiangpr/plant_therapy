@@ -38,13 +38,16 @@ class StoreLocator extends Component {
 
 
 			},
-			onChange: this.getLocations,
+		//	onChange: this.getLocations,
 			locations: this.state.locations,
 			mapLoaded: () => {
 				this.setState({ mapLoaded: true })
 			},
 	//		pin: { component: myPin },
-			googleApiKey: process.env.REACT_APP_DEV_GOOGLE_MAPS_API
+
+			googleApiKey: process.env.REACT_APP_DEV_GOOGLE_MAPS_API,
+
+
 
 			// enableClusters: true,
 			// cluster: {
@@ -58,7 +61,10 @@ class StoreLocator extends Component {
 
 		<Navbar/>
       <div id="map">
-				<Map {...mapProps}>
+				<Map bootstrapURLKeys={{
+    key: process.env.REACT_APP_DEV_GOOGLE_MAPS_API,
+    v: '3.0',
+  }} {...mapProps}>
 					{(location, closeLocation) => {
 						return (
 							<Info
