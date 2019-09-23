@@ -10,8 +10,11 @@ import './App.css';
   import Farms from './components/Farms';
 
   import StoreLocator from "./components/StoreLocator";
-import Signup from "./components/Signup";
 
+import PrivateRoute from "./auth/PrivateRoute";
+import UserDashboard from "./components/UserDashboard";
+import AdminRoute from "./auth/AdminRoute";
+import AdminDashboard from "./components/AdminDashboard";
   require('dotenv').config()
 
 
@@ -19,7 +22,7 @@ import Signup from "./components/Signup";
     return (
       <BrowserRouter>
         <Switch>
-      <div className="App">
+
 
             <Route exact path="/" component={Landing} />
             <Route path="/consumer" component={Consumer} />
@@ -28,11 +31,12 @@ import Signup from "./components/Signup";
             <Route path="/FarmsLanding" component={FarmsLanding} />
             <Route path="/Farms" component={Farms} />
             <Route path="/StoreLocator" component={StoreLocator} />
-              <Route path="/Signup" exact component={Signup} />
+
+            <PrivateRoute path="/user_dashboard" exact component={UserDashboard} />
+            <AdminRoute path="/admin_dashboard" exact component={AdminDashboard}  />
 
 
 
-      </div>
         </Switch>
       </BrowserRouter>
     );

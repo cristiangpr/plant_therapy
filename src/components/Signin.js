@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
-import { signin, authenticate } from "../auth";
+import { signin, authenticate, isAuthenticated } from "../auth";
 
 const Signin = () => {
     const [values, setValues] = useState({
@@ -13,7 +13,7 @@ const Signin = () => {
     });
 
     const { email, password, loading, error, redirectToReferrer } = values;
-
+    const { user } = isAuthenticated();
     const handleChange = name => event => {
         setValues({ ...values, error: false, [name]: event.target.value });
     };
@@ -39,7 +39,7 @@ const Signin = () => {
       <section id="sign-in" className="section-bg wow fadeInUp">
         <div className="container">
 
-    
+
 
 
                   <div className="form">
@@ -82,11 +82,16 @@ const Signin = () => {
             </div>
         );
 
-    const redirectUser = () => {
-        if (redirectToReferrer) {
-            return <Redirect to="/Farms" />;
-        }
-    };
+        const redirectUser = () => {
+            if (redirectToReferrer) {
+                if (user && user.role === 1) {
+                    return <Redirect to="/admin_dashboard" />;
+                } else {
+                    return <Redirect to="/user_dashboard" />;
+                }
+            }
+          
+        };
 
     return (
         <div>
