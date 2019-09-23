@@ -3,11 +3,13 @@ import React from 'react';
 export default props => (
   <div
     style={{
-      cursor: 'pointer',
-      backgroundColor: 'purple',
-      height: '25px',
-      width: '25px',
-      border: '2px solid white'
+
+      backgroundColor: '#18d26e',
+      height: '15px',
+      width: '15px',
+      border: '2px solid white',
+      icon: 'default'
+
     }}
     onClick={() => props.handleLocationClick(props.id)}
   >

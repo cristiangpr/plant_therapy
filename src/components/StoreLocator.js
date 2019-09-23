@@ -1,13 +1,13 @@
 
 
-import React, { Component } from 'react'
-import { Map, Info,  } from 'react-store-locator'
-import Navbar from './Navbar.js'
-import myPin from '../myPin'
-import mapStyle from '../mapStyle.json'
-import locations from '../locations'
+import React, { Component } from 'react';
+import { Map, Info,  } from 'react-store-locator';
+import Navbar from './Navbar.js';
+import myPin from '../myPin';
+import mapStyle from '../mapStyle.json';
+import locations from '../locations';
 
-import clusterMarker from '../cluster-marker'
+
 
 
 class StoreLocator extends Component {
@@ -43,7 +43,7 @@ class StoreLocator extends Component {
 			mapLoaded: () => {
 				this.setState({ mapLoaded: true })
 			},
-			pin: { component: myPin },
+	//		pin: { component: myPin },
 			googleApiKey: process.env.REACT_APP_DEV_GOOGLE_MAPS_API
 
 			// enableClusters: true,
@@ -65,9 +65,9 @@ class StoreLocator extends Component {
 								show={location.show}
 								style={{
 
-									height: '30px',
+									height: '120px',
 									backgroundColor: '#696969',
-									width: '120px'
+									width: '200px'
 								}}
 							>
 								<div
@@ -75,12 +75,60 @@ class StoreLocator extends Component {
 										textAlign: 'left',
 										color: 'white',
 										height: '22px', // Info height - padding - border to show border
-										border: '1px solid white',
+
 										padding: '3px',
 										fontSize: '12px'
 									}}
 								>
 									{location.name}
+									<div
+										style={{
+											textAlign: 'left',
+											color: 'white',
+											height: '22px', // Info height - padding - border to show border
+
+											padding: '3px',
+											fontSize: '12px'
+										}}
+									>
+										{location.address}
+
+										<div
+											style={{
+												textAlign: 'left',
+												color: 'white',
+												height: '22px', // Info height - padding - border to show border
+
+												padding: '3px',
+												fontSize: '12px'
+											}}
+										>
+											{location.phone}
+
+											<div
+												style={{
+													textAlign: 'left',
+													color: 'white',
+													height: '22px', // Info height - padding - border to show border
+
+													padding: '3px',
+													fontSize: '12px'
+												}}
+											>
+												{location.email}
+
+												<div
+													style={{
+														textAlign: 'left',
+														color: 'white',
+														height: '22px', // Info height - padding - border to show border
+
+														padding: '3px',
+														fontSize: '12px'
+													}}
+												>
+													{location.website}
+
 									<div
 										style={{
 											position: 'absolute',
@@ -92,6 +140,10 @@ class StoreLocator extends Component {
 										onClick={() => closeLocation(location.id)}
 									>
 										[x]
+										   </div>
+										  </div>
+										 </div>
+										</div>
 									</div>
 								</div>
 							</Info>
