@@ -10,12 +10,13 @@ import './App.css';
   import Farms from './components/Farms';
 
   import StoreLocator from "./components/StoreLocator";
-
+import Home from "./core/Home";
 import PrivateRoute from "./auth/PrivateRoute";
 import UserDashboard from "./components/UserDashboard";
 import AdminRoute from "./auth/AdminRoute";
 import AdminDashboard from "./components/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
+import AddProduct from "./admin/AddProduct";
 
   require('dotenv').config()
 
@@ -33,10 +34,12 @@ import AddCategory from "./admin/AddCategory";
             <Route path="/FarmsLanding" component={FarmsLanding} />
             <Route path="/Farms" component={Farms} />
             <Route path="/StoreLocator" component={StoreLocator} />
-
+              <Route path="/home" exact component={Home} />
             <PrivateRoute path="/user_dashboard" exact component={UserDashboard} />
             <AdminRoute path="/admin_dashboard" exact component={AdminDashboard}  />
               <AdminRoute path="/create_category" exact component={AddCategory}/>
+              <AdminRoute path="/create_product" exact component={AddProduct}/>
+
 
 
 
