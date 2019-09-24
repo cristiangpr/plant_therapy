@@ -61,17 +61,14 @@ class StoreLocator extends Component {
 
 		<Navbar/>
       <div id="map">
-				<Map bootstrapURLKeys={{
-    key: process.env.REACT_APP_DEV_GOOGLE_MAPS_API,
-    v: '3.0',
-  }} {...mapProps}>
+				<Map  {...mapProps}>
 					{(location, closeLocation) => {
 						return (
 							<Info
 								show={location.show}
 								style={{
 
-									height: '120px',
+									height: '150px',
 									backgroundColor: '#696969',
 									width: '200px'
 								}}
@@ -135,6 +132,20 @@ class StoreLocator extends Component {
 												>
 													{location.website}
 
+													<div
+														style={{
+															textAlign: 'left',
+															color: 'white',
+															height: '22px', // Info height - padding - border to show border
+
+															padding: '3px',
+															fontSize: '12px'
+														}}
+													>
+														{location.hours}
+
+
+
 									<div
 										style={{
 											position: 'absolute',
@@ -152,6 +163,7 @@ class StoreLocator extends Component {
 										</div>
 									</div>
 								</div>
+							</div>
 							</Info>
 						)
 					}}
@@ -169,17 +181,18 @@ class StoreLocator extends Component {
 							marginRight: '5px',
 							padding: '10px',
 							color: '#444',
-							backgroundColor: "black"
+							backgroundColor: "black",
+
 						}}
 					>
 						<div>
-							<h3
+							<h5
 								style={{
 									margin: '8px'
 								}}
 							>
 								{location.name}
-							</h3>
+							</h5>
 						</div>
 						<div id ="distance">{location.distanceFromCenter} miles</div>
 					</div>
