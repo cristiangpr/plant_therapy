@@ -1,14 +1,33 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from "react";
 
 import ScrollUpButton from "react-scroll-up-button";
-
+import Card from "../core/Card";
   import {  Link } from 'react-router-dom';
 import Navbar from "./Navbar.js";
 import Instagram from "./Instagram.js";
+import { getProducts } from "../core/apiCore";
 
-class Consumer extends Component {
+const Consumer = () => {
+  const [productsByCategory, setProductsByCategory] = useState([]);
+  const [error, setError] = useState(false);
 
-render(){
+
+
+  const loadProductsByCategory = () => {
+      getProducts("consumer").then(data => {
+          if (data.error) {
+              setError(data.error);
+          } else {
+              setProductsByCategory(data);
+          }
+      });
+  };
+
+  useEffect(() => {
+      loadProductsByCategory();
+
+  }, []);
+
   return (
 
   <div>
@@ -83,135 +102,11 @@ render(){
        </div>
 
        <div className="row">
-         <div className="col-lg-6">
-           <div className="new_product wow fadeIn">
-
-             <h3 className="text-uppercase" id="dark">Free 2 oz Sample</h3>
-             <div className="product-img">
-               <img className="img-fluid" src="./img/sample.jpg" alt="" />
-             </div>
-             <h4 id="dark">Pay only shipping cost</h4>
-             <a href="#" className="main_btn">Add to cart</a>
-           </div>
-         </div>
-
-         <div className="col-lg-6 mt-5 mt-lg-0">
-           <div className="row">
-             <div className="col-lg-6 col-md-6">
-               <div className="single-product wow fadeIn" >
-                 <div className="product-img">
-                   <img className="img-fluid w-100" src="./img/product1.jpg" alt="" />
-                   <div className="p_icon">
-                     <a href="#">
-                       <i className="ti-eye"></i>
-                     </a>
-                     <a href="#">
-                       <i className="ti-heart"></i>
-                     </a>
-                     <a href="#">
-                       <i className="ti-shopping-cart"></i>
-                     </a>
-                   </div>
-                 </div>
-                 <div className="product-btm">
-                   <a href="#" className="d-block">
-                     <h4>2.5 Gallon Bottle</h4>
-                   </a>
-                   <div className="mt-3">
-                     <span className="mr-4">$575.00</span>
-                     <del>$600.00</del>
-                   </div>
-                 </div>
-               </div>
-             </div>
-
-             <div className="col-lg-6 col-md-6">
-               <div className="single-product wow fadeIn" >
-                 <div className="product-img">
-                   <img className="img-fluid w-100" src="./img/gallon.jpg" alt="" />
-                   <div className="p_icon">
-                     <a href="#">
-                       <i className="ti-eye"></i>
-                     </a>
-                     <a href="#">
-                       <i className="ti-heart"></i>
-                     </a>
-                     <a href="#">
-                       <i className="ti-shopping-cart"></i>
-                     </a>
-                   </div>
-                 </div>
-                 <div className="product-btm">
-                   <a href="#" className="d-block">
-                     <h4>1 Gallon Bottle</h4>
-                   </a>
-                   <div className="mt-3">
-                     <span className="mr-4">$250.00</span>
-                     <del>$275.00</del>
-                   </div>
-                 </div>
-               </div>
-             </div>
-
-             <div className="col-lg-6 col-md-6">
-               <div className="single-product  wow fadeIn"  >
-                 <div className="product-img">
-                   <img className="img-fluid w-100" src="./img/32oz.jpg" alt="" />
-                   <div className="p_icon">
-                     <a href="#">
-                       <i className="ti-eye"></i>
-                     </a>
-                     <a href="#">
-                       <i className="ti-heart"></i>
-                     </a>
-                     <a href="#">
-                       <i className="ti-shopping-cart"></i>
-                     </a>
-                   </div>
-                 </div>
-                 <div className="product-btm">
-                   <a href="#" className="d-block">
-                     <h4>32 oz Bottle</h4>
-                   </a>
-                   <div className="mt-3">
-                     <span className="mr-4">$90.00</span>
-                     <del>$100.00</del>
-                   </div>
-                 </div>
-               </div>
-             </div>
-
-             <div className="col-lg-6 col-md-6">
-               <div className="single-product  wow fadeIn" >
-                 <div className="product-img">
-                   <img className="img-fluid w-100" src="./img/12oz.jpg" alt="" />
-                   <div className="p_icon">
-                     <a href="#">
-                       <i className="ti-eye"></i>
-                     </a>
-                     <a href="#">
-                       <i className="ti-heart"></i>
-                     </a>
-                     <a href="#">
-                       <i className="ti-shopping-cart"></i>
-                     </a>
-                   </div>
-                 </div>
-                 <div className="product-btm">
-                   <a href="#" className="d-block">
-                     <h4>12 oz Bottle</h4>
-                   </a>
-                   <div className="mt-3">
-                     <span className="mr-4">$40.00</span>
-                     <del>$50.00</del>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
+           {productsByCategory.map((product, i) => (
+               <Card key={i} product={product} />
+           ))}
        </div>
-     </div>
+       </div>
    </section>
 
  <Instagram/>
@@ -443,6 +338,6 @@ render(){
    </div>
 
 );
-}
-}
+
+};
 export default Consumer;

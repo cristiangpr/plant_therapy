@@ -1,10 +1,20 @@
-
+#shopping-cart-icon {
+  background-size: 2rm !important;
+}
+.ti-shopping-cart {
+  font-size: 2rm !important;
+}
+.body {
+  font-size: 2rm;
+}
 #about-container{
   background-color: black;
   padding-top: 100px;
 }
 
-
+.card {
+    font-size: 2rm;
+}
 
 #blog {
   padding-top: 50px;
@@ -105,7 +115,6 @@ h4 {
   font-size: 1.5rem;
 
 }
-
 /**
  * border radius
  */
