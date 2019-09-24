@@ -15,6 +15,8 @@ import PrivateRoute from "./auth/PrivateRoute";
 import UserDashboard from "./components/UserDashboard";
 import AdminRoute from "./auth/AdminRoute";
 import AdminDashboard from "./components/AdminDashboard";
+import AddCategory from "./admin/AddCategory";
+
   require('dotenv').config()
 
 
@@ -34,6 +36,7 @@ import AdminDashboard from "./components/AdminDashboard";
 
             <PrivateRoute path="/user_dashboard" exact component={UserDashboard} />
             <AdminRoute path="/admin_dashboard" exact component={AdminDashboard}  />
+              <AdminRoute path="/create_category" exact component={AddCategory}/>
 
 
 
