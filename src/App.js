@@ -17,6 +17,7 @@ import AdminRoute from "./auth/AdminRoute";
 import AdminDashboard from "./components/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
+import Cart from "./core/Cart";
 
   require('dotenv').config()
 
@@ -39,6 +40,7 @@ import AddProduct from "./admin/AddProduct";
             <AdminRoute path="/admin_dashboard" exact component={AdminDashboard}  />
               <AdminRoute path="/create_category" exact component={AddCategory}/>
               <AdminRoute path="/create_product" exact component={AddProduct}/>
+                <Route path="/cart" exact component={Cart} />
 
 
 

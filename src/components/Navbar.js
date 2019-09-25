@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
   import {  Link } from 'react-router-dom';
 import $ from "jquery";
+import { itemTotal } from "../core/cartHelpers";
 
 class Navbar extends Component {
   componentDidMount() {
@@ -64,7 +65,7 @@ compunentWiilUnmount(){
     <div id="logo" className="pull-left">
       <h1><a href="/" className="scrollto"><img src="./img/logo.png" alt="" title="" /></a></h1>
 
- 
+
     </div>
 
     <nav id="nav-menu-container">
@@ -77,6 +78,18 @@ compunentWiilUnmount(){
         <li><Link to="/farmsLanding">Farms</Link></li>
           <li><Link to="/distributorsLanding">Distributors</Link></li>
         <li><a href="#contact">Contact</a></li>
+        <li className="nav-item">
+            <Link
+                className="nav-link"
+
+                to="/cart"
+            >
+                <i className="ion-ios-cart-outline"></i>{" "}
+                <sup>
+                    <small className="cart-badge">{itemTotal()}</small>
+                </sup>
+            </Link>
+        </li>
       </ul>
     </nav>
   </div>
