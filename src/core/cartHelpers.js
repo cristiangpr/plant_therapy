@@ -33,6 +33,7 @@ export const itemTotal = () => {
         }
     }
     return 0;
+
 };
 export const getCart = () => {
     if (typeof window !== "undefined") {
@@ -75,4 +76,10 @@ export const removeItem = productId => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }
     return cart;
+};
+export const emptyCart = next => {
+    if (typeof window !== "undefined") {
+        localStorage.removeItem("cart");
+        next();
+    }
 };
