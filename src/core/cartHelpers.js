@@ -77,15 +77,6 @@ export const removeItem = productId => {
     }
     return cart;
 };
-<<<<<<< HEAD
-export const emptyCart = next => {
-    if (typeof window !== "undefined") {
-        localStorage.removeItem("cart");
-        next();
-    }
-};
-||||||| merged common ancestors
-=======
 
 export const emptyCart = next => {
     if (typeof window !== "undefined") {
@@ -93,4 +84,3 @@ export const emptyCart = next => {
         next();
     }
 };
->>>>>>> braintree
