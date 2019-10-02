@@ -24,8 +24,9 @@ const Consumer = () => {
   };
 
   useEffect(() => {
+     let isSubscribed = true
       loadProductsByCategory();
-
+return () => isSubscribed = false
   }, []);
 
   return (
