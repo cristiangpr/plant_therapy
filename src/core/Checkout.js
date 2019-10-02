@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-
-import { getProducts, getBraintreeClientToken } from "./apiCore";
-import Card from "./Card";
+import {
+    getProducts,
+    getBraintreeClientToken,
+    processPayment
+} from "./apiCore";
+import Cart from "./Cart";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
@@ -12,7 +15,9 @@ const Checkout = ({ products }) => {
         clientToken: null,
         error: "",
         instance: {},
-        address: ""
+        address: "",
+        isButtonDisabled: false
+
     });
 
     const userId = isAuthenticated() && isAuthenticated().user._id;
@@ -23,7 +28,7 @@ const Checkout = ({ products }) => {
             if (data.error) {
                 setData({ ...data, error: data.error });
             } else {
-                setData({ ...data, clientToken: data.clientToken });
+                setData({ clientToken: data.clientToken });
             }
         });
     };
@@ -49,24 +54,39 @@ const Checkout = ({ products }) => {
     };
 
     const buy = () => {
+    setData({ isButtonDisabled: true})
         // send the nonce to your server
         // nonce = data.instance.requestPaymentMethod()
         let nonce;
         let getNonce = data.instance
             .requestPaymentMethod()
+
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 nonce = data.nonce;
                 // once you have nonce (card type, card number) send nonce as 'paymentMethodNonce'
                 // and also total to be charged
-                console.log(
-                    "send nonce and total to process: ",
-                    nonce,
-                    getTotal(products)
-                );
+                // console.log(
+                //     "send nonce and total to process: ",
+                //     nonce,
+                //     getTotal(products)
+                // );
+                const paymentData = {
+                    paymentMethodNonce: nonce,
+                    amount: getTotal(products)
+                };
+
+                processPayment(userId, token, paymentData)
+                    .then(response => {
+                         console.log(response)
+                        setData({ ...data, success: response.success });
+                        // empty cart
+                        // create order
+                    })
+                    .catch(error => console.log(error));
             })
             .catch(error => {
-                console.log("dropin error: ", error);
+                // console.log("dropin error: ", error);
                 setData({ ...data, error: error.message });
             });
     };
@@ -81,8 +101,12 @@ const Checkout = ({ products }) => {
                         }}
                         onInstance={instance => (data.instance = instance)}
                     />
-                    <button onClick={buy} className="btn btn-success">
-                      Submit Payment
+                    <button
+                        onClick={buy}
+                        disabled={data.isButtonDisabled}
+                        className="btn btn-success btn-block"
+                    >
+                      Buy
                     </button>
                 </div>
             ) : null}
@@ -98,11 +122,22 @@ const Checkout = ({ products }) => {
         </div>
     );
 
+    const showSuccess = success => (
+        <div
+            className="alert alert-info"
+            style={{ display: success ? "" : "none" }}
+        >
+            Thanks! Your payment was successful!
+        </div>
+    );
+
     return (
         <div>
             <h2>Total: ${getTotal()}</h2>
-    {showError(data.error)}
+            {showSuccess(data.success)}
+            {showError(data.error)}
             {showCheckout()}
+
         </div>
     );
 };
