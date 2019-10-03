@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import {
     getProducts,
     getBraintreeClientToken,
-    processPayment
+    processPayment,
+        createOrder
 } from "./apiCore";
 
 import Cart from "./Cart";
@@ -23,7 +24,8 @@ const Checkout = ({ products }) => {
         error: "",
         instance: {},
         address: "",
-        isButtonDisabled: false
+        isButtonDisabled: false,
+        address: ""
 
     });
 
@@ -43,6 +45,11 @@ const Checkout = ({ products }) => {
     useEffect(() => {
         getToken(userId, token);
     }, [userId, token]);
+
+    const handleAddress = event => {
+        setData({ ...data, address: event.target.value });
+    };
+
 
     const getTotal = () => {
         return products.reduce((currentValue, nextValue) => {
@@ -70,13 +77,11 @@ const Checkout = ({ products }) => {
         let nonce;
         let getNonce = data.instance
             .requestPaymentMethod()
-
             .then(data => {
                 // console.log(data);
                 nonce = data.nonce;
                 // once you have nonce (card type, card number) send nonce as 'paymentMethodNonce'
                 // and also total to be charged
-
                 // console.log(
                 //     "send nonce and total to process: ",
                 //     nonce,
@@ -90,22 +95,32 @@ const Checkout = ({ products }) => {
                 processPayment(userId, token, paymentData)
                     .then(response => {
                         console.log(response);
-                        setData({ ...data, success: response.success });
-                        emptyCart(() => {
-                            console.log("payment success and empty cart");
-                            setData({ loading: false });
-                        });
                         // empty cart
                         // create order
+
+                        const createOrderData = {
+                            products: products,
+                            transaction_id: response.transaction.id,
+                            amount: response.transaction.amount,
+                            address: data.address
+                        };
+
+                        createOrder(userId, token, createOrderData)
+                            .then(response => {
+                                // emptyCart(() => {
+                                //     console.log("payment success and empty cart");
+                                //     setData({ loading: false, success: response.success });
+                                // });
+                            })
+                            .catch(error => {
+                                console.log(error);
+                                setData({ loading: false });
+                            });
                     })
                     .catch(error => {
                         console.log(error);
                         setData({ loading: false });
                     });
-
-
-
-
             })
             .catch(error => {
                 // console.log("dropin error: ", error);
@@ -117,6 +132,15 @@ const Checkout = ({ products }) => {
         <div onBlur={() => setData({ ...data, error: "" })}>
             {data.clientToken !== null && products.length > 0 ? (
                 <div>
+                <div className="gorm-group mb-3">
+                    <label className="text-muted">Delivery address:</label>
+                    <textarea
+                        onChange={handleAddress}
+                        className="form-control"
+                        value={data.address}
+                        placeholder="Type your delivery address here..."
+                    />
+                </div>
                     <DropIn
                         options={{
 
@@ -167,7 +191,7 @@ const Checkout = ({ products }) => {
         </div>
     );
 
-    
+
     return (
         <div>
             <h2>Total: ${getTotal()}</h2>
