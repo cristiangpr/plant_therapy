@@ -1,31 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { getPurchaseHistory } from "../user/apiUser";
-import moment from "moment";
 
 const Dashboard = () => {
-    const [history, setHistory] = useState([]);
-
     const {
         user: { _id, name, email, role }
     } = isAuthenticated();
-    const token = isAuthenticated().token;
-
-    const init = (userId, token) => {
-        getPurchaseHistory(userId, token).then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                setHistory(data);
-            }
-        });
-    };
-
-    useEffect(() => {
-        init(_id, token);
-    }, []);
 
     const userLinks = () => {
         return (
@@ -62,36 +43,12 @@ const Dashboard = () => {
         );
     };
 
-    const purchaseHistory = history => {
+    const purchaseHistory = () => {
         return (
             <div className="card mb-5">
                 <h3 className="card-header">Purchase history</h3>
                 <ul className="list-group">
-                    <li className="list-group-item">
-                        {history.map((h, i) => {
-                            return (
-                                <div>
-                                    <hr />
-                                    {h.products.map((p, i) => {
-                                        return (
-                                            <div key={i} id="history">
-                                                <p>Product name: {p.name}</p>
-                                                <p>
-                                                    Product price: ${p.price}
-                                                </p>
-                                                <p>
-                                                    Purchased date:{" "}
-                                                    {moment(
-                                                        p.createdAt
-                                                    ).fromNow()}
-                                                </p>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            );
-                        })}
-                    </li>
+                    <li className="list-group-item">history</li>
                 </ul>
             </div>
         );
@@ -107,7 +64,7 @@ const Dashboard = () => {
                 <div className="col-3">{userLinks()}</div>
                 <div className="col-9">
                     {userInfo()}
-                    {purchaseHistory(history)}
+                    {purchaseHistory()}
                 </div>
             </div>
         </Layout>

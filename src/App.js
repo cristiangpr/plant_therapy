@@ -19,6 +19,8 @@ import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import Cart from "./core/Cart";
 import Orders from "./admin/Orders";
+import Profile from "./user/Profile";
+
 
   require('dotenv').config()
 
@@ -43,6 +45,11 @@ import Orders from "./admin/Orders";
               <AdminRoute path="/create_product" exact component={AddProduct}/>
                 <Route path="/cart" exact component={Cart} />
                   <AdminRoute path="/admin/orders" exact component={Orders} />
+                  <PrivateRoute
+                      path="/profile/:userId"
+                      exact
+                      component={Profile}
+                  />
 
 
 
