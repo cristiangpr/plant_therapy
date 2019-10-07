@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import { listOrders, getStatusValues, updateOrderStatus } from "./apiAdmin";
@@ -90,7 +90,13 @@ const Orders = () => {
         </div>
     );
     return (
-
+      <Layout
+          title="Orders"
+          description={`Hello ${
+              user.name
+          }, you can manage all the orders here`}
+          className="container-fluid"
+      >
       <div className="row">
           <div className="col-md-8 offset-md-2">
               {showOrdersLength()}
@@ -154,6 +160,7 @@ const Orders = () => {
               })}
           </div>
       </div>
+      </Layout>
     );
 };
 

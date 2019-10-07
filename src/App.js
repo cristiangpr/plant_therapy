@@ -8,7 +8,8 @@ import './App.css';
   import FarmsLanding from './components/FarmsLanding';
     import Distributors from './components/Distributors';
   import Farms from './components/Farms';
-
+  import Signup from "./user/Signup";
+  import Signin from "./user/Signin";
   import StoreLocator from "./components/StoreLocator";
 import Home from "./core/Home";
 import PrivateRoute from "./auth/PrivateRoute";
@@ -32,22 +33,21 @@ import UpdateProduct from "./admin/UpdateProduct";
     return (
       <BrowserRouter>
         <Switch>
-
-
-            <Route exact path="/" component={Landing} />
+           <Route exact path="/" component={Landing} />
             <Route path="/consumer" component={Consumer} />
             <Route path="/Distributors" component={Distributors} />
             <Route path="/DistributorsLanding" component={DistributorsLanding} />
             <Route path="/FarmsLanding" component={FarmsLanding} />
             <Route path="/Farms" component={Farms} />
             <Route path="/StoreLocator" component={StoreLocator} />
-              <Route path="/home" exact component={Home} />
+            <Route path="/signin" exact component={Signin} />
+            <Route path="/signup" exact component={Signup} />
             <PrivateRoute path="/user_dashboard" exact component={UserDashboard} />
             <AdminRoute path="/admin_dashboard" exact component={AdminDashboard}  />
               <AdminRoute path="/create_category" exact component={AddCategory}/>
               <AdminRoute path="/create_product" exact component={AddProduct}/>
                 <Route path="/cart" exact component={Cart} />
-                  <AdminRoute path="/admin/orders" exact component={Orders} />
+                  <AdminRoute path="/admin_orders" exact component={Orders} />
                   <PrivateRoute
                       path="/profile/:userId"
                       exact
@@ -55,7 +55,7 @@ import UpdateProduct from "./admin/UpdateProduct";
                   />
 
                   <AdminRoute
-                      path="/admin/products"
+                      path="/admin_products"
                       exact
                       component={ManageProducts}
                   />

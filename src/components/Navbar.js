@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-  import {  Link } from 'react-router-dom';
+  import {  Link, withRouter } from 'react-router-dom';
 import $ from "jquery";
 import { itemTotal } from "../core/cartHelpers";
 
@@ -51,6 +51,8 @@ compunentWiilUnmount(){
     $("#mobile-nav, #mobile-nav-toggle").destroy();
 
 }
+
+
  render(){
    return (
 
@@ -73,11 +75,13 @@ compunentWiilUnmount(){
         <li className="menu-active"><a href="/">Home</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#products">Products</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#footer">Sign In</a></li>
+        <li><a href="#blog">Instagram</a></li>
+        <li><Link to="/signup">Sign Up</Link></li>
+        <li><Link to="/signin">Sign In</Link></li>
         <li><Link to="/farmsLanding">Farms</Link></li>
           <li><Link to="/distributorsLanding">Distributors</Link></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><Link to="/StoreLocator">Locations</Link></li>
+              <li><a href="#contact">Contact</a></li>
         <li className="nav-item">
             <Link
                 className="nav-link"
@@ -98,4 +102,4 @@ compunentWiilUnmount(){
 );
 }
 }
-export default Navbar;
+export default withRouter(Navbar);

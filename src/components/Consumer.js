@@ -14,7 +14,7 @@ const Consumer = () => {
 
 
   const loadProductsByCategory = () => {
-      getProducts("consumer").then(data => {
+      getProducts("retail").then(data => {
           if (data.error) {
               setError(data.error);
           } else {

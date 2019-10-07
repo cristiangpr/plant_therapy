@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StoreNavbar from "./StoreNavbar.js"
+import Navbar from "./Navbar.js"
 import ScrollUpButton from "react-scroll-up-button";
 class Farms extends Component {
 
@@ -8,7 +8,7 @@ class Farms extends Component {
   render(){
     return (
       <div>
-      <StoreNavbar/>
+      <Navbar/>
       <section className="distributor_products">
         <div className="container">
           <div className="row justify-content-center">

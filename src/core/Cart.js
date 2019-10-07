@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Checkout from "./Checkout";
+import Layout from "./Layout";
 import { getCart } from "./cartHelpers";
 import Card from "./Card";
+import Checkout from "./Checkout";
 
 const Cart = () => {
     const [items, setItems] = useState([]);
@@ -17,7 +18,13 @@ const Cart = () => {
                 <h2>Your cart has {`${items.length}`} items</h2>
                 <hr />
                 {items.map((product, i) => (
-                    <Card key={i} product={product}   showAddToCartButton={false}   cartUpdate={true}   showRemoveProductButton={true}/>
+                    <Card
+                        key={i}
+                        product={product}
+                        showAddToCartButton={false}
+                        cartUpdate={true}
+                        showRemoveProductButton={true}
+                    />
                 ))}
             </div>
         );
@@ -30,12 +37,11 @@ const Cart = () => {
     );
 
     return (
-
-      <>
-      <div className="jumbotron">
-          <h2>Shopping Cart</h2>
-
-  </div>
+        <Layout
+            title="Shopping Cart"
+            description="Manage your cart items. Add remove checkout or continue shopping."
+            className="container-fluid"
+        >
             <div className="row">
                 <div className="col-6">
                     {items.length > 0 ? showItems(items) : noItemsMessage()}
@@ -46,9 +52,8 @@ const Cart = () => {
                     <hr />
                     <Checkout products={items} />
                 </div>
-            
             </div>
-</>
+        </Layout>
     );
 };
 

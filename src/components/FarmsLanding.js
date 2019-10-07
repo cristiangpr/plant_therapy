@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StoreNavbar from "./StoreNavbar.js"
+import Navbar from "./Navbar.js"
 import { Link } from 'react-router-dom';
 import ScrollUpButton from "react-scroll-up-button";
 
@@ -15,7 +15,7 @@ import  Signup from "./Signup.js"
   return (
 
   <div>
-  <StoreNavbar/>
+  <Navbar/>
   <div className="section-header" id="signin">
     <h3>Sign In</h3>
     <p>

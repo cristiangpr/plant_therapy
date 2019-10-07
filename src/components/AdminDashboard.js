@@ -1,7 +1,8 @@
 import React from "react";
+import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import StoreNavbar from "./StoreNavbar";
+import  Navbar  from "./Navbar"
 
 const AdminDashboard = () => {
     const {
@@ -24,15 +25,15 @@ const AdminDashboard = () => {
                         </Link>
                     </li>
                     <li className="list-group-item">
-                        <Link className="nav-link" to="/admin/orders">
+                        <Link className="nav-link" to="/admin_orders">
                             View Orders
                         </Link>
                     </li>
                     <li className="list-group-item">
-                        <Link className="nav-link" to="/admin/products">
+                        <Link className="nav-link" to="/admin_products">
                             Manage Products
                         </Link>
-                        </li>
+                    </li>
                 </ul>
             </div>
         );
@@ -54,13 +55,18 @@ const AdminDashboard = () => {
     };
 
     return (
-      <>
-     <StoreNavbar/>
-            <div className="row" id="dashboard">
+
+        <Layout
+            title="Admin Dashboard"
+            description={`Hello ${name}!`}
+            className="container-fluid"
+        >
+            <div className="row">
                 <div className="col-3">{adminLinks()}</div>
                 <div className="col-9">{adminInfo()}</div>
             </div>
-</>
+        </Layout>
+        
     );
 };
 
