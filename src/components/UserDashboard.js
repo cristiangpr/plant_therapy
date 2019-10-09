@@ -55,7 +55,20 @@ const Dashboard = () => {
                     <li className="list-group-item">{name}</li>
                     <li className="list-group-item">{email}</li>
                     <li className="list-group-item">
-                        {role === 1 ? "Admin" : "Registered User"}
+                        {role === 0 ? "Admin"
+                        : role === 1 ? "Registered User"
+                        : role ===2 ? "Commercial Ag User"
+                        : role === 3 ? "Commercia Ag Bulk User"
+                        : role === 4 ? "Wholesale User"
+                        : role === 5 ? "Wholesale 5 User"
+                        : role === 6 ? "Wholesale 10 User"
+                        : role === 7 ? "Distributor 25 User"
+                        : role === 8 ? "Distributor 25 User"
+                         : role === 9 ? "Distributor 32 User"
+                         : role === 10 ? "Distributor Sale1 User"
+                         : role === 11 ? "Distributor Sale2 User"
+                         : "unregistered user"
+                      }
                     </li>
                 </ul>
             </div>
@@ -99,8 +112,8 @@ const Dashboard = () => {
 
     return (
         <Layout
-            title="Dashboard"
-            description={`G'day ${name}!`}
+            title="User Dashboard"
+            description={`Hello ${name}!`}
             className="container-fluid"
         >
             <div className="row">

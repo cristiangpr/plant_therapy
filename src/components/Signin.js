@@ -84,7 +84,7 @@ const Signin = () => {
 
         const redirectUser = () => {
             if (redirectToReferrer) {
-                if (user && user.role === 1) {
+                if (user && user.role === 0) {
                     return <Redirect to="/admin_dashboard" />;
                 } else {
                     return <Redirect to="/user_dashboard" />;

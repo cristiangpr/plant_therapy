@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import Shop from "../core/Shop.js"
 import ScrollUpButton from "react-scroll-up-button";
 import Card from "../core/Card";
   import {  Link } from 'react-router-dom';
@@ -8,26 +8,7 @@ import Instagram from "./Instagram.js";
 import { getProducts } from "../core/apiCore";
 
 const Consumer = () => {
-  const [productsByCategory, setProductsByCategory] = useState([]);
-  const [error, setError] = useState(false);
 
-
-
-  const loadProductsByCategory = () => {
-      getProducts("retail").then(data => {
-          if (data.error) {
-              setError(data.error);
-          } else {
-              setProductsByCategory(data);
-          }
-      });
-  };
-
-  useEffect(() => {
-     let isSubscribed = true
-      loadProductsByCategory();
-return () => isSubscribed = false
-  }, []);
 
   return (
 
@@ -91,24 +72,7 @@ return () => isSubscribed = false
 </section>
 
 
-   <section className="new_product_area section_gap_top section_gap_bottom_custo" id="products">
-     <div className="container">
-       <div className="row justify-content-center">
-         <div className="col-lg-12">
-           <div className="section-header">
-             <h3>PRODUCTS</h3>
-             <p>Find a presentation to fit your needs</p>
-           </div>
-         </div>
-       </div>
-
-       <div className="row">
-           {productsByCategory.map((product, i) => (
-               <Card key={i} product={product} />
-           ))}
-       </div>
-       </div>
-   </section>
+<Shop/>
 
  <Instagram/>
    <section id="call-to-action" className="wow fadeIn">

@@ -1,10 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, useEffect } from 'react';
   import {  Link, withRouter } from 'react-router-dom';
 import $ from "jquery";
 import { itemTotal } from "../core/cartHelpers";
+import { signout, isAuthenticated } from "../auth";
 
-class Navbar extends Component {
-  componentDidMount() {
+
+
+const isActive = (history, path) => {
+    if (history.location.pathname === path) {
+        return { color: "#18d26e" };
+    } else {
+        return { color: "#ffffff" };
+    }
+};
+
+const Navbar = ({ history }) => {
+  useEffect(() => {
     if ($('#nav-menu-container').length) {
       var $mobile_nav = $('#nav-menu-container').clone().prop({
         id: 'mobile-nav'
@@ -46,14 +57,14 @@ class Navbar extends Component {
 
 
 
- }
-compunentWiilUnmount(){
-    $("#mobile-nav, #mobile-nav-toggle").destroy();
+
+    return () => {
+    $("#mobile-nav, #mobile-nav-toggle").hide();
 
 }
 
+}, []);
 
- render(){
    return (
 
      <>
@@ -72,16 +83,77 @@ compunentWiilUnmount(){
 
     <nav id="nav-menu-container">
       <ul className="nav-menu sf-js-enabled sf-arrows">
-        <li className="menu-active"><a href="/">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#blog">Instagram</a></li>
-        <li><Link to="/signup">Sign Up</Link></li>
-        <li><Link to="/signin">Sign In</Link></li>
-        <li><Link to="/farmsLanding">Farms</Link></li>
-          <li><Link to="/distributorsLanding">Distributors</Link></li>
+        <li><Link to="/"   style={isActive(history, "/")}>Home</Link></li>
+        <li><Link to="/consumer"  style={isActive(history, "/consumer")}>Shop</Link></li>
+        <li><a href="/consumer#about">About Us</a></li>
+        <li><a href="consumer#products" >Products</a></li>
+        <li><a href="/consumer#blog">Instagram</a></li>
+
         <li><Link to="/StoreLocator">Locations</Link></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="/consumer#contact">Contact</a></li>
+              {isAuthenticated() && isAuthenticated().user.role !== 0 && (
+                  <li className="nav-item">
+                      <Link
+                          className="nav-link"
+
+                          to="/user_dashboard"
+                      >
+                          Dashboard
+                      </Link>
+                  </li>
+              )}
+
+              {isAuthenticated() && isAuthenticated().user.role === 0 && (
+                  <li className="nav-item">
+                      <Link
+                          className="nav-link"
+
+                          to="/admin_dashboard"
+                      >
+                          Dashboard
+                      </Link>
+                  </li>
+              )}
+
+              {!isAuthenticated() && (
+                  <Fragment>
+                      <li className="nav-item">
+                          <Link
+                              className="nav-link"
+
+                              to="/signin"
+                          >
+                              Signin
+                          </Link>
+                      </li>
+
+                      <li className="nav-item">
+                          <Link
+                              className="nav-link"
+
+                              to="/signup"
+                          >
+                              Signup
+                          </Link>
+                      </li>
+                  </Fragment>
+              )}
+
+              {isAuthenticated() && (
+                  <li className="nav-item">
+                      <Link
+                          className="nav-link"
+                          style={{ cursor: "pointer", color: "#ffffff" }}
+                          onClick={() =>
+                              signout(() => {
+                                  history.push("/");
+                              })
+                          }
+                      >
+                          Signout
+                      </Link>
+                  </li>
+              )}
         <li className="nav-item">
             <Link
                 className="nav-link"
@@ -100,6 +172,6 @@ compunentWiilUnmount(){
 </header>
 </>
 );
-}
+
 }
 export default withRouter(Navbar);
