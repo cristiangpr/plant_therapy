@@ -41,7 +41,9 @@ const Checkout = ({ products }) => {
             }
         });
     };
-
+    const {
+        user: { _id, name, email, role }
+    } = isAuthenticated();
     useEffect(() => {
         getToken(userId, token);
     }, [userId, token]);
@@ -53,7 +55,18 @@ const Checkout = ({ products }) => {
 
     const getTotal = () => {
         return products.reduce((currentValue, nextValue) => {
-            return currentValue + nextValue.count * nextValue.price;
+          if ( role === 2)  {return (currentValue + nextValue.count * nextValue.price) * .5 }
+          else  if ( role === 3)  {return (currentValue + nextValue.count * nextValue.price) * .38 }
+            else  if ( role === 4)  {return (currentValue + nextValue.count * nextValue.price) * .5 }
+              else  if ( role === 5)  {return (currentValue + nextValue.count * nextValue.price) * .475 }
+                else  if ( role === 6)  {return (currentValue + nextValue.count * nextValue.price) * .45 }
+                  else  if ( role === 7)  {return (currentValue + nextValue.count * nextValue.price) * .375 }
+                    else  if ( role === 8)  {return (currentValue + nextValue.count * nextValue.price) * .35 }
+                      else  if ( role === 9)  {return (currentValue + nextValue.count * nextValue.price) * .33 }
+                        else  if ( role === 10)  {return (currentValue + nextValue.count * nextValue.price) * .255 }
+             else {
+               return currentValue + nextValue.count * nextValue.price
+             }
         }, 0);
     };
 

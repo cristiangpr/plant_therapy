@@ -90,7 +90,8 @@ const Dashboard = () => {
                                             <div key={i} id="history">
                                                 <p>Product name: {p.name}</p>
                                                 <p>
-                                                    Product price: ${p.price}
+                                                    Product price: ${role === 10 ? p.price * .255
+                                                    : p.price}
                                                 </p>
                                                 <p>
                                                     Purchased date:{" "}
