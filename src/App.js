@@ -23,6 +23,7 @@ import Orders from "./admin/Orders";
 import Profile from "./user/Profile";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
+import ManageUsers from "./admin/ManageUsers";
 
 
 
@@ -63,6 +64,11 @@ import UpdateProduct from "./admin/UpdateProduct";
                       path="/admin/product/update/:productId"
                       exact
                       component={UpdateProduct}
+                  />
+                  <AdminRoute
+                      path="/admin_users"
+                      exact
+                      component={ManageUsers}
                   />
 
 
