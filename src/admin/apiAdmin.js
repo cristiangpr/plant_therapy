@@ -149,43 +149,40 @@ export const updateProduct = (productId, userId, token, product) => {
 
 
 
-export const listUsers = (userId, token) => {
-    return fetch(`${API}/user/list/${userId}`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`
-        }
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+export const listUsers = () => {
+  return fetch(`${API}/users?limit=undefined`, {
+      method: "GET"
+  })
+      .then(response => {
+          return response.json();
+      })
+      .catch(err => console.log(err));
 };
 
-export const getRoleValues = (userId, token) => {
-    return fetch(`${API}/user/role-values/${userId}`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`
-        }
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
 
-export const updateUserRole = (userId, token, role) => {
-    return fetch(`${API}/user/role/${userId}`, {
+
+export const updateUser = ( userId, token, user) => {
+    return fetch(`${API}/user/${userId}`, {
         method: "PUT",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: user
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+export const deleteUser = ( userId, adminId, token) => {
+    return fetch(`${API}/user/${userId}/${adminId}`, {
+        method: "DELETE",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ role, userId })
+        }
     })
         .then(response => {
             return response.json();
