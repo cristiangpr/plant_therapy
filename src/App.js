@@ -24,7 +24,7 @@ import Profile from "./user/Profile";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
 import ManageUsers from "./admin/ManageUsers";
-
+import UpdateUser from "./admin/UpdateUser";
 
 
   require('dotenv').config()
@@ -70,7 +70,11 @@ import ManageUsers from "./admin/ManageUsers";
                       exact
                       component={ManageUsers}
                   />
-
+                  <AdminRoute
+                      path="/admin/user/update/:userId"
+                      exact
+                      component={UpdateUser}
+                  />
 
         </Switch>
       </BrowserRouter>

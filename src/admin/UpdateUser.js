@@ -2,248 +2,113 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link, Redirect } from "react-router-dom";
-import { getUser, getCategories, updateUser } from "./apiAdmin";
+import { read, update, } from "./apiAdmin";
 
 const UpdateUser = ({ match }) => {
     const [values, setValues] = useState({
         name: "",
-        description: "",
-        price: "",
-        categories: [],
-        category: "",
-        shipping: "",
-        quantity: "",
-        photo: "",
-        loading: false,
+        email: "",
+        role: "",
         error: false,
-        createdProduct: "",
-        redirectToProfile: false,
-        formData: ""
+        success: false
     });
 
-    const { user, token } = isAuthenticated();
-    const {
-        name,
-        description,
-        price,
-        categories,
-        category,
-        shipping,
-        quantity,
-        loading,
-        error,
-        createdProduct,
-        redirectToProfile,
-        formData
-    } = values;
+    const { token } = isAuthenticated();
+    const { name, email, role, error, success } = values;
 
-    const init = productId => {
-        getProduct(productId).then(data => {
+    const init = userId => {
+        // console.log(userId);
+        read(userId, token).then(data => {
             if (data.error) {
-                setValues({ ...values, error: data.error });
+                setValues({ ...values, error: true });
             } else {
-                // populate the state
-                setValues({
-                    ...values,
-                    name: data.name,
-                    description: data.description,
-                    price: data.price,
-                    category: data.category._id,
-                    shipping: data.shipping,
-                    quantity: data.quantity,
-                    formData: new FormData()
-                });
-                // load categories
-                initCategories();
-            }
-        });
-    };
-
-    // load categories and set form data
-    const initCategories = () => {
-        getCategories().then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                setValues({
-                    categories: data,
-                    formData: new FormData()
-                });
+                setValues({ ...values, name: data.name, email: data.email, role: data.role });
             }
         });
     };
 
     useEffect(() => {
-        init(match.params.productId);
+        init(match.params.userId);
     }, []);
 
-    const handleChange = name => event => {
-        const value =
-            name === "photo" ? event.target.files[0] : event.target.value;
-        formData.set(name, value);
-        setValues({ ...values, [name]: value });
+    const handleChange = name => e => {
+        setValues({ ...values, error: false, [name]: e.target.value });
     };
 
-    const clickSubmit = event => {
-        event.preventDefault();
-        setValues({ ...values, error: "", loading: true });
-
-        updateProduct(match.params.productId, user._id, token, formData).then(
+    const clickSubmit = e => {
+        e.preventDefault();
+        update(match.params.userId, token, { name, email, role }).then(
             data => {
                 if (data.error) {
-                    setValues({ ...values, error: data.error });
+                    console.log(data.error);
                 } else {
-                    setValues({
-                        ...values,
-                        name: "",
-                        description: "",
-                        photo: "",
-                        price: "",
-                        quantity: "",
-                        loading: false,
-                        error: false,
-                        redirectToProfile: true,
-                        createdProduct: data.name
-                    });
+
+                        setValues({
+                            ...values,
+                            name: data.name,
+                            email: data.email,
+                            role: data.role,
+                            success: true
+                        });
+
                 }
             }
         );
     };
 
-    const newPostForm = () => (
-        <form className="mb-3" onSubmit={clickSubmit}>
-            <h4>Post Photo</h4>
-            <div className="form-group">
-                <label className="btn btn-secondary">
-                    <input
-                        onChange={handleChange("photo")}
-                        type="file"
-                        name="photo"
-                        accept="image/*"
-                    />
-                </label>
-            </div>
+    const redirectUser = success => {
+        if (success) {
+            return <Redirect to="/admin_users" />;
+        }
+    };
 
+    const profileUpdate = (name, email, role) => (
+        <form>
             <div className="form-group">
                 <label className="text-muted">Name</label>
                 <input
-                    onChange={handleChange("name")}
                     type="text"
+                    onChange={handleChange("name")}
                     className="form-control"
                     value={name}
                 />
             </div>
-
             <div className="form-group">
-                <label className="text-muted">Description</label>
-                <textarea
-                    onChange={handleChange("description")}
-                    className="form-control"
-                    value={description}
-                />
-            </div>
-
-            <div className="form-group">
-                <label className="text-muted">Price</label>
+                <label className="text-muted">Email</label>
                 <input
-                    onChange={handleChange("price")}
-                    type="number"
+                    type="email"
+                    onChange={handleChange("email")}
                     className="form-control"
-                    value={price}
+                    value={email}
                 />
             </div>
-
             <div className="form-group">
-                <label className="text-muted">Category</label>
-                <select
-                    onChange={handleChange("category")}
-                    className="form-control"
-                >
-                    <option>Please select</option>
-                    {categories &&
-                        categories.map((c, i) => (
-                            <option key={i} value={c._id}>
-                                {c.name}
-                            </option>
-                        ))}
-                </select>
-            </div>
-
-            <div className="form-group">
-                <label className="text-muted">Shipping</label>
-                <select
-                    onChange={handleChange("shipping")}
-                    className="form-control"
-                >
-                    <option>Please select</option>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
-
-            <div className="form-group">
-                <label className="text-muted">Quantity</label>
+                <label className="text-muted">Role</label>
                 <input
-                    onChange={handleChange("quantity")}
-                    type="number"
+                    type="role"
+                    onChange={handleChange("role")}
                     className="form-control"
-                    value={quantity}
+                    value={role}
                 />
             </div>
 
-            <button className="btn btn-outline-primary">Update Product</button>
+            <button onClick={clickSubmit} className="btn btn-primary">
+                Submit
+            </button>
         </form>
     );
 
-    const showError = () => (
-        <div
-            className="alert alert-danger"
-            style={{ display: error ? "" : "none" }}
-        >
-            {error}
-        </div>
-    );
-
-    const showSuccess = () => (
-        <div
-            className="alert alert-info"
-            style={{ display: createdProduct ? "" : "none" }}
-        >
-            <h2>{`${createdProduct}`} is updated!</h2>
-        </div>
-    );
-
-    const showLoading = () =>
-        loading && (
-            <div className="alert alert-success">
-                <h2>Loading...</h2>
-            </div>
-        );
-
-    const redirectUser = () => {
-        if (redirectToProfile) {
-            if (!error) {
-                return <Redirect to="/admin_products" />;
-            }
-        }
-    };
-
     return (
         <Layout
-            title="Add a new product"
-            description={`G'day ${user.name}, ready to add a new product?`}
+            title="Profile"
+            description="Update your profile"
+            className="container-fluid"
         >
-            <div className="row">
-                <div className="col-md-8 offset-md-2">
-                    {showLoading()}
-                    {showSuccess()}
-                    {showError()}
-                    {newPostForm()}
-                    {redirectUser()}
-                </div>
-            </div>
+            <h2 className="mb-4">Profile update</h2>
+            {profileUpdate(name, email, role)}
+            {redirectUser(success)}
         </Layout>
     );
 };
 
-export default UpdateProduct;
+export default UpdateUser;
