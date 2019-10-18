@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { createProduct, getCategories } from "./apiAdmin";
+import { createProduct, getCategories, getInventories } from "./apiAdmin";
 
 const AddProduct = () => {
     const { user, token } = isAuthenticated();
@@ -11,8 +11,9 @@ const AddProduct = () => {
         price: "",
         categories: [],
         category: "",
-        shipping: "",
-        quantity: "",
+        inventories: [],
+        inventory: "",
+
         photo: "",
         loading: false,
         error: "",
@@ -27,8 +28,9 @@ const AddProduct = () => {
         price,
         categories,
         category,
-        shipping,
-        quantity,
+        inventories,
+        inventory,
+  
         loading,
         error,
         createdProduct,
@@ -39,25 +41,25 @@ const AddProduct = () => {
     // load categories and set form data
     const init = () => {
         getCategories().then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                setValues({
-                    ...values,
-                    categories: data,
-                    formData: new FormData()
-                });
+           getInventories().then(idata => {
+              setValues({
+                  ...values,
+                  categories: data,
+                  inventories: idata,
+                  formData: new FormData()
+              });
+
+})
             }
-        });
+        );
     };
+
 
     useEffect(() => {
         init();
     }, []);
 
-    useEffect(() => {
-        setValues({ ...values, formData: new FormData() });
-    }, []);
+
 
     const handleChange = name => event => {
         const value =
@@ -80,7 +82,8 @@ const AddProduct = () => {
                     description: "",
                     photo: "",
                     price: "",
-                    quantity: "",
+                    category: "",
+                    inventory: "",
                     loading: false,
                     createdProduct: data.name
                 });
@@ -147,28 +150,22 @@ const AddProduct = () => {
                 </select>
             </div>
 
+
             <div className="form-group">
-                <label className="text-muted">Shipping</label>
+                <label className="text-muted">Inventory</label>
                 <select
-                    onChange={handleChange("shipping")}
+                    onChange={handleChange("inventory")}
                     className="form-control"
                 >
-                      <option>Please select</option>    
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
+                    <option>Please select</option>
+                    {inventories &&
+                        inventories.map((c, i) => (
+                            <option key={i} value={c._id}>
+                                {c.name}
+                            </option>
+                        ))}
                 </select>
             </div>
-
-            <div className="form-group">
-                <label className="text-muted">Quantity</label>
-                <input
-                    onChange={handleChange("quantity")}
-                    type="number"
-                    className="form-control"
-                    value={quantity}
-                />
-            </div>
-
             <button className="btn btn-outline-primary">Create Product</button>
         </form>
     );

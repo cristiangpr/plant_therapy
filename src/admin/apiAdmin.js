@@ -44,6 +44,15 @@ export const getCategories = () => {
         })
         .catch(err => console.log(err));
 };
+export const getInventories = () => {
+    return fetch(`${API}/inventories`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 
 export const listOrders = (userId, token) => {
     return fetch(`${API}/order/list/${userId}`, {
@@ -220,4 +229,21 @@ export const update = (userId, token, user) => {
             return response.json();
         })
         .catch(err => console.log(err));
+};
+export const createInventory = (userId, token, inventory) => {
+    return fetch(`${API}/inventory/create/${userId}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(inventory)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
 };
