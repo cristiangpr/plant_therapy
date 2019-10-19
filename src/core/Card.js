@@ -86,6 +86,8 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
         );
     };
 
+
+
     return (
         <div className="col-4 mb-3">
           <div className="single-product wow fadeIn" >
@@ -98,51 +100,13 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
                       {product.description.substring(0, 100)}
                   </p>
 
-                  {!isAuthenticated() &&(
+
 
 
                   <p className="black-10">${product.price}</p>
-                  )}
-                  {isAuthenticated() && isAuthenticated().user.role === 1 && (
-                 <p className="black-10">${product.price}</p>
-              )}
 
-                 {isAuthenticated() && isAuthenticated().user.role === 2 && (
-                  <p className="black-10">${product.price * .5}</p>
-                )}
 
-               {isAuthenticated() && isAuthenticated().user.role === 3 && (
-                 <p className="black-10">${product.price * .38}</p>
-                 )}
-
-                 {isAuthenticated() && isAuthenticated().user.role === 4 && (
-                     <p className="black-10">${product.price * .5}</p>
-                     )}
-
-                 {isAuthenticated() && isAuthenticated().user.role === 5 && (
-                         <p className="black-10">${product.price * .475}</p>
-                         )}
-
-                  {isAuthenticated() && isAuthenticated().user.role === 6 && (
-                             <p className="black-10">${product.price * .45}</p>
-                             )}
-
-                   {isAuthenticated() && isAuthenticated().user.role === 7 && (
-                                 <p className="black-10">${product.price * .375}</p>
-                                 )}
-
-                     {isAuthenticated() && isAuthenticated().user.role === 8 && (
-                                     <p className="black-10">${product.price * .35}</p>
-                                     )}
-
-                       {isAuthenticated() && isAuthenticated().user.role === 9 && (
-                                         <p className="black-10">${product.price * .33}</p>
-
-                                         )}
-                       {isAuthenticated() && isAuthenticated().user.role === 10 && (
-                                   <p className="black-10">${product.price * .255}</p>
-                                             )}
-                  {showStock(product.quantity)}
+                  {showStock(product.inventory.quantity)}
                   <br />
 
 

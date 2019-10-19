@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import Card from "./Card";
-import { getCategories, getFilteredProducts } from "./apiCore";
+import { getCategories, getFilteredProducts, getInventories } from "./apiCore";
 import Checkbox from "./Checkbox";
 import RadioBox from "./RadioBox";
 import { prices } from "./fixedPrices";
 
 const Shop = () => {
     const [myFilters, setMyFilters] = useState({
-        filters: { category: [], price: [] }
+        filters: { category: [], price: [], inventory:[] }
     });
     const [categories, setCategories] = useState([]);
+      const [inventories, setInventories] = useState([]);
     const [error, setError] = useState(false);
     const [limit, setLimit] = useState(6);
     const [skip, setSkip] = useState(0);
@@ -23,6 +24,13 @@ const Shop = () => {
                 setError(data.error);
             } else {
                 setCategories(data);
+            }
+        });
+        getInventories().then(idata => {
+            if (idata.error) {
+                setError(idata.error);
+            } else {
+                setInventories(idata);
             }
         });
     };
@@ -66,7 +74,7 @@ const Shop = () => {
     };
 
     useEffect(() => {
-        init();
+    
         loadFilteredResults(skip, limit, myFilters.filters);
     }, []);
 
@@ -117,7 +125,7 @@ const Shop = () => {
           <hr />
           {loadMoreButton()}
           </div>
-      
+
       </section>
     );
 };

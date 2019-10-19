@@ -20,7 +20,15 @@ export const getCategories = () => {
         })
         .catch(err => console.log(err));
 };
-
+export const getInventories = () => {
+    return fetch(`${API}/inventories`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 export const getFilteredProducts = (skip, limit, filters, sortBy = {}) => {
     const data = {
         limit,
