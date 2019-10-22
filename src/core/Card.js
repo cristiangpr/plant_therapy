@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { getProducts } from "./apiCore";
-import { isAuthenticated } from "../auth";
+
 import ShowImage from "./ShowImage";
 import { addItem, updateItem, removeItem } from "./cartHelpers";
 

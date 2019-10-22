@@ -91,7 +91,7 @@ const Navbar = ({ history }) => {
 
         <li><Link to="/StoreLocator">Locations</Link></li>
               <li><a href="/consumer#contact">Contact</a></li>
-              {isAuthenticated() && isAuthenticated().user.role !== 0 && (
+              {isAuthenticated() && isAuthenticated().user.role !== "Admin" && (
                   <li className="nav-item">
                       <Link
                           className="nav-link"
@@ -103,7 +103,7 @@ const Navbar = ({ history }) => {
                   </li>
               )}
 
-              {isAuthenticated() && isAuthenticated().user.role === 0 && (
+              {isAuthenticated() && isAuthenticated().user.role === "Admin" && (
                   <li className="nav-item">
                       <Link
                           className="nav-link"

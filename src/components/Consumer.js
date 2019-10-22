@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Shop from "../core/Shop.js"
 import ScrollUpButton from "react-scroll-up-button";
-import Card from "../core/Card";
+
   import {  Link } from 'react-router-dom';
 import Navbar from "./Navbar.js";
 import Instagram from "./Instagram.js";
-import { getProducts } from "../core/apiCore";
+
 
 const Consumer = () => {
-
 
   return (
 
