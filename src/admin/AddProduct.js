@@ -13,7 +13,7 @@ const AddProduct = () => {
         category: "",
         inventories: [],
         inventory: "",
-
+        quantity: "",
         photo: "",
         loading: false,
         error: "",
@@ -30,7 +30,7 @@ const AddProduct = () => {
         category,
         inventories,
         inventory,
-  
+        quantity,
         loading,
         error,
         createdProduct,
@@ -84,6 +84,7 @@ const AddProduct = () => {
                     price: "",
                     category: "",
                     inventory: "",
+                    quantity: "",
                     loading: false,
                     createdProduct: data.name
                 });
@@ -131,6 +132,15 @@ const AddProduct = () => {
                     type="number"
                     className="form-control"
                     value={price}
+                />
+            </div>
+            <div className="form-group">
+                <label className="text-muted">Quantity</label>
+                <input
+                    onChange={handleChange("quantity")}
+                    type="number"
+                    className="form-control"
+                    value={quantity}
                 />
             </div>
 

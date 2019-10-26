@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-
+import Checkbox from "./Checkbox";
 import ShowImage from "./ShowImage";
 import { addItem, updateItem, removeItem } from "./cartHelpers";
 
@@ -87,6 +87,7 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
 
 
 
+
     return (
         <div className="col-4 mb-3">
           <div className="single-product wow fadeIn" >
@@ -107,7 +108,7 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
 
                   {showStock(product.inventory.quantity)}
                   <br />
-
+          
 
      {showAddToCart(showAddToCartButton)}
       {showRemoveButton(showRemoveProductButton)}

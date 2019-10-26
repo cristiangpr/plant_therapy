@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link, Redirect } from "react-router-dom";
-import { getProduct, getCategories, updateProduct } from "./apiAdmin";
+import { getProduct, getCategories, updateProduct, getInventories} from "./apiAdmin";
 
 const UpdateProduct = ({ match }) => {
     const [values, setValues] = useState({
@@ -11,6 +11,8 @@ const UpdateProduct = ({ match }) => {
         price: "",
         categories: [],
         category: "",
+        inventories: [],
+        inventory: "",
         shipping: "",
         quantity: "",
         photo: "",
@@ -28,6 +30,8 @@ const UpdateProduct = ({ match }) => {
         price,
         categories,
         category,
+        inventories,
+        inventory,
         shipping,
         quantity,
         loading,
@@ -49,29 +53,35 @@ const UpdateProduct = ({ match }) => {
                     description: data.description,
                     price: data.price,
                     category: data.category._id,
+                    inventory: data.inventory._id,
+
                     shipping: data.shipping,
                     quantity: data.quantity,
                     formData: new FormData()
                 });
                 // load categories
-                initCategories();
+                initCategoriesandInventories();
             }
+
         });
     };
 
     // load categories and set form data
-    const initCategories = () => {
+    const initCategoriesandInventories = () => {
         getCategories().then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                setValues({
-                    categories: data,
-                    formData: new FormData()
-                });
+           getInventories().then(idata => {
+              setValues({
+                  ...values,
+                  categories: data,
+                  inventories: idata,
+                  formData: new FormData()
+              });
+
+})
             }
-        });
+        );
     };
+
 
     useEffect(() => {
         init(match.params.productId);
@@ -168,6 +178,21 @@ const UpdateProduct = ({ match }) => {
                         ))}
                 </select>
             </div>
+            <div className="form-group">
+                <label className="text-muted">Inventory</label>
+                <select
+                    onChange={handleChange("inventory")}
+                    className="form-control"
+                >
+                    <option>Please select</option>
+                    {inventories &&
+                        inventories.map((c, i) => (
+                            <option key={i} value={c._id}>
+                                {c.name}
+                            </option>
+                        ))}
+                </select>
+            </div>
 
             <div className="form-group">
                 <label className="text-muted">Shipping</label>
@@ -230,7 +255,7 @@ const UpdateProduct = ({ match }) => {
 
     return (
         <Layout
-            title="Add a new product"
+            title="Update product"
             description={`Hello ${user.name}, ready to update product?`}
         >
             <div className="row">

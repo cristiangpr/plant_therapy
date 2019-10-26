@@ -71,15 +71,17 @@ const Shop = () => {
       const handleRole = () => {
                 if (!isAuthenticated()){ handleFilters(  ["5dab5350fe6153076c4c808e"] , "category")};
                 if (isAuthenticated() && isAuthenticated().user.role === "Registered User") { handleFilters(  ["5dab5350fe6153076c4c808e"] , "category")};
-                  if (isAuthenticated() && isAuthenticated().user.role === "Agricultural Commercial") { handleFilters(  ["5dab877c9f624f3d5839d8e5"] , "category")};
-                   if (isAuthenticated() && isAuthenticated().user.role === "Wholesale") { handleFilters(  ["5dab86889f624f3d5839d8e2"] , "category")};
+                if (isAuthenticated() && isAuthenticated().user.role === "Agricultural Commercial") { handleFilters(  ["5dab877c9f624f3d5839d8e5"] , "category")};
+                if (isAuthenticated() && isAuthenticated().user.role === "Wholesale") { handleFilters(  ["5dab86889f624f3d5839d8e2"] , "category")};
+                if (isAuthenticated() && isAuthenticated().user.role === "Distributor 25") { handleFilters(  ["5dab878a9f624f3d5839d8e6"] , "category")};
+                
       }
 
       useEffect(() => {
           init();
         handleRole(
         () =>  loadFilteredResults(skip, limit, myFilters.filters));
-        
+
           console.log(myFilters);
       }, []);
 
