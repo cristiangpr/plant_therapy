@@ -84,12 +84,17 @@ const UpdateUser = ({ match }) => {
             </div>
             <div className="form-group">
                 <label className="text-muted">Role</label>
-                <input
-                    type="role"
+                <select
                     onChange={handleChange("role")}
                     className="form-control"
-                    value={role}
-                />
+                >
+                <option>Please select</option>
+                <option value="Retail">Retail</option>
+                <option value="Wholesale">Wholesale</option>
+                  <option value="Farm">Farm</option>
+                  <option value="Distributor 25">Distributor 25</option>
+                  <option value="Distributor 32">Distributor 32</option>
+                </select>
             </div>
 
             <button onClick={clickSubmit} className="btn btn-primary">
@@ -97,16 +102,26 @@ const UpdateUser = ({ match }) => {
             </button>
         </form>
     );
+    const goBack = () => (
+
+        <div className="mt-5">
+            <Link to="/admin_dashboard" className="text-warning">
+                Back to Dashboard
+            </Link>
+        </div>
+
+    );
 
     return (
         <Layout
             title="Profile"
-            description="Update your profile"
+            description="Update user profile"
             className="container-fluid"
         >
             <h2 className="mb-4">Profile update</h2>
             {profileUpdate(name, email, role)}
             {redirectUser(success)}
+            {goBack()}
         </Layout>
     );
 };

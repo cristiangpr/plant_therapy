@@ -60,7 +60,7 @@ const UpdateProduct = ({ match }) => {
                     formData: new FormData()
                 });
                 // load categories
-                initCategoriesandInventories();
+
             }
 
         });
@@ -169,13 +169,12 @@ const UpdateProduct = ({ match }) => {
                     onChange={handleChange("category")}
                     className="form-control"
                 >
-                    <option>Please select</option>
-                    {categories &&
-                        categories.map((c, i) => (
-                            <option key={i} value={c._id}>
-                                {c.name}
-                            </option>
-                        ))}
+                <option>Please select</option>
+                <option value="Retail">Retail</option>
+                <option value="Wholesale">Wholesale</option>
+                  <option value="Farm">Farm</option>
+                  <option value="Distributor 25">Distributor 25</option>
+                  <option value="Distributor 32">Distributor 32</option>
                 </select>
             </div>
             <div className="form-group">
@@ -184,13 +183,12 @@ const UpdateProduct = ({ match }) => {
                     onChange={handleChange("inventory")}
                     className="form-control"
                 >
+                >
                     <option>Please select</option>
-                    {inventories &&
-                        inventories.map((c, i) => (
-                            <option key={i} value={c._id}>
-                                {c.name}
-                            </option>
-                        ))}
+                    <option value="12 Oz">12 Oz</option>
+                    <option value="32 Oz">32 Oz</option>
+                      <option value="1 Gallon">1 Gallon</option>
+                      <option value="2.5 Gallon">2.5 Gallon</option>
                 </select>
             </div>
 
@@ -252,6 +250,15 @@ const UpdateProduct = ({ match }) => {
             }
         }
     };
+    const goBack = () => (
+
+        <div className="mt-5">
+            <Link to="/admin_dashboard" className="text-warning">
+                Back to Dashboard
+            </Link>
+        </div>
+
+    );
 
     return (
         <Layout
@@ -265,6 +272,7 @@ const UpdateProduct = ({ match }) => {
                     {showError()}
                     {newPostForm()}
                     {redirectUser()}
+                    {goBack()}
                 </div>
             </div>
         </Layout>

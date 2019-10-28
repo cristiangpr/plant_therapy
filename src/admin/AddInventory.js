@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import { createInventory } from "./apiAdmin";
-
+import Layout from "../core/Layout";
 const AddInventory = () => {
     const [name, setName] = useState("");
       const [quantity, setQuantity] = useState("");
@@ -82,6 +82,10 @@ const AddInventory = () => {
 
 
     return (
+      <Layout
+      title="Create Inventory Item"
+      description={`Hello ${user.name}!`}
+      className="container-fluid">
       <div className="row">
           <div className="col-md-8 offset-md-2">
               {showSuccess()}
@@ -90,6 +94,7 @@ const AddInventory = () => {
               {goBack()}
           </div>
       </div>
+      </Layout>
     );
 };
 

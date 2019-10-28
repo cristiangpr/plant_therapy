@@ -201,7 +201,7 @@ export const deleteUser = ( userId, adminId, token) => {
 
 
 export const read = (userId, token) => {
-    return fetch(`${API}/admin/user/${userId}`, {
+    return fetch(`${API}/user/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -216,7 +216,7 @@ export const read = (userId, token) => {
 };
 
 export const update = (userId, token, user) => {
-    return fetch(`${API}/admin/user/${userId}`, {
+    return fetch(`${API}/user/${userId}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",

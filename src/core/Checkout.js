@@ -41,9 +41,7 @@ const Checkout = ({ products }) => {
             }
         });
     };
-    const {
-        user: { _id, name, email, role }
-    } = isAuthenticated();
+  
     useEffect(() => {
         getToken(userId, token);
     }, []);
