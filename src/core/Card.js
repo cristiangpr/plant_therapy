@@ -89,7 +89,7 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
 
 
     return (
-        <div className="col-4 mb-3">
+        <div className="col-md-4 mb-3">
           <div className="single-product wow fadeIn" >
           <div className="card">
               <div className="card-header name">{product.name}</div>
@@ -108,7 +108,7 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
 
                   {showStock(product.inventory.quantity)}
                   <br />
-          
+
 
      {showAddToCart(showAddToCartButton)}
       {showRemoveButton(showRemoveProductButton)}
