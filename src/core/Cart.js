@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import { getCart } from "./cartHelpers";
 import Card from "./Card";
 import Checkout from "./Checkout";
+import "../styles.css";
 
 
 
@@ -44,7 +45,7 @@ const Cart = () => {
             description="Manage your cart items. Add remove checkout or continue shopping."
             className="container-fluid"
         >
-            <div className="row">
+            <div className="row" id="cart">
                 <div className="col-6">
                     {items.length > 0 ? showItems(items) : noItemsMessage()}
                 </div>
