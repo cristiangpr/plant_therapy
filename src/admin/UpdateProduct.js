@@ -170,11 +170,11 @@ const UpdateProduct = ({ match }) => {
                     className="form-control"
                 >
                 <option>Please select</option>
-                <option value="Retail">Retail</option>
-                <option value="Wholesale">Wholesale</option>
-                  <option value="Farm">Farm</option>
-                  <option value="Distributor 25">Distributor 25</option>
-                  <option value="Distributor 32">Distributor 32</option>
+                <option value="5dab5350fe6153076c4c808e">Retail</option>
+                <option value="5dab86889f624f3d5839d8e2">Wholesale</option>
+                  <option value="5dab877c9f624f3d5839d8e5">Farm</option>
+                  <option value="5dab878a9f624f3d5839d8e6">Distributor 25</option>
+                  <option value="5db747f7711507468c2f7ba5">Distributor 32</option>
                 </select>
             </div>
             <div className="form-group">
@@ -185,10 +185,10 @@ const UpdateProduct = ({ match }) => {
                 >
                 >
                     <option>Please select</option>
-                    <option value="12 Oz">12 Oz</option>
-                    <option value="32 Oz">32 Oz</option>
-                      <option value="1 Gallon">1 Gallon</option>
-                      <option value="2.5 Gallon">2.5 Gallon</option>
+                    <option value="5db39bb2a60e8108f00ca030">12 Oz</option>
+                    <option value="5db39bc9a60e8108f00ca032">32 Oz</option>
+                      <option value="5db39bd2a60e8108f00ca033">1 Gallon</option>
+                      <option value="5db39bd9a60e8108f00ca034">2.5 Gallon</option>
                 </select>
             </div>
 
