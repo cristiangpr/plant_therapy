@@ -26,6 +26,7 @@ import UpdateProduct from "./admin/UpdateProduct";
 import ManageUsers from "./admin/ManageUsers";
 import UpdateUser from "./admin/UpdateUser";
 import AddInventory from "./admin/AddInventory";
+ import About from './components/About';
 
 
   require('dotenv').config()
@@ -37,6 +38,7 @@ import AddInventory from "./admin/AddInventory";
         <Switch>
            <Route exact path="/" component={Landing} />
             <Route path="/consumer" component={Consumer} />
+              <Route path="/about" component={About} />
             <Route path="/Distributors" component={Distributors} />
             <Route path="/DistributorsLanding" component={DistributorsLanding} />
             <Route path="/FarmsLanding" component={FarmsLanding} />

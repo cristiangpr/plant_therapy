@@ -85,9 +85,8 @@ const Navbar = ({ history }) => {
       <ul className="nav-menu sf-js-enabled sf-arrows">
         <li><Link to="/"   style={isActive(history, "/")}>Home</Link></li>
         <li><Link to="/consumer"  style={isActive(history, "/consumer")}>Shop</Link></li>
-        <li><a href="/consumer#about">About Us</a></li>
-        <li><a href="consumer#products" >Products</a></li>
-        <li><a href="/consumer#blog">Instagram</a></li>
+        <li><a href="/about">About</a></li>
+    
 
         <li><Link to="/StoreLocator">Locations</Link></li>
               <li><a href="/consumer#contact">Contact</a></li>
