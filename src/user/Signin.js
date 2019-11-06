@@ -95,7 +95,7 @@ const Signin = () => {
     return (
         <Layout
             title="Signin"
-            description="Signin to Node React E-commerce App"
+            description="Signin to Lost Coast Plant Therapy"
             className="container col-md-8 offset-md-2"
         >
             {showLoading()}
