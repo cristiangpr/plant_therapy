@@ -24,24 +24,30 @@ const Checkout = ({ products }) => {
         error: "",
         instance: {},
         address: "",
+        promo: "",
+
         isButtonDisabled: false,
         address: ""
 
     });
+    const [discount, setDiscount]= useState(1);
+      const [code, setCode]= useState(null);
 
     const userId = isAuthenticated() && isAuthenticated().user._id;
     const token = isAuthenticated() && isAuthenticated().token;
 
     const getToken = (userId, token) => {
+
         getBraintreeClientToken(userId, token).then(data => {
             if (data.error) {
                 setData({ ...data, error: data.error });
             } else {
                 setData({ clientToken: data.clientToken });
+                console.log(data.loading)
             }
         });
     };
-  
+
     useEffect(() => {
         getToken(userId, token);
     }, []);
@@ -49,11 +55,21 @@ const Checkout = ({ products }) => {
     const handleAddress = event => {
         setData({ ...data, address: event.target.value });
     };
+    const handleCode = event => {
+        setCode(event.target.value);
+    };
 
+    const getDiscount = () => {
+       if (code === "666"){
+         setDiscount(.85)
+       };
+       getTotal();
+    }
 
     const getTotal = () => {
+
         return products.reduce((currentValue, nextValue) => {
-            return currentValue + nextValue.count * nextValue.price;
+            return currentValue + nextValue.count * nextValue.price * discount;
         }, 0);
     };
 
@@ -141,6 +157,23 @@ const Checkout = ({ products }) => {
                         value={data.address}
                         placeholder="Type your delivery address here..."
                     />
+                </div>
+                <div className="gorm-group mb-3">
+                    <label className="text-muted">Promo Code:</label>
+                    <textarea
+                        onChange={handleCode}
+                        className="form-control"
+                        value={code}
+                        placeholder="Enter your promo code here..."
+                    />
+                    <button
+                        onClick={getDiscount}
+
+                        className="btn btn-success btn-block"
+                    >
+                    Apply Discount
+
+                    </button>
                 </div>
                     <DropIn
                         options={{
