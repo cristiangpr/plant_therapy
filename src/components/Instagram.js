@@ -9,7 +9,7 @@ class Instagram extends Component {
 
   componentDidMount(){
     var feed = new Instafeed({
-      accessToken: '14251104739.1677ed0.4a9be2bf71d74ec89c136dfd53a90456',
+      accessToken: process.env.REACT_APP_INSTA_TOKEN,
         get: 'user',
         clientId: 	process.env.REACT_APP_INSTA_CLIENT,
          template:'<div class="col-lg-3  col-md-6   wow animated zoomIn "><a class="instagram-image" href="{{link}}" target="_blank"><img src="{{image}}"/> <div className="likes" id="likes">&hearts; {{likes}}</div></a></div>',
