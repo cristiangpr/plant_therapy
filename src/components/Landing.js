@@ -82,7 +82,7 @@ const Landing = () => (
        <div className="row">
 
          <div className="col-lg-4 box">
-              <Link to= "/consumer">   <i className="ion-pricetags"></i></Link>
+              <Link to= "/consumer#products">   <i className="ion-pricetags"></i></Link>
            <h4 className="title"><a href="/consumer">Shop Now</a></h4>
            <p className="description">Browse our selection of home gardening products</p>
 

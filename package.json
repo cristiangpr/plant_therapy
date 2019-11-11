@@ -12,6 +12,7 @@
     "instafeed.js": "^1.4.1",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
+    "query-string": "^6.8.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-instafeed": "^1.0.0",

@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import "braintree-web";
 import DropIn from "braintree-web-drop-in-react";
 import { emptyCart } from "./cartHelpers";
-
+import Search from "./Search";
 const Checkout = ({ products }) => {
     const [data, setData] = useState({
 
@@ -24,24 +24,31 @@ const Checkout = ({ products }) => {
         error: "",
         instance: {},
         address: "",
+
+
         isButtonDisabled: false,
         address: ""
 
     });
+    const [discount, setDiscount]= useState(0);
+      const [code, setCode]= useState(0);
+
 
     const userId = isAuthenticated() && isAuthenticated().user._id;
     const token = isAuthenticated() && isAuthenticated().token;
 
     const getToken = (userId, token) => {
+
         getBraintreeClientToken(userId, token).then(data => {
             if (data.error) {
                 setData({ ...data, error: data.error });
             } else {
                 setData({ clientToken: data.clientToken });
+                console.log(data.loading)
             }
         });
     };
-  
+
     useEffect(() => {
         getToken(userId, token);
     }, []);
@@ -51,11 +58,30 @@ const Checkout = ({ products }) => {
     };
 
 
+
     const getTotal = () => {
+
         return products.reduce((currentValue, nextValue) => {
-            return currentValue + nextValue.count * nextValue.price;
+            return currentValue + nextValue.count * nextValue.price * ((100 - discount) * .01);
         }, 0);
     };
+    const getTax = () => {
+      if (!isAuthenticated()){
+        return getTotal() * .0725;
+      }
+else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail" 
+  || isAuthenticated().user.role === "Registered User"
+  || isAuthenticated().user.role === "Agricultural Commercial"){
+  return getTotal() * .0725;
+} else {
+  return 0
+}
+    }
+    const getFinalTotal = () => {
+        return getTotal() + getTax();
+
+    }
+
 
     const showCheckout = () => {
         return isAuthenticated() ? (
@@ -90,7 +116,7 @@ const Checkout = ({ products }) => {
                 // );
                 const paymentData = {
                     paymentMethodNonce: nonce,
-                    amount: getTotal(products)
+                    amount: parseFloat(getFinalTotal()).toFixed(2)
                 };
 
                 processPayment(userId, token, paymentData)
@@ -103,9 +129,12 @@ const Checkout = ({ products }) => {
                             products: products,
                             transaction_id: response.transaction.id,
                             amount: response.transaction.amount,
-                            address: deliveryAddress
-                        };
+                            address: deliveryAddress,
+                            discount_code: code,
+                            discount_rate: discount
 
+                        };
+                      console.log(createOrderData)
                         createOrder(userId, token, createOrderData)
                             .then(response => {
                                  emptyCart(() => {
@@ -142,6 +171,7 @@ const Checkout = ({ products }) => {
                         placeholder="Type your delivery address here..."
                     />
                 </div>
+                   <Search  setDiscount={setDiscount} setCode={setCode}/>
                     <DropIn
                         options={{
 
@@ -195,8 +225,9 @@ const Checkout = ({ products }) => {
 
     return (
         <div>
-            <h2>Total: ${getTotal()}</h2>
-
+            <h2>Sub Total: ${parseFloat(getTotal()).toFixed(2)}</h2>
+            <h2>Tax: ${parseFloat(getTax()).toFixed(2)}</h2>
+            <h2>Total: ${parseFloat(getFinalTotal()).toFixed(2)}</h2>
                 {showLoading(data.loading)}
             {showSuccess(data.success)}
             {showError(data.error)}
