@@ -27,6 +27,7 @@ import ManageUsers from "./admin/ManageUsers";
 import UpdateUser from "./admin/UpdateUser";
 import AddInventory from "./admin/AddInventory";
  import About from './components/About';
+ import AddCoupon from "./admin/AddCoupon";
 
 
   require('dotenv').config()
@@ -82,6 +83,11 @@ import AddInventory from "./admin/AddInventory";
                       path="/add_inventory"
                       exact
                       component={AddInventory}
+                  />
+                  <AdminRoute
+                      path="/add_coupon"
+                      exact
+                      component={AddCoupon}
                   />
 
         </Switch>

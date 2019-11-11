@@ -103,7 +103,7 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
 
 
 
-                  <p className="black-10">${product.price}</p>
+                  <p className="black-10">${parseFloat(product.price).toFixed(2)}</p>
 
 
                   {showStock(product.inventory.quantity)}

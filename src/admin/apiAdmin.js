@@ -247,3 +247,22 @@ export const createInventory = (userId, token, inventory) => {
             console.log(err);
         });
 };
+
+
+export const createCoupon = (userId, token, coupon) => {
+    return fetch(`${API}/coupon/create/${userId}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(coupon)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};

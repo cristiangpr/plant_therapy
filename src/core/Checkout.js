@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import "braintree-web";
 import DropIn from "braintree-web-drop-in-react";
 import { emptyCart } from "./cartHelpers";
-
+import Search from "./Search";
 const Checkout = ({ products }) => {
     const [data, setData] = useState({
 
@@ -24,14 +24,15 @@ const Checkout = ({ products }) => {
         error: "",
         instance: {},
         address: "",
-        promo: "",
+
 
         isButtonDisabled: false,
         address: ""
 
     });
-    const [discount, setDiscount]= useState(1);
-      const [code, setCode]= useState(null);
+    const [discount, setDiscount]= useState(0);
+      const [code, setCode]= useState(0);
+
 
     const userId = isAuthenticated() && isAuthenticated().user._id;
     const token = isAuthenticated() && isAuthenticated().token;
@@ -55,23 +56,23 @@ const Checkout = ({ products }) => {
     const handleAddress = event => {
         setData({ ...data, address: event.target.value });
     };
-    const handleCode = event => {
-        setCode(event.target.value);
-    };
 
-    const getDiscount = () => {
-       if (code === "666"){
-         setDiscount(.85)
-       };
-       getTotal();
-    }
+
 
     const getTotal = () => {
 
         return products.reduce((currentValue, nextValue) => {
-            return currentValue + nextValue.count * nextValue.price * discount;
+            return currentValue + nextValue.count * nextValue.price * ((100 - discount) * .01);
         }, 0);
     };
+    const getTax = () => {
+      return getTotal() * .15;
+    }
+    const getFinalTotal = () => {
+        return getTotal() + getTax();
+
+    }
+
 
     const showCheckout = () => {
         return isAuthenticated() ? (
@@ -106,7 +107,7 @@ const Checkout = ({ products }) => {
                 // );
                 const paymentData = {
                     paymentMethodNonce: nonce,
-                    amount: getTotal(products)
+                    amount: parseFloat(getFinalTotal()).toFixed(2)
                 };
 
                 processPayment(userId, token, paymentData)
@@ -119,9 +120,12 @@ const Checkout = ({ products }) => {
                             products: products,
                             transaction_id: response.transaction.id,
                             amount: response.transaction.amount,
-                            address: deliveryAddress
-                        };
+                            address: deliveryAddress,
+                            discount_code: code,
+                            discount_rate: discount
 
+                        };
+                      console.log(createOrderData)
                         createOrder(userId, token, createOrderData)
                             .then(response => {
                                  emptyCart(() => {
@@ -158,23 +162,7 @@ const Checkout = ({ products }) => {
                         placeholder="Type your delivery address here..."
                     />
                 </div>
-                <div className="gorm-group mb-3">
-                    <label className="text-muted">Promo Code:</label>
-                    <textarea
-                        onChange={handleCode}
-                        className="form-control"
-                        value={code}
-                        placeholder="Enter your promo code here..."
-                    />
-                    <button
-                        onClick={getDiscount}
-
-                        className="btn btn-success btn-block"
-                    >
-                    Apply Discount
-
-                    </button>
-                </div>
+                   <Search  setDiscount={setDiscount} setCode={setCode}/>
                     <DropIn
                         options={{
 
@@ -228,8 +216,9 @@ const Checkout = ({ products }) => {
 
     return (
         <div>
-            <h2>Total: ${getTotal()}</h2>
-
+            <h2>Sub Total: ${parseFloat(getTotal()).toFixed(2)}</h2>
+            <h2>Tax: ${parseFloat(getTax()).toFixed(2)}</h2>
+            <h2>Total: ${parseFloat(getFinalTotal()).toFixed(2)}</h2>
                 {showLoading(data.loading)}
             {showSuccess(data.success)}
             {showError(data.error)}

@@ -75,7 +75,7 @@ const Orders = () => {
 
     const showStatus = o => (
         <div className="form-group">
-            <h3 className="mark mb-4">Status: {o.status}</h3>
+            <h3 className="mark mb-4" style={{color: "black"}}>Status: {o.status}</h3>
             <select
                 className="form-control"
                 onChange={e => handleStatusChange(e, o._id)}
@@ -133,6 +133,12 @@ const Orders = () => {
                               </li>
                               <li className="list-group-item">
                                   Delivery address: {o.address}
+                              </li>
+                              <li className="list-group-item">
+                                  Discount Code: {o.discount_code}
+                              </li>
+                              <li className="list-group-item">
+                                  Discount Rate: {o.discount_rate}
                               </li>
                           </ul>
 
