@@ -66,7 +66,16 @@ const Checkout = ({ products }) => {
         }, 0);
     };
     const getTax = () => {
-      return getTotal() * .15;
+      if (!isAuthenticated()){
+        return getTotal() * .0725;
+      }
+else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail" 
+  || isAuthenticated().user.role === "Registered User"
+  || isAuthenticated().user.role === "Agricultural Commercial"){
+  return getTotal() * .0725;
+} else {
+  return 0
+}
     }
     const getFinalTotal = () => {
         return getTotal() + getTax();

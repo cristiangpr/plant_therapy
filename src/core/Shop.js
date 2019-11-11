@@ -74,7 +74,8 @@ const Shop = () => {
                 if (isAuthenticated() && isAuthenticated().user.role === "Agricultural Commercial") { handleFilters(  ["5dab877c9f624f3d5839d8e5"] , "category")};
                 if (isAuthenticated() && isAuthenticated().user.role === "Wholesale") { handleFilters(  ["5dab86889f624f3d5839d8e2"] , "category")};
                 if (isAuthenticated() && isAuthenticated().user.role === "Distributor 25") { handleFilters(  ["5dab878a9f624f3d5839d8e6"] , "category")};
-                
+                  if (isAuthenticated() && isAuthenticated().user.role === "Distributor 32") { handleFilters(  ["5db747f7711507468c2f7ba5"] , "category")};
+
       }
 
       useEffect(() => {

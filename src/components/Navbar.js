@@ -84,9 +84,9 @@ const Navbar = ({ history }) => {
     <nav id="nav-menu-container">
       <ul className="nav-menu sf-js-enabled sf-arrows">
         <li><Link to="/"   style={isActive(history, "/")}>Home</Link></li>
-        <li><Link to="/consumer"  style={isActive(history, "/consumer")}>Shop</Link></li>
+        <li><Link to="/consumer#products"  style={isActive(history, "/consumer")}>Shop</Link></li>
         <li><a href="/about">About</a></li>
-    
+
 
         <li><Link to="/StoreLocator">Locations</Link></li>
               <li><a href="/consumer#contact">Contact</a></li>
@@ -139,10 +139,11 @@ const Navbar = ({ history }) => {
               )}
 
               {isAuthenticated() && (
+                <Fragment>
                   <li className="nav-item">
                       <Link
                           className="nav-link"
-                          style={{ cursor: "pointer", color: "#ffffff" }}
+
                           onClick={() =>
                               signout(() => {
                                   history.push("/");
@@ -152,6 +153,7 @@ const Navbar = ({ history }) => {
                           Signout
                       </Link>
                   </li>
+                  </Fragment>
               )}
         <li className="nav-item">
             <Link
