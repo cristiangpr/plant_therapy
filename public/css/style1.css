@@ -246,8 +246,11 @@ h6 {
 }
 
 #intro .carousel-background img {
-  width: 100vw;
-  height: 80vh;
+
+      height: 100%,
+      width: 100%;
+      object-fit: cover;
+
   -webkit-filter:brightness(100%);
 }
 

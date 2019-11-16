@@ -1,14 +1,12 @@
 import React from 'react';
 import '../App.css';
   import {  Link } from 'react-router-dom';
+  import Navbar from './Navbar'
 
 const Landing = () => (
 
 
-
-
     <div className ="body">
-
 
 
     <section id="intro">
@@ -22,9 +20,9 @@ const Landing = () => (
             <div className="carousel-item active animated fadeIn">
               <div className="carousel-background">
               <picture>
-              <source srcSet="./img/product.jpg" media="(min-width: 769px)" alt=""/>
+              <source srcSet="./img/product1.jpg" media="(min-width: 769px)" alt=""/>
                 <source srcSet="./img/product_mobile.jpg" media="(min-width: 1px)" alt=""/>
-                      <img srcSet="./img/product.jpg"  alt="product" className="d-block img-fluid"/>
+                      <img srcSet="./img/product1.jpg"  alt="product" className="d-block img-fluid"/>
               </picture></div>
 
             </div>
@@ -106,5 +104,6 @@ const Landing = () => (
 
 
 </div>
+
 );
 export default Landing;
