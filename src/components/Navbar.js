@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useEffect } from 'react';
+import React, {  Fragment, useEffect } from 'react';
   import {  Link, withRouter } from 'react-router-dom';
 import $ from "jquery";
 import { itemTotal } from "../core/cartHelpers";

@@ -14,6 +14,7 @@
     "moment": "^2.24.0",
     "query-string": "^6.8.3",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.8.6",
     "react-instafeed": "^1.0.0",
     "react-router-dom": "^5.0.1",
