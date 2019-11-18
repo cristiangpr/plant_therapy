@@ -23,7 +23,12 @@ const Landing = () => (
               <div className="carousel-background">
               <picture>
               <source srcSet="./img/product1.jpg" media="(min-width: 769px)" alt=""/>
-                <source srcSet="./img/product_mobile.jpg" media="(min-width: 1px)" alt=""/>
+                <source srcSet= "/img/logo.png"
+                
+
+                   className="d-inline-block align-top"
+                   alt="Plant Therapy logo"
+               media="(min-width: 1px)" alt=""/>
                       <img srcSet="./img/product1.jpg"  alt="product" className="d-block img-fluid"/>
               </picture></div>
                </div>
@@ -41,7 +46,7 @@ const Landing = () => (
               <Link to= "/consumer#products">   <i className="ion-pricetags"></i></Link>
            <h4 className="title"><a href="/consumer">Shop Now</a></h4>
            <p className="description">Browse our selection of home gardening products</p>
-  
+
 
          </div>
 
