@@ -3,7 +3,7 @@ import Shop from "../core/Shop.js"
 import ScrollUpButton from "react-scroll-up-button";
 
   import {  Link } from 'react-router-dom';
-import Navbar from "./Navbar.js";
+import Navbar1 from "./Navbar.js";
 import Footer from "./Footer.js";
 
 import Instagram from "./Instagram.js";
@@ -12,25 +12,29 @@ import Instagram from "./Instagram.js";
 const Consumer = () => {
 
   return (
+    <>
+<Navbar1/>
+  <div className="body">
 
-  <div>
 
-<Navbar/>
 
 
 <Shop/>
 
- <Instagram/>
+
+ <div className="section-header">
+   <h3>Locations</h3>
+
+ </div>
    <section id="call-to-action" className="wow fadeIn">
      <div className="container text-center">
-       <h3>Store Finder</h3>
-       <p> Find a retail location near you</p>
-       <Link className="cta-btn" to="/StoreLocator">Find Stores</Link>
+
+       <Link className="cta-btn" to="/StoreLocator">FIND A RETAIL LOCATION</Link>
      </div>
    </section>
 
 
-
+ <Instagram/>
 
    <section id="team">
      <div className="container">
@@ -41,7 +45,7 @@ const Consumer = () => {
 
        <div className="row">
 
-         <div className="col-lg-3 col-md-6 wow fadeInUp">
+         <div className="col-md-4 wow fadeInUp">
            <div className="member">
              <img src="img/jd.jpg" className="img-fluid" alt=""/>
              <div className="member-info">
@@ -49,64 +53,45 @@ const Consumer = () => {
                  <h4>James Davidson</h4>
                  <span>Indycar</span>
                  <div className="social">
-                   <a href=""><i className="fa fa-twitter"></i></a>
+                   <a href=""><i className="fa fa-instagram"></i></a>
                    <a href=""><i className="fa fa-facebook"></i></a>
-                   <a href=""><i className="fa fa-google-plus"></i></a>
-                   <a href=""><i className="fa fa-linkedin"></i></a>
+
                  </div>
                </div>
              </div>
            </div>
          </div>
 
-         <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-           <div className="member">
-             <img src="img/team-2.jpg" className="img-fluid" alt=""/>
-             <div className="member-info">
-               <div className="member-info-content">
-                 <h4>Sarah Jhonson</h4>
-                 <span>Snowboard</span>
-                 <div className="social">
-                   <a href=""><i className="fa fa-twitter"></i></a>
-                   <a href=""><i className="fa fa-facebook"></i></a>
-                   <a href=""><i className="fa fa-google-plus"></i></a>
-                   <a href=""><i className="fa fa-linkedin"></i></a>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
 
-         <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+
+         <div className="col-md-4  wow fadeInUp" data-wow-delay="0.2s">
            <div className="member">
              <img src="img/team-3.jpg" className="img-fluid" alt=""/>
              <div className="member-info">
                <div className="member-info-content">
-                 <h4>William Anderson</h4>
+                 <h4>Elijah Fox</h4>
                  <span>Surfer</span>
                  <div className="social">
-                   <a href=""><i className="fa fa-twitter"></i></a>
+                   <a href=""><i className="fa fa-instagram"></i></a>
                    <a href=""><i className="fa fa-facebook"></i></a>
-                   <a href=""><i className="fa fa-google-plus"></i></a>
-                   <a href=""><i className="fa fa-linkedin"></i></a>
+
                  </div>
                </div>
              </div>
            </div>
          </div>
 
-         <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+         <div className="col-md-4  wow fadeInUp" data-wow-delay="0.3s">
            <div className="member">
              <img src="img/team-4.jpg" className="img-fluid" alt=""/>
              <div className="member-info">
                <div className="member-info-content">
-                 <h4>Amanda Jepson</h4>
+                 <h4>Kingston</h4>
                  <span>Formula 1</span>
                  <div className="social">
-                   <a href=""><i className="fa fa-twitter"></i></a>
+                   <a href=""><i className="fa fa-instagram"></i></a>
                    <a href=""><i className="fa fa-facebook"></i></a>
-                   <a href=""><i className="fa fa-google-plus"></i></a>
-                   <a href=""><i className="fa fa-linkedin"></i></a>
+
                  </div>
                </div>
              </div>
@@ -125,7 +110,7 @@ const Consumer = () => {
 
        <div className="section-header">
          <h3>Contact Us</h3>
-         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+         <p>Send us a message. We'd love to hear from you!</p>
        </div>
 
        <div className="row contact-info">
@@ -150,7 +135,7 @@ const Consumer = () => {
            <div className="contact-email">
              <i className="ion-ios-email-outline"></i>
              <h3>Email</h3>
-             <p><a href="mailto:info@example.com"> contact@loscoastplanttherapy.com</a></p>
+             <p><a href="mailto:info@example.com"> contact@lostcoastplanttherapy.com</a></p>
            </div>
          </div>
 
@@ -188,7 +173,7 @@ const Consumer = () => {
 
      <ScrollUpButton/>
    </div>
-
+</>
 );
 
 };

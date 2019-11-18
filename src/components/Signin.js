@@ -36,6 +36,8 @@ const Signin = () => {
     };
 
     const signInForm = () => (
+
+
       <section id="sign-in" className="section-bg wow fadeInUp">
         <div className="container">
 
@@ -95,6 +97,7 @@ const Signin = () => {
 
     return (
         <div>
+        
             {showLoading()}
             {showError()}
             {signInForm()}

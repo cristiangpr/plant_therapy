@@ -256,7 +256,7 @@ const About = () => {
            <div className="contact-email">
              <i className="ion-ios-email-outline"></i>
              <h3>Email</h3>
-             <p><a href="mailto:info@example.com"> contact@loscoastplanttherapy.com</a></p>
+             <p><a href="mailto:info@example.com"> contact@lostcoastplanttherapy.com</a></p>
            </div>
          </div>
 

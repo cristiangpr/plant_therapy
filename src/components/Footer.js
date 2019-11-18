@@ -10,7 +10,14 @@ const Footer = () => (
       <div className="row">
 
         <div className="col-lg-3 col-md-6 footer-info">
-          <h3>Lost Coast Plant Therapy</h3>
+        <img
+          src="/img/logo.png"
+          height= "30%"
+          width= "75%"
+
+          className="d-inline-block align-top"
+          alt="Plant Therapy logo"
+        />
           <p>Protect your valuable crops from damaging pests, mold and mildew with Lost Coast Plant Therapy. Eliminates bugs on contact by suffocation and dehydration. Does not leave harmful residue on your plants.</p>
         </div>
 
@@ -32,15 +39,14 @@ const Footer = () => (
              Calistoga, Ca 94515<br/>
             United States <br/>
             <strong>Phone:</strong>+1 (877) 558-0808<br/>
-            <strong>Email:</strong>  contact@loscoastplanttherapy.com<br/>
+            <strong>Email:</strong>  contact@lostcoastplanttherapy.com<br/>
           </p>
 
           <div className="social-links">
-            <a href="#" className="twitter"><i className="fa fa-twitter"></i></a>
+
             <a href="#" className="facebook"><i className="fa fa-facebook"></i></a>
             <a href="#" className="instagram"><i className="fa fa-instagram"></i></a>
-            <a href="#" className="google-plus"><i className="fa fa-google-plus"></i></a>
-            <a href="#" className="linkedin"><i className="fa fa-linkedin"></i></a>
+
           </div>
 
         </div>
@@ -59,7 +65,7 @@ const Footer = () => (
 
   <div className="container">
     <div className="copyright">
-      &copy; Copyright <strong>Lost Coast Plant Therapy</strong>. All Rights Reserved
+      &copy; Copyright 2017 <strong>Lost Coast Plant Therapy</strong>. All Rights Reserved
     </div>
 
   </div>

@@ -1,13 +1,13 @@
 import React from 'react';
 import '../App.css';
 import {  Link } from 'react-router-dom';
-import Navbar2 from './Navbar2'
+import Navbar1 from './Navbar'
 
 
 const Landing = () => (
   <>
-<Navbar2/>
 
+<Navbar1/>
     <div className ="body">
 
 
@@ -41,6 +41,7 @@ const Landing = () => (
               <Link to= "/consumer#products">   <i className="ion-pricetags"></i></Link>
            <h4 className="title"><a href="/consumer">Shop Now</a></h4>
            <p className="description">Browse our selection of home gardening products</p>
+  
 
          </div>
 
@@ -48,12 +49,14 @@ const Landing = () => (
           <Link to= "/DistributorsLanding">   <i className="ion-earth"></i></Link>
            <h4 className="title"><a href="/DistributorsLanding">Distributors & Stores</a></h4>
            <p className="description">Wholesale and retail distributors go here</p>
+
          </div>
 
          <div className="col-lg-4 box">
           <Link to= "/FarmsLanding">   <i className="ion-leaf"></i></Link>
            <h4 className="title"><a href="/FarmsLanding">Farms</a></h4>
            <p className="description">Learn about our special programs for producers</p>
+
          </div>
 
        </div>

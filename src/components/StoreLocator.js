@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 import { Map, Info,  } from 'react-store-locator'
-import Navbar from './Navbar.js'
+import Navbar1 from './Navbar.js'
 import myPin from '../myPin'
 import mapStyle from '../mapStyle.json'
 import locations from '../locations'
@@ -56,7 +56,7 @@ class StoreLocator extends Component {
 		return (
 			<div className="App">
 
-		<Navbar/>
+		<Navbar1/>
       <div id="map">
 				<Map {...mapProps}>
 					{(location, closeLocation) => {

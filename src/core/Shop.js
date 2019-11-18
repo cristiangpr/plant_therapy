@@ -68,6 +68,17 @@ const Shop = () => {
           );
       };
 
+      const handleTitle= () => {
+        if (!isAuthenticated()){ return ""};
+        if (isAuthenticated() && isAuthenticated().user.role === "Registered User") { return ""};
+        if (isAuthenticated() && isAuthenticated().user.role === "Agricultural Commercial") { return "Agricultural Commercial Pricing"};
+        if (isAuthenticated() && isAuthenticated().user.role === "Wholesale") { return "Wholesale Pricing"};
+        if (isAuthenticated() && isAuthenticated().user.role === "Distributor 25") { return "Distributor 25 Pricing"};
+          if (isAuthenticated() && isAuthenticated().user.role === "Distributor 32") {return "Distributor 32 Pricing"};
+          if (isAuthenticated() && isAuthenticated().user.role === "Admin") {return "Retail Pricing"};
+
+      }
+
       const handleRole = () => {
                 if (!isAuthenticated()){ handleFilters(  ["5dab5350fe6153076c4c808e"] , "category")};
                 if (isAuthenticated() && isAuthenticated().user.role === "Registered User") { handleFilters(  ["5dab5350fe6153076c4c808e"] , "category")};
@@ -75,7 +86,7 @@ const Shop = () => {
                 if (isAuthenticated() && isAuthenticated().user.role === "Wholesale") { handleFilters(  ["5dab86889f624f3d5839d8e2"] , "category")};
                 if (isAuthenticated() && isAuthenticated().user.role === "Distributor 25") { handleFilters(  ["5dab878a9f624f3d5839d8e6"] , "category")};
                   if (isAuthenticated() && isAuthenticated().user.role === "Distributor 32") { handleFilters(  ["5db747f7711507468c2f7ba5"] , "category")};
-
+                  if (isAuthenticated() && isAuthenticated().user.role === "Admin") { handleFilters(  ["5dab5350fe6153076c4c808e"] , "category")};
       }
 
       useEffect(() => {
@@ -122,7 +133,7 @@ const Shop = () => {
             <div className="col-lg-8">
               <div className="section-header">
                 <h3>PRODUCTS</h3>
-                <p>Find a presentation to fit your needs</p>
+                <h4>{handleTitle()}</h4>
               </div>
             </div>
           </div>

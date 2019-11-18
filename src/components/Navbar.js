@@ -1,9 +1,9 @@
 import React, {  Fragment, useEffect } from 'react';
-  import {  Link, withRouter } from 'react-router-dom';
-import $ from "jquery";
+  import {   withRouter } from 'react-router-dom';
+
 import { itemTotal } from "../core/cartHelpers";
 import { signout, isAuthenticated } from "../auth";
-
+import {Navbar, Nav } from 'react-bootstrap'
 
 
 const isActive = (history, path) => {
@@ -14,165 +14,120 @@ const isActive = (history, path) => {
     }
 };
 
-const Navbar = ({ history }) => {
-  useEffect(() => {
-    if ($('#nav-menu-container').length) {
-      var $mobile_nav = $('#nav-menu-container').clone().prop({
-        id: 'mobile-nav'
-      });
-      $mobile_nav.find('> ul').attr({
-        'class': '',
-        'id': ''
-      });
-      $('body').append($mobile_nav);
-      $('body').prepend('<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>');
-      $('body').append('<div id="mobile-body-overly"></div>');
-      $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
-
-      $(document).on('click', '.menu-has-children i', function(e) {
-        $(this).next().toggleClass('menu-item-active');
-        $(this).nextAll('ul').eq(0).slideToggle();
-        $(this).toggleClass("fa-chevron-up fa-chevron-down");
-      });
-
-      $(document).on('click', '#mobile-nav-toggle', function(e) {
-        $('body').toggleClass('mobile-nav-active');
-        $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-        $('#mobile-body-overly').toggle();
-      });
-
-      $(document).click(function(e) {
-        var container = $("#mobile-nav, #mobile-nav-toggle");
-        if (!container.is(e.target) && container.has(e.target).length === 0) {
-          if ($('body').hasClass('mobile-nav-active')) {
-            $('body').removeClass('mobile-nav-active');
-            $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-            $('#mobile-body-overly').fadeOut();
-          }
-        }
-      });
-    } else if ($("#mobile-nav, #mobile-nav-toggle").length) {
-      $("#mobile-nav, #mobile-nav-toggle").hide();
+const showLogo = (history, path) => {
+    if (history.location.pathname === "/") {
+        return null;
+    } else {
+        return  <img
+           src="/img/logo.png"
+           height= "100%"
+           width= "100%"
+          
+           className="d-inline-block align-top"
+           alt="Plant Therapy logo"
+         /> ;
     }
+};
+
+const Navbar1 = ({ history }) => {
 
 
+return (
 
 
-    return () => {
-    $("#mobile-nav, #mobile-nav-toggle").hide();
+<Navbar bg="black"  variant="white" expand="md" className="Navbar" sticky="top">
 
-}
+<Navbar.Brand href="/">
+{showLogo(history)}
+   </Navbar.Brand>
 
-}, []);
+  <Navbar.Toggle aria-controls="responsive-navbar-nav"  />
+  <Navbar.Collapse id="responsive-navbar-nav" >
+    <Nav className="ml-auto" id="mobile-navbar">
+      <Nav.Link href="/"   style={isActive(history, "/")}>Home</Nav.Link>
+      <Nav.Link href="/consumer#products"   style={isActive(history, "/consumer")} >Shop</Nav.Link>
+        <Nav.Link href="/about" style={isActive(history, "/about")}>About</Nav.Link>
+        <Nav.Link href="/StoreLocator" style={isActive(history, "/StoreLocator")}>Locations</Nav.Link>
+          <Nav.Link href="/consumer#contact" >Contact</Nav.Link>
+          {isAuthenticated() && isAuthenticated().user.role !== "Admin" && (
 
-   return (
-
-     <>
-<button type="button" id="mobile-nav-toggle"><i className="fa fa-bars"></i></button>
-
-
-
-<header id="header">
-  <div className="container-fluid">
-
-    <div id="logo" className="pull-left">
-      <h1><a href="/" className="scrollto"><img src="/img/logo.png" alt="" title="" /></a></h1>
+                  <Nav.Link
 
 
-    </div>
+                      href="/user_dashboard"
+                  >
+                      Dashboard
+                  </Nav.Link>
 
-    <nav id="nav-menu-container">
-      <ul className="nav-menu sf-js-enabled sf-arrows">
-        <li><Link to="/"   style={isActive(history, "/")}>Home</Link></li>
-        <li><Link to="/consumer#products"  style={isActive(history, "/consumer")}>Shop</Link></li>
-        <li><a href="/about">About</a></li>
+          )}
+          {isAuthenticated() && isAuthenticated().user.role === "Admin" && (
+
+                  <Nav.Link
 
 
-        <li><Link to="/StoreLocator">Locations</Link></li>
-              <li><a href="/consumer#contact">Contact</a></li>
-              {isAuthenticated() && isAuthenticated().user.role !== "Admin" && (
-                  <li className="nav-item">
-                      <Link
+                      href="/admin_dashboard"
+                  >
+                      Dashboard
+                  </Nav.Link>
+
+          )}
+          {!isAuthenticated() && (
+              <Fragment>
+
+                      <Nav.Link
                           className="nav-link"
 
-                          to="/user_dashboard"
+                          href="/signin"
                       >
-                          Dashboard
-                      </Link>
-                  </li>
-              )}
+                          Signin
+                      </Nav.Link>
 
-              {isAuthenticated() && isAuthenticated().user.role === "Admin" && (
-                  <li className="nav-item">
-                      <Link
+
+                      <Nav.Link
                           className="nav-link"
 
-                          to="/admin_dashboard"
+                          href="/signup"
                       >
-                          Dashboard
-                      </Link>
-                  </li>
-              )}
+                          Signup
+                      </Nav.Link>
 
-              {!isAuthenticated() && (
-                  <Fragment>
-                      <li className="nav-item">
-                          <Link
-                              className="nav-link"
+              </Fragment>
+          )}
 
-                              to="/signin"
-                          >
-                              Signin
-                          </Link>
-                      </li>
+          {isAuthenticated() && (
+            <Fragment>
 
-                      <li className="nav-item">
-                          <Link
-                              className="nav-link"
+                  <Nav.Link
 
-                              to="/signup"
-                          >
-                              Signup
-                          </Link>
-                      </li>
-                  </Fragment>
-              )}
 
-              {isAuthenticated() && (
-                <Fragment>
-                  <li className="nav-item">
-                      <Link
-                          className="nav-link"
+                      onClick={() =>
+                          signout(() => {
+                              history.push("/");
+                          })
+                      }
+                  >
+                      Signout
+                  </Nav.Link>
 
-                          onClick={() =>
-                              signout(() => {
-                                  history.push("/");
-                              })
-                          }
-                      >
-                          Signout
-                      </Link>
-                  </li>
-                  </Fragment>
-              )}
-        <li className="nav-item">
-            <Link
-                className="nav-link"
+              </Fragment>
+          )}
 
-                to="/cart"
-            >
-                <i className="ion-ios-cart-outline"></i>{" "}
-                <sup>
-                    <small className="cart-badge">{itemTotal()}</small>
-                </sup>
-            </Link>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
-</>
+        <Nav.Link
+
+
+            href="/cart"
+        >
+            <i className="ion-ios-cart-outline"></i>{" "}
+            <sup>
+                <small className="cart-badge">{itemTotal()}</small>
+            </sup>
+        </Nav.Link>
+
+
+    </Nav>
+
+  </Navbar.Collapse>
+</Navbar>
 );
-
-}
-export default withRouter(Navbar);
+};
+export default withRouter(Navbar1);
