@@ -69,7 +69,7 @@ const Checkout = ({ products }) => {
       if (!isAuthenticated()){
         return getTotal() * .0725;
       }
-else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail" 
+else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
   || isAuthenticated().user.role === "Registered User"
   || isAuthenticated().user.role === "Agricultural Commercial"){
   return getTotal() * .0725;
@@ -218,7 +218,7 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
             className="alert alert-info"
             style={{ display: success ? "" : "none" }}
         >
-            Thanks! Your payment was successful!
+          <h2>  Thanks! Your payment was successful!</h2>
         </div>
     );
 

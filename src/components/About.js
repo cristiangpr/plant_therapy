@@ -9,6 +9,10 @@ import Footer from "./Footer.js";
 
 const About = () => {
 
+
+const howText = "After saturation of entire plant, our spray will adhere to the target insect, egg case or larvae. It's active ingredients then cause disruption of respiration and digestion. It also penetrates to dehydrate their entire body.\n Insects can never become immune to suffocation or dehydration.\n Lost Coast Plant Therapy was designed to suffocate and dehydrate on contact. That is why it is important to thoroughly saturate your infested plants. If the product does not contact the insect it can't suffocate or dehydrate it.\n Many insects and diseases are eliminated on contact with one application. Others, take repeat application to eliminate the problem.\n Our unique formula does not stress the plant and will not damage flowers, fruits or vegetables as long as it is applied under proper lighting and low heat conditions. Safe to apply daily and will not interfere with plant development.\n Safe to apply on day of harvest and as often as required throughout growth.\n Lost Coat Plant Therapy has been laboratory tested by CW Analytical (among others) and found to leave no harmful residue; this means it is safe for your soil, food and ornamental plants, pets and people.\n Clean ingredients means clean test results. Passes strict lab parts per billion testing.";
+
+
   return (
 
   <div>
@@ -87,26 +91,17 @@ const About = () => {
               <div className="icon"><i className="ion-ios-speedometer-outline"></i></div>
             </div>
             <h2 className="title"><a href="#">  LOST COAST PLANT THERAPY SUFFOCATES AND DEHYDRATES SOFT BODY INSECTS, THEIR LARVAE AND EGGS, POWDERY MILDEW, MOLD AND FUNGUS ON CONTACT.</a></h2>
-            <p>
-
-    After saturation of entire plant, our spray will adhere to the target insect, egg case or larvae. It's active ingredients then cause disruption of respiration and digestion. It also penetrates to dehydrate their entire body. Insects can never become immune to this product because they can't get immune to suffocation or dehydration.
-
-    Lost Coast Plant Therapy was designed to suffocate and dehydrate on contact. That is why it is important to thoroughly saturate your infested plants. If the product does not contact the insect it can't suffocate or dehydrate it.
-
-    Many insects and diseases are eliminated on contact with one application. Others, take repeat application to eliminate the problem.
-
-    Our unique formula does not stress the plant and will not damage flowers, fruits or vegetables as long as it is applied under proper lighting and low heat conditions.
-
-    Lost Coat Plant Therapy has been laboratory tested by CW Analytical (among others) and found to leave no harmful residue; this means it is safe for your soil, food and ornamental plants, pets and people. With proper application our product can be used on the day of harvest.
-
-    Dries off quickly.
-    Tests clean. Clean ingredients means clean test results. Passes strict lab parts per billion testing.
-    Safe to apply daily and will not interfere with plant development.
-    Safe to apply on day of harvest and as often as required throughout growth.
-    Safe for food and medicinal plants.
-    Biodegradable.
-    PBA Free or HDPE grade bottles.
-            </p>
+            <div className="display-linebreak">
+            {howText}
+    </div>
+        <ul className="bullet">
+        <li>Dries off quickly.</li>
+         <li> Tests clean.</li>
+          <li>  Safe for food and medicinal plants.</li>
+          <li>  Biodegradable.</li>
+          <li>  PBA Free or HDPE grade bottles.</li>
+        <li>    Non-GMO and organic ingredients.</li>
+         </ul>
           </div>
         </div>
 
@@ -184,25 +179,26 @@ const About = () => {
               <div className="icon"><i className="ion-ios-speedometer-outline"></i></div>
             </div>
             <h2 className="title"><a href="#"> SEVEN SIMPLE INGREDIENTS OF THE HIGHEST QUALITY MAKE UP LOST COAST PLANT THERAPY. WE ONLY USE BIODEGRADEABLE, FOOD GRADE AND COSMETIC GRADE INGREDIENTS</a></h2>
-            <p>
+            <div>
 
-            LABEL ACTIVE INGREDIENTS:
+          <h2>LABEL ACTIVE INGREDIENTS:</h2>
+<ul className="bullet">
+          <li> <strong> Soy oil:</strong>  </li>  <p> Coats insects and suffocates on contact. Bugs cannot build an immunity to suffocation.</p>
 
-            Soy oil is organic, food grade, and non-GMO. ACTION: Coats insects and suffocates on contact. Bugs cannot build an immunity to suffocation.
+          <li>   <strong>    Peppermint Essential Oil:</strong></li>
+               <p>Natural bug repellent.</p>
+            <li>   <strong>      Citric Acid:</strong> </li> <p>Adjusts pH of plant surface. This ingredient makes the pH of the plant inhospitable for powdery mildew and eliminates spores on contact due to its anti-fungal properties.</p>
+</ul>
+            <h2>LABEL INERT INGREDIENTS:</h2>
+<ul className="bullet">
+            <li>    <strong>Soap </strong></li> <p>Proprietary blend and from a sustainable plant source. Lowers the surface tension of water/liquid, which helps it spread across the surface of anything it is applied to. An emulsifier (helps all the other ingredients to stay mixed together.) It also penetrates the insects body covering and disrupts the cell membrane. Cell contents leak out causing the target pests to dehydrate.</p>
 
-            Peppermint Essential Oil is organic and food grade. ACTION: Natural bug repellent.
+            <li>    <strong>Isopropyl Alcohol</strong></li> <p> Dehydrates insects rapidly and helps evaporate diluted product from plants safely without leaving harmful residue or burning.</p>
 
-            Citric Acid is organic, food grade. ACTION: Adjusts pH of plant surface. Preservative. This ingredient makes the pH of the plant inhospitable for powdery mildew and eliminates spores on contact due to its anti-fungal properties.
-
-            LABEL INERT INGREDIENTS:
-
-            Soap is a proprietary blend and from a sustainable plant source. Lowers the surface tension of water/liquid, which helps it spread across the surface of anything it is applied to. An emulsifier (helps all the other ingredients to stay mixed together.) It also penetrates the insects body covering and disrupts the cell membrane. Cell contents leak out causing the target pests to dehydrate.
-
-            Isopropyl Alcohol is cosmetic grade (safe for skin). Isopropyl alcohol dehydrates insects rapidly and helps evaporate diluted product from plants safely without leaving harmful residue or burning.
-
-            Sodium Citrate is food grade. Preservative, this ingredient also buffers pH to keep it stable; which makes it impossible for powdery mildew and spores to live on the plant.
-            Water is purified, reverse osmosis. Emulsifier and thinning agent.
-            </p>
+          <li>   <strong>   Sodium Citrate</strong></li>  <p>Buffers pH to keep it stable; which makes it impossible for powdery mildew and spores to live on the plant.</p>
+        <li>  <strong>      Water</strong></li><p>  Purified, reverse osmosis. Emulsifier and thinning agent.</p>
+        </ul>
+            </div>
           </div>
         </div>
 

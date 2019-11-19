@@ -19,7 +19,7 @@ import  Signup from "./Signup.js"
   <div className="section-header" id="signin">
     <h3>Sign In</h3>
     <p>
-Affiliated Farms sign in below</p>
+Pre-Aprroved Farms sign in below</p>
   </div>
  <Signin/>
  <div className="section-header">

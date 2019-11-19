@@ -34,7 +34,20 @@ const Consumer = () => {
    </section>
 
 
+   <section className="blog-area section-gap" id="blog">
+    <div className="container">
+    <div className="row">
+            <div className="col-lg-12">
+              <div className="section-header">
+                <h3>INSTAGRAM</h3>
+
+              </div>
+            </div>
+          </div>
  <Instagram/>
+ 
+ </div>
+</section>
 
    <section id="team">
      <div className="container">

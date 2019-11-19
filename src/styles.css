@@ -129,3 +129,10 @@
 .bullet {
   text-align: left;
 }
+.display-linebreak {
+  white-space: pre-line;
+}
+.landing-image{
+  line-height: 0 !important;
+  padding-top: 0;
+}

@@ -2,41 +2,32 @@ import React from 'react';
 import '../App.css';
 import {  Link } from 'react-router-dom';
 import Navbar1 from './Navbar'
-
+import Instagram from "./Instagram.js";
 
 const Landing = () => (
   <>
 
-<Navbar1/>
-    <div className ="body">
 
+    <div >
 
-    <section id="intro">
-      <div className="intro-container">
-        <div id="introCarousel" className="carousel  slide carousel-fade" data-ride="carousel">
+    <Navbar1/>
 
 
 
-          <div className="carousel-inner" role="listbox">
 
-            <div className="carousel-item active animated fadeIn">
-              <div className="carousel-background">
-              <picture>
+              <picture className="landing-image">
               <source srcSet="./img/product1.jpg" media="(min-width: 769px)" alt=""/>
                 <source srcSet= "/img/logo.png"
-                
+
 
                    className="d-inline-block align-top"
                    alt="Plant Therapy logo"
                media="(min-width: 1px)" alt=""/>
-                      <img srcSet="./img/product1.jpg"  alt="product" className="d-block img-fluid"/>
-              </picture></div>
-               </div>
-            </div>
-  </div>
-    </div>
 
-    </section>
+                      <img srcSet="./img/product1.jpg"  alt="product" className="d-block img-fluid"/>
+              </picture>
+
+
 
    <section id="featured-services">
      <div className="container">
@@ -45,7 +36,7 @@ const Landing = () => (
          <div className="col-lg-4 box">
               <Link to= "/consumer#products">   <i className="ion-pricetags"></i></Link>
            <h4 className="title"><a href="/consumer">Shop Now</a></h4>
-           <p className="description">Browse our selection of home gardening products</p>
+           <p className="description">Browse natural gardening products here</p>
 
 
          </div>
@@ -60,15 +51,27 @@ const Landing = () => (
          <div className="col-lg-4 box">
           <Link to= "/FarmsLanding">   <i className="ion-leaf"></i></Link>
            <h4 className="title"><a href="/FarmsLanding">Farms</a></h4>
-           <p className="description">Learn about our special programs for producers</p>
+           <p className="description">Apply for special bulk pricing here</p>
 
          </div>
 
        </div>
      </div>
    </section>
+   <section className="blog-area section-gap" id="blog">
+    <div className="container">
+    <div className="row">
+            <div className="col-lg-12">
+              <div className="section-header">
+                <h4>The plant healthy, planet friendly solution you have been looking for!</h4>
 
+              </div>
+            </div>
+          </div>
+ <Instagram/>
 
+ </div>
+</section>
 </div>
 </>
 );

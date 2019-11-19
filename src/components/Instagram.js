@@ -25,24 +25,13 @@ class Instagram extends Component {
 
   render(){
     return (
+
 <>
 
-    <section className="blog-area section-gap" id="blog">
-     <div className="container">
-     <div className="row">
-             <div className="col-lg-12">
-               <div className="section-header">
-                 <h3>INSTAGRAM</h3>
+      <div className="row" id="instafeed"></div>
 
-               </div>
-             </div>
-           </div>
-      <div className="row" id="instafeed">
 
-      </div>
-      </div>
-    </section>
-    </>
+</>
   );
   };
 };
