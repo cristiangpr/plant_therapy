@@ -132,3 +132,7 @@
 .display-linebreak {
   white-space: pre-line;
 }
+.landing-body {
+  line-height: 0 !important;
+  padding-top: 0;
+}

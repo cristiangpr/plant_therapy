@@ -8,7 +8,7 @@ const Landing = () => (
   <>
 
 
-    <div >
+    <div className="landing-body">
 
     <Navbar1/>
 
