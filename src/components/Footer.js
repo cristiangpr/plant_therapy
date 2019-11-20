@@ -38,8 +38,8 @@ const Footer = () => (
            P.O. Box 662<br/>
              Calistoga, Ca 94515<br/>
             United States <br/>
-            <strong>Phone:</strong>+1 (877) 558-0808<br/>
-            <strong>Email:</strong>  contact@lostcoastplanttherapy.com<br/>
+        +1 (877) 558-0808<br/>
+          contact@lostcoastplanttherapy.com<br/>
           </p>
 
           <div className="social-links">
@@ -53,7 +53,7 @@ const Footer = () => (
 
         <div className="col-lg-3 col-md-6 footer-newsletter">
           <h4>Our Newsletter</h4>
-          <p>Sign up to recieve updates on our products</p>
+          <p>Sign up to recieve updates<br/> on our products</p>
           <form action="" method="post">
             <input type="email" name="email"/><input type="submit"  value="Subscribe"/>
           </form>

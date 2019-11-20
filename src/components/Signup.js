@@ -81,7 +81,7 @@ const Signup = () => {
       </div>
   );
 const signUpForm = () => (
-
+<div className="container">
 <div className="form">
 
   <form  className="contactForm">
@@ -157,7 +157,7 @@ const signUpForm = () => (
     <div className="text-center"><button onClick={clickSubmit} type="submit">Submit Application</button></div>
   </form>
 </div>
-
+</div>
 
 )
 return (
@@ -165,7 +165,7 @@ return (
         {showSuccess()}
         {showError()}
         {signUpForm()}
-      
+
     </div>
 );
 };

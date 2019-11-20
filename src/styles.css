@@ -132,7 +132,13 @@
 .display-linebreak {
   white-space: pre-line;
 }
-.landing-body {
+.landing-image {
   line-height: 0 !important;
   padding-top: 0;
+}
+.carousel-inner {
+  text-align: center;
+}
+.carousel-item h4 {
+text-transform: uppercase;
 }

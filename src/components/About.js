@@ -88,9 +88,9 @@ const howText = "After saturation of entire plant, our spray will adhere to the 
           <div className="about-col">
             <div className="img">
               <img src="./img/how.jpg" alt="" className="img-fluid"/>
-              <div className="icon"><i className="ion-ios-speedometer-outline"></i></div>
+              <div className="icon"><i className="ion-ios-medkit"></i></div>
             </div>
-            <h2 className="title"><a href="#">  LOST COAST PLANT THERAPY SUFFOCATES AND DEHYDRATES SOFT BODY INSECTS, THEIR LARVAE AND EGGS, POWDERY MILDEW, MOLD AND FUNGUS ON CONTACT.</a></h2>
+            <h2 className="title">  LOST COAST PLANT THERAPY SUFFOCATES AND DEHYDRATES SOFT BODY INSECTS, THEIR LARVAE AND EGGS, POWDERY MILDEW, MOLD AND FUNGUS ON CONTACT.</h2>
             <div className="display-linebreak">
             {howText}
     </div>
@@ -125,9 +125,9 @@ const howText = "After saturation of entire plant, our spray will adhere to the 
           <div className="about-col">
             <div className="img">
               <img src="./img/what.jpg" alt="" className="img-fluid"/>
-              <div className="icon"><i className="ion-ios-speedometer-outline"></i></div>
+              <div className="icon"><i className="ion-bug"></i></div>
             </div>
-            <h2 className="title"><a href="#">INSECTS ELIMINATED ON CONTACT INCLUDE SOFT BODY INSECTS, THEIR EGGS AND LARVAE. MILDEW, MOLD, AND FUNGUS SPORES ELIMINATED ON CONTACT. LOST COAST PLANT THERAPY CAN ALSO BE USED AS A PREVENTATIVE.</a></h2>
+            <h2 className="title">INSECTS ELIMINATED ON CONTACT INCLUDE SOFT BODY INSECTS, THEIR EGGS AND LARVAE. MILDEW, MOLD, AND FUNGUS SPORES ELIMINATED ON CONTACT. LOST COAST PLANT THERAPY CAN ALSO BE USED AS A PREVENTATIVE.</h2>
             <p>
             The smaller the insect the faster it works. Larger soft body insects may take longer to suffocate or dehydrate, or require repeat application. Contact with our product begins the death process.
 
@@ -176,9 +176,9 @@ const howText = "After saturation of entire plant, our spray will adhere to the 
           <div className="about-col">
             <div className="img">
               <img src="./img/why.jpg" alt="" className="img-fluid"/>
-              <div className="icon"><i className="ion-ios-speedometer-outline"></i></div>
+              <div className="icon"><i className="ion-heart"></i></div>
             </div>
-            <h2 className="title"><a href="#"> SEVEN SIMPLE INGREDIENTS OF THE HIGHEST QUALITY MAKE UP LOST COAST PLANT THERAPY. WE ONLY USE BIODEGRADEABLE, FOOD GRADE AND COSMETIC GRADE INGREDIENTS</a></h2>
+            <h2 className="title"> SEVEN SIMPLE INGREDIENTS OF THE HIGHEST QUALITY MAKE UP LOST COAST PLANT THERAPY. WE ONLY USE BIODEGRADEABLE, FOOD GRADE AND COSMETIC GRADE INGREDIENTS</h2>
             <div>
 
           <h2>LABEL ACTIVE INGREDIENTS:</h2>

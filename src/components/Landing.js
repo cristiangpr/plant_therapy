@@ -3,12 +3,12 @@ import '../App.css';
 import {  Link } from 'react-router-dom';
 import Navbar1 from './Navbar'
 import Instagram from "./Instagram.js";
-
+import Footer from "./Footer"
 const Landing = () => (
   <>
 
 
-    <div className="landing-body">
+    <div className="landing-image">
 
     <Navbar1/>
 
@@ -27,7 +27,7 @@ const Landing = () => (
                       <img srcSet="./img/product1.jpg"  alt="product" className="d-block img-fluid"/>
               </picture>
 
-
+</div>
 
    <section id="featured-services">
      <div className="container">
@@ -58,21 +58,77 @@ const Landing = () => (
        </div>
      </div>
    </section>
-   <section className="blog-area section-gap" id="blog">
-    <div className="container">
-    <div className="row">
-            <div className="col-lg-12">
-              <div className="section-header">
-                <h4>The plant healthy, planet friendly solution you have been looking for!</h4>
+   <section id="team">
+     <div className="container">
+       <div className="section-header wow fadeInUp">
+       <div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel">
+         <div className="carousel-inner">
+           <div className="carousel-item active">
+      <h4>The plant healthy, planet friendly solution you have been waiting for!</h4>
+           </div>
+           <div class="carousel-item">
+    <h4>Clean start means clean finish</h4>
+           </div>
+           <div class="carousel-item">
+  <h4>Organic ingredients, no poison</h4>
+           </div>
+         </div>
+       </div>
+       </div>
 
-              </div>
-            </div>
-          </div>
- <Instagram/>
+       <div className="row">
 
- </div>
-</section>
-</div>
+         <div className="col-md-4 wow fadeInUp">
+           <div className="member">
+             <img src="img/landing1.jpg" className="img-fluid" alt=""/>
+             <div className="member-info">
+               <div className="member-info-content">
+              <Link to="consumer" ><h4>Shop Now</h4></Link>
+
+
+               </div>
+             </div>
+           </div>
+         </div>
+
+
+
+         <div className="col-md-4 wow fadeInUp">
+           <div className="member">
+             <img src="img/landing2.jpg" className="img-fluid" alt=""/>
+             <div className="member-info">
+               <div className="member-info-content">
+                <Link to="consumer" ><h4>Shop Now</h4></Link>
+
+
+               </div>
+             </div>
+           </div>
+         </div>
+
+
+         <div className="col-md-4 wow fadeInUp">
+           <div className="member">
+             <img src="img/landing3.jpg" className="img-fluid" alt=""/>
+             <div className="member-info">
+               <div className="member-info-content">
+                <Link to="consumer" ><h4>Shop Now</h4></Link>
+
+
+
+
+               </div>
+             </div>
+           </div>
+         </div>
+
+
+       </div>
+
+     </div>
+   </section>
+<Footer/>
+
 </>
 );
 export default Landing;
