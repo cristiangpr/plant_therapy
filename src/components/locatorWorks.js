@@ -1,12 +1,13 @@
 
-import React, { Component } from 'react'
-import { Map, Info, Search } from 'react-store-locator'
-import Navbar from './Navbar.js'
-import Footer from './Footer'
-import mapStyle from '../mapStyle.json'
-import locations from '../locations'
+import React, { Component } from 'react';
+import { Map, Info,  } from 'react-store-locator';
+import Navbar from './Navbar.js';
+import myPin from '../myPin';
+import mapStyle from '../mapStyle.json';
+import locations from '../locations';
+import Footer from "./Footer";
 
-import clusterMarker from '../cluster-marker'
+
 
 
 class StoreLocator extends Component {
@@ -37,13 +38,16 @@ class StoreLocator extends Component {
 
 
 			},
-			onChange: this.getLocations,
+		//	onChange: this.getLocations,
 			locations: this.state.locations,
 			mapLoaded: () => {
 				this.setState({ mapLoaded: true })
 			},
+	//		pin: { component: myPin },
 
-			googleApiKey: process.env.REACT_APP_DEV_GOOGLE_MAPS_API
+			googleApiKey: process.env.REACT_APP_DEV_GOOGLE_MAPS_API,
+
+
 
 			// enableClusters: true,
 			// cluster: {
@@ -56,30 +60,19 @@ class StoreLocator extends Component {
 			<div className="App">
 
 		<Navbar/>
-		<div id="map">
-			<Map  {...mapProps}>
-				{(location, closeLocation) => {
-					return (
-						<Info
-							show={location.show}
-							style={{
-
-								height: '150px',
-								backgroundColor: '#696969',
-								width: '200px'
-							}}
-						>
-							<div
+      <div id="map">
+				<Map  {...mapProps}>
+					{(location, closeLocation) => {
+						return (
+							<Info
+								show={location.show}
 								style={{
-									textAlign: 'left',
-									color: 'white',
-									height: '22px', // Info height - padding - border to show border
 
-									padding: '3px',
-									fontSize: '12px'
+									height: '150px',
+									backgroundColor: '#696969',
+									width: '200px'
 								}}
 							>
-								{location.name}
 								<div
 									style={{
 										textAlign: 'left',
@@ -90,8 +83,7 @@ class StoreLocator extends Component {
 										fontSize: '12px'
 									}}
 								>
-									{location.address}
-
+									{location.name}
 									<div
 										style={{
 											textAlign: 'left',
@@ -102,7 +94,7 @@ class StoreLocator extends Component {
 											fontSize: '12px'
 										}}
 									>
-										{location.phone}
+										{location.address}
 
 										<div
 											style={{
@@ -114,7 +106,7 @@ class StoreLocator extends Component {
 												fontSize: '12px'
 											}}
 										>
-											{location.email}
+											{location.phone}
 
 											<div
 												style={{
@@ -126,7 +118,7 @@ class StoreLocator extends Component {
 													fontSize: '12px'
 												}}
 											>
-												{location.website}
+												{location.email}
 
 												<div
 													style={{
@@ -138,66 +130,79 @@ class StoreLocator extends Component {
 														fontSize: '12px'
 													}}
 												>
-													{location.hours}
+													{location.website}
+
+													<div
+														style={{
+															textAlign: 'left',
+															color: 'white',
+															height: '22px', // Info height - padding - border to show border
+
+															padding: '3px',
+															fontSize: '12px'
+														}}
+													>
+														{location.hours}
 
 
 
-								<div
-									style={{
-										position: 'absolute',
-										top: 3,
-										right: 5,
-										cursor: 'pointer',
-										fontWeight: 800
-									}}
-									onClick={() => closeLocation(location.id)}
-								>
-									[x]
+									<div
+										style={{
+											position: 'absolute',
+											top: 3,
+											right: 5,
+											cursor: 'pointer',
+											fontWeight: 800
+										}}
+										onClick={() => closeLocation(location.id)}
+									>
+										[x]
+										   </div>
+										  </div>
 										 </div>
 										</div>
-									 </div>
 									</div>
 								</div>
 							</div>
+							</Info>
+						)
+					}}
+				</Map>
+</div>
+
+				<h2>Locations In Window</h2>
+				<>
+				<div className="container">
+				 <div className="row">
+				{this.state.locations.map(location => (
+					<div className="col-3"
+						key={location.id}
+						style={{
+							border: '1px solid #444',
+
+
+						}}
+					>
+						<div>
+							<h5
+								style={{
+									margin: '8px'
+								}}
+							>
+								{location.name}
+							</h5>
 						</div>
-						</Info>
-					)
-				}}
-			</Map>
-</div>
-<h2>Locations In Window</h2>
-<>
-<div className="container">
- <div className="row">
-{this.state.locations.map(location => (
-	<div className="col-3"
-		key={location.id}
-		style={{
-			border: '1px solid #444',
+						<div id ="distance">{location.distanceFromCenter} miles</div>
+					</div>
 
 
-		}}
-	>
-		<div>
-			<h5
-				style={{
-					margin: '8px'
-				}}
-			>
-				{location.name}
-			</h5>
-		</div>
-		<div id ="distance">{location.distanceFromCenter} miles</div>
-	</div>
+				))}
 
-
-))}
-
-</div>
-</div>
-</>
-<Footer/>
-</div>
+				</div>
+				</div>
+	</>
+				<Footer/>
+			</div>
 		)
 	}
 }
