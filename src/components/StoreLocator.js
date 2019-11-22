@@ -175,7 +175,7 @@ class StoreLocator extends Component {
 				<div className="container">
 				 <div className="row">
 				{this.state.locations.map(location => (
-					<div className="col-3"
+					<div className="col-md-3"
 						key={location.id}
 						style={{
 							border: '1px solid #444',
