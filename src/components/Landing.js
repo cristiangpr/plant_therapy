@@ -80,7 +80,7 @@ const Landing = () => (
 
          <div className="col-md-4 wow fadeInUp">
            <div className="member">
-             <img src="img/landing1.jpg" className="img-fluid" alt=""/>
+             <img src="img/landing6.jpg" className="img-fluid" alt=""/>
              <div className="member-info">
                <div className="member-info-content">
               <Link to="consumer" ><h4>Shop Now</h4></Link>
@@ -109,7 +109,7 @@ const Landing = () => (
 
          <div className="col-md-4 wow fadeInUp">
            <div className="member">
-             <img src="img/landing3.jpg" className="img-fluid" alt=""/>
+             <img src="img/landing4.jpg" className="img-fluid" alt=""/>
              <div className="member-info">
                <div className="member-info-content">
                 <Link to="consumer" ><h4>Shop Now</h4></Link>
