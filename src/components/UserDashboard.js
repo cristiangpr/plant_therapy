@@ -84,7 +84,7 @@ const Dashboard = () => {
                                                     Purchased date:{" "}
                                                     {moment(
                                                         h.createdAt
-                                                    ).fromNow()}
+                                                    ).format("MMM Do YYYY")}
                                                 </p>
                                             </div>
                                         );

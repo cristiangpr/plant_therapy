@@ -10,15 +10,22 @@ const Layout = ({
     children
 }) => (
 <>
-<Navbar1/>
+
 
     <div className="row">
 
-<div className="col-md-12">
+<div className="col-sm-12">
+  <Navbar1/>
         <div className="jumbotron">
+
             <h2>{title}</h2>
             <p className="lead">{description}</p>
         </div>
+        </div>
+        </div>
+        <div className="row">
+
+    <div className="col-sm-12">
         <div className={className}>{children}</div>
         </div>
     </div>

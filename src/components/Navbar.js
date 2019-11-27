@@ -22,7 +22,7 @@ const showLogo = (history, path) => {
            src="/img/logo.png"
            height= "100%"
            width= "100%"
-          
+
            className="d-inline-block align-top"
            alt="Plant Therapy logo"
          /> ;
@@ -48,13 +48,13 @@ return (
       <Nav.Link href="/consumer#products"   style={isActive(history, "/consumer")} >Shop</Nav.Link>
         <Nav.Link href="/about" style={isActive(history, "/about")}>About</Nav.Link>
         <Nav.Link href="/StoreLocator" style={isActive(history, "/StoreLocator")}>Locations</Nav.Link>
-          <Nav.Link href="/consumer#contact" >Contact</Nav.Link>
+          <Nav.Link href="/contact" style={isActive(history, "/contact")} >Contact</Nav.Link>
           {isAuthenticated() && isAuthenticated().user.role !== "Admin" && (
 
                   <Nav.Link
 
 
-                      href="/user_dashboard"
+                      href="/user_dashboard" style={isActive(history, "/user_dashboard")}
                   >
                       Dashboard
                   </Nav.Link>
@@ -65,7 +65,7 @@ return (
                   <Nav.Link
 
 
-                      href="/admin_dashboard"
+                      href="/admin_dashboard" style={isActive(history, "/admin_dashboard")}
                   >
                       Dashboard
                   </Nav.Link>
@@ -77,7 +77,7 @@ return (
                       <Nav.Link
                           className="nav-link"
 
-                          href="/signin"
+                          href="/signin" style={isActive(history, "/signin")}
                       >
                           Signin
                       </Nav.Link>
@@ -86,7 +86,7 @@ return (
                       <Nav.Link
                           className="nav-link"
 
-                          href="/signup"
+                          href="/signup" style={isActive(history, "/signup")}
                       >
                           Signup
                       </Nav.Link>

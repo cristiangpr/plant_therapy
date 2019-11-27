@@ -6,8 +6,7 @@ import './App.css';
   import Consumer from './components/Consumer';
   import DistributorsLanding from './components/DistributorsLanding';
   import FarmsLanding from './components/FarmsLanding';
-    import Distributors from './components/Distributors';
-  import Farms from './components/Farms';
+  
   import Signup from "./user/Signup";
   import Signin from "./user/Signin";
   import StoreLocator from "./components/StoreLocator";
@@ -28,6 +27,7 @@ import UpdateUser from "./admin/UpdateUser";
 import AddInventory from "./admin/AddInventory";
  import About from './components/About';
  import AddCoupon from "./admin/AddCoupon";
+ import Contact from './components/Contact';
 
 
   require('dotenv').config()
@@ -40,13 +40,14 @@ import AddInventory from "./admin/AddInventory";
            <Route exact path="/" component={Landing} />
             <Route path="/consumer" component={Consumer} />
               <Route path="/about" component={About} />
-            <Route path="/Distributors" component={Distributors} />
+
             <Route path="/DistributorsLanding" component={DistributorsLanding} />
             <Route path="/FarmsLanding" component={FarmsLanding} />
-            <Route path="/Farms" component={Farms} />
+
             <Route path="/StoreLocator" component={StoreLocator} />
             <Route path="/signin" exact component={Signin} />
             <Route path="/signup" exact component={Signup} />
+            <Route path="/contact" exact component={Contact} />
             <PrivateRoute path="/user_dashboard" exact component={UserDashboard} />
             <AdminRoute path="/admin_dashboard" exact component={AdminDashboard}  />
               <AdminRoute path="/create_category" exact component={AddCategory}/>

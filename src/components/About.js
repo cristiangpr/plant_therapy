@@ -36,7 +36,7 @@ const howText = "After saturation of entire plant, our spray will adhere to the 
             <img src="./img/mission.jpg" alt="" className="img-fluid"/>
             <div className="icon"><i className="ion-ios-speedometer-outline"></i></div>
           </div>
-          <h2 className="title"><a href="#">Our Mission</a></h2>
+          <h2 className="title">Our Mission</h2>
           <p>
           We have all seen the devastating effects of poisonous pesticides, insecticides and fungicides that contaminate the water, soil, food and crops they are used on.  We are proud to provide an alternative solution to some of the agricultural industry's biggest challenges.
           </p>
@@ -49,7 +49,7 @@ const howText = "After saturation of entire plant, our spray will adhere to the 
             <img src="./img/plan.jpg" alt="" className="img-fluid"/>
             <div className="icon"><i className="ion-ios-list-outline"></i></div>
           </div>
-          <h2 className="title"><a href="#">Our Plan</a></h2>
+          <h2 className="title">Our Plan</h2>
           <p>
           We found the available products on the market for insect and disease control unsatisfactory in effectiveness. We took all our knowledge and years of experience, two years developing our formula, along with eighteen months of field testing to bring you an all natural solution.
           </p>
@@ -62,7 +62,7 @@ const howText = "After saturation of entire plant, our spray will adhere to the 
             <img src="./img/vision.jpg" alt="" className="img-fluid"/>
             <div className="icon"><i className="ion-ios-eye-outline"></i></div>
           </div>
-          <h2 className="title"><a href="#">Our Vision</a></h2>
+          <h2 className="title">Our Vision</h2>
           <p>
           We trust in nature's solutions to thriving and believe in creating a sustainable future by the daily actions we take with the products we use. Both organic and conventional farmers can be proud of taking care of the environment and their workers
           </p>
