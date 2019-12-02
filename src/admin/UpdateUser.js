@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link, Redirect } from "react-router-dom";
-import { read, update, } from "./apiAdmin";
+import { readUser, updateUser } from "./apiAdmin";
 
 const UpdateUser = ({ match }) => {
     const [values, setValues] = useState({
@@ -18,7 +18,7 @@ const UpdateUser = ({ match }) => {
 
     const init = userId => {
         // console.log(userId);
-        read(userId, token).then(data => {
+        readUser(userId, token).then(data => {
             if (data.error) {
                 setValues({ ...values, error: true });
             } else {
@@ -37,7 +37,7 @@ const UpdateUser = ({ match }) => {
 
     const clickSubmit = e => {
         e.preventDefault();
-        update(match.params.userId, token, { name, email, role }).then(
+        updateUser(match.params.userId, token, { name, email, role }).then(
             data => {
                 if (data.error) {
                     console.log(data.error);
@@ -89,7 +89,7 @@ const UpdateUser = ({ match }) => {
                     className="form-control"
                 >
                 <option>Please select</option>
-                <option value="Retail">Retail</option>
+                <option value="Registered User">Registered User</option>
                 <option value="Wholesale">Wholesale</option>
                   <option value="Farm">Farm</option>
                   <option value="Distributor 25">Distributor 25</option>
@@ -121,7 +121,7 @@ const UpdateUser = ({ match }) => {
             <h2 className="mb-4">Profile update</h2>
             {profileUpdate(name, email, role)}
             {redirectUser(success)}
-            {goBack()}
+
         </Layout>
     );
 };

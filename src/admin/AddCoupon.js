@@ -3,6 +3,7 @@ import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import { createCoupon } from "./apiAdmin";
 import Layout from "../core/Layout";
+import AdminLinks from "./AdminLinks";
 
 const AddCoupon = () => {
     const [code, setCode] = useState("");
@@ -106,7 +107,10 @@ const AddCoupon = () => {
       description={`Hello ${user.name}!`}
       className="container-fluid">
       <div className="row">
-          <div className="col-md-8 offset-md-2">
+        <div className="col-md-3">
+          {AdminLinks()}
+          </div>
+          <div className="col-md-9 ">
 
               {showSuccess()}
               {showError()}

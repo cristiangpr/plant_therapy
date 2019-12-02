@@ -3,6 +3,7 @@ import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link, Redirect } from "react-router-dom";
 import { getProduct, getCategories, updateProduct, getInventories} from "./apiAdmin";
+import AdminLinks from './AdminLinks';
 
 const UpdateProduct = ({ match }) => {
     const [values, setValues] = useState({

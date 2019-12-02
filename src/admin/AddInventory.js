@@ -3,6 +3,7 @@ import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import { createInventory } from "./apiAdmin";
 import Layout from "../core/Layout";
+import AdminLinks from './AdminLinks'
 const AddInventory = () => {
     const [name, setName] = useState("");
       const [quantity, setQuantity] = useState("");
@@ -87,14 +88,20 @@ const AddInventory = () => {
       description={`Hello ${user.name}!`}
       className="container-fluid">
       <div className="row">
-          <div className="col-md-8 offset-md-2">
+        <div className="col-md-3">
+        {AdminLinks()}
+            </div>
+
+          <div className="col-md-9">
+
               {showSuccess()}
               {showError()}
               {newInventoryForm()}
-              {goBack()}
+
+
           </div>
       </div>
-      </Layout>
+</Layout>
     );
 };
 

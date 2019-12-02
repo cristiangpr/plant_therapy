@@ -2,40 +2,40 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { getProducts, deleteProduct } from "./apiAdmin";
+import { getCoupons, deleteCoupon } from "./apiAdmin";
 import {Table} from 'react-bootstrap';
 import AdminLinks from './AdminLinks'
 
 
-const ManageProducts = () => {
-    const [products, setProducts] = useState([]);
+const ManageCoupons = () => {
+    const [coupons, setCoupons] = useState([]);
 
     const { user, token } = isAuthenticated();
 
-    const loadProducts = () => {
-        getProducts().then(data => {
+    const loadCoupons = () => {
+        getCoupons().then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                setProducts(data);
+                setCoupons(data);
             }
         });
     };
 
-    const destroy = productId => {
-        deleteProduct(productId, user._id, token).then(data => {
+    const destroy = couponId => {
+        deleteCoupon(couponId, user._id, token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                loadProducts();
+                loadCoupons();
             }
         });
     };
 
-    const createProduct = () => (
-      <Link to='create_product'>
+    const createCoupon = () => (
+      <Link to='create_coupon'>
           <button className="btn btn-success">
-              Create Product
+              Create Coupon
           </button>
       </Link>
 
@@ -44,16 +44,16 @@ const ManageProducts = () => {
 
 
     useEffect(() => {
-        loadProducts();
+        loadCoupons();
     }, []);
 
     return (
         <Layout
-            title="Manage Products"
+            title="Manage Coupons"
             description=""
             className="container-fluid"
         >  <h2 className="text-center">
-              Total {products.length} products
+              Total {coupons.length} coupons
           </h2>
             <div className="row">
                 <div className="col-sm-3" id="admin-links">{AdminLinks()}
@@ -66,36 +66,32 @@ const ManageProducts = () => {
                     <thead>
                            <tr>
 
-                             <th sortable="true"> Name</th>
-                             <th>Description</th>
-                             <th>Price</th>
-                             <th></th>
+                             <th sortable="true"> Code</th>
+                             <th>Discount</th>
+                             <th>Expiration</th>
+                               <th></th>
                                 <th></th>
-                             <th>{createProduct()}</th>
+                             <th>{createCoupon()}</th>
                            </tr>
                     </thead>
                     <tbody>
 
-                        {products.map((p, i) => (
+                        {coupons.map((c, i) => (
                           <tr>
-                            <td
-
-                            >
-                                <strong>{p.name}</strong>
+                            <td>
+                                <strong>{c.code}</strong>
                                 </td>
-                                <td
-
-                                >
-                                    <strong>{p.description}</strong>
+                                <td>
+                                    <strong>{c.discount}</strong>
                                     </td>
-                                    <td
-
-                                    >
-                                        <strong>{p.price}</strong>
+                                    <td>
+                                        <strong>{c.expireDate}</strong>
                                         </td>
-                                        <td>
 
-                                        <Link to={`/admin/product/update/${p._id}`}>
+
+
+                                           <td>
+                                        <Link to={`/admin/coupon/update/${c._id}`}>
                                             <button className="btn btn-primary">
                                                 View
                                             </button>
@@ -103,7 +99,7 @@ const ManageProducts = () => {
                                         </td>
                                 <td>
 
-                                <Link to={`/admin/product/update/${p._id}`}>
+                                <Link to={`/admin/coupon/update/${c._id}`}>
                                     <button className="btn btn-warning">
                                         Update
                                     </button>
@@ -112,7 +108,7 @@ const ManageProducts = () => {
                                 <td>
                                 <button
                                     type="button"
-                                    onClick={() => destroy(p._id)}
+                                    onClick={() => destroy(c._id)}
                                     className="btn btn-danger"
                                 >
                                     Delete
@@ -128,4 +124,4 @@ const ManageProducts = () => {
     );
 };
 
-export default ManageProducts;
+export default ManageCoupons;

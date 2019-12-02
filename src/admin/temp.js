@@ -170,15 +170,15 @@ export const listUsers = () => {
 
 
 
-export const updateUser = (userId, token, user) => {
+export const updateUser = ( userId, token, user) => {
+  console.log(user)
     return fetch(`${API}/user/${userId}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(user)
+        body: user
     })
         .then(response => {
             return response.json();

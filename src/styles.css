@@ -147,3 +147,10 @@ text-transform: uppercase;
 font-family: "Open Sans", sans-serif;
 
 }
+.table {
+  background-color: white;
+  color: black;
+}
+#admin-links{
+  padding-top: 30px;
+}

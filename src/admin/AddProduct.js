@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import { createProduct, getCategories, getInventories } from "./apiAdmin";
+import AdminLinks from "./AdminLinks";
+import Layout from '../core/Layout';
+
 
 const AddProduct = () => {
     const { user, token } = isAuthenticated();
@@ -204,24 +207,26 @@ const AddProduct = () => {
                 <h2>Loading...</h2>
             </div>
         );
-        const goBack = () => (
-            <div className="mt-5">
-                <Link to="/admin_dashboard" className="text-warning">
-                    Back to Dashboard
-                </Link>
-            </div>
-        );
+
     return (
+      <Layout
+      title="Create Product"
+      description={`Hello ${user.name}!`}
+      className="container-fluid">
       <div className="row">
-          <div className="col-md-8 offset-md-2">
+      <div className="col-md-3">
+      {AdminLinks()}
+          </div>
+
+        <div className="col-md-9">
               {showLoading()}
               {showSuccess()}
               {showError()}
               {newPostForm()}
-              {goBack()}
+
           </div>
       </div>
-
+    </Layout>
     );
 };
 

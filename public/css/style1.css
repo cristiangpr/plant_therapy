@@ -1658,4 +1658,9 @@ body.mobile-nav-active #mobile-nav-toggle {
   #mobile-nav-toggle {
     display: inline;
   }
+  #jumbo-title {
+    padding-bottom: 40px;
+    margin-top: 0px;
+        font-size: 20px;
+  }
 }

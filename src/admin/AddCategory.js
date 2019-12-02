@@ -3,6 +3,7 @@ import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import { createCategory } from "./apiAdmin";
 import Layout from "../core/Layout";
+import AdminLinks from "./AdminLinks";
 
 const AddCategory = () => {
     const [name, setName] = useState("");
@@ -59,16 +60,6 @@ const AddCategory = () => {
         }
     };
 
-    const goBack = () => (
-
-        <div className="mt-5">
-            <Link to="/admin_dashboard" className="text-warning">
-                Back to Dashboard
-            </Link>
-        </div>
-
-    );
-
 
     return (
       <Layout
@@ -76,12 +67,17 @@ const AddCategory = () => {
       description={`Hello ${user.name}!`}
       className="container-fluid">
       <div className="row">
-          <div className="col-md-8 offset-md-2">
+        <div className="col-md-3">
+        {AdminLinks()}
+            </div>
+
+          <div className="col-md-9">
 
               {showSuccess()}
               {showError()}
               {newCategoryForm()}
-              {goBack()}
+
+
           </div>
       </div>
 </Layout>

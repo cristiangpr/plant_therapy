@@ -6,7 +6,7 @@ import './App.css';
   import Consumer from './components/Consumer';
   import DistributorsLanding from './components/DistributorsLanding';
   import FarmsLanding from './components/FarmsLanding';
-  
+
   import Signup from "./user/Signup";
   import Signin from "./user/Signin";
   import StoreLocator from "./components/StoreLocator";
@@ -28,6 +28,11 @@ import AddInventory from "./admin/AddInventory";
  import About from './components/About';
  import AddCoupon from "./admin/AddCoupon";
  import Contact from './components/Contact';
+ import ManageCategories from "./admin/ManageCategories";
+ import ManageInventories from "./admin/ManageInventories";
+  import ManageCoupons from "./admin/ManageCoupons";
+  import UpdateCategory from "./admin/UpdateCategory";
+    import UpdateInventory from "./admin/UpdateInventory";
 
 
   require('dotenv').config()
@@ -66,6 +71,21 @@ import AddInventory from "./admin/AddInventory";
                       component={ManageProducts}
                   />
                   <AdminRoute
+                      path="/admin_categories"
+                      exact
+                      component={ManageCategories}
+                  />
+                  <AdminRoute
+                      path="/admin_inventories"
+                      exact
+                      component={ManageInventories}
+                  />
+                  <AdminRoute
+                      path="/admin_coupons"
+                      exact
+                      component={ManageCoupons}
+                  />
+                  <AdminRoute
                       path="/admin/product/update/:productId"
                       exact
                       component={UpdateProduct}
@@ -81,16 +101,25 @@ import AddInventory from "./admin/AddInventory";
                       component={UpdateUser}
                   />
                   <AdminRoute
-                      path="/add_inventory"
+                      path="/create_inventory"
                       exact
                       component={AddInventory}
                   />
                   <AdminRoute
-                      path="/add_coupon"
+                      path="/create_coupon"
                       exact
                       component={AddCoupon}
                   />
-
+                  <AdminRoute
+                      path="/admin/category/update/:categoryId"
+                      exact
+                      component={UpdateCategory}
+                  />
+                  <AdminRoute
+                      path="/admin/inventory/update/:inventoryId"
+                      exact
+                      component={UpdateInventory}
+                  />
         </Switch>
       </BrowserRouter>
     );

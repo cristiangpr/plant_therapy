@@ -2,40 +2,40 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { getProducts, deleteProduct } from "./apiAdmin";
+import { getInventories, deleteInventory } from "./apiAdmin";
 import {Table} from 'react-bootstrap';
 import AdminLinks from './AdminLinks'
 
 
-const ManageProducts = () => {
-    const [products, setProducts] = useState([]);
+const ManageInventories = () => {
+    const [inventories, setInventories] = useState([]);
 
     const { user, token } = isAuthenticated();
 
-    const loadProducts = () => {
-        getProducts().then(data => {
+    const loadInventories = () => {
+        getInventories().then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                setProducts(data);
+                setInventories(data);
             }
         });
     };
 
-    const destroy = productId => {
-        deleteProduct(productId, user._id, token).then(data => {
+    const destroy = inventoryId => {
+        deleteInventory(inventoryId, user._id, token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                loadProducts();
+                loadInventories();
             }
         });
     };
 
-    const createProduct = () => (
-      <Link to='create_product'>
+    const createInventory = () => (
+      <Link to='create_inventory'>
           <button className="btn btn-success">
-              Create Product
+              Create Inventory Item
           </button>
       </Link>
 
@@ -44,16 +44,16 @@ const ManageProducts = () => {
 
 
     useEffect(() => {
-        loadProducts();
+        loadInventories();
     }, []);
 
     return (
         <Layout
-            title="Manage Products"
+            title="Manage Inventories"
             description=""
             className="container-fluid"
         >  <h2 className="text-center">
-              Total {products.length} products
+              Total {inventories.length} inventories
           </h2>
             <div className="row">
                 <div className="col-sm-3" id="admin-links">{AdminLinks()}
@@ -67,35 +67,25 @@ const ManageProducts = () => {
                            <tr>
 
                              <th sortable="true"> Name</th>
-                             <th>Description</th>
-                             <th>Price</th>
+                             <th>Qunantity</th>
                              <th></th>
                                 <th></th>
-                             <th>{createProduct()}</th>
+                             <th>{createInventory()}</th>
                            </tr>
                     </thead>
                     <tbody>
 
-                        {products.map((p, i) => (
+                        {inventories.map((v, i) => (
                           <tr>
-                            <td
-
-                            >
-                                <strong>{p.name}</strong>
+                            <td>
+                                <strong>{v.name}</strong>
                                 </td>
-                                <td
-
-                                >
-                                    <strong>{p.description}</strong>
+                            <td>
+                                    <strong>{v.quantity}</strong>
                                     </td>
-                                    <td
 
-                                    >
-                                        <strong>{p.price}</strong>
-                                        </td>
-                                        <td>
-
-                                        <Link to={`/admin/product/update/${p._id}`}>
+                                           <td>
+                                        <Link to={`/admin/inventory/update/${v._id}`}>
                                             <button className="btn btn-primary">
                                                 View
                                             </button>
@@ -103,7 +93,7 @@ const ManageProducts = () => {
                                         </td>
                                 <td>
 
-                                <Link to={`/admin/product/update/${p._id}`}>
+                                <Link to={`/admin/inventory/update/${v._id}`}>
                                     <button className="btn btn-warning">
                                         Update
                                     </button>
@@ -112,7 +102,7 @@ const ManageProducts = () => {
                                 <td>
                                 <button
                                     type="button"
-                                    onClick={() => destroy(p._id)}
+                                    onClick={() => destroy(v._id)}
                                     className="btn btn-danger"
                                 >
                                     Delete
@@ -128,4 +118,4 @@ const ManageProducts = () => {
     );
 };
 
-export default ManageProducts;
+export default ManageInventories;
