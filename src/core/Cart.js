@@ -5,6 +5,7 @@ import { getCart } from "./cartHelpers";
 import Card from "./Card";
 import Checkout from "./Checkout";
 import "../styles.css";
+import Footer from '../components/Footer'
 
 
 
@@ -17,8 +18,8 @@ const Cart = () => {
 
     const showItems = items => {
         return (
-            <div>
-                <h2>Your cart has {`${items.length}`} items</h2>
+<>
+
                 <hr />
                 {items.map((product, i) => (
                     <Card
@@ -27,36 +28,48 @@ const Cart = () => {
                         showAddToCartButton={false}
                         cartUpdate={true}
                         showRemoveProductButton={true}
+                        showStock={false}
                     />
                 ))}
-            </div>
+          </>
         );
     };
 
     const noItemsMessage = () => (
-        <h2>
+        <h4>
             Your cart is empty. <br /> <Link to="/consumer">Continue shopping</Link>
-        </h2>
+        </h4>
     );
 
     return (
+      <>
         <Layout
             title="Shopping Cart"
-            description="Manage your cart items. Add remove checkout or continue shopping."
+            description=""
             className="container-fluid"
         >
-            <div className="row" id="cart">
-                <div className="col-6">
-                    {items.length > 0 ? showItems(items) : noItemsMessage()}
-                </div>
+            <div className="row" >
 
-                <div className="col-6">
-                    <h2 className="mb-4">Your cart summary</h2>
+                  <div className="col-md-9">
+                  <div className="card-deck">
+                    {items.length > 0 ? showItems(items) : noItemsMessage()}
+</div>
+</div>
+
+
+                <div className="col-md-3" id="checkout">
+                  <div className="card" id="dark-card">
+                   <div className="card-body">
+                    <h4 className="">Your cart summary</h4>
                     <hr />
                     <Checkout products={items} />
+                    </div>
+                </div>
                 </div>
             </div>
         </Layout>
+        <Footer/>
+        </>
     );
 };
 

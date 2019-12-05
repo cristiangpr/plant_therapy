@@ -171,6 +171,7 @@ export const listUsers = () => {
 
 
 export const updateUser = (userId, token, user) => {
+    console.log(JSON.stringify(user))
     return fetch(`${API}/user/${userId}`, {
         method: "PUT",
         headers: {
@@ -233,18 +234,23 @@ export const readCategory = (categoryId, token) => {
 };
 
 export const updateCategory = ( categoryId, userId, token, category) => {
+  console.log(JSON.stringify(category))
     return fetch(`${API}/category/${categoryId}/${userId}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
+           "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
-        body: category
+        body: JSON.stringify (category)
+
     })
+
         .then(response => {
             return response.json();
         })
         .catch(err => console.log(err));
+
 };
 
 export const createInventory = (userId, token, inventory) => {
@@ -285,9 +291,10 @@ export const updateInventory = ( inventoryId, userId, token, inventory) => {
         method: "PUT",
         headers: {
             Accept: "application/json",
+               "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
-        body: inventory
+        body: JSON.stringify(inventory)
     })
         .then(response => {
             return response.json();
@@ -360,6 +367,38 @@ export const deleteCoupon = ( couponId, adminId, token) => {
 export const getCoupons = () => {
     return fetch(`${API}/coupons`, {
         method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const readCoupon = (couponId, token) => {
+    return fetch(`${API}/coupon/${couponId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+
+export const updateCoupon = ( couponId, userId, token, coupon) => {
+    return fetch(`${API}/coupon/${couponId}/${userId}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+               "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(coupon)
     })
         .then(response => {
             return response.json();

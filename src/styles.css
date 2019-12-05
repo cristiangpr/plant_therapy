@@ -7,7 +7,9 @@
 .nav :hover {
     border-radius: 0px;
 }
-
+.jumbo-title {
+  text-align: center;
+}
 /* cart badge */
 
 .cart-badge,
@@ -71,6 +73,7 @@
  */
 
 .jumbotron {
+  text-align: center;
     height: 180px;
     color: #fff;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -153,4 +156,13 @@ font-family: "Open Sans", sans-serif;
 }
 #admin-links{
   padding-top: 30px;
+}
+
+#dark-card {
+  background-color: black;
+    border: 5px solid #18d26e;
+
+}
+#card-deck {
+  padding-top: 100px;
 }

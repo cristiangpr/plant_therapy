@@ -1663,4 +1663,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     margin-top: 0px;
         font-size: 20px;
   }
+  #checkout {
+    border: 1px solid #18d26e;
+  }
 }

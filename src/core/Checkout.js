@@ -159,18 +159,18 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
     };
 
     const showDropIn = () => (
-        <div onBlur={() => setData({ ...data, error: "" })}>
+        <div  onBlur={() => setData({ ...data, error: "" })}>
             {data.clientToken !== null && products.length > 0 ? (
                 <div>
-                <div className="gorm-group mb-3">
+                <div className="form-group mb3">
                     <label className="text-muted">Delivery address:</label>
-                    <textarea
+                    <input
                         onChange={handleAddress}
                         className="form-control"
                         value={data.address}
                         placeholder="Type your delivery address here..."
                     />
-                </div>
+  </div>
                    <Search  setDiscount={setDiscount} setCode={setCode}/>
                     <DropIn
                         options={{
@@ -225,9 +225,9 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
 
     return (
         <div>
-            <h2>Sub Total: ${parseFloat(getTotal()).toFixed(2)}</h2>
-            <h2>Tax: ${parseFloat(getTax()).toFixed(2)}</h2>
-            <h2>Total: ${parseFloat(getFinalTotal()).toFixed(2)}</h2>
+            <label className="text-muted">Sub Total: ${parseFloat(getTotal()).toFixed(2)}</label> <br/>
+            <label className="text-muted">Tax: ${parseFloat(getTax()).toFixed(2)}</label>  <br/>
+            <label className="text-muted">Total: ${parseFloat(getFinalTotal()).toFixed(2)}</label>
                 {showLoading(data.loading)}
             {showSuccess(data.success)}
             {showError(data.error)}

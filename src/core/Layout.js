@@ -18,7 +18,7 @@ const Layout = ({
   <Navbar1/>
         <div className="jumbotron">
 
-            <h2 id="jumbo-title">{title}</h2>
+            <h4 id="jumbo-title">{title}</h4>
             <p className="lead">{description}</p>
         </div>
         </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar1 from "./Navbar";
   import {   withRouter } from 'react-router-dom';
+import Footer from "./Footer"
+
 const showNavbar = (history, path) => {
     if (history.location.pathname === "/contact") {
         return <Navbar1/>;
@@ -78,6 +80,7 @@ const Contact = ({history}) => {
 
   </div>
 </section>
+<Footer/>
 </>
 );
 

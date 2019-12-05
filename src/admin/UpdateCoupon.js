@@ -2,34 +2,34 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link, Redirect } from "react-router-dom";
-import { readInventory, updateInventory } from "./apiAdmin";
+import { readCoupon, updateCoupon } from "./apiAdmin";
 import AdminLinks from './AdminLinks';
 
-const UpdateInventory = ({ match }) => {
+const UpdateCoupon = ({ match }) => {
     const [values, setValues] = useState({
-        name: "",
-        quantity: "",
-
+        code: "",
+        discount: "",
+        expireDate:"",
         error: false,
         success: false
     });
 
     const { user, token } = isAuthenticated();
-    const { name, quantity, error, success } = values;
+    const { code, discount, expireDate, error, success } = values;
 
-    const init = inventoryId => {
-        // console.log(inventoryId);
-        readInventory(inventoryId, token).then(data => {
+    const init = couponId => {
+        // console.log(couponId);
+        readCoupon(couponId, token).then(data => {
             if (data.error) {
                 setValues({ ...values, error: true });
             } else {
-                setValues({ ...values, name: data.name, quantity: data.quantity });
+                setValues({ ...values, code: data.code, discount: data.discount, expireDate: data.expireDate });
             }
         });
     };
 
     useEffect(() => {
-        init(match.params.inventoryId);
+        init(match.params.couponId);
     }, []);
 
     const handleChange = name => e => {
@@ -38,7 +38,7 @@ const UpdateInventory = ({ match }) => {
 
     const clickSubmit = e => {
         e.preventDefault();
-        updateInventory(match.params.inventoryId, user._id, token, { name, quantity }).then(
+        updateCoupon(match.params.couponId, user._id, token, { code, discount, expireDate }).then(
             data => {
                 if (data.error) {
                     console.log(data.error);
@@ -46,8 +46,9 @@ const UpdateInventory = ({ match }) => {
 
                         setValues({
                             ...values,
-                            name: data.name,
-                            quantity: data.quantity,
+                          code: data.code,
+                          discount: data.discount,
+                           expireDate: data.expireDate,
 
                             success: true
                         });
@@ -59,28 +60,37 @@ const UpdateInventory = ({ match }) => {
 
     const redirectUser = success => {
         if (success) {
-            return <Redirect to="/admin_inventories" />;
+            return <Redirect to="/admin_coupons" />;
         }
     };
 
-    const inventoryUpdate = (name, quantity) => (
+    const couponUpdate = (code, discount, expireDate) => (
         <form>
             <div className="form-group">
-                <label className="text-muted">Name</label>
+                <label className="text-muted">Code</label>
                 <input
                     type="text"
-                    onChange={handleChange("name")}
+                    onChange={handleChange("code")}
                     className="form-control"
-                    value={name}
+                    value={code}
                 />
             </div>
             <div className="form-group">
-                <label className="text-muted">Quantity</label>
+                <label className="text-muted">Discount</label>
                 <input
-                    type="number"
-                    onChange={handleChange("quantity")}
+                    type="text"
+                    onChange={handleChange("discount")}
                     className="form-control"
-                    value={quantity}
+                    value={discount}
+                />
+            </div>
+            <div className="form-group">
+                <label className="text-muted">Expiration Date</label>
+                <input
+                    type="text"
+                    onChange={handleChange("expireDate")}
+                    className="form-control"
+                    value={expireDate}
                 />
             </div>
 
@@ -94,7 +104,7 @@ const UpdateInventory = ({ match }) => {
 
     return (
         <Layout
-            title="Update Inventory"
+            title="Update Coupon"
             description=""
             className="container-fluid"
         >
@@ -103,7 +113,7 @@ const UpdateInventory = ({ match }) => {
         {AdminLinks()}
            </div>
         <div className="col-md-9">
-            {inventoryUpdate(name, quantity)}
+            {couponUpdate(code, discount, expireDate)}
             {redirectUser(success)}
 
            </div>
@@ -113,4 +123,4 @@ const UpdateInventory = ({ match }) => {
     );
 };
 
-export default UpdateInventory;
+export default UpdateCoupon;

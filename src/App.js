@@ -33,7 +33,7 @@ import AddInventory from "./admin/AddInventory";
   import ManageCoupons from "./admin/ManageCoupons";
   import UpdateCategory from "./admin/UpdateCategory";
     import UpdateInventory from "./admin/UpdateInventory";
-
+  import UpdateCoupon from "./admin/UpdateCoupon";
 
   require('dotenv').config()
 
@@ -119,6 +119,11 @@ import AddInventory from "./admin/AddInventory";
                       path="/admin/inventory/update/:inventoryId"
                       exact
                       component={UpdateInventory}
+                  />
+                  <AdminRoute
+                      path="/admin/coupon/update/:couponId"
+                      exact
+                      component={UpdateCoupon}
                   />
         </Switch>
       </BrowserRouter>

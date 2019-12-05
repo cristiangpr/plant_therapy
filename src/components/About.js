@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ScrollUpButton from "react-scroll-up-button";
 
   import {  Link } from 'react-router-dom';
-import Navbar from "./Navbar.js";
+import Navbar1 from "./Navbar.js";
 import Instagram from "./Instagram.js";
 import Footer from "./Footer.js";
 
@@ -17,7 +17,7 @@ const howText = "After saturation of entire plant, our spray will adhere to the 
 
   <div>
 
-<Navbar/>
+<Navbar1/>
 <section id="about">
   <div className="container" id="about-container">
 
@@ -233,75 +233,6 @@ const howText = "After saturation of entire plant, our spray will adhere to the 
 
 
 
-
-
-
-   <section id="team">
-     <div className="container">
-       <div className="section-header wow fadeInUp">
-         <h3>Abassadors</h3>
-         <p> We are proud to sponsor these athletes who recognize that our farm practices have far reaching consequences for our future and that it matters how we grow our food and treat the environment. Non-toxic alternatives are key to creating a sustainable future. </p>
-       </div>
-
-       <div className="row">
-
-         <div className="col-md-4 wow fadeInUp">
-           <div className="member">
-             <img src="img/jd.jpg" className="img-fluid" alt=""/>
-             <div className="member-info">
-               <div className="member-info-content">
-                 <h4>James Davidson</h4>
-                 <span>Indycar</span>
-                 <div className="social">
-                   <a href=""><i className="fa fa-instagram"></i></a>
-                   <a href=""><i className="fa fa-facebook"></i></a>
-
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-
-
-
-         <div className="col-md-4  wow fadeInUp" data-wow-delay="0.2s">
-           <div className="member">
-             <img src="img/team-3.jpg" className="img-fluid" alt=""/>
-             <div className="member-info">
-               <div className="member-info-content">
-                 <h4>Elijah Fox</h4>
-                 <span>Surfer</span>
-                 <div className="social">
-                   <a href=""><i className="fa fa-instagram"></i></a>
-                   <a href=""><i className="fa fa-facebook"></i></a>
-
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-
-         <div className="col-md-4  wow fadeInUp" data-wow-delay="0.3s">
-           <div className="member">
-             <img src="img/team-4.jpg" className="img-fluid" alt=""/>
-             <div className="member-info">
-               <div className="member-info-content">
-                 <h4>Kingston</h4>
-                 <span>Formula 1</span>
-                 <div className="social">
-                   <a href=""><i className="fa fa-instagram"></i></a>
-                   <a href=""><i className="fa fa-facebook"></i></a>
-
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-
-       </div>
-
-     </div>
-   </section>
 
 
 

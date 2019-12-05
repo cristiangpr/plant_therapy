@@ -82,7 +82,7 @@ const [result, setResult] = useState({})
     const searchForm = () => (
         <form onSubmit={searchSubmit}>
             <span className="input-group-text">
-                <div className="input-group input-group-lg">
+                <div className="input-group input-group-sm">
 
 
                     <input
@@ -96,7 +96,7 @@ const [result, setResult] = useState({})
                     className="btn input-group-append"
                     style={{ border: "none" }}
                 >
-                    <button className="input-group-text">Apply discount</button>
+                    <button className="btn btn-primary">Apply discount</button>
                 </div>
             </span>
         </form>
@@ -104,10 +104,8 @@ const [result, setResult] = useState({})
 
     return (
         <div className="row">
-            <div className="container mb-3">{searchForm()}</div>
-            <div className="container-fluid mb-3">
-                {searchedProducts(result)}
-            </div>
+            <div className="container">{searchForm()}</div>
+
         </div>
     );
 };

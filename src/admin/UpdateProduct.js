@@ -68,24 +68,11 @@ const UpdateProduct = ({ match }) => {
     };
 
     // load categories and set form data
-    const initCategoriesandInventories = () => {
-        getCategories().then(data => {
-           getInventories().then(idata => {
-              setValues({
-                  ...values,
-                  categories: data,
-                  inventories: idata,
-                  formData: new FormData()
-              });
-
-})
-            }
-        );
-    };
 
 
     useEffect(() => {
         init(match.params.productId);
+
     }, []);
 
     const handleChange = name => event => {

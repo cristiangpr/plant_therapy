@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { listUsers, deleteUser, updateUser } from "./apiAdmin";
 import moment from "moment";
 import {Table} from 'react-bootstrap';
-import AdminLinks from "././AdminLinks";
+import AdminLinks from "./AdminLinks";
 
 
 const ManageUsers = () => {

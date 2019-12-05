@@ -13,7 +13,7 @@ const UpdateCategory = ({ match }) => {
         success: false
     });
 
-    const { token } = isAuthenticated();
+    const { token, user } = isAuthenticated();
     const { name, error, success } = values;
 
     const init = categoryId => {
@@ -37,7 +37,7 @@ const UpdateCategory = ({ match }) => {
 
     const clickSubmit = e => {
         e.preventDefault();
-        updateCategory(match.params.categoryId, token, { name }).then(
+        updateCategory(match.params.categoryId, user._id, token, { name }).then(
             data => {
                 if (data.error) {
                     console.log(data.error);

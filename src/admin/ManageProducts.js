@@ -67,7 +67,7 @@ const ManageProducts = () => {
                            <tr>
 
                              <th sortable="true"> Name</th>
-                             <th>Description</th>
+                             <th>Category</th>
                              <th>Price</th>
                              <th></th>
                                 <th></th>
@@ -86,7 +86,7 @@ const ManageProducts = () => {
                                 <td
 
                                 >
-                                    <strong>{p.description}</strong>
+                                    <strong>{p.category.name}</strong>
                                     </td>
                                     <td
 
