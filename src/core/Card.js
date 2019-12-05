@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, withRouter } from "react-router-dom";
 import Checkbox from "./Checkbox";
 import ShowImage from "./ShowImage";
 import { addItem, updateItem, removeItem } from "./cartHelpers";
 
 
-
-const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showRemoveProductButton = false}) => {
+const Card = ({ product, history,  showAddToCartButton = true, cartUpdate = false, showRemoveProductButton = false}) => {
     const [redirect, setRedirect] = useState(false);
       const [count, setCount] = useState(product.count);
 
@@ -30,7 +29,7 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
                 <button
                     onClick={addToCart}
 
-                    className="btn btn-outline-warning mt-2 mb-2"
+                    className="btn btn-outline-success mt-2"
                 >
                     Add to cart
                 </button>
@@ -59,7 +58,7 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
                     onClick={() => removeItem(product._id)}
                     className="btn btn-outline-danger mt-2 mb-2"
                 >
-                    Remove Product
+                    Remove
                 </button>
             )
         );
@@ -69,7 +68,7 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
         return (
             cartUpdate && (
                 <div>
-                    <div className="input-group mb-3">
+                    <div className="input-group mb-2">
                         <div className="input-group-prepend">
 
                         </div>
@@ -89,21 +88,21 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
 
 
     return (
-        <div className="col-md-3 mb-3">
+      <div className= {history.location.pathname === "/cart" ? "col-md-6 mb-3" : "col-md-4 mb-3"}>
           <div className="single-product wow fadeIn" >
-          <div className="card">
-              <div className="card-header name">{product.name}</div>
+          <div className="dark-card text-center" id="">
+        <ShowImage item={product} url="product" />
               <div className="card-body">
                   {shouldRedirect(redirect)}
-                  <ShowImage item={product} url="product" />
-                  <p className="lead mt-2">
-                      {product.description.substring(0, 100)}
+
+                  <p className="mb-2" >
+                      {product.name}
                   </p>
 
 
 
 
-                  <p className="black-10">${parseFloat(product.price).toFixed(2)}</p>
+                  <p className="mb-2 mt-0">${parseFloat(product.price).toFixed(2)}</p>
 
 
                   {showStock(product.inventory.quantity)}
@@ -121,4 +120,4 @@ const Card = ({ product,   showAddToCartButton = true, cartUpdate = false, showR
     );
 };
 
-export default Card;
+export default withRouter(Card);

@@ -35,11 +35,7 @@ const Cart = () => {
         );
     };
 
-    const noItemsMessage = () => (
-        <h4>
-            Your cart is empty. <br /> <Link to="/consumer">Continue shopping</Link>
-        </h4>
-    );
+
 
     return (
       <>
@@ -48,25 +44,29 @@ const Cart = () => {
             description=""
             className="container-fluid"
         >
+        <div className="container">
+         <Link to="/consumer">Continue shopping</Link>
             <div className="row" >
 
-                  <div className="col-md-9">
+                  <div className="col-md-6">
                   <div className="card-deck">
-                    {items.length > 0 ? showItems(items) : noItemsMessage()}
+                    { showItems(items)}
 </div>
 </div>
+            <div className="col-md-2">
+            </div>
 
-
-                <div className="col-md-3" id="checkout">
+                <div className="col-md-4" id="checkout">
                   <div className="card" id="dark-card">
                    <div className="card-body">
-                    <h4 className="">Your cart summary</h4>
+                    <h4 className="">Checkout</h4>
                     <hr />
                     <Checkout products={items} />
                     </div>
                 </div>
                 </div>
             </div>
+          </div>
         </Layout>
         <Footer/>
         </>

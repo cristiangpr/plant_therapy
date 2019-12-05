@@ -841,11 +841,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
-    background-image: linear-gradient(0deg, #000000 0%, #242323 50%, #000000 100%);
+
 }
 #blog {
     text-align: center;
-      background-image: linear-gradient(0deg, #000000 0%, #242323 50%, #000000 100%);
+
 }
 /* Call To Action Section
 --------------------------------*/
@@ -1322,7 +1322,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #contact {
   padding: 100px 0;
-    background-image: linear-gradient(0deg, #000000 0%, #242323 50%, #000000 100%);
+
 }
 
 #contact .contact-info {
@@ -1663,7 +1663,5 @@ body.mobile-nav-active #mobile-nav-toggle {
     margin-top: 0px;
         font-size: 20px;
   }
-  #checkout {
-    border: 1px solid #18d26e;
-  }
+
 }

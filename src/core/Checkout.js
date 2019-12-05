@@ -225,7 +225,7 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
 
     return (
         <div>
-            <label className="text-muted">Sub Total: ${parseFloat(getTotal()).toFixed(2)}</label> <br/>
+            <label className="text-bold">Sub Total: ${parseFloat(getTotal()).toFixed(2)}</label> <br/>
             <label className="text-muted">Tax: ${parseFloat(getTax()).toFixed(2)}</label>  <br/>
             <label className="text-muted">Total: ${parseFloat(getFinalTotal()).toFixed(2)}</label>
                 {showLoading(data.loading)}

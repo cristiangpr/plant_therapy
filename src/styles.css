@@ -159,10 +159,15 @@ font-family: "Open Sans", sans-serif;
 }
 
 #dark-card {
-  background-color: black;
+  background-color: rgb(30,30,30);
     border: 5px solid #18d26e;
 
 }
 #card-deck {
   padding-top: 100px;
+}
+.dark-card {
+  background-color: rgb(30,30,30);
+ color: white;
+
 }

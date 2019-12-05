@@ -3,7 +3,7 @@ import React, {  Fragment, useEffect } from 'react';
 
 import { itemTotal } from "../core/cartHelpers";
 import { signout, isAuthenticated } from "../auth";
-import {Navbar, Nav } from 'react-bootstrap'
+import {Navbar, Nav } from 'react-bootstrap';
 
 
 const isActive = (history, path) => {
