@@ -61,7 +61,7 @@ const Shop = () => {
           return (
               size > 0 &&
               size >= limit && (
-                  <button onClick={loadMore} className="btn btn-warning mb-5">
+                  <button onClick={loadMore} className="btn btn-outline-warning mb-5">
                       Load more
                   </button>
               )
@@ -139,7 +139,7 @@ const Shop = () => {
           </div>
 
           <div className="row">
-           
+
               {filteredResults.map((product, i) => (
 
                       <Card key={i}  product={product} />

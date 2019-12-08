@@ -45,8 +45,10 @@ const Cart = () => {
             className="container-fluid"
         >
         <div className="container">
-         <Link to="/consumer">Continue shopping</Link>
-            <div className="row" >
+      <div className="text-center">
+         <Link id="text-center" to="/consumer">Continue shopping</Link>
+         </div>
+            <div className="row mt-3" >
 
                   <div className="col-md-6">
                   <div className="card-deck">

@@ -34,7 +34,7 @@ const ManageInventories = () => {
 
     const createInventory = () => (
       <Link to='create_inventory'>
-          <button className="btn btn-success">
+          <button className="btn btn-outline-success">
               Create Inventory Item
           </button>
       </Link>
@@ -50,7 +50,7 @@ const ManageInventories = () => {
     return (
         <Layout
             title="Manage Inventories"
-            description=""
+
             className="container-fluid"
         >  <h2 className="text-center">
               Total {inventories.length} inventories
@@ -62,7 +62,7 @@ const ManageInventories = () => {
                 <div className="col-sm-9">
 
                     <hr />
-                    <Table striped bordered hover>
+                    <Table  bordered id="table-div" >
                     <thead>
                            <tr>
 
@@ -86,7 +86,7 @@ const ManageInventories = () => {
 
                                            <td>
                                         <Link to={`/admin/inventory/update/${v._id}`}>
-                                            <button className="btn btn-primary">
+                                            <button className="btn btn-outline-primary">
                                                 View
                                             </button>
                                         </Link>
@@ -94,7 +94,7 @@ const ManageInventories = () => {
                                 <td>
 
                                 <Link to={`/admin/inventory/update/${v._id}`}>
-                                    <button className="btn btn-warning">
+                                    <button className="btn btn-outline-warning">
                                         Update
                                     </button>
                                 </Link>
@@ -103,7 +103,7 @@ const ManageInventories = () => {
                                 <button
                                     type="button"
                                     onClick={() => destroy(v._id)}
-                                    className="btn btn-danger"
+                                    className="btn btn-outline-danger"
                                 >
                                     Delete
                                 </button>

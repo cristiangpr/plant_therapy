@@ -64,7 +64,7 @@ const AddCategory = () => {
     return (
       <Layout
       title="Create Product Category"
-      description={`Hello ${user.name}!`}
+  
       className="container-fluid">
       <div className="row">
         <div className="col-md-3">

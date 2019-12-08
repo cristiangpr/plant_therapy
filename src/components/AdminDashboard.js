@@ -10,18 +10,20 @@ const AdminDashboard = () => {
         user: { _id, name, email, role }
     } = isAuthenticated();
 
-  
+
     const adminInfo = () => {
         return (
-            <div className="card mb-5">
+            <div className="card mb-5" id="dark-card">
                 <h3 className="card-header name">User Information</h3>
+                <div className="card-body">
                 <ul className="list-group">
-                    <li className="list-group-item">{name}</li>
-                    <li className="list-group-item">{email}</li>
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">{name}</li>
+                    <li className="list-group-item list-group-item-dark">{email}</li>
+                    <li className="list-group-item list-group-item-dark">
                         {role === "Admin" ? "Admin" : "Registered User"}
                     </li>
                 </ul>
+                </div>
             </div>
         );
     };
@@ -30,7 +32,7 @@ const AdminDashboard = () => {
 
         <Layout
             title="Admin Dashboard"
-            description={`Hello ${name}!`}
+
             className="container-fluid"
         >
             <div className="row">

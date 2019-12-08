@@ -85,7 +85,7 @@ const AddInventory = () => {
     return (
       <Layout
       title="Create Inventory Item"
-      description={`Hello ${user.name}!`}
+    
       className="container-fluid">
       <div className="row">
         <div className="col-md-3">

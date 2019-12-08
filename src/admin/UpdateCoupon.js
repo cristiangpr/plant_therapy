@@ -65,7 +65,7 @@ const UpdateCoupon = ({ match }) => {
     };
 
     const couponUpdate = (code, discount, expireDate) => (
-        <form>
+        <form id="update-form-container">
             <div className="form-group">
                 <label className="text-muted">Code</label>
                 <input
@@ -105,7 +105,7 @@ const UpdateCoupon = ({ match }) => {
     return (
         <Layout
             title="Update Coupon"
-            description=""
+
             className="container-fluid"
         >
       <div className="row">

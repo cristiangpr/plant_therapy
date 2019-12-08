@@ -5,7 +5,7 @@ import Navbar1 from "../components/Navbar"
 
 const Layout = ({
     title = "Title",
-    description = "Description",
+  
     className,
     children
 }) => (
@@ -19,7 +19,7 @@ const Layout = ({
         <div className="jumbotron">
 
             <h4 id="jumbo-title">{title}</h4>
-            <p className="lead">{description}</p>
+
         </div>
         </div>
         </div>

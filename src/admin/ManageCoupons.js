@@ -34,7 +34,7 @@ const ManageCoupons = () => {
 
     const createCoupon = () => (
       <Link to='create_coupon'>
-          <button className="btn btn-success">
+          <button className="btn btn-outline-success">
               Create Coupon
           </button>
       </Link>
@@ -50,7 +50,7 @@ const ManageCoupons = () => {
     return (
         <Layout
             title="Manage Coupons"
-            description=""
+
             className="container-fluid"
         >  <h2 className="text-center">
               Total {coupons.length} coupons
@@ -92,7 +92,7 @@ const ManageCoupons = () => {
 
                                            <td>
                                         <Link to={`/admin/coupon/update/${c._id}`}>
-                                            <button className="btn btn-primary">
+                                            <button className="btn btn-outline-primary">
                                                 View
                                             </button>
                                         </Link>
@@ -100,7 +100,7 @@ const ManageCoupons = () => {
                                 <td>
 
                                 <Link to={`/admin/coupon/update/${c._id}`}>
-                                    <button className="btn btn-warning">
+                                    <button className="btn btn-outline-warning">
                                         Update
                                     </button>
                                 </Link>
@@ -109,7 +109,7 @@ const ManageCoupons = () => {
                                 <button
                                     type="button"
                                     onClick={() => destroy(c._id)}
-                                    className="btn btn-danger"
+                                    className="btn btn-outline-danger"
                                 >
                                     Delete
                                 </button>

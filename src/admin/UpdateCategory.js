@@ -62,7 +62,7 @@ const UpdateCategory = ({ match }) => {
     };
 
     const categoryUpdate = (name, email, role) => (
-        <form>
+        <form id="update-form-container">
             <div className="form-group">
                 <label className="text-muted">Name</label>
                 <input
@@ -84,14 +84,14 @@ const UpdateCategory = ({ match }) => {
     return (
         <Layout
             title="Update Category"
-            description=""
+
             className="container-fluid"
         >
       <div className="row">
        <div className="col-md-3">
         {AdminLinks()}
            </div>
-        <div className="col-md-9">
+        <div className="col-md-6" id="">
             {categoryUpdate(name)}
             {redirectUser(success)}
 

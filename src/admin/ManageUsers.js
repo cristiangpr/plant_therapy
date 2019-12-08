@@ -37,7 +37,7 @@ const ManageUsers = () => {
     };
     const createUser = () => (
       <Link to='create_product'>
-          <button className="btn btn-success">
+          <button className="btn btn-outline-success">
               Create User
           </button>
       </Link>
@@ -53,7 +53,7 @@ const ManageUsers = () => {
       return (
           <Layout
               title="Manage Users"
-              description=""
+
               className="container-fluid"
           >    <h2 className="text-center">
                   Total {users.length} users
@@ -98,7 +98,7 @@ const ManageUsers = () => {
                                           <td>
 
                                           <Link to={`/admin/product/update/${u._id}`}>
-                                              <button className="btn btn-primary">
+                                              <button className="btn btn-outline-primary">
                                                   View
                                               </button>
                                           </Link>
@@ -107,7 +107,7 @@ const ManageUsers = () => {
                                   <td>
 
                                   <Link to={`/admin/user/update/${u._id}`}>
-                                      <button className="btn btn-warning">
+                                      <button className="btn btn-outline-warning">
                                           Update
                                       </button>
                                   </Link>
@@ -116,7 +116,7 @@ const ManageUsers = () => {
                                   <button
                                       type="button"
                                       onClick={() => destroy(u._id)}
-                                      className="btn btn-danger"
+                                      className="btn btn-outline-danger"
                                   >
                                       Delete
                                   </button>

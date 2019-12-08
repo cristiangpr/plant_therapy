@@ -109,7 +109,7 @@ const UpdateProduct = ({ match }) => {
     };
 
     const newPostForm = () => (
-        <form className="mb-3" onSubmit={clickSubmit}>
+        <form className="mb-3" id="update-form-container" onSubmit={clickSubmit}>
             <h4>Post Photo</h4>
             <div className="form-group">
                 <label className="btn btn-secondary">
@@ -251,7 +251,7 @@ const UpdateProduct = ({ match }) => {
     return (
         <Layout
             title="Update product"
-            description={`Hello ${user.name}, ready to update product?`}
+
         >
             <div className="row">
                 <div className="col-md-8 offset-md-2">

@@ -171,3 +171,26 @@ font-family: "Open Sans", sans-serif;
  color: white;
 
 }
+.list-group-item-dark {
+  background-color: rgb(30,30,30);
+    color: white;
+}
+.table {
+  background-color: rgb(30,30,30);
+    color: white;
+
+
+}
+.table-bordered {
+
+}
+#table-div {
+
+}
+#update-form-container {
+  background-color: rgb(30,30,30);
+    border: 5px solid #18d26e;
+}
+#text-center {
+  text-align: center;
+}

@@ -64,7 +64,7 @@ const UpdateInventory = ({ match }) => {
     };
 
     const inventoryUpdate = (name, quantity) => (
-        <form>
+        <form id="update-form-container">
             <div className="form-group">
                 <label className="text-muted">Name</label>
                 <input
@@ -95,7 +95,7 @@ const UpdateInventory = ({ match }) => {
     return (
         <Layout
             title="Update Inventory"
-            description=""
+
             className="container-fluid"
         >
       <div className="row">

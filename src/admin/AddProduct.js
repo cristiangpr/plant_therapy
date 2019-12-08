@@ -211,7 +211,7 @@ const AddProduct = () => {
     return (
       <Layout
       title="Create Product"
-      description={`Hello ${user.name}!`}
+    
       className="container-fluid">
       <div className="row">
       <div className="col-md-3">

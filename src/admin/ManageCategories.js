@@ -3,12 +3,16 @@ import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import { getCategories, deleteCategory } from "./apiAdmin";
-import {Table} from 'react-bootstrap';
 import AdminLinks from './AdminLinks';
+import Datatable from 'react-bs-datatable';
 
 
 const ManageCategories = () => {
     const [categories, setCategories] = useState([]);
+    const [header, setHeader] = useState([
+        { title: "Name", prop: "name", sortable: true, filterable: true },
+
+    ]);
 
     const { user, token } = isAuthenticated();
 
@@ -32,9 +36,12 @@ const ManageCategories = () => {
         });
     };
 
+
+
+
     const createCategory = () => (
       <Link to='create_category'>
-          <button className="btn btn-success">
+          <button className="btn btn-outline-success">
               Create Category
           </button>
       </Link>
@@ -45,12 +52,13 @@ const ManageCategories = () => {
 
     useEffect(() => {
         loadCategories();
+
     }, []);
 
     return (
         <Layout
             title="Manage Categories"
-            description=""
+
             className="container-fluid"
         >  <h2 className="text-center">
               Total {categories.length} categories
@@ -62,56 +70,17 @@ const ManageCategories = () => {
                 <div className="col-sm-9">
 
                     <hr />
-                    <Table striped bordered hover>
-                    <thead>
-                           <tr>
 
-                             <th sortable="true"> Name</th>
-                             <th></th>
-                             <th></th>
-
-                             <th>{createCategory()}</th>
-                           </tr>
-                    </thead>
-                    <tbody>
-
-                        {categories.map((c, i) => (
-                          <tr>
-                            <td
-
-                            >
-                                <strong>{c.name}</strong>
-                                </td>
-
-
-                                           <td>
-                                        <Link to={`/admin/category/update/${c._id}`}>
-                                            <button className="btn btn-primary">
-                                                View
-                                            </button>
-                                        </Link>
-                                        </td>
-                                <td>
-
-                                <Link to={`/admin/category/update/${c._id}`}>
-                                    <button className="btn btn-warning">
-                                        Update
-                                    </button>
-                                </Link>
-                                </td>
-                                <td>
-                                <button
-                                    type="button"
-                                    onClick={() => destroy(c._id)}
-                                    className="btn btn-danger"
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </Table>
+              <Datatable
+                tableHeaders={header}
+                tableBody={categories}
+                keyName="userTable"
+                tableClass="striped border responsive"
+                rowsPerPage={3}
+                rowsPerPageOption={[3, 5, 8, 10]}
+                initialSort={{ prop: "name", isAscending: true }}
+              />
+  
                 </div>
             </div>
         </Layout>

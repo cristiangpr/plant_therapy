@@ -104,7 +104,7 @@ const AddCoupon = () => {
     return (
       <Layout
       title="Create Product Coupon"
-      description={`Hello ${user.name}!`}
+    
       className="container-fluid">
       <div className="row">
         <div className="col-md-3">

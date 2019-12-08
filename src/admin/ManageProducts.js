@@ -3,12 +3,20 @@ import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import { getProducts, deleteProduct } from "./apiAdmin";
-import {Table} from 'react-bootstrap';
-import AdminLinks from './AdminLinks'
+
+import AdminLinks from './AdminLinks';
+import Datatable from 'react-bs-datatable';
 
 
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
+    const [header, setHeader] = useState([
+        { title: "Name", prop: "name", sortable: true, filterable: true },
+        {title: "Category", prop: "category", sortable: true, filterable: true},
+        {title: "Price", prop: "price", filterable: true, sortable: true},
+
+    ]);
+
 
     const { user, token } = isAuthenticated();
 
@@ -17,6 +25,7 @@ const ManageProducts = () => {
             if (data.error) {
                 console.log(data.error);
             } else {
+                  console.log(data);
                 setProducts(data);
             }
         });
@@ -27,19 +36,28 @@ const ManageProducts = () => {
             if (data.error) {
                 console.log(data.error);
             } else {
+
                 loadProducts();
             }
         });
     };
 
+
     const createProduct = () => (
       <Link to='create_product'>
-          <button className="btn btn-success">
+          <button className="btn btn-outline-success">
               Create Product
           </button>
       </Link>
 
     )
+const body =
+
+            products.map((p, i) => (
+        {    name: p.name,
+            category: p.category.name,
+            price: p.price}
+            ))
 
 
 
@@ -50,7 +68,7 @@ const ManageProducts = () => {
     return (
         <Layout
             title="Manage Products"
-            description=""
+
             className="container-fluid"
         >  <h2 className="text-center">
               Total {products.length} products
@@ -62,66 +80,15 @@ const ManageProducts = () => {
                 <div className="col-sm-9">
 
                     <hr />
-                    <Table striped bordered hover>
-                    <thead>
-                           <tr>
-
-                             <th sortable="true"> Name</th>
-                             <th>Category</th>
-                             <th>Price</th>
-                             <th></th>
-                                <th></th>
-                             <th>{createProduct()}</th>
-                           </tr>
-                    </thead>
-                    <tbody>
-
-                        {products.map((p, i) => (
-                          <tr>
-                            <td
-
-                            >
-                                <strong>{p.name}</strong>
-                                </td>
-                                <td
-
-                                >
-                                    <strong>{p.category.name}</strong>
-                                    </td>
-                                    <td
-
-                                    >
-                                        <strong>{p.price}</strong>
-                                        </td>
-                                        <td>
-
-                                        <Link to={`/admin/product/update/${p._id}`}>
-                                            <button className="btn btn-primary">
-                                                View
-                                            </button>
-                                        </Link>
-                                        </td>
-                                <td>
-
-                                <Link to={`/admin/product/update/${p._id}`}>
-                                    <button className="btn btn-warning">
-                                        Update
-                                    </button>
-                                </Link>
-                                </td>
-                                <td>
-                                <button
-                                    type="button"
-                                    onClick={() => destroy(p._id)}
-                                    className="btn btn-danger"
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </Table>
+                    <Datatable
+                      tableHeaders={header}
+                      tableBody={body}
+                      keyName="productTable"
+                      tableClass="striped border responsive"
+                      rowsPerPage={5}
+                      rowsPerPageOption={[3, 5, 8, 10]}
+                      initialSort={{ prop: "name", isAscending: true }}
+                    />
                 </div>
             </div>
         </Layout>

@@ -63,7 +63,7 @@ const UpdateUser = ({ match }) => {
     };
 
     const profileUpdate = (name, email, role) => (
-        <form>
+        <form id="update-form-container">
             <div className="form-group">
                 <label className="text-muted">Name</label>
                 <input
@@ -115,7 +115,7 @@ const UpdateUser = ({ match }) => {
     return (
         <Layout
             title="Profile"
-            description="Update user profile"
+
             className="container-fluid"
         >
             <h2 className="mb-4">Profile update</h2>
