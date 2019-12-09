@@ -96,7 +96,8 @@ const AddProduct = () => {
     };
 
     const newPostForm = () => (
-        <form className="mb-3" onSubmit={clickSubmit}>
+      <div className="form">
+        <form className="contactForm" onSubmit={clickSubmit}>
             <h4>Post Photo</h4>
             <div className="form-group">
                 <label className="btn btn-secondary">
@@ -121,7 +122,7 @@ const AddProduct = () => {
 
             <div className="form-group">
                 <label className="text-muted">Description</label>
-                <textarea
+                <input
                     onChange={handleChange("description")}
                     className="form-control"
                     value={description}
@@ -181,6 +182,7 @@ const AddProduct = () => {
             </div>
             <button className="btn btn-outline-primary">Create Product</button>
         </form>
+        </div>
     );
 
     const showError = () => (
@@ -207,22 +209,32 @@ const AddProduct = () => {
                 <h2>Loading...</h2>
             </div>
         );
+        const goBack = () => (
+
+            <div className="mt-5">
+                <Link to="/admin_products" className="text-warning">
+                Go Back
+                </Link>
+            </div>
+
+        );
 
     return (
       <Layout
       title="Create Product"
-    
+
       className="container-fluid">
       <div className="row">
       <div className="col-md-3">
       {AdminLinks()}
           </div>
-
-        <div className="col-md-9">
+  <div className="col-md-3">  </div>
+        <div className="col-md-6">
               {showLoading()}
               {showSuccess()}
               {showError()}
               {newPostForm()}
+              {goBack()}
 
           </div>
       </div>

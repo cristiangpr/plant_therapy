@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link, Redirect } from "react-router-dom";
-import { readInventory, updateInventory } from "./apiAdmin";
+import { readInventory, updateInventory, deleteInventory } from "./apiAdmin";
 import AdminLinks from './AdminLinks';
+import "../styles.css";
 
 const UpdateInventory = ({ match }) => {
     const [values, setValues] = useState({
@@ -56,6 +57,15 @@ const UpdateInventory = ({ match }) => {
             }
         );
     };
+    const destroy = inventoryId => {
+        deleteInventory(inventoryId, user._id, token).then(data => {
+            if (data.error) {
+                console.log(data.error);
+            } else {
+                redirectUser(success);
+            }
+        });
+    };
 
     const redirectUser = success => {
         if (success) {
@@ -63,8 +73,17 @@ const UpdateInventory = ({ match }) => {
         }
     };
 
+    const goBack = () => (
+        <div className="mt-5">
+            <Link to="/admin_inventorie" className="text-warning">
+            Go Back
+            </Link>
+        </div>
+    );
+
     const inventoryUpdate = (name, quantity) => (
-        <form id="update-form-container">
+<div className="form">
+        <form className="contactForm">
             <div className="form-group">
                 <label className="text-muted">Name</label>
                 <input
@@ -85,10 +104,14 @@ const UpdateInventory = ({ match }) => {
             </div>
 
 
-            <button onClick={clickSubmit} className="btn btn-primary">
-                Submit
+            <button onClick={clickSubmit} className="btn btn-outline-primary">
+                Update
+            </button>
+            <button onClick={destroy} className="btn btn-outline-danger ml-3">
+                Delete
             </button>
         </form>
+        </div>
     );
 
 
@@ -102,9 +125,11 @@ const UpdateInventory = ({ match }) => {
        <div className="col-md-3">
         {AdminLinks()}
            </div>
-        <div className="col-md-9">
+            <div className="col-md-3"></div>
+        <div className="col-md-6">
             {inventoryUpdate(name, quantity)}
             {redirectUser(success)}
+            {goBack()}
 
            </div>
               </div>

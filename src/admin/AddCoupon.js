@@ -44,7 +44,8 @@ const AddCoupon = () => {
     };
 
     const newCouponForm = () => (
-        <form onSubmit={clickSubmit}>
+      <div className="form">
+        <form className= "contactForm" onSubmit={clickSubmit}>
             <div className="form-group">
                 <label className="text-muted">Code</label>
                 <input
@@ -77,6 +78,7 @@ const AddCoupon = () => {
             </div>
             <button className="btn btn-outline-primary">Create Coupon</button>
         </form>
+        </div>
     );
     const showSuccess = () => {
         if (success) {
@@ -93,8 +95,8 @@ const AddCoupon = () => {
     const goBack = () => (
 
         <div className="mt-5">
-            <Link to="/admin_dashboard" className="text-warning">
-                Back to Dashboard
+            <Link to="/admin_coupons" className="text-warning">
+              Go Back
             </Link>
         </div>
 
@@ -104,13 +106,16 @@ const AddCoupon = () => {
     return (
       <Layout
       title="Create Product Coupon"
-    
+
       className="container-fluid">
       <div className="row">
         <div className="col-md-3">
           {AdminLinks()}
           </div>
-          <div className="col-md-9 ">
+          <div className="col-md-3">
+
+            </div>
+          <div className="col-md-6 ">
 
               {showSuccess()}
               {showError()}

@@ -4,6 +4,8 @@ import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import { listOrders, getStatusValues, updateOrderStatus } from "./apiAdmin";
 import moment from "moment";
+import AdminLinks from './AdminLinks';
+import Datatable from 'react-bs-datatable';
 
 const Orders = () => {
     const [orders, setOrders] = useState([]);
@@ -37,12 +39,12 @@ const Orders = () => {
     const showOrdersLength = () => {
         if (orders.length > 0) {
             return (
-                <h1 className="text-danger display-2">
+                <h4 className="text-danger">
                     Total orders: {orders.length}
-                </h1>
+                </h4>
             );
         } else {
-            return <h1 className="text-danger">No orders</h1>;
+            return <h4 className="text-danger">No orders</h4>;
         }
     };
     const noOrders = orders => {
@@ -92,13 +94,14 @@ const Orders = () => {
     return (
       <Layout
           title="Orders"
-          description={`Hello ${
-              user.name
-          }, you can manage all the orders here`}
+
           className="container-fluid"
       >
       <div className="row">
-          <div className="col-md-8 offset-md-2">
+      <div className="col-md-3">
+        {AdminLinks()}
+      </div>
+          <div className="col-md-9">
               {showOrdersLength()}
 
               {orders.map((o, oIndex) => {

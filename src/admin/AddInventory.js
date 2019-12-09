@@ -37,7 +37,8 @@ const AddInventory = () => {
     };
 
     const newInventoryForm = () => (
-        <form onSubmit={clickSubmit}>
+      <div className="form">
+        <form className="contactForm" onSubmit={clickSubmit}>
             <div className="form-group">
                 <label className="text-muted">Name</label>
                 <input
@@ -60,6 +61,7 @@ const AddInventory = () => {
             </div>
             <button className="btn btn-outline-primary">Create Inventory</button>
         </form>
+        </div>
     );
     const showSuccess = () => {
         if (success) {
@@ -75,8 +77,8 @@ const AddInventory = () => {
 
     const goBack = () => (
         <div className="mt-5">
-            <Link to="/admin_dashboard" className="text-warning">
-                Back to Dashboard
+            <Link to="/admin_inventories" className="text-warning">
+            Go Back
             </Link>
         </div>
     );
@@ -85,19 +87,20 @@ const AddInventory = () => {
     return (
       <Layout
       title="Create Inventory Item"
-    
+
       className="container-fluid">
       <div className="row">
         <div className="col-md-3">
         {AdminLinks()}
             </div>
-
-          <div className="col-md-9">
+            <div className="col-md-3">
+                </div>
+          <div className="col-md-6">
 
               {showSuccess()}
               {showError()}
               {newInventoryForm()}
-
+              {goBack()}
 
           </div>
       </div>

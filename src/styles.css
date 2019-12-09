@@ -150,10 +150,7 @@ text-transform: uppercase;
 font-family: "Open Sans", sans-serif;
 
 }
-.table {
-  background-color: white;
-  color: black;
-}
+
 #admin-links{
   padding-top: 30px;
 }
@@ -178,9 +175,9 @@ font-family: "Open Sans", sans-serif;
 .table {
   background-color: rgb(30,30,30);
     color: white;
+  }
 
 
-}
 .table-bordered {
 
 }

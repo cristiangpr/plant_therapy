@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link, Redirect } from "react-router-dom";
-import { getProduct, getCategories, updateProduct, getInventories} from "./apiAdmin";
+import { getProduct, getCategories, updateProduct, getInventories, deleteProduct} from "./apiAdmin";
 import AdminLinks from './AdminLinks';
 
 const UpdateProduct = ({ match }) => {
@@ -109,7 +109,8 @@ const UpdateProduct = ({ match }) => {
     };
 
     const newPostForm = () => (
-        <form className="mb-3" id="update-form-container" onSubmit={clickSubmit}>
+      <div className="form">
+        <form className="contactForm"  onSubmit={clickSubmit}>
             <h4>Post Photo</h4>
             <div className="form-group">
                 <label className="btn btn-secondary">
@@ -134,7 +135,7 @@ const UpdateProduct = ({ match }) => {
 
             <div className="form-group">
                 <label className="text-muted">Description</label>
-                <textarea
+                <input
                     onChange={handleChange("description")}
                     className="form-control"
                     value={description}
@@ -203,7 +204,11 @@ const UpdateProduct = ({ match }) => {
             </div>
 
             <button className="btn btn-outline-primary">Update Product</button>
+            <button onClick={destroy} className="btn btn-outline-danger ml-3">
+                Delete
+            </button>
         </form>
+        </div>
     );
 
     const showError = () => (
@@ -238,11 +243,21 @@ const UpdateProduct = ({ match }) => {
             }
         }
     };
+    const destroy = productId => {
+        deleteProduct(productId, user._id, token).then(data => {
+            if (data.error) {
+                console.log(data.error);
+            } else {
+
+                redirectUser();
+            }
+        });
+    };
     const goBack = () => (
 
         <div className="mt-5">
-            <Link to="/admin_dashboard" className="text-warning">
-                Back to Dashboard
+            <Link to="/admin_products" className="text-warning">
+              Go Back
             </Link>
         </div>
 
@@ -254,7 +269,13 @@ const UpdateProduct = ({ match }) => {
 
         >
             <div className="row">
-                <div className="col-md-8 offset-md-2">
+            <div className="col-md-3">
+            {AdminLinks()}
+            </div>
+            <div className="col-md-3">
+
+            </div>
+                <div className="col-md-6">
                     {showLoading()}
                     {showSuccess()}
                     {showError()}

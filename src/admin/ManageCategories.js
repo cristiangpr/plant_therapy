@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { getCategories, deleteCategory } from "./apiAdmin";
+import { getCategories } from "./apiAdmin";
 import AdminLinks from './AdminLinks';
 import Datatable from 'react-bs-datatable';
 
@@ -11,6 +11,7 @@ const ManageCategories = () => {
     const [categories, setCategories] = useState([]);
     const [header, setHeader] = useState([
         { title: "Name", prop: "name", sortable: true, filterable: true },
+          {title: "Edit", prop: "edit"},
 
     ]);
 
@@ -26,15 +27,7 @@ const ManageCategories = () => {
         });
     };
 
-    const destroy = categoryId => {
-        deleteCategory(categoryId, user._id, token).then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                loadCategories();
-            }
-        });
-    };
+
 
 
 
@@ -47,6 +40,16 @@ const ManageCategories = () => {
       </Link>
 
     )
+    const body =   categories.map((c, i) => (
+          {    name: c.name,
+
+                edit:    <Link to={`/admin/category/update/${c._id}`}>
+                        <button className="btn btn-outline-warning">
+                          Edit
+                        </button>
+                    </Link>
+               }
+                ))
 
 
 
@@ -73,14 +76,14 @@ const ManageCategories = () => {
 
               <Datatable
                 tableHeaders={header}
-                tableBody={categories}
-                keyName="userTable"
+                tableBody={body}
+                keyName="categoryTable"
                 tableClass="striped border responsive"
-                rowsPerPage={3}
+                rowsPerPage={10}
                 rowsPerPageOption={[3, 5, 8, 10]}
                 initialSort={{ prop: "name", isAscending: true }}
               />
-  
+             {createCategory()}
                 </div>
             </div>
         </Layout>

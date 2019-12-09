@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link, Redirect } from "react-router-dom";
-import { readCoupon, updateCoupon } from "./apiAdmin";
+import { readCoupon, updateCoupon, deleteCoupon } from "./apiAdmin";
 import AdminLinks from './AdminLinks';
 
 const UpdateCoupon = ({ match }) => {
@@ -64,8 +64,29 @@ const UpdateCoupon = ({ match }) => {
         }
     };
 
+    const destroy = couponId => {
+        deleteCoupon(couponId, user._id, token).then(data => {
+            if (data.error) {
+                console.log(data.error);
+            } else {
+                redirectUser();
+            }
+        });
+    };
+
+    const goBack = () => (
+
+        <div className="mt-5">
+            <Link to="/admin_coupons" className="text-warning">
+            Go Back
+            </Link>
+        </div>
+
+    );
+
     const couponUpdate = (code, discount, expireDate) => (
-        <form id="update-form-container">
+<div className="form">
+        <form id="contactForm">
             <div className="form-group">
                 <label className="text-muted">Code</label>
                 <input
@@ -95,12 +116,15 @@ const UpdateCoupon = ({ match }) => {
             </div>
 
 
-            <button onClick={clickSubmit} className="btn btn-primary">
-                Submit
+            <button onClick={clickSubmit} className="btn btn-outline-primary">
+                Update
+            </button>
+            <button onClick={destroy} className="btn btn-outline-danger ml-3">
+                Delete
             </button>
         </form>
+        </div>
     );
-
 
     return (
         <Layout
@@ -112,9 +136,13 @@ const UpdateCoupon = ({ match }) => {
        <div className="col-md-3">
         {AdminLinks()}
            </div>
-        <div className="col-md-9">
+           <div className="col-md-3">
+
+               </div>
+        <div className="col-md-6">
             {couponUpdate(code, discount, expireDate)}
             {redirectUser(success)}
+            {goBack()}
 
            </div>
               </div>

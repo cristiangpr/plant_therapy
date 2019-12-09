@@ -34,7 +34,8 @@ const AddCategory = () => {
     };
 
     const newCategoryForm = () => (
-        <form onSubmit={clickSubmit}>
+      <div className="form">
+        <form className="contactForm" onSubmit={clickSubmit}>
             <div className="form-group">
                 <label className="text-muted">Name</label>
                 <input
@@ -47,6 +48,7 @@ const AddCategory = () => {
             </div>
             <button className="btn btn-outline-primary">Create Category</button>
         </form>
+        </div>
     );
     const showSuccess = () => {
         if (success) {
@@ -59,23 +61,32 @@ const AddCategory = () => {
             return <h3 className="text-danger">Category should be unique</h3>;
         }
     };
-
+    const goBack = () => (
+        <div className="mt-5">
+            <Link to="/admin_categories" className="text-warning">
+            Go Back
+            </Link>
+        </div>
+    );
 
     return (
       <Layout
       title="Create Product Category"
-  
+
       className="container-fluid">
       <div className="row">
         <div className="col-md-3">
         {AdminLinks()}
             </div>
+            <div className="col-md-3">
+                </div>
 
-          <div className="col-md-9">
+          <div className="col-md-6">
 
               {showSuccess()}
               {showError()}
               {newCategoryForm()}
+              {goBack()}
 
 
           </div>

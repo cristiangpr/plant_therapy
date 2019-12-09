@@ -17,6 +17,7 @@ import AdminRoute from "./auth/AdminRoute";
 import AdminDashboard from "./components/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
+import AddUser from "./admin/AddUser";
 import Cart from "./core/Cart";
 import Orders from "./admin/Orders";
 import Profile from "./user/Profile";
@@ -34,7 +35,7 @@ import AddInventory from "./admin/AddInventory";
   import UpdateCategory from "./admin/UpdateCategory";
     import UpdateInventory from "./admin/UpdateInventory";
   import UpdateCoupon from "./admin/UpdateCoupon";
-import DataTable from './admin/DataTable';
+
   require('dotenv').config()
 
 
@@ -57,6 +58,7 @@ import DataTable from './admin/DataTable';
             <AdminRoute path="/admin_dashboard" exact component={AdminDashboard}  />
               <AdminRoute path="/create_category" exact component={AddCategory}/>
               <AdminRoute path="/create_product" exact component={AddProduct}/>
+                  <AdminRoute path="/create_user" exact component={AddUser}/>
                 <Route path="/cart" exact component={Cart} />
                   <AdminRoute path="/admin_orders" exact component={Orders} />
                   <PrivateRoute
@@ -125,11 +127,7 @@ import DataTable from './admin/DataTable';
                       exact
                       component={UpdateCoupon}
                   />
-                  <AdminRoute
-                      path="/data_table"
-                      exact
-                      component={DataTable}
-                  />
+
         </Switch>
       </BrowserRouter>
     );

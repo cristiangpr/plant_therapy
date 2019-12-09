@@ -2,14 +2,21 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { listUsers, deleteUser, updateUser } from "./apiAdmin";
+import { listUsers, updateUser } from "./apiAdmin";
 import moment from "moment";
 import {Table} from 'react-bootstrap';
 import AdminLinks from "./AdminLinks";
-
+import Datatable from 'react-bs-datatable';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
+    const [header, setHeader] = useState([
+        { title: "Name", prop: "name", sortable: true, filterable: true, editable: true },
+        {title: "E-mail", prop: "email", sortable: true, filterable: true},
+        {title: "Phone", prop: "phone"},
+        {title: "Role", prop: "role", sortable: true, filterable: true},
+        {title: "Edit", prop: "edit"},
+])
 
 
     const { user, token } = isAuthenticated();
@@ -26,23 +33,27 @@ const ManageUsers = () => {
 
 
 
-    const destroy = userId => {
-        deleteUser( userId, user._id, token).then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                loadUsers();
-            }
-        });
-    };
     const createUser = () => (
-      <Link to='create_product'>
+      <Link to='create_user'>
           <button className="btn btn-outline-success">
               Create User
           </button>
       </Link>
 
     )
+    const body =  users.map((u, i) => (
+
+            {   name: u.name,
+                email: u.email,
+                phone: u.phone,
+                role: u.role,
+                edit:    <Link to={`/admin/user/update/${u._id}`}>
+                        <button className="btn btn-outline-warning">
+                          Edit
+                        </button>
+                    </Link>
+               }
+                ))
 
     useEffect(() => {
         loadUsers();
@@ -64,67 +75,17 @@ const ManageUsers = () => {
                   <div className="col-sm-9">
 
                       <hr />
-                      <Table striped bordered hover>
-                      <thead>
-                             <tr>
+                      <Datatable
+                        tableHeaders={header}
+                        tableBody={body}
 
-                               <th> Name</th>
-                               <th>E mail</th>
-                               <th>Role</th>
-                               <th></th>
-                               <th></th>
-                               <th>{createUser()}</th>
-                             </tr>
-                      </thead>
-                      <tbody>
 
-                          {users.map((u, i) => (
-                            <tr>
-                              <td
+                        rowsPerPage={10}
+                        rowsPerPageOption={[5, 10, 20, 100]}
+                        initialSort={{ prop: "name", isAscending: true }}
 
-                              >
-                                  <strong>{u.name}</strong>
-                                  </td>
-                                  <td
-
-                                  >
-                                      <strong>{u.email}</strong>
-                                      </td>
-                                      <td
-
-                                      >
-                                          <strong>{u.role}</strong>
-                                          </td>
-                                          <td>
-
-                                          <Link to={`/admin/product/update/${u._id}`}>
-                                              <button className="btn btn-outline-primary">
-                                                  View
-                                              </button>
-                                          </Link>
-                                          </td>
-
-                                  <td>
-
-                                  <Link to={`/admin/user/update/${u._id}`}>
-                                      <button className="btn btn-outline-warning">
-                                          Update
-                                      </button>
-                                  </Link>
-                                  </td>
-                                  <td>
-                                  <button
-                                      type="button"
-                                      onClick={() => destroy(u._id)}
-                                      className="btn btn-outline-danger"
-                                  >
-                                      Delete
-                                  </button>
-                              </td>
-                              </tr>
-                          ))}
-                          </tbody>
-                      </Table>
+                      />
+                      {createUser()}
                   </div>
               </div>
           </Layout>

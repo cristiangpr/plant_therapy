@@ -154,7 +154,7 @@ const signUpForm = () => (
 
       </div>
     </div>
-    <div className="text-center"><button onClick={clickSubmit} type="submit">Submit Application</button></div>
+    <div className="text-center"><button className= "btn btn-outline-primary"onClick={clickSubmit} type="submit">Submit Application</button></div>
   </form>
 </div>
 </div>
