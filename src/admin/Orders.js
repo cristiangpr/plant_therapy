@@ -124,7 +124,7 @@ const Orders = () => {
                           </option>
                       ))}
                   </select>,
-                customer: user.name,
+                customer: o.user.name,
                 date: moment(o.createdAt).format("MMM Do YYYY"),
                 view:      <Link to={`/admin/order/update/${o._id}`}>
                          <button  className="btn btn-outline-primary">
