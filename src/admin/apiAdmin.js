@@ -172,7 +172,7 @@ export const listUsers = () => {
 
 export const updateUser = (userId, token, user) => {
     console.log(JSON.stringify(user))
-    return fetch(`${API}/user/${userId}`, {
+    return fetch(`${API}/admin/user/${userId}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",

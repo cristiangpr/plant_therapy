@@ -53,7 +53,7 @@ const UpdateUser = ({ match }) => {
     const clickSubmit = e => {
         e.preventDefault();
           setValues({ ...values, error: false,   loading: true });
-        updateUser(match.params.userId, token, {    name, email, phone, permit, business_name, street_address, city, state, country, zip, website, about, loading, error, success }).then(
+        updateUser(match.params.userId, token, {    name, email, role, phone, permit, business_name, street_address, city, state, country, zip, website, about, loading, error, success }).then(
             data => {
                 if (data.error) {
                     console.log(data.error);
@@ -63,7 +63,7 @@ const UpdateUser = ({ match }) => {
                             ...values,
                             name: "",
                             email: "",
-
+                            role: "",
                             phone: "",
                             permit: "",
                             business_name: "",
@@ -236,7 +236,7 @@ const UpdateUser = ({ match }) => {
   <div className="col-md-3">  </div>
         <div className="col-md-6">
               {showLoading()}
-          
+
               {showError()}
               {profileUpdate()}
                {goBack()}
