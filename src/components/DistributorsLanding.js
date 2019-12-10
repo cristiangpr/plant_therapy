@@ -37,7 +37,6 @@ Apply For Special Pricing</p>
 
 
 
-  <Footer/>
     <ScrollUpButton/>
    </div>
 
