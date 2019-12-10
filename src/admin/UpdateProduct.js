@@ -19,6 +19,7 @@ const UpdateProduct = ({ match }) => {
         photo: "",
         loading: false,
         error: false,
+        success: false,
         createdProduct: "",
         redirectToProfile: false,
         formData: ""
@@ -37,8 +38,9 @@ const UpdateProduct = ({ match }) => {
         quantity,
         loading,
         error,
+        success,
         createdProduct,
-        redirectToProfile,
+
         formData
     } = values;
 
@@ -100,13 +102,31 @@ const UpdateProduct = ({ match }) => {
                         quantity: "",
                         loading: false,
                         error: false,
-                        redirectToProfile: true,
+
                         createdProduct: data.name
                     });
                 }
             }
         );
     };
+
+        const destroy = e => {
+            e.preventDefault();
+            deleteProduct(match.params.productId, user._id, token).then(data => {
+                if (data.error) {
+                    console.log(data.error);
+                } else {
+                  setValues({
+                       ...values,
+
+
+                      success: true
+                  });
+                    redirectUser();
+                }
+            });
+        };
+
 
     const newPostForm = () => (
       <div className="form">
@@ -236,23 +256,14 @@ const UpdateProduct = ({ match }) => {
             </div>
         );
 
-    const redirectUser = () => {
-        if (redirectToProfile) {
-            if (!error) {
+    const redirectUser = success => {
+        if (success) {
+
                 return <Redirect to="/admin_products" />;
             }
-        }
-    };
-    const destroy = productId => {
-        deleteProduct(productId, user._id, token).then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
+        };
 
-                redirectUser();
-            }
-        });
-    };
+
     const goBack = () => (
 
         <div className="mt-5">

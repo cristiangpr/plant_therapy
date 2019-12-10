@@ -120,7 +120,7 @@
     }
 }
 #history{
-  color: black;
+  color: white;
 }
 
 #cart {
@@ -190,4 +190,7 @@ font-family: "Open Sans", sans-serif;
 }
 #text-center {
   text-align: center;
+}
+.form {
+  background-color:  rgb(30,30,30);
 }

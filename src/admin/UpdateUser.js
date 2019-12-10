@@ -25,7 +25,7 @@ const UpdateUser = ({ match }) => {
       success: false
     });
 
-    const { token } = isAuthenticated();
+    const { token, user } = isAuthenticated();
     const {    name, email, role,  phone, permit, business_name, street_address, city, state, country, zip, website, about, loading, error, success } = values;
 
     const init = userId => {
@@ -84,14 +84,7 @@ const UpdateUser = ({ match }) => {
         );
     };
 
-    const showSuccess = () => (
-        <div
-            className="alert alert-info"
-            style={{ display: success ? "" : "none" }}
-        >
-            User profile updated.
-        </div>
-    );
+
     const showLoading = () =>
         loading && (
             <div className="alert alert-success">
@@ -111,7 +104,22 @@ const UpdateUser = ({ match }) => {
                 return <Redirect to="/admin_users" />;
             }
         };
-        
+        const destroy = e => {
+            e.preventDefault();
+            deleteUser(match.params.userId, user._id, token).then(data => {
+                if (data.error) {
+                    console.log(data.error);
+                } else {
+                  setValues({
+                       ...values,
+
+
+                      success: true
+                  });
+                    redirectUser();
+                }
+            });
+        };
 
 
     const profileUpdate = () => (
@@ -151,9 +159,20 @@ const UpdateUser = ({ match }) => {
             </div>
           </div>
           <div className="form-row">
-            <div className="form-group col-md-12">
+            <div className="form-group col-md-6">
               <input onChange={handleChange("street_address")} type="text"  className="form-control" value={street_address} placeholder="Street Address"  />
 
+            </div>
+            <div className="form-group col-md-6">
+              <select onChange={handleChange("role")} type="text"  className="form-control" value={role} placeholder="Role" >
+              <option>Please select</option>
+              <option value="Admin">Admin</option>
+                  <option value="Registered User">Registered User</option>
+              <option value="Wholesale">Wholesale</option>
+                <option value="Agricultural Commmercial">Farm</option>
+                <option value="Distributor 25">Distributor 25</option>
+                <option value="Distributor 32">Distributor 32</option>
+             </select>
             </div>
 
           </div>
@@ -187,7 +206,11 @@ const UpdateUser = ({ match }) => {
 
             </div>
           </div>
-          <div className="text-center"><button className="btn btn-outline-primary" onClick={clickSubmit} type="submit">Submit</button></div>
+          <div><button className="btn btn-outline-primary" onClick={clickSubmit} type="submit">Submit</button>
+          <button onClick={destroy} className="btn btn-outline-danger ml-3">
+              Delete
+          </button>
+          </div>
         </form>
       </div>
 );
@@ -213,7 +236,7 @@ const UpdateUser = ({ match }) => {
   <div className="col-md-3">  </div>
         <div className="col-md-6">
               {showLoading()}
-              {showSuccess()}
+          
               {showError()}
               {profileUpdate()}
                {goBack()}

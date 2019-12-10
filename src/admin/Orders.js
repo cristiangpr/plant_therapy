@@ -10,6 +10,22 @@ import Datatable from 'react-bs-datatable';
 const Orders = () => {
     const [orders, setOrders] = useState([]);
     const [statusValues, setStatusValues] = useState([]);
+    const [header, setHeader] = useState([
+        { title: "Order Id", prop: "orderId", sortable: true, filterable: true, editable: true },
+        {title: "Transaction", prop: "transId", sortable: true, filterable: true},
+        {title: "Amount", prop: "amount", filterable: true, sortable: true},
+          {title: "Status", prop: "status", filterable: true, sortable: true},
+        {title: "", prop: "update"},
+            {title: "Customer", prop: "customer", filterable: true, sortable: true},
+            {title: "Ordered on", prop: "date", filterable: true, sortable: true},
+            {title: "", prop: "view"},
+
+
+
+
+
+    ]);
+
 
     const { user, token } = isAuthenticated();
 
@@ -91,6 +107,34 @@ const Orders = () => {
             </select>
         </div>
     );
+    const body =  orders.map((o, i) => (
+
+            {   orderId: o._id ,
+                transId: o.transaction_id,
+                amount: o.amount,
+                status: o.status,
+                update:   <select
+
+                      onChange={e => handleStatusChange(e, o._id)}
+                  >
+                      <option>Update Status</option>
+                      {statusValues.map((status, index) => (
+                          <option key={index} value={status}>
+                              {status}
+                          </option>
+                      ))}
+                  </select>,
+                customer: o.user.name,
+                date: moment(o.createdAt).format("MMM Do YYYY"),
+                view:      <Link to={`/admin/order/update/${o._id}`}>
+                         <button  className="btn btn-outline-primary">
+                        View
+                         </button>
+                     </Link>
+               }
+             ));
+
+
     return (
       <Layout
           title="Orders"
@@ -104,69 +148,16 @@ const Orders = () => {
           <div className="col-md-9">
               {showOrdersLength()}
 
-              {orders.map((o, oIndex) => {
-                  return (
-                      <div
-                          className="mt-5"
-                          key={oIndex}
-                          style={{ borderBottom: "5px solid indigo" }}
-                      >
-                          <h2 className="mb-5">
-                              <span className="bg-primary">
-                                  Order ID: {o._id}
-                              </span>
-                          </h2>
+              <Datatable
+                tableHeaders={header}
+                tableBody={body}
 
-                          <ul className="list-group mb-2">
-                              <li className="list-group-item">
-                                    {showStatus(o)}
-                              </li>
-                              <li className="list-group-item">
-                                  Transaction ID: {o.transaction_id}
-                              </li>
-                              <li className="list-group-item">
-                                  Amount: ${o.amount}
-                              </li>
-                              <li className="list-group-item">
-                                  Ordered by: {o.user.name}
-                              </li>
-                              <li className="list-group-item">
-                                  Ordered on:{" "}
-                                  {moment(o.createdAt).format("MMM Do YYYY")}
-                              </li>
-                              <li className="list-group-item">
-                                  Delivery address: {o.address}
-                              </li>
-                              <li className="list-group-item">
-                                  Discount Code: {o.discount_code}
-                              </li>
-                              <li className="list-group-item">
-                                  Discount Rate: {o.discount_rate}
-                              </li>
-                          </ul>
 
-                          <h3 className="mt-4 mb-4 font-italic">
-                              Total products in the order:{" "}
-                              {o.products.length}
-                          </h3>
-                          {o.products.map((p, pIndex) => (
-                              <div
-                                  className="mb-4"
-                                  key={pIndex}
-                                  style={{
-                                      padding: "20px",
-                                      border: "1px solid indigo"
-                                  }}
-                              >
-                                  {showInput("Product name", p.name)}
-                                  {showInput("Product price", p.price)}
-                                  {showInput("Product total", p.count)}
-                                  {showInput("Product Id", p._id)}
-                              </div>
-                          ))}
-                      </div>
-                  );
-              })}
+                rowsPerPage={10}
+                rowsPerPageOption={[5, 10, 20, 30, 100]}
+                initialSort={{ prop: "orderId", isAscending: true }}
+
+              />
           </div>
       </div>
       </Layout>

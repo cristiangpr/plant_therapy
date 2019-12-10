@@ -57,12 +57,19 @@ const UpdateInventory = ({ match }) => {
             }
         );
     };
-    const destroy = inventoryId => {
-        deleteInventory(inventoryId, user._id, token).then(data => {
+    const destroy = e => {
+      e.preventDefault();
+        deleteInventory(match.params.inventoryId, user._id, token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                redirectUser(success);
+              setValues({
+                  ...values,
+
+
+                  success: true
+              });
+                redirectUser();
             }
         });
     };

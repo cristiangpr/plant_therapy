@@ -349,8 +349,9 @@ export const deleteInventory = ( inventoryId, adminId, token) => {
         .catch(err => console.log(err));
 };
 
-export const deleteCoupon = ( couponId, adminId, token) => {
-    return fetch(`${API}/coupon/${couponId}/${adminId}`, {
+export const deleteCoupon = ( couponId, userId, token) => {
+  console.log("delete")
+    return fetch(`${API}/coupon/${couponId}/${userId}`, {
         method: "DELETE",
         headers: {
             Accept: "application/json",
@@ -399,6 +400,22 @@ export const updateCoupon = ( couponId, userId, token, coupon) => {
             Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(coupon)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+
+export const readOrder = (orderId, token) => {
+    return fetch(`${API}/order/${orderId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
     })
         .then(response => {
             return response.json();

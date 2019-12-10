@@ -29,16 +29,16 @@ const Dashboard = () => {
 
     const userLinks = () => {
         return (
-            <div className="card">
+            <div className="card" id="dark-card">
                 <h4 className="card-header name">User Links</h4>
                 <ul className="list-group">
-                    <li className="list-group-item">
-                        <Link className="nav-link-dash" to="/cart">
+                    <li className="list-group-item list-group-item-dark">
+                        <Link className="nav-link" to="/cart">
                             My Cart
                         </Link>
                     </li>
-                    <li className="list-group-item">
-                        <Link className="nav-link-dash" to={`/profile/${_id}`}>
+                    <li className="list-group-item list-group-item-dark">
+                        <Link className="nav-link" to={`/profile/${_id}`}>
                             Update Profile
                         </Link>
                     </li>
@@ -49,12 +49,12 @@ const Dashboard = () => {
 
     const userInfo = () => {
         return (
-            <div className="card mb-5">
-                <h3 className="card-header name">User Information</h3>
+            <div className="card" id="dark-card">
+                <h4 className="card-header name">User Information</h4>
                 <ul className="list-group">
-                    <li className="list-group-item">{name}</li>
-                    <li className="list-group-item">{email}</li>
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">{name}</li>
+                    <li className="list-group-item list-group-item-dark">{email}</li>
+                    <li className="list-group-item list-group-item-dark">
                         {role}
                     </li>
                 </ul>
@@ -64,10 +64,10 @@ const Dashboard = () => {
 
     const purchaseHistory = history => {
         return (
-            <div className="card mb-5">
-                <h3 className="card-header name">Purchase history</h3>
+            <div className="card " id="dark-card">
+                <h4 className="card-header name">Purchase history</h4>
                 <ul className="list-group">
-                    <li className="list-group-item">
+                    <li className="list-group-item list-group-item-dark">
                         {history.map((h, i) => {
                             return (
                                 <div>

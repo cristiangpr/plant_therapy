@@ -64,11 +64,18 @@ const UpdateCoupon = ({ match }) => {
         }
     };
 
-    const destroy = couponId => {
-        deleteCoupon(couponId, user._id, token).then(data => {
+    const destroy = e => {
+        e.preventDefault();
+        deleteCoupon(match.params.couponId, user._id, token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
+              setValues({
+            
+
+
+                  success: true
+              });
                 redirectUser();
             }
         });

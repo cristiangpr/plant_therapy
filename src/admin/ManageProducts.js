@@ -33,8 +33,7 @@ const ManageProducts = () => {
         });
     };
 
-
-
+    
 
     const createProduct = () => (
       <Link to='create_product'>

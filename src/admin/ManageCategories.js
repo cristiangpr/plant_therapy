@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { getCategories } from "./apiAdmin";
+import { getCategories, deleteCategory } from "./apiAdmin";
 import AdminLinks from './AdminLinks';
 import Datatable from 'react-bs-datatable';
 
@@ -27,7 +27,15 @@ const ManageCategories = () => {
         });
     };
 
-
+    const destroy = categoryId => {
+        deleteCategory(categoryId, user._id, token).then(data => {
+            if (data.error) {
+                console.log(data.error);
+            } else {
+                loadCategories();
+            }
+        });
+    };
 
 
 
