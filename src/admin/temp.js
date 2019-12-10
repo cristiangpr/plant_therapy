@@ -2,175 +2,90 @@ import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { listOrders, getStatusValues, updateOrderStatus } from "./apiAdmin";
-import moment from "moment";
+import { getProducts, deleteProduct } from "./apiAdmin";
+
 import AdminLinks from './AdminLinks';
 import Datatable from 'react-bs-datatable';
 
-const Orders = () => {
-    const [orders, setOrders] = useState([]);
-    const [statusValues, setStatusValues] = useState([]);
+
+const ManageProducts = () => {
+    const [products, setProducts] = useState([]);
+    const [header, setHeader] = useState([
+        { title: "Name", prop: "name", sortable: true, filterable: true },
+        {title: "Category", prop: "{category.name}", sortable: true, filterable: true},
+        {title: "Price", prop: "price", filterable: true, sortable: true},
+
+    ]);
+
 
     const { user, token } = isAuthenticated();
 
-    const loadOrders = () => {
-        listOrders(user._id, token).then(data => {
+    const loadProducts = () => {
+        getProducts().then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                setOrders(data);
+                  console.log(data);
+                setProducts(data);
             }
         });
     };
-    const loadStatusValues = () => {
-        getStatusValues(user._id, token).then(data => {
+
+    const destroy = productId => {
+        deleteProduct(productId, user._id, token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                setStatusValues(data);
+
+                loadProducts();
             }
         });
     };
+
+
+    const createProduct = () => (
+      <Link to='create_product'>
+          <button className="btn btn-outline-success">
+              Create Product
+          </button>
+      </Link>
+
+    )
+
+
 
     useEffect(() => {
-        loadOrders();
-          loadStatusValues();
+        loadProducts();
     }, []);
-    const showOrdersLength = () => {
-        if (orders.length > 0) {
-            return (
-                <h1 className="text-danger display-2">
-                    Total orders: {orders.length}
-                </h1>
-            );
-        } else {
-            return <h1 className="text-danger">No orders</h1>;
-        }
-    };
-    const noOrders = orders => {
-        return orders.length < 1 ? <h4>No orders</h4> : null;
-    };
-    const showInput = (key, value) => (
-        <div className="input-group mb-2 mr-sm-2">
-            <div className="input-group-prepend">
-                <div className="input-group-text">{key}</div>
-            </div>
-            <input
-                type="text"
-                value={value}
-                className="form-control"
-                readOnly
-            />
-        </div>
-    );
-    const handleStatusChange = (e, orderId) => {
-        updateOrderStatus(user._id, token, orderId, e.target.value).then(
-            data => {
-                if (data.error) {
-                    console.log("Status update failed");
-                } else {
-                    loadOrders();
-                }
-            }
-        );
-    };
 
-    const showStatus = o => (
-        <div className="form-group">
-            <h3 className="mark mb-4" style={{color: "black"}}>Status: {o.status}</h3>
-            <select
-                className="form-control"
-                onChange={e => handleStatusChange(e, o._id)}
-            >
-                <option>Update Status</option>
-                {statusValues.map((status, index) => (
-                    <option key={index} value={status}>
-                        {status}
-                    </option>
-                ))}
-            </select>
-        </div>
-    );
     return (
-      <Layout
-          title="Orders"
+        <Layout
+            title="Manage Products"
 
-          className="container-fluid"
-      >
-      <div className="row">
-      <div className="col-md-3">
-        {AdminLinks()}
-      </div>
-          <div className="col-md-9">
-              {showOrdersLength()}
+            className="container-fluid"
+        >  <h2 className="text-center">
+              Total {products.length} products
+          </h2>
+            <div className="row">
+                <div className="col-sm-3" id="admin-links">{AdminLinks()}
 
-              {orders.map((o, oIndex) => {
-                  return (
-                      <div
-                          className="mt-5"
-                          key={oIndex}
-                          style={{ borderBottom: "5px solid indigo" }}
-                      >
-                          <h2 className="mb-5">
-                              <span className="bg-primary">
-                                  Order ID: {o._id}
-                              </span>
-                          </h2>
+                </div>
+                <div className="col-sm-9">
 
-                          <ul className="list-group mb-2">
-                              <li className="list-group-item">
-                                    {showStatus(o)}
-                              </li>
-                              <li className="list-group-item">
-                                  Transaction ID: {o.transaction_id}
-                              </li>
-                              <li className="list-group-item">
-                                  Amount: ${o.amount}
-                              </li>
-                              <li className="list-group-item">
-                                  Ordered by: {o.user.name}
-                              </li>
-                              <li className="list-group-item">
-                                  Ordered on:{" "}
-                                  {moment(o.createdAt).format("MMM Do YYYY")}
-                              </li>
-                              <li className="list-group-item">
-                                  Delivery address: {o.address}
-                              </li>
-                              <li className="list-group-item">
-                                  Discount Code: {o.discount_code}
-                              </li>
-                              <li className="list-group-item">
-                                  Discount Rate: {o.discount_rate}
-                              </li>
-                          </ul>
-
-                          <h3 className="mt-4 mb-4 font-italic">
-                              Total products in the order:{" "}
-                              {o.products.length}
-                          </h3>
-                          {o.products.map((p, pIndex) => (
-                              <div
-                                  className="mb-4"
-                                  key={pIndex}
-                                  style={{
-                                      padding: "20px",
-                                      border: "1px solid indigo"
-                                  }}
-                              >
-                                  {showInput("Product name", p.name)}
-                                  {showInput("Product price", p.price)}
-                                  {showInput("Product total", p.count)}
-                                  {showInput("Product Id", p._id)}
-                              </div>
-                          ))}
-                      </div>
-                  );
-              })}
-          </div>
-      </div>
-      </Layout>
+                    <hr />
+                    <Datatable
+                      tableHeaders={header}
+                      tableBody={products}
+                      keyName="productTable"
+                      tableClass="striped border responsive"
+                      rowsPerPage={5}
+                      rowsPerPageOption={[3, 5, 8, 10]}
+                      initialSort={{ prop: "name", isAscending: true }}
+                    />
+                </div>
+            </div>
+        </Layout>
     );
 };
 
-export default Orders;
+export default ManageProducts;
