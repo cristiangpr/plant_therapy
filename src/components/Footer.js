@@ -33,7 +33,7 @@ const Footer = () => (
         </div>
 
         <div className="col-lg-3 col-md-6 footer-contact">
-          <h4>Contact Us</h4>
+        <Link to="/contact">  <h4>Contact Us</h4></Link>
           <p>
            P.O. Box 662<br/>
              Calistoga, Ca 94515<br/>

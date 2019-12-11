@@ -4,6 +4,7 @@ import {  Link } from 'react-router-dom';
 import Navbar1 from './Navbar'
 import Instagram from "./Instagram.js";
 import Footer from "./Footer"
+
 const Landing = () => (
   <>
 

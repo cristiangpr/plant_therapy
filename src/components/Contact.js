@@ -86,6 +86,7 @@ const Contact = ({history}) => {
   </div>
 </section>
 <Footer/>
+
 </>
 );
 

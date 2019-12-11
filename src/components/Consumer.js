@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Shop from "../core/Shop.js"
 import ScrollUpButton from "react-scroll-up-button";
-import Contact from "./Contact"
+
   import {  Link } from 'react-router-dom';
 import Navbar1 from "./Navbar.js";
 import Footer from "./Footer.js";
@@ -53,7 +53,7 @@ const Consumer = () => {
 
 
 
-  <Contact/>
+  <Footer/>
 
 
      <ScrollUpButton/>
