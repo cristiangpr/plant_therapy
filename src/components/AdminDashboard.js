@@ -37,7 +37,9 @@ const AdminDashboard = () => {
         >
             <div className="row">
                 <div className="col-sm-3">{AdminLinks()}</div>
-                <div className="col-sm-9">{adminInfo()}</div>
+
+                <div className="col-sm-6">{adminInfo()}</div>
+                  <div className="col-sm-3"></div>
             </div>
         </Layout>
 
