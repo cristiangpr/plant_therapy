@@ -110,6 +110,15 @@ const UpdateOrder = ({match}) => {
             </select>
         </div>
     );
+    const goBack = () => (
+
+        <div className="mt-5">
+            <Link to="/admin_orders" className="text-warning">
+              Go Back
+            </Link>
+        </div>
+
+    );
 
 
     return (
@@ -122,7 +131,10 @@ const UpdateOrder = ({match}) => {
       <div className="col-md-3">
         {AdminLinks()}
       </div>
-          <div className="col-md-9">
+      <div className="col-md-3">
+
+      </div>
+          <div className="col-md-3">
 
              <div className="card" id="dark-card" >
 
@@ -159,34 +171,42 @@ const UpdateOrder = ({match}) => {
                               </li>
                           </ul>
   </div>
-                             <div className="card" id="dark-card" >
-                         <h4 className="card-header name">Total products in the order:{" "} {products.length}</h4>
-
-                          {products.map((p, pIndex) => (
-                              <ul
-                                  className="list-group"
-                                  key={pIndex} >
-                                  <li className="list-group-item list-group-item-dark">
-                                      Product name: {p.name}
-                                  </li>
-                                  <li className="list-group-item list-group-item-dark">
-                                      Product price: {p.price}
-                                  </li>
-                                  <li className="list-group-item list-group-item-dark">
-                                      Product total: {p.count}
-                                  </li>
-                                  <li className="list-group-item list-group-item-dark">
-                                      Product Id: {p._id}
-                                  </li>
-
-                              </ul>
-
-                          ))}
-                          </div>
+    {goBack()}
                           </div>
 
-                  );
-              })}
+
+
+              <div className="col-md-3">
+              <div className="card" id="dark-card" >
+           <h4 className="card-header name">Total products in order:{" "} {products.length}</h4>
+
+           {products.map((p, pIndex) => (
+
+               <ul
+                   className="list-group-border"
+                   key={pIndex} >
+                   <li className="list-group-item list-group-item-dark">
+                       Product name: {p.name}
+                   </li>
+                   <li className="list-group-item list-group-item-dark">
+                       Product price: {p.price}
+                   </li>
+                   <li className="list-group-item list-group-item-dark">
+                       Product total: {p.count}
+                   </li>
+                   <li className="list-group-item list-group-item-dark">
+                       Product Id: {p._id}
+                   </li>
+
+               </ul>
+
+           ))}
+           </div>
+
+              </div>
+
+
+
           </div>
 
       </Layout>
