@@ -82,7 +82,7 @@ const UpdateInventory = ({ match }) => {
 
     const goBack = () => (
         <div className="mt-5">
-            <Link to="/admin_inventorie" className="text-warning">
+            <Link to="/admin_inventories" className="text-warning">
             Go Back
             </Link>
         </div>
