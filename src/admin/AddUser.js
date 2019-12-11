@@ -13,10 +13,12 @@ const AddUser = () => {
       name: "",
       email: "",
       password: "",
+        role:"",
       phone: "",
       permit: "",
       business_name: "",
       street_address: "",
+        street_address2: "",
       city: "",
       state: "",
       country: "",
@@ -29,7 +31,7 @@ const AddUser = () => {
     });
 
     const {
-       name, email, password, phone, permit, business_name, street_address, city, state, country, zip, website, about, loading, error, success
+       name, email,role, password, phone, permit, business_name, street_address, street_address2, city, state, country, zip, website, about, loading, error, success
     } = values;
 
 
@@ -46,7 +48,7 @@ const AddUser = () => {
     const clickSubmit = event => {
         event.preventDefault()
         setValues({ ...values, error: false,   loading: true });
-        signup({ name, email, password, phone, permit, business_name, street_address, city, state, country, zip, website, about, error, success }).then(data => {
+        signup({ name, email, role, password, phone, permit, business_name, street_address, street_address2, city, state, country, zip, website, about, error, success }).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error, success: false });
             } else {
@@ -54,11 +56,13 @@ const AddUser = () => {
                     ...values,
                     name: "",
                     email: "",
+                    role:"",
                     password: "",
                     phone: "",
                     permit: "",
                     business_name: "",
                     street_address: "",
+                      street_address2: "",
                     city: "",
                     state: "",
                     country: "",
@@ -143,8 +147,12 @@ const AddUser = () => {
         </div>
       </div>
       <div className="form-row">
-        <div className="form-group col-md-12">
+        <div className="form-group col-md-6">
           <input onChange={handleChange("street_address")} type="text"  className="form-control" value={street_address} placeholder="Street Address"  />
+
+        </div>
+        <div className="form-group col-md-6">
+          <input onChange={handleChange("street_address2")} type="text"  className="form-control" value={street_address2} placeholder="Street Address Line 2"  />
 
         </div>
 
@@ -175,11 +183,18 @@ const AddUser = () => {
           <div className="validation"></div>
         </div>
         <div className="form-group col-md-6">
-          <input onChange={handleChange("about")} type="text" className="form-control"  value={about} placeholder="How did you hear about us?"  />
-
+          <select onChange={handleChange("role")} type="text"  className="form-control" value={role} placeholder="Role" >
+          <option>Please select</option>
+          <option value="Admin">Admin</option>
+              <option value="Registered User">Registered User</option>
+          <option value="Wholesale">Wholesale</option>
+            <option value="Agricultural Commmercial">Farm</option>
+            <option value="Distributor 25">Distributor 25</option>
+            <option value="Distributor 32">Distributor 32</option>
+         </select>
         </div>
       </div>
-      <div className="text-center"><button className="btn btn-outline-primary" onClick={clickSubmit} type="submit">Submit Application</button></div>
+      <div className="text-center"><button className="btn btn-outline-primary" onClick={clickSubmit} type="submit">Create User</button></div>
     </form>
   </div>
 

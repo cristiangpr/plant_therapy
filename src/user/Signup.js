@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import Layout from "../core/Layout";
 import { signup } from "../auth";
+import Footer from '../components/Footer';
+
 
 const Signup = () => {
     const [values, setValues] = useState({
@@ -38,7 +40,11 @@ const Signup = () => {
     };
 
     const signUpForm = () => (
-        <form>
+      <div className="container mb-5">
+  <div className="row">
+      <div className="col-md-4"></div>
+      <div className="form col-md-4">
+        <form className="contactForm">
             <div className="form-group">
                 <label className="text-muted">Name</label>
                 <input
@@ -68,10 +74,16 @@ const Signup = () => {
                     value={password}
                 />
             </div>
-            <button onClick={clickSubmit} className="btn btn-primary">
+            <div className="text-center">
+            <button onClick={clickSubmit} className="btn btn-outline-success text-center">
                 Submit
             </button>
+            </div>
         </form>
+        <div className="col-md-4"></div>
+        </div>
+        </div>
+        </div>
     );
 
     const showError = () => (
@@ -93,15 +105,18 @@ const Signup = () => {
     );
 
     return (
+      <>
         <Layout
-            title="Signup"
-            description="Signup to Lost Coast Plant Therapy"
+            title="Create an account"
+
             className="container col-md-8 offset-md-2"
         >
             {showSuccess()}
             {showError()}
             {signUpForm()}
         </Layout>
+        <Footer/>
+        </>
     );
 };
 

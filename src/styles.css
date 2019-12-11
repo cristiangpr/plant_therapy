@@ -156,7 +156,7 @@ font-family: "Open Sans", sans-serif;
 }
 
 #dark-card {
-  background-color: rgb(30,30,30);
+  background-color: #111;
     border: 5px solid #18d26e;
 
 }
@@ -164,16 +164,16 @@ font-family: "Open Sans", sans-serif;
   padding-top: 100px;
 }
 .dark-card {
-  background-color: rgb(30,30,30);
+  background-color:#111;
  color: white;
 
 }
 .list-group-item-dark {
-  background-color: rgb(30,30,30);
+  background-color: #111;
     color: white;
 }
 .table {
-  background-color: rgb(30,30,30);
+  background-color:#111;
     color: white;
   }
 
@@ -185,16 +185,25 @@ font-family: "Open Sans", sans-serif;
 
 }
 #update-form-container {
-  background-color: rgb(30,30,30);
+  background-color:#111;
     border: 5px solid #18d26e;
 }
 #text-center {
   text-align: center;
 }
 .form {
-  background-color:  rgb(30,30,30);
+  background-color:  #111;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  
 }
 
 .about-col {
   color: black;
+}
+#footer {
+  background-color: #111;
+}
+.footer-top {
+  background: #111;
 }

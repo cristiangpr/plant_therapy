@@ -30,18 +30,18 @@ const howText = "After saturation of entire plant, our spray will adhere to the 
 
     <div className="row about-cols">
 
-      <div className="col-md-4 wow fadeInUp">
-        <div className="about-col">
-          <div className="img">
-            <img src="./img/mission.jpg" alt="" className="img-fluid"/>
-            <div className="icon"><i className="ion-ios-speedometer-outline"></i></div>
-          </div>
-          <h2 className="title">Our Mission</h2>
-          <p>
-          We have all seen the devastating effects of poisonous pesticides, insecticides and fungicides that contaminate the water, soil, food and crops they are used on.  We are proud to provide an alternative solution to some of the agricultural industry's biggest challenges.
-          </p>
+    <div className="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+      <div className="about-col">
+        <div className="img">
+          <img src="./img/mission.jpg" alt="" className="img-fluid"/>
+          <div className="icon"><i className="ion-ios-list-outline"></i></div>
         </div>
+        <h2 className="title">Our Plan</h2>
+        <p>
+         We have all seen the devastating effects of poisonous pesticides, insecticides and fungicides that contaminate the water, soil, food and crops they are used on.  We are proud to provide an alternative solution to some of the agricultural industry's biggest challenges.
+        </p>
       </div>
+    </div>
 
       <div className="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
         <div className="about-col">

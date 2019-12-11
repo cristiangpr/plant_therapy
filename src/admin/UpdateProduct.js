@@ -102,9 +102,10 @@ const UpdateProduct = ({ match }) => {
                         quantity: "",
                         loading: false,
                         error: false,
-
+                        success: true,
                         createdProduct: data.name
                     });
+                    redirectUser();
                 }
             }
         );
@@ -129,10 +130,14 @@ const UpdateProduct = ({ match }) => {
 
 
     const newPostForm = () => (
+
       <div className="form">
         <form className="contactForm"  onSubmit={clickSubmit}>
-            <h4>Post Photo</h4>
-            <div className="form-group">
+
+           <div className="form-row">
+
+            <div className="form-group col-md-6">
+              <label className="text-muted">Photo</label> <br/>
                 <label className="btn btn-secondary">
                     <input
                         onChange={handleChange("photo")}
@@ -143,7 +148,7 @@ const UpdateProduct = ({ match }) => {
                 </label>
             </div>
 
-            <div className="form-group">
+            <div className="form-group col-md-6">
                 <label className="text-muted">Name</label>
                 <input
                     onChange={handleChange("name")}
@@ -152,8 +157,9 @@ const UpdateProduct = ({ match }) => {
                     value={name}
                 />
             </div>
-
-            <div className="form-group">
+            </div>
+<div className="form-row">
+            <div className="form-group col-md-6">
                 <label className="text-muted">Description</label>
                 <input
                     onChange={handleChange("description")}
@@ -162,7 +168,7 @@ const UpdateProduct = ({ match }) => {
                 />
             </div>
 
-            <div className="form-group">
+            <div className="form-group col-md-6">
                 <label className="text-muted">Price</label>
                 <input
                     onChange={handleChange("price")}
@@ -171,8 +177,9 @@ const UpdateProduct = ({ match }) => {
                     value={price}
                 />
             </div>
-
-            <div className="form-group">
+            </div>
+<div className="form-row">
+            <div className="form-group col-md-6">
                 <label className="text-muted">Category</label>
                 <select
                     onChange={handleChange("category")}
@@ -186,7 +193,7 @@ const UpdateProduct = ({ match }) => {
                   <option value="5db747f7711507468c2f7ba5">Distributor 32</option>
                 </select>
             </div>
-            <div className="form-group">
+            <div className="form-group col-md-6">
                 <label className="text-muted">Inventory</label>
                 <select
                     onChange={handleChange("inventory")}
@@ -200,8 +207,9 @@ const UpdateProduct = ({ match }) => {
                       <option value="5db39bd9a60e8108f00ca034">2.5 Gallon</option>
                 </select>
             </div>
-
-            <div className="form-group">
+            </div>
+<div className="form-row">
+            <div className="form-group col-md-6">
                 <label className="text-muted">Shipping</label>
                 <select
                     onChange={handleChange("shipping")}
@@ -213,7 +221,7 @@ const UpdateProduct = ({ match }) => {
                 </select>
             </div>
 
-            <div className="form-group">
+            <div className="form-group col-md-6">
                 <label className="text-muted">Quantity</label>
                 <input
                     onChange={handleChange("quantity")}
@@ -222,7 +230,7 @@ const UpdateProduct = ({ match }) => {
                     value={quantity}
                 />
             </div>
-
+</div>
             <button className="btn btn-outline-primary">Update Product</button>
             <button onClick={destroy} className="btn btn-outline-danger ml-3">
                 Delete
@@ -277,8 +285,9 @@ const UpdateProduct = ({ match }) => {
     return (
         <Layout
             title="Update product"
-
+              className="container-fluid">
         >
+
             <div className="row">
             <div className="col-md-3">
             {AdminLinks()}
@@ -288,13 +297,15 @@ const UpdateProduct = ({ match }) => {
             </div>
                 <div className="col-md-6">
                     {showLoading()}
-                    {showSuccess()}
+
                     {showError()}
                     {newPostForm()}
-                    {redirectUser()}
+                    {redirectUser(success)}
                     {goBack()}
                 </div>
+
             </div>
+
         </Layout>
     );
 };

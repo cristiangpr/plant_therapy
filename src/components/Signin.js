@@ -5,8 +5,8 @@ import { signin, authenticate, isAuthenticated } from "../auth";
 
 const Signin = () => {
     const [values, setValues] = useState({
-        email: "a@a.com",
-        password: "aaaaa1",
+        email: "",
+        password: "",
         error: "",
         loading: false,
         redirectToReferrer: false
@@ -38,35 +38,44 @@ const Signin = () => {
     const signInForm = () => (
 
 
-      <section id="sign-in" className="section-bg wow fadeInUp">
-        <div className="container">
+      <div className="container mb-5">
+  <div className="row">
+      <div className="col-md-4"></div>
+      <div className="form col-md-4">
+        <form className="contactForm">
 
+            <div className="form-group">
+                <label className="text-muted">Email</label>
+                <input
+                    onChange={handleChange("email")}
+                    type="email"
+                    className="form-control"
+                    value={email}
+                />
+            </div>
 
-
-
-                  <div className="form">
-
-                    <div id="errormessage"></div>
-                    <form action="" method="post"  className="contactForm">
-                      <div className="form-row">
-                        <div className="form-group col-md-6">
-                          <input   onChange={handleChange("email")} type="email"  className="form-control" placeholder="Enter email" data-rule="email" value={email} data-msg="Please enter your email" />
-                          <div className="validation"></div>
-                        </div>
-                        <div className="form-group col-md-6">
-                          <input   onChange={handleChange("password")} type="password" className="form-control"  placeholder="Enter password" data-rule="password" data-msg="Please enter your password" />
-                          <div className="validation"></div>
-                        </div>
-                      </div>
-
-                      <div className="text-center"><button onClick={clickSubmit} type="submit">Sign In</button></div>
-                    </form>
-                  </div>
-    </div>
-
-    </section>
-
+            <div className="form-group">
+                <label className="text-muted">Password</label>
+                <input
+                    onChange={handleChange("password")}
+                    type="password"
+                    className="form-control"
+                    value={password}
+                />
+            </div>
+            <div className="text-center">
+            <button onClick={clickSubmit} className="btn btn-outline-success text-center">
+                Submit
+            </button>
+            </div>
+        </form>
+        <div className="col-md-4"></div>
+        </div>
+        </div>
+        </div>
     );
+
+    
 
     const showError = () => (
         <div
@@ -97,7 +106,7 @@ const Signin = () => {
 
     return (
         <div>
-        
+
             {showLoading()}
             {showError()}
             {signInForm()}

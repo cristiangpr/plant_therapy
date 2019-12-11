@@ -16,6 +16,7 @@ const Signup = () => {
       permit: "",
       business_name: "",
       street_address: "",
+      street_address2: "",
       city: "",
       state: "",
       country: "",
@@ -26,7 +27,7 @@ const Signup = () => {
       success: false
   });
 
-  const { name, email, password, phone, permit, business_name, street_address, city, state, country, zip, website, about, error, success } = values;
+  const { name, email, password, phone, permit, business_name, street_address,  street_address2, city, state, country, zip, website, about, error, success } = values;
 
   const handleChange = name => event => {
       setValues({ ...values, error: false, [name]: event.target.value });
@@ -37,7 +38,7 @@ const Signup = () => {
   const clickSubmit = event => {
       event.preventDefault()
       setValues({ ...values, error: false });
-      signup({ name, email, password, phone, permit, business_name, street_address, city, state, country, zip, website, about, error, success }).then(data => {
+      signup({ name, email, password, phone, permit, business_name, street_address,   street_address2, city, state, country, zip, website, about, error, success }).then(data => {
           if (data.error) {
               setValues({ ...values, error: data.error, success: false });
           } else {
@@ -50,6 +51,7 @@ const Signup = () => {
                   permit: "",
                   business_name: "",
                   street_address: "",
+                    street_address2: "",
                   city: "",
                   state: "",
                   country: "",
@@ -82,7 +84,9 @@ const Signup = () => {
   );
 const signUpForm = () => (
 <div className="container">
-<div className="form">
+<div className="row">
+<div className="col-md-2"></div>
+<div className="form col-md-8">
 
   <form  className="contactForm">
     <div className="form-row">
@@ -118,10 +122,15 @@ const signUpForm = () => (
       </div>
     </div>
     <div className="form-row">
-      <div className="form-group col-md-12">
+      <div className="form-group col-md-6">
         <input onChange={handleChange("street_address")} type="text"  className="form-control" value={street_address} placeholder="Street Address"  />
 
       </div>
+    
+        <div className="form-group col-md-6">
+          <input onChange={handleChange("street_address2")} type="text"  className="form-control" value={street_address2} placeholder="Street Address line 2"  />
+
+        </div>
 
     </div>
     <div className="form-row">
@@ -154,8 +163,10 @@ const signUpForm = () => (
 
       </div>
     </div>
-    <div className="text-center"><button className= "btn btn-outline-primary"onClick={clickSubmit} type="submit">Submit Application</button></div>
+    <div className="text-center"><button className= "btn btn-outline-success"onClick={clickSubmit} >Submit Application</button></div>
   </form>
+</div>
+<div className="col-md-2"></div>
 </div>
 </div>
 

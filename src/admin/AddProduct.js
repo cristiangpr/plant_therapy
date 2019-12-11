@@ -97,9 +97,12 @@ const AddProduct = () => {
 
     const newPostForm = () => (
       <div className="form">
-        <form className="contactForm" onSubmit={clickSubmit}>
-            <h4>Post Photo</h4>
-            <div className="form-group">
+        <form className="contactForm"  onSubmit={clickSubmit}>
+
+           <div className="form-row">
+
+            <div className="form-group col-md-6">
+              <label className="text-muted">Photo</label> <br/>
                 <label className="btn btn-secondary">
                     <input
                         onChange={handleChange("photo")}
@@ -110,7 +113,7 @@ const AddProduct = () => {
                 </label>
             </div>
 
-            <div className="form-group">
+            <div className="form-group col-md-6">
                 <label className="text-muted">Name</label>
                 <input
                     onChange={handleChange("name")}
@@ -119,8 +122,9 @@ const AddProduct = () => {
                     value={name}
                 />
             </div>
-
-            <div className="form-group">
+            </div>
+<div className="form-row">
+            <div className="form-group col-md-6">
                 <label className="text-muted">Description</label>
                 <input
                     onChange={handleChange("description")}
@@ -129,7 +133,7 @@ const AddProduct = () => {
                 />
             </div>
 
-            <div className="form-group">
+            <div className="form-group col-md-6">
                 <label className="text-muted">Price</label>
                 <input
                     onChange={handleChange("price")}
@@ -138,7 +142,51 @@ const AddProduct = () => {
                     value={price}
                 />
             </div>
-            <div className="form-group">
+            </div>
+<div className="form-row">
+            <div className="form-group col-md-6">
+                <label className="text-muted">Category</label>
+                <select
+                    onChange={handleChange("category")}
+                    className="form-control"
+                >
+                <option>Please select</option>
+                <option value="5dab5350fe6153076c4c808e">Retail</option>
+                <option value="5dab86889f624f3d5839d8e2">Wholesale</option>
+                  <option value="5dab877c9f624f3d5839d8e5">Farm</option>
+                  <option value="5dab878a9f624f3d5839d8e6">Distributor 25</option>
+                  <option value="5db747f7711507468c2f7ba5">Distributor 32</option>
+                </select>
+            </div>
+            <div className="form-group col-md-6">
+                <label className="text-muted">Inventory</label>
+                <select
+                    onChange={handleChange("inventory")}
+                    className="form-control"
+                >
+                >
+                    <option>Please select</option>
+                    <option value="5db39bb2a60e8108f00ca030">12 Oz</option>
+                    <option value="5db39bc9a60e8108f00ca032">32 Oz</option>
+                      <option value="5db39bd2a60e8108f00ca033">1 Gallon</option>
+                      <option value="5db39bd9a60e8108f00ca034">2.5 Gallon</option>
+                </select>
+            </div>
+            </div>
+<div className="form-row">
+            <div className="form-group col-md-6">
+                <label className="text-muted">Shipping</label>
+                <select
+                    onChange={handleChange("shipping")}
+                    className="form-control"
+                >
+                    <option>Please select</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div className="form-group col-md-6">
                 <label className="text-muted">Quantity</label>
                 <input
                     onChange={handleChange("quantity")}
@@ -147,40 +195,9 @@ const AddProduct = () => {
                     value={quantity}
                 />
             </div>
+</div>
+            <button className="btn btn-outline-success">Create Product</button>
 
-            <div className="form-group">
-                <label className="text-muted">Category</label>
-                <select
-                    onChange={handleChange("category")}
-                    className="form-control"
-                >
-                <option>Please select</option>
-                {categories &&
-                    categories.map((c, i) => (
-                        <option key={i} value={c._id}>
-                            {c.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
-
-
-            <div className="form-group">
-                <label className="text-muted">Inventory</label>
-                <select
-                    onChange={handleChange("inventory")}
-                    className="form-control"
-                >
-                    <option>Please select</option>
-                    {inventories &&
-                        inventories.map((c, i) => (
-                            <option key={i} value={c._id}>
-                                {c.name}
-                            </option>
-                        ))}
-                </select>
-            </div>
-            <button className="btn btn-outline-primary">Create Product</button>
         </form>
         </div>
     );

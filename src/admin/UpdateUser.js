@@ -14,6 +14,7 @@ const UpdateUser = ({ match }) => {
       permit: "",
       business_name: "",
       street_address: "",
+        street_address2: "",
       city: "",
       state: "",
       country: "",
@@ -26,23 +27,24 @@ const UpdateUser = ({ match }) => {
     });
 
     const { token, user } = isAuthenticated();
-    const {    name, email, role,  phone, permit, business_name, street_address, city, state, country, zip, website, about, loading, error, success } = values;
-
+    const {    name, email, role,  phone, permit, business_name, street_address, street_address2, city, state, country, zip, website, about, loading, error, success } = values;
+    const adminId = user._id;
     const init = userId => {
         // console.log(userId);
         readUser(userId, token).then(data => {
-          console.log(data);
+
             if (data.error) {
                 setValues({ ...values, error: true });
             } else {
                 setValues({ ...values, name: data.name, email: data.email, role: data.role, phone: data.phone, permit: data.permit,
-                business_name: data.business_name, street_address: data.street_address, city: data.city, zip: data.zip, website: data.website,
+                business_name: data.business_name, street_address: data.street_address, street_address2: data.street_address2, city: data.city, zip: data.zip, website: data.website,
                 about: data.about });
             }
         });
     };
 
     useEffect(() => {
+         console.log(match.params.userId)
         init(match.params.userId);
     }, []);
 
@@ -53,7 +55,7 @@ const UpdateUser = ({ match }) => {
     const clickSubmit = e => {
         e.preventDefault();
           setValues({ ...values, error: false,   loading: true });
-        updateUser(match.params.userId, token, {    name, email, role, phone, permit, business_name, street_address, city, state, country, zip, website, about, loading, error, success }).then(
+        updateUser(match.params.userId, adminId ,token, {    name, email, role, phone, permit, business_name, street_address,  street_address2, city, state, country, zip, website, about, loading, error, success }).then(
             data => {
                 if (data.error) {
                     console.log(data.error);
@@ -68,6 +70,7 @@ const UpdateUser = ({ match }) => {
                             permit: "",
                             business_name: "",
                             street_address: "",
+                              street_address2: "",
                             city: "",
                             state: "",
                             country: "",
@@ -78,7 +81,7 @@ const UpdateUser = ({ match }) => {
                             success: true,
                             loading: false
                         });
-
+                  redirectUser();
                 }
             }
         );
@@ -106,7 +109,7 @@ const UpdateUser = ({ match }) => {
         };
         const destroy = e => {
             e.preventDefault();
-            deleteUser(match.params.userId, user._id, token).then(data => {
+            deleteUser(match.params.userId, adminId, token).then(data => {
                 if (data.error) {
                     console.log(data.error);
                 } else {
@@ -126,87 +129,102 @@ const UpdateUser = ({ match }) => {
       <div className="form">
 
         <form  className="contactForm">
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <input   onChange={handleChange("name")} type="text"  className="form-control" value={name}  data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+        <div className="form-row">
 
-            </div>
-            <div className="form-group col-md-6">
-              <input   onChange={handleChange("email")} type="email" className="form-control"  value={email} placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <input    type="text"  className="form-control"  placeholder="Create a password" disabled  />
-
-            </div>
-
-            <div className="form-group col-md-6">
-              <input onChange={handleChange("phone")} type="text" className="form-control" value={phone} placeholder="Phone" data-rule="minlen:10" data-msg="Please enter a valid phone" />
-
-            </div>
-          </div>
-
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <input onChange={handleChange("permit")} type="text" className="form-control" value={permit} placeholder="Seller Permit # | Tax ID #" />
-
-            </div>
-            <div className="form-group col-md-6">
-              <input onChange={handleChange("business_name")} type="text"  className="form-control" value={business_name} placeholder="Business Name" />
-
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <input onChange={handleChange("street_address")} type="text"  className="form-control" value={street_address} placeholder="Street Address"  />
-
-            </div>
-            <div className="form-group col-md-6">
-              <select onChange={handleChange("role")} type="text"  className="form-control" value={role} placeholder="Role" >
-              <option>Please select</option>
-              <option value="Admin">Admin</option>
-                  <option value="Registered User">Registered User</option>
-              <option value="Wholesale">Wholesale</option>
-                <option value="Agricultural Commmercial">Farm</option>
-                <option value="Distributor 25">Distributor 25</option>
-                <option value="Distributor 32">Distributor 32</option>
-             </select>
-            </div>
+          <div className="form-group col-md-6">
+          <label className="text-muted">Name</label>
+            <input   onChange={handleChange("name")} type="text"  className="form-control" value={name} placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
 
           </div>
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <input onChange={handleChange("city")} type="text"  className="form-control" value={city} placeholder="City" />
+          <div className="form-group col-md-6">
+          <label className="text-muted">E mail</label>
+            <input   onChange={handleChange("email")} type="email" className="form-control"  value={email} placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
 
-            </div>
-            <div className="form-group col-md-6">
-              <input onChange={handleChange("state")} type="text" className="form-control"  value={state} placeholder="State"  />
-
-            </div>
           </div>
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <input onChange={handleChange("country")} type="text"  className="form-control" value={country} placeholder="Country"  />
+        </div>
+        <div className="form-row">
+          <div className="form-group col-md-6">
+          <label className="text-muted">Password</label>
+            <input   disabled  className="form-control "  placeholder="Create a password"  />
 
-            </div>
-            <div className="form-group col-md-6">
-              <input onChange={handleChange("zip")} type="text" className="form-control"  value={zip} placeholder="Zip"  />
-
-            </div>
           </div>
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <input onChange={handleChange("website")} type="text" className="form-control" value={website} placeholder="Website URL" />
-              <div className="validation"></div>
-            </div>
-            <div className="form-group col-md-6">
-              <input onChange={handleChange("about")} type="text" className="form-control"  value={about} placeholder="How did you hear about us?"  />
 
-            </div>
+          <div className="form-group col-md-6">
+          <label className="text-muted">Phone</label>
+            <input onChange={handleChange("phone")} type="text" className="form-control" value={phone} placeholder="Phone" data-rule="minlen:10" data-msg="Please enter a valid phone" />
+
           </div>
-          <div><button className="btn btn-outline-primary" onClick={clickSubmit} type="submit">Submit</button>
+        </div>
+
+        <div className="form-row">
+          <div className="form-group col-md-6">
+          <label className="text-muted">Permit</label>
+            <input onChange={handleChange("permit")} type="text" className="form-control" value={permit} placeholder="Seller Permit # | Tax ID #" />
+
+          </div>
+          <div className="form-group col-md-6">
+          <label className="text-muted">Business Name</label>
+            <input onChange={handleChange("business_name")} type="text"  className="form-control" value={business_name} placeholder="Business Name" />
+
+          </div>
+        </div>
+        <div className="form-row">
+          <div className="form-group col-md-6">
+          <label className="text-muted">Address</label>
+            <input onChange={handleChange("street_address")} type="text"  className="form-control" value={street_address} placeholder="Street Address"  />
+
+          </div>
+          <div className="form-group col-md-6">
+          <label className="text-muted">Address Line 2</label>
+            <input onChange={handleChange("street_address2")} type="text"  className="form-control" value={street_address2} placeholder="Street Address Line 2"  />
+
+          </div>
+
+        </div>
+        <div className="form-row">
+          <div className="form-group col-md-6">
+          <label className="text-muted">City</label>
+            <input onChange={handleChange("city")} type="text"  className="form-control" value={city} placeholder="City" />
+
+          </div>
+          <div className="form-group col-md-6">
+          <label className="text-muted">State</label>
+            <input onChange={handleChange("state")} type="text" className="form-control"  value={state} placeholder="State"  />
+
+          </div>
+        </div>
+        <div className="form-row">
+          <div className="form-group col-md-6">
+          <label className="text-muted">Country</label>
+            <input onChange={handleChange("country")} type="text"  className="form-control" value={country} placeholder="Country"  />
+
+          </div>
+          <div className="form-group col-md-6">
+          <label className="text-muted">Zip</label>
+            <input onChange={handleChange("zip")} type="text" className="form-control"  value={zip} placeholder="Zip"  />
+
+          </div>
+        </div>
+        <div className="form-row">
+          <div className="form-group col-md-6">
+          <label className="text-muted">Website</label>
+            <input onChange={handleChange("website")} type="text" className="form-control" value={website} placeholder="Website URL" />
+            <div className="validation"></div>
+          </div>
+          <div className="form-group col-md-6">
+          <label className="text-muted">Role</label>
+            <select onChange={handleChange("role")} type="text"  className="form-control" value={role} placeholder="Role" >
+            <option>Please select</option>
+            <option value="Admin">Admin</option>
+                <option value="Registered User">Registered User</option>
+            <option value="Wholesale">Wholesale</option>
+              <option value="Agricultural Commmercial">Farm</option>
+              <option value="Distributor 25">Distributor 25</option>
+              <option value="Distributor 32">Distributor 32</option>
+           </select>
+          </div>
+        </div>
+          <div><button className="btn btn-outline-primary" onClick={clickSubmit} type="submit">Update</button>
           <button onClick={destroy} className="btn btn-outline-danger ml-3">
               Delete
           </button>
@@ -236,7 +254,7 @@ const UpdateUser = ({ match }) => {
   <div className="col-md-3">  </div>
         <div className="col-md-6">
               {showLoading()}
-
+           {redirectUser(success)}
               {showError()}
               {profileUpdate()}
                {goBack()}

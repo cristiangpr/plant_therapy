@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Layout from "../core/Layout";
 import { signin, authenticate, isAuthenticated } from "../auth";
+import Footer from '../components/Footer';
 
 const Signin = () => {
     const [values, setValues] = useState({
@@ -37,7 +38,12 @@ const Signin = () => {
     };
 
     const signUpForm = () => (
-        <form>
+      <div className="container mb-5">
+  <div className="row">
+      <div className="col-md-4"></div>
+      <div className="form col-md-4">
+        <form className="contactForm">
+
             <div className="form-group">
                 <label className="text-muted">Email</label>
                 <input
@@ -57,12 +63,17 @@ const Signin = () => {
                     value={password}
                 />
             </div>
-            <button onClick={clickSubmit} className="btn btn-primary">
+            <div className="text-center">
+            <button onClick={clickSubmit} className="btn btn-outline-success text-center">
                 Submit
             </button>
+            </div>
         </form>
+        <div className="col-md-4"></div>
+        </div>
+        </div>
+        </div>
     );
-
     const showError = () => (
         <div
             className="alert alert-danger"
@@ -93,16 +104,20 @@ const Signin = () => {
     };
 
     return (
+      <>
         <Layout
-            title="Signin"
-            description="Signin to Lost Coast Plant Therapy"
+            title="Sign in to Lost Coast Plant Therapy"
+
             className="container col-md-8 offset-md-2"
         >
             {showLoading()}
             {showError()}
             {signUpForm()}
             {redirectUser()}
+
         </Layout>
+        <Footer/>
+        </>
     );
 };
 

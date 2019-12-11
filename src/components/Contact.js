@@ -51,10 +51,12 @@ const Contact = ({history}) => {
       </div>
 
     </div>
-
-    <div className="form">
+<div className="row">
+<div className="col-md-2"></div>
+    <div className="form col-md-8">
       <div id="sendmessage">Your message has been sent. Thank you!</div>
       <div id="errormessage"></div>
+
       <form action="" method="post" role="form" className="contactForm">
         <div className="form-row">
           <div className="form-group col-md-6">
@@ -66,18 +68,21 @@ const Contact = ({history}) => {
             <div className="validation"></div>
           </div>
         </div>
-        <div className="form-group">
+        <div className="form-row">
+        <div className="form-group col-md-6">
           <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
           <div className="validation"></div>
         </div>
-        <div className="form-group">
-          <textarea className="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+        <div className="form-group col-md-6">
+          <input type="text" className="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></input>
           <div className="validation"></div>
         </div>
-        <div className="text-center"><button type="submit">Send Message</button></div>
+        </div>
+        <div className="col-md-2"></div>
+        <div className="text-center mt-3"><button className="btn btn-outline-success">Send Message</button></div>
       </form>
     </div>
-
+</div>
   </div>
 </section>
 <Footer/>

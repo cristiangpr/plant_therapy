@@ -170,9 +170,9 @@ export const listUsers = () => {
 
 
 
-export const updateUser = (userId, token, user) => {
+export const updateUser = ( userId, adminId, token, user) => {
     console.log(JSON.stringify(user))
-    return fetch(`${API}/admin/user/${userId}`, {
+return fetch(`${API}/admin/user/${userId}/${adminId}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
@@ -188,7 +188,7 @@ export const updateUser = (userId, token, user) => {
 };
 
 export const deleteUser = ( userId, adminId, token) => {
-    return fetch(`${API}/user/${userId}/${adminId}`, {
+    return fetch(`${API}/admin/user/${userId}/${adminId}`, {
         method: "DELETE",
         headers: {
             Accept: "application/json",
