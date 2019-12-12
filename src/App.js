@@ -36,6 +36,9 @@ import AddInventory from "./admin/AddInventory";
     import UpdateInventory from "./admin/UpdateInventory";
   import UpdateCoupon from "./admin/UpdateCoupon";
     import UpdateOrder from "./admin/UpdateOrder";
+    import ReactGA from 'react-ga';
+    ReactGA.initialize('UA-154425185-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
 
   require('dotenv').config()
 
