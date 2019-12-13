@@ -30,37 +30,6 @@ import AddInventory from "./admin/AddInventory";
  import AddCoupon from "./admin/AddCoupon";
  import Contact from './components/Contact';
  import ManageCategories from "./admin/ManageCategories";
-<<<<<<< HEAD
-  import ManageInventories from "./admin/ManageInventories";
-import ManageCoupons from "./admin/ManageCoupons";
-import UpdateCategory from "./admin/UpdateCategory";
-import UpdateInventory from "./admin/UpdateInventory";
-import UpdateCoupon from "./admin/UpdateCoupon"
-import UpdateOrder from "./admin/UpdateOrder";
-import ReactGA from 'react-ga';
-
-
-
-    ReactGA.initialize('UA-154425185-1');
-    ReactGA.pageview("/");
-      ReactGA.pageview("/consumer");
-        ReactGA.pageview("/about");
-      ReactGA.pageview("/DistributorsLanding");
-        ReactGA.pageview("/FarmsLanding");
-          ReactGA.pageview("/StoreLocator");
-            ReactGA.pageview("/contact");
-              ReactGA.pageview("/signup" );
-||||||| merged common ancestors
- import ManageInventories from "./admin/ManageInventories";
-  import ManageCoupons from "./admin/ManageCoupons";
-  import UpdateCategory from "./admin/UpdateCategory";
-    import UpdateInventory from "./admin/UpdateInventory";
-  import UpdateCoupon from "./admin/UpdateCoupon";
-    import UpdateOrder from "./admin/UpdateOrder";
-    import ReactGA from 'react-ga';
-    ReactGA.initialize('UA-154425185-1');
-    ReactGA.pageview(window.location.pathname + window.location.search);
-=======
  import ManageInventories from "./admin/ManageInventories";
   import ManageCoupons from "./admin/ManageCoupons";
   import UpdateCategory from "./admin/UpdateCategory";
@@ -71,7 +40,6 @@ import ReactGA from 'react-ga';
     import {TrackedRoute} from "./core/TrackedRoute";
 
 ReactGA.initialize('UA-154425185-1');
->>>>>>> google-analytics
 
   require('dotenv').config()
 
