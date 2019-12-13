@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
  import Landing from './components/Landing';
-  import { Route, BrowserRouter, Switch } from 'react-router-dom';
+  import { Route,Router, BrowserRouter, Switch } from 'react-router-dom';
   import Consumer from './components/Consumer';
   import DistributorsLanding from './components/DistributorsLanding';
   import FarmsLanding from './components/FarmsLanding';
@@ -30,6 +30,7 @@ import AddInventory from "./admin/AddInventory";
  import AddCoupon from "./admin/AddCoupon";
  import Contact from './components/Contact';
  import ManageCategories from "./admin/ManageCategories";
+<<<<<<< HEAD
   import ManageInventories from "./admin/ManageInventories";
 import ManageCoupons from "./admin/ManageCoupons";
 import UpdateCategory from "./admin/UpdateCategory";
@@ -49,6 +50,28 @@ import ReactGA from 'react-ga';
           ReactGA.pageview("/StoreLocator");
             ReactGA.pageview("/contact");
               ReactGA.pageview("/signup" );
+||||||| merged common ancestors
+ import ManageInventories from "./admin/ManageInventories";
+  import ManageCoupons from "./admin/ManageCoupons";
+  import UpdateCategory from "./admin/UpdateCategory";
+    import UpdateInventory from "./admin/UpdateInventory";
+  import UpdateCoupon from "./admin/UpdateCoupon";
+    import UpdateOrder from "./admin/UpdateOrder";
+    import ReactGA from 'react-ga';
+    ReactGA.initialize('UA-154425185-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+=======
+ import ManageInventories from "./admin/ManageInventories";
+  import ManageCoupons from "./admin/ManageCoupons";
+  import UpdateCategory from "./admin/UpdateCategory";
+    import UpdateInventory from "./admin/UpdateInventory";
+  import UpdateCoupon from "./admin/UpdateCoupon";
+    import UpdateOrder from "./admin/UpdateOrder";
+    import ReactGA from 'react-ga';
+    import {TrackedRoute} from "./core/TrackedRoute";
+
+ReactGA.initialize('UA-154425185-1');
+>>>>>>> google-analytics
 
   require('dotenv').config()
 
@@ -56,18 +79,19 @@ import ReactGA from 'react-ga';
   function App() {
     return (
       <BrowserRouter>
-        <Switch>
-           <Route exact path="/" component={Landing} />
-            <Route path="/consumer" component={Consumer} />
-              <Route path="/about" component={About} />
 
-            <Route path="/DistributorsLanding" component={DistributorsLanding} />
-            <Route path="/FarmsLanding" component={FarmsLanding} />
+          <Switch>
+           <TrackedRoute exact path="/" component={Landing} />
+            <TrackedRoute path="/consumer" component={Consumer} />
+              <TrackedRoute path="/about" component={About} />
 
-            <Route path="/StoreLocator" component={StoreLocator} />
-            <Route path="/signin" exact component={Signin} />
-            <Route path="/signup" exact component={Signup} />
-            <Route path="/contact" exact component={Contact} />
+            <TrackedRoute path="/DistributorsLanding" component={DistributorsLanding} />
+            <TrackedRoute path="/FarmsLanding" component={FarmsLanding} />
+
+            <TrackedRoute path="/StoreLocator" component={StoreLocator} />
+            <TrackedRoute path="/signin" exact component={Signin} />
+            <TrackedRoute path="/signup" exact component={Signup} />
+            <TrackedRoute path="/contact" exact component={Contact} />
             <PrivateRoute path="/user_dashboard" exact component={UserDashboard} />
             <AdminRoute path="/admin_dashboard" exact component={AdminDashboard}  />
               <AdminRoute path="/create_category" exact component={AddCategory}/>
@@ -146,8 +170,8 @@ import ReactGA from 'react-ga';
                       exact
                       component={UpdateOrder}
                   />
+                 </Switch>
 
-        </Switch>
       </BrowserRouter>
     );
   }
