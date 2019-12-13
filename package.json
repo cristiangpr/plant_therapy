@@ -10,7 +10,6 @@
     "eslint-utils": "^1.4.2",
     "google-maps-react": "^2.0.2",
     "heroku": "^7.25.0",
-    "history": "^4.10.1",
     "instafeed.js": "^1.4.1",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",

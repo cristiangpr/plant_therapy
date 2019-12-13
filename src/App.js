@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
  import Landing from './components/Landing';
-  import { Route, BrowserRouter, Switch, withRouter } from 'react-router-dom';
+  import { Route, BrowserRouter, Switch } from 'react-router-dom';
   import Consumer from './components/Consumer';
   import DistributorsLanding from './components/DistributorsLanding';
   import FarmsLanding from './components/FarmsLanding';
@@ -37,16 +37,11 @@ import UpdateInventory from "./admin/UpdateInventory";
 import UpdateCoupon from "./admin/UpdateCoupon"
 import UpdateOrder from "./admin/UpdateOrder";
 import ReactGA from 'react-ga';
-import { createBrowserHistory } from 'history';
 
 
-const history = createBrowserHistory();
+
     ReactGA.initialize('UA-154425185-1');
-    history.listen(location => {
-
-    ReactGA.pageview(location.pathname); // Record a pageview for the given page
-  });
-
+    ReactGA.pageview("/", '/consumer',"/about", "/contact" );
 
   require('dotenv').config()
 
