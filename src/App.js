@@ -41,7 +41,14 @@ import ReactGA from 'react-ga';
 
 
     ReactGA.initialize('UA-154425185-1');
-    ReactGA.pageview("/", '/consumer',"/about", "/contact" );
+    ReactGA.pageview("/");
+      ReactGA.pageview("/consumer");
+        ReactGA.pageview("/about");
+      ReactGA.pageview("/DistributorsLanding");
+        ReactGA.pageview("/FarmsLanding");
+          ReactGA.pageview("/StoreLocator");
+            ReactGA.pageview("/contact");
+              ReactGA.pageview("/signup" );
 
   require('dotenv').config()
 
