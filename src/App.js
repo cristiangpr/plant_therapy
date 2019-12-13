@@ -43,7 +43,7 @@ import { createBrowserHistory } from 'history';
 const history = createBrowserHistory();
     ReactGA.initialize('UA-154425185-1');
     history.listen(location => {
-    ReactGA.set({ page: location.pathname }); // Update the user's current page
+
     ReactGA.pageview(location.pathname); // Record a pageview for the given page
   });
 
