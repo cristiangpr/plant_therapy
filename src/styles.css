@@ -156,7 +156,7 @@ font-family: "Open Sans", sans-serif;
 }
 
 #dark-card {
-  background-color: #111;
+  background-color:  #1A1A1B;
     border: 5px solid #18d26e;
 
 }
@@ -164,16 +164,16 @@ font-family: "Open Sans", sans-serif;
   padding-top: 100px;
 }
 .dark-card {
-  background-color:#111;
+  background-color: #1A1A1B;
  color: white;
 
 }
 .list-group-item-dark {
-  background-color: #111;
+  background-color: #1A1A1B;
     color: white;
 }
 .table {
-  background-color:#111;
+  background-color: #1A1A1B;
     color: white;
   }
 
@@ -185,14 +185,14 @@ font-family: "Open Sans", sans-serif;
 
 }
 #update-form-container {
-  background-color:#111;
+  background-color: #1A1A1B;
     border: 5px solid #18d26e;
 }
 #text-center {
   text-align: center;
 }
 .form {
-  background-color:  #111;
+  background-color:   #1A1A1B;
   padding-bottom: 20px;
   padding-top: 30px;
 
@@ -202,10 +202,10 @@ font-family: "Open Sans", sans-serif;
   color: black;
 }
 #footer {
-  background-color: #111;
+  background-color: black;
 }
 .footer-top {
-  background: #111;
+  background:  #1A1A1B;
 }
 .list-group-border{
   border-top: 2px solid #18d26e;
