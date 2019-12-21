@@ -15,7 +15,7 @@ import DropIn from "braintree-web-drop-in-react";
 import { emptyCart } from "./cartHelpers";
 import Search from "./Search";
 import ReactGA from 'react-ga';
-
+ReactGA.initialize('UA-154425185-1');
 ReactGA.plugin.require('ecommerce');
 const Checkout = ({ products }) => {
     const [data, setData] = useState({
