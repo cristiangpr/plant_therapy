@@ -162,16 +162,21 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                                 revenue: response.transaction.amount, // obviously it's price * quantity
                               }
                             );
-                            console.log( response.transaction.id)
+                            console.log( response.transaction.id);
+
+                            var i;
+                            for (i=0; i < products.length; i ++) {
+                                console.log(products[i].name);
                             ReactGA.plugin.execute(
                               'ecommerce',
                               'addItem',
                               {
                                 id:  response.transaction.id, // the same as for addItem to connect them
-                                name: "Plant Therapy", // obviously it's price * quantity
-                                sku: "string"
+                                name: products[i].name, // obviously it's price * quantity
+                                sku: products[i]._id
                               }
                             );
+                          };
                             ReactGA.plugin.execute('ecommerce', 'send');
                             ReactGA.plugin.execute('ecommerce', 'clear');
                             console.debug("GA|Transaction Sent: ");
