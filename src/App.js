@@ -40,7 +40,7 @@ import AddInventory from "./admin/AddInventory";
     import {TrackedRoute} from "./core/TrackedRoute";
 
 ReactGA.initialize('UA-154425185-1');
-ReactGA.plugin.require('ecommerce', {debug: true});
+
 
   require('dotenv').config()
 
