@@ -173,7 +173,10 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                               {
                                 id:  response.transaction.id, // the same as for addItem to connect them
                                 name: products[i].name, // obviously it's price * quantity
-                                sku: products[i]._id
+                                sku: products[i]._id,
+                                category: products[i].category.name,
+                                price: products[i].price,
+                                quantity: products[i].count
                               }
                             );
                           };
