@@ -3,7 +3,8 @@ import {
     getProducts,
     getBraintreeClientToken,
     processPayment,
-        createOrder
+        createOrder,
+        trackEcommerce
 } from "./apiCore";
 
 import Cart from "./Cart";
@@ -13,6 +14,9 @@ import "braintree-web";
 import DropIn from "braintree-web-drop-in-react";
 import { emptyCart } from "./cartHelpers";
 import Search from "./Search";
+import ReactGA from 'react-ga';
+
+ReactGA.plugin.require('ecommerce');
 const Checkout = ({ products }) => {
     const [data, setData] = useState({
 
@@ -134,6 +138,11 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                             discount_rate: discount
 
                         };
+                        const trackOrderData = {
+                          id:  response.transaction.id, // the same as for addItem to connect them
+                          revenue: response.transaction.amount
+
+                        };
                       console.log(createOrderData)
                         createOrder(userId, token, createOrderData)
                             .then(response => {
@@ -146,6 +155,23 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                                 console.log(error);
                                 setData({ loading: false });
                             });
+
+
+
+                            ReactGA.plugin.execute(
+                              'ecommerce',
+                              'addTransaction',
+                              {
+                                id:  response.transaction.id, // the same as for addItem to connect them
+                                revenue: response.transaction.amount, // obviously it's price * quantity
+                              }
+                            );
+                            ReactGA.plugin.execute('ecommerce', 'send');
+                            ReactGA.plugin.execute('ecommerce', 'clear');
+                            console.debug("GA|Transaction Sent: ");
+                    
+
+
                     })
                     .catch(error => {
                         console.log(error);

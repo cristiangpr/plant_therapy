@@ -65,7 +65,7 @@ ReactGA.initialize('UA-154425185-1');
               <AdminRoute path="/create_category" exact component={AddCategory}/>
               <AdminRoute path="/create_product" exact component={AddProduct}/>
                   <AdminRoute path="/create_user" exact component={AddUser}/>
-                <Route path="/cart" exact component={Cart} />
+                <TrackedRoute path="/cart" exact component={Cart} />
                   <AdminRoute path="/admin_orders" exact component={Orders} />
                   <PrivateRoute
                       path="/profile/:userId"
