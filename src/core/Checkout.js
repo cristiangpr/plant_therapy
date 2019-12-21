@@ -138,11 +138,7 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                             discount_rate: discount
 
                         };
-                        const trackOrderData = {
-                          id:  response.transaction.id, // the same as for addItem to connect them
-                          revenue: response.transaction.amount
 
-                        };
                       console.log(createOrderData)
                         createOrder(userId, token, createOrderData)
                             .then(response => {
@@ -166,10 +162,18 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                                 revenue: response.transaction.amount, // obviously it's price * quantity
                               }
                             );
+                            ReactGA.plugin.execute(
+                              'ecommerce',
+                              'addItem',
+                              {
+                                id:  response.transaction.id, // the same as for addItem to connect them
+                                name: "Plant Therapy", // obviously it's price * quantity
+                              }
+                            );
                             ReactGA.plugin.execute('ecommerce', 'send');
                             ReactGA.plugin.execute('ecommerce', 'clear');
                             console.debug("GA|Transaction Sent: ");
-                    
+
 
 
                     })
