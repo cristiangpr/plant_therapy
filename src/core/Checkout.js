@@ -168,6 +168,7 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                               {
                                 id:  response.transaction.id, // the same as for addItem to connect them
                                 name: "Plant Therapy", // obviously it's price * quantity
+                                sku: "string"
                               }
                             );
                             ReactGA.plugin.execute('ecommerce', 'send');
