@@ -162,6 +162,7 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                                 revenue: response.transaction.amount, // obviously it's price * quantity
                               }
                             );
+                            console.log( response.transaction.id)
                             ReactGA.plugin.execute(
                               'ecommerce',
                               'addItem',
