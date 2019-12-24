@@ -55,6 +55,16 @@ export const getInventories = () => {
         .catch(err => console.log(err));
 };
 
+export const getMessages = () => {
+    return fetch(`${API}/messages`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
 export const listOrders = (userId, token) => {
     return fetch(`${API}/order/list/${userId}`, {
         method: "GET",
@@ -253,6 +263,25 @@ export const updateCategory = ( categoryId, userId, token, category) => {
         .catch(err => console.log(err));
 
 };
+export const updateMessage = ( messageId, userId, token, message) => {
+  console.log(JSON.stringify(message))
+    return fetch(`${API}/message/${messageId}/${userId}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+           "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify (message)
+
+    })
+
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+
+};
 
 export const createInventory = (userId, token, inventory) => {
     return fetch(`${API}/inventory/create/${userId}`, {
@@ -335,6 +364,21 @@ export const deleteCategory = ( categoryId, adminId, token) => {
         })
         .catch(err => console.log(err));
 };
+
+export const deleteMessage = ( messageId, adminId, token) => {
+    return fetch(`${API}/message/${messageId}/${adminId}`, {
+        method: "DELETE",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 export const deleteInventory = ( inventoryId, adminId, token) => {
     return fetch(`${API}/inventory/${inventoryId}/${adminId}`, {
         method: "DELETE",
@@ -390,6 +434,20 @@ export const readCoupon = (couponId, token) => {
         })
         .catch(err => console.log(err));
 };
+export const readMessage = (messageId, userId, token) => {
+    return fetch(`${API}/message/${messageId}/${userId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 
 
 export const updateCoupon = ( couponId, userId, token, coupon) => {
@@ -422,4 +480,23 @@ export const readOrder = (orderId, token) => {
             return response.json();
         })
         .catch(err => console.log(err));
+};
+
+export const createMessage = (message) => {
+return    fetch(`${API}/message/create`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(message)
+
+    })
+        .then(response => {
+            return response.json();
+
+        })
+        .catch(err => {
+            console.log(err);
+        });
 };

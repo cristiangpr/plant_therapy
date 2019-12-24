@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import Navbar1 from "./Navbar";
   import {   withRouter } from 'react-router-dom';
 import Footer from "./Footer"
-
+import { createMessage } from "../admin/apiAdmin";
 const showNavbar = (history, path) => {
     if (history.location.pathname === "/contact") {
         return <Navbar1/>;
@@ -12,6 +12,61 @@ const showNavbar = (history, path) => {
 };
 
 const Contact = ({history}) => {
+  const [values, setValues] = useState({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+      error: false,
+      success: false
+  });
+    const { name, email, subject, message, error, success } = values;
+
+    const handleChange = name => e => {
+        setValues({ ...values, error: false, [name]: e.target.value });
+    };
+
+
+    const clickSubmit = event => {
+        event.preventDefault()
+        setValues({ ...values, error: false,   loading: true });
+        createMessage({ name, email, subject, message, error, success }).then(data => {
+            if (data.error) {
+                setValues({ ...values, error: data.error, success: false });
+            } else {
+                setValues({
+                    ...values,
+                    name: "",
+                    email: "",
+                    subject:"",
+                    message: "",
+
+                    error: "",
+                    success: true,
+
+                });
+            }
+        });
+
+    };
+
+    const showError = () => (
+        <div
+            className="alert alert-danger"
+            style={{ display: error ? "" : "none" }}
+        >
+            {error}
+        </div>
+    );
+
+    const showSuccess = () => (
+        <div
+            className="alert alert-info"
+            style={{ display: success ? "" : "none" }}
+        >
+            Message Sent
+        </div>
+    );
 
   return (
 <>
@@ -54,32 +109,32 @@ const Contact = ({history}) => {
 <div className="row">
 <div className="col-md-2"></div>
     <div className="form col-md-8">
-      <div id="sendmessage">Your message has been sent. Thank you!</div>
-      <div id="errormessage"></div>
+    {showSuccess()}
+    {showError()}
 
-      <form action="" method="post" role="form" className="contactForm">
+      <form className="contactForm">
         <div className="form-row">
           <div className="form-group col-md-6">
-            <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+            <input type="text" onChange={handleChange("name")} value={name} className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
             <div className="validation"></div>
           </div>
           <div className="form-group col-md-6">
-            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-            <div className="validation"></div>
+            <input type="email"  onChange={handleChange("email")} className="form-control" value={email} placeholder="Your Email" />
+
           </div>
         </div>
         <div className="form-row">
         <div className="form-group col-md-6">
-          <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+          <input type="text" onChange={handleChange("subject")} className="form-control" value={subject} id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
           <div className="validation"></div>
         </div>
         <div className="form-group col-md-6">
-          <input type="text" className="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></input>
+          <input type="text" onChange={handleChange("message")} className="form-control" value={message} rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></input>
           <div className="validation"></div>
         </div>
         </div>
         <div className="col-md-2"></div>
-        <div className="text-center mt-3"><button className="btn btn-outline-success">Send Message</button></div>
+        <div className="text-center mt-3"><button className="btn btn-outline-success"  onClick={clickSubmit} >Send Message</button></div>
       </form>
     </div>
 </div>

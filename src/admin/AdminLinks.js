@@ -46,6 +46,16 @@ const AdminLinks = () => {
                      Users
                      </Link>
                  </li>
+                 <li className="list-group-item list-group-item-dark">
+                     <Link className="nav-link" to="/admin_messages">
+                     Messages
+                     </Link>
+                 </li>
+                 <li className="list-group-item list-group-item-dark">
+                     <a target="blank" className="nav-link" href="https://analytics.google.com/analytics/web/#/report-home/a154425185w218005853p207990725">
+                Google Analytics
+                     </a>
+                 </li>
              </ul>
          </div>
      );

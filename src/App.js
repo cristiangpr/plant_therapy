@@ -32,9 +32,11 @@ import AddInventory from "./admin/AddInventory";
  import ManageCategories from "./admin/ManageCategories";
  import ManageInventories from "./admin/ManageInventories";
   import ManageCoupons from "./admin/ManageCoupons";
+    import ManageMessages from "./admin/ManageMessages";
   import UpdateCategory from "./admin/UpdateCategory";
     import UpdateInventory from "./admin/UpdateInventory";
   import UpdateCoupon from "./admin/UpdateCoupon";
+  import UpdateMessage from "./admin/UpdateMessage";
     import UpdateOrder from "./admin/UpdateOrder";
     import ReactGA from 'react-ga';
     import {TrackedRoute} from "./core/TrackedRoute";
@@ -105,6 +107,11 @@ ReactGA.plugin.require('ecommerce', {debug: true});
                       component={ManageUsers}
                   />
                   <AdminRoute
+                      path="/admin_messages"
+                      exact
+                      component={ManageMessages}
+                  />
+                  <AdminRoute
                       path="/admin/user/update/:userId"
                       exact
                       component={UpdateUser}
@@ -138,6 +145,11 @@ ReactGA.plugin.require('ecommerce', {debug: true});
                       path="/admin/order/update/:orderId"
                       exact
                       component={UpdateOrder}
+                  />
+                  <AdminRoute
+                      path="/admin/message/update/:messageId"
+                      exact
+                      component={UpdateMessage}
                   />
                  </Switch>
 
