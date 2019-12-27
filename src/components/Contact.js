@@ -30,7 +30,7 @@ const Contact = ({history}) => {
     const clickSubmit = event => {
         event.preventDefault()
         setValues({ ...values, error: false,   loading: true });
-        createMessage({ name, email, subject, message, error, success }).then(data => {
+        createMessage({ name, email, subject, message }).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error, success: false });
             } else {
@@ -71,7 +71,7 @@ const Contact = ({history}) => {
   return (
 <>
 {showNavbar(history)}
-<section id="contact" className="section-bg wow fadeInUp">
+<section id="contact" className="section-bg wow fadeIn">
   <div className="container">
 
     <div className="section-header">
@@ -115,7 +115,7 @@ const Contact = ({history}) => {
       <form className="contactForm">
         <div className="form-row">
           <div className="form-group col-md-6">
-            <input type="text" onChange={handleChange("name")} value={name} className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+            <input type="text" onChange={handleChange("name")} value={name} className="form-control" placeholder="Your Name"   />
             <div className="validation"></div>
           </div>
           <div className="form-group col-md-6">
@@ -125,11 +125,11 @@ const Contact = ({history}) => {
         </div>
         <div className="form-row">
         <div className="form-group col-md-6">
-          <input type="text" onChange={handleChange("subject")} className="form-control" value={subject} id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+          <input type="text" onChange={handleChange("subject")} className="form-control" value={subject} id="subject" placeholder="Subject"  />
           <div className="validation"></div>
         </div>
         <div className="form-group col-md-6">
-          <input type="text" onChange={handleChange("message")} className="form-control" value={message} rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></input>
+          <input type="text" onChange={handleChange("message")} className="form-control" value={message} rows="5"  placeholder="Message"></input>
           <div className="validation"></div>
         </div>
         </div>
