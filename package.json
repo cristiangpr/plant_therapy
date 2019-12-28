@@ -9,6 +9,7 @@
     "emotion": "^10.0.14",
     "eslint-utils": "^1.4.2",
     "google-maps-react": "^2.0.2",
+    "handlebars": "^4.5.3",
     "heroku": "^7.25.0",
     "history": "^4.10.1",
     "instafeed.js": "^1.4.1",
