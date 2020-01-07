@@ -153,8 +153,8 @@ const Orders = () => {
                 tableBody={body}
 
 
-                rowsPerPage={10}
-                rowsPerPageOption={[5, 10, 20, 30, 100]}
+                rowsPerPage={50}
+                rowsPerPageOption={[50, 100, 200]}
                 initialSort={{ prop: "orderId", isAscending: true }}
 
               />
