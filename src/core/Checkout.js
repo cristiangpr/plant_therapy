@@ -4,6 +4,7 @@ import {
     getBraintreeClientToken,
     processPayment,
         createOrder,
+        createInvoice
 
 } from "./apiCore";
 
@@ -27,11 +28,15 @@ const Checkout = ({ products }) => {
         clientToken: null,
         error: "",
         instance: {},
-        address: "",
+        street_address1: "",
+       street_address2: "",
+       state: "",
+       zip: "",
+       country: "",
 
 
         isButtonDisabled: false,
-        address: ""
+
 
     });
     const [discount, setDiscount]= useState(0);
@@ -57,11 +62,9 @@ const Checkout = ({ products }) => {
         getToken(userId, token);
     }, []);
 
-    const handleAddress = event => {
-        setData({ ...data, address: event.target.value });
+    const handleChange = name => event => {
+        setData({ ...data, error: false, [name]: event.target.value });
     };
-
-
 
     const getTotal = () => {
 
@@ -96,7 +99,8 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
             </Link>
         );
     };
-        let deliveryAddress = data.address;
+        let deliveryAddress1 = data.street_address1;
+          let deliveryAddress2 = data.street_address2;
 
     const buy = () => {
 
@@ -133,7 +137,8 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                             products: products,
                             transaction_id: response.transaction.id,
                             amount: response.transaction.amount,
-                            address: deliveryAddress,
+                            street_address1: deliveryAddress1,
+                              street_address2: deliveryAddress2,
                             discount_code: code,
                             discount_rate: discount
 
@@ -203,14 +208,42 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
             {data.clientToken !== null && products.length > 0 ? (
                 <div>
                 <div className="form-group mb3">
-                    <label className="text-muted">Delivery address:</label>
+                    <label className="text-muted">Delivery address line 1:</label>
                     <input
-                        onChange={handleAddress}
+                        onChange={handleChange('street_address1')}
                         className="form-control"
-                        value={data.address}
+                        value={data.street_address1}
                         placeholder="Type your delivery address here..."
                     />
-  </div>
+            </div>
+
+             <div className="form-group mb3">
+                <label className="text-muted">Delivery address line 2:</label>
+                 <input
+                    onChange={handleChange('street_address2')}
+                    className="form-control"
+                    value={data.street_address2}
+                  placeholder="Type your delivery address here..."
+               />
+         </div>
+         <div className="form-group mb3">
+            <label className="text-muted">State:</label>
+             <input
+                onChange={handleChange('state')}
+                className="form-control"
+                value={data.state}
+              placeholder="Type your state here..."
+           />
+     </div>
+     <div className="form-group mb3">
+        <label className="text-muted">Zip Code:</label>
+         <input
+            onChange={handleChange('zip')}
+            className="form-control"
+            value={data.zip}
+          placeholder="Type your zip code here..."
+       />
+ </div>
                    <Search  setDiscount={setDiscount} setCode={setCode}/>
                     <DropIn
                         options={{
