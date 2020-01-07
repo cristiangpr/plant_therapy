@@ -80,8 +80,8 @@ const ManageCoupons = () => {
                       tableBody={body}
                       keyName="couponTable"
                       tableClass="striped border responsive"
-                      rowsPerPage={10}
-                      rowsPerPageOption={[3, 5, 8, 10]}
+                      rowsPerPage={50}
+                      rowsPerPageOption={[50, 100, 200]}
                       initialSort={{ prop: "name", isAscending: true }}
                     />
                     {createCoupon()}

@@ -33,7 +33,7 @@ const ManageProducts = () => {
         });
     };
 
-    
+
 
     const createProduct = () => (
       <Link to='create_product'>
@@ -82,8 +82,8 @@ const body =  products.map((p, i) => (
                       tableBody={body}
 
 
-                      rowsPerPage={10}
-                      rowsPerPageOption={[5, 10, 20, 30, 100]}
+                      rowsPerPage={50}
+                      rowsPerPageOption={[50, 100, 200]}
                       initialSort={{ prop: "name", isAscending: true }}
 
                     />

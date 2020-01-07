@@ -80,8 +80,8 @@ const ManageUsers = () => {
                         tableBody={body}
 
 
-                        rowsPerPage={10}
-                        rowsPerPageOption={[5, 10, 20, 100]}
+                        rowsPerPage={50}
+                        rowsPerPageOption={[50, 100, 200]}
                         initialSort={{ prop: "name", isAscending: true }}
 
                       />
