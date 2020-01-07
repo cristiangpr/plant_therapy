@@ -15,7 +15,7 @@ const Footer = () => (
           height= "30%"
           width= "75%"
 
-          className="d-inline-block align-top"
+          className="img-fluid d-inline-block align-top"
           alt="Plant Therapy logo"
         />
           <p>Protect your valuable crops from damaging pests, mold and mildew with Lost Coast Plant Therapy. Eliminates bugs on contact by suffocation and dehydration. Does not leave harmful residue on your plants.</p>
