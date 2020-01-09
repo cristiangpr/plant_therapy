@@ -33,6 +33,7 @@ const Checkout = ({ products }) => {
        state: "",
        zip: "",
        country: "",
+       tax: "",
 
 
         isButtonDisabled: false,
@@ -42,6 +43,18 @@ const Checkout = ({ products }) => {
     const [discount, setDiscount]= useState(0);
       const [code, setCode]= useState(0);
 
+    const     { loading,
+        success,
+        clientToken,
+        error,
+        instance,
+        street_address1,
+       street_address2,
+       state,
+       zip,
+       country,
+
+isButtonDisabled} = data;
 
     const userId = isAuthenticated() && isAuthenticated().user._id;
     const token = isAuthenticated() && isAuthenticated().token;
@@ -53,7 +66,7 @@ const Checkout = ({ products }) => {
                 setData({ ...data, error: data.error });
             } else {
                 setData({ clientToken: data.clientToken });
-                console.log(data.loading)
+
             }
         });
     };
@@ -99,8 +112,6 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
             </Link>
         );
     };
-        let deliveryAddress1 = data.street_address1;
-          let deliveryAddress2 = data.street_address2;
 
     const buy = () => {
 
@@ -137,8 +148,11 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                             products: products,
                             transaction_id: response.transaction.id,
                             amount: response.transaction.amount,
-                            street_address1: deliveryAddress1,
-                              street_address2: deliveryAddress2,
+                            street_address1: street_address1,
+                              street_address2: street_address2,
+                              zip: zip,
+                              state: state,
+                              tax: parseFloat(getTax()).toFixed(2),
                             discount_code: code,
                             discount_rate: discount
 
@@ -156,6 +170,31 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                                 console.log(error);
                                 setData({ loading: false });
                             });
+
+                            const createInvoiceData = {
+                                products: products,
+                                transaction_id: response.transaction.id,
+                                amount: response.transaction.amount,
+                                street_address1: street_address1,
+                                  street_address2: street_address2,
+                                  zip: zip,
+                                  state: state,
+                                  tax: parseFloat(getTax()).toFixed(2),
+                                discount_code: code,
+                                discount_rate: discount
+
+                            };
+                      console.log(createInvoiceData)
+                            createInvoice(userId, token, createInvoiceData)
+                                .then(response => {
+
+                                         setData({ loading: false, success: true });
+
+                                })
+                                .catch(error => {
+                                    console.log(error);
+                                    setData({ loading: false });
+                                });
 
 
 
@@ -288,7 +327,7 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
 
     const showSuccess = success => (
         <div
-            className="alert alert-info"
+            className="alert alert-success"
             style={{ display: success ? "" : "none" }}
         >
           <h2>  Thanks! Your payment was successful!</h2>
