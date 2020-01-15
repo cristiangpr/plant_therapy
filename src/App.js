@@ -39,6 +39,7 @@ import AddInventory from "./admin/AddInventory";
   import UpdateMessage from "./admin/UpdateMessage";
     import UpdateOrder from "./admin/UpdateOrder";
       import ManageInvoices from "./admin/ManageInvoices";
+        import UpdateInvoice from "./admin/UpdateInvoice";
     import ReactGA from 'react-ga';
     import {TrackedRoute} from "./core/TrackedRoute";
 
@@ -157,6 +158,11 @@ ReactGA.plugin.require('ecommerce', {debug: true});
                       path="/admin/message/update/:messageId"
                       exact
                       component={UpdateMessage}
+                  />
+                  <AdminRoute
+                      path="/admin/invoice/update/:invoiceId"
+                      exact
+                      component={UpdateInvoice}
                   />
                  </Switch>
 
