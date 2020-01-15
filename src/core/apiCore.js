@@ -130,6 +130,21 @@ export const createOrder = (userId, token, createOrderData) => {
         })
         .catch(err => console.log(err));
 };
+export const createInvoice = (userId, token, createInvoiceData) => {
+    return fetch(`${API}/invoice/create/${userId}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ invoice: createInvoiceData })
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 export const getCoupon = (code) => {
     console.log(code)
     return fetch(`${API}/coupon/by/search`, {

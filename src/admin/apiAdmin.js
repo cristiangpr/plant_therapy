@@ -500,3 +500,78 @@ return    fetch(`${API}/message/create`, {
             console.log(err);
         });
 };
+
+
+
+export const listInvoices = (userId, token) => {
+    return fetch(`${API}/invoice/list/${userId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const updateInvoiceStatus = (userId, token, invoiceId, status) => {
+    return fetch(`${API}/invoice/${invoiceId}/status/${userId}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ status, invoiceId })
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+export const getInvoiceStatusValues = (userId, token) => {
+    return fetch(`${API}/invoice/status-values/${userId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const readInvoice = (invoiceId, token) => {
+    return fetch(`${API}/invoice/${invoiceId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const updateInvoice = (invoiceId, userId, token, invoice) => {
+    return fetch(`${API}/product/${invoiceId}/${userId}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: invoice
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};

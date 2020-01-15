@@ -19,7 +19,7 @@ import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import AddUser from "./admin/AddUser";
 import Cart from "./core/Cart";
-import Orders from "./admin/Orders";
+import ManageOrders from "./admin/ManageOrders";
 import Profile from "./user/Profile";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
@@ -38,6 +38,8 @@ import AddInventory from "./admin/AddInventory";
   import UpdateCoupon from "./admin/UpdateCoupon";
   import UpdateMessage from "./admin/UpdateMessage";
     import UpdateOrder from "./admin/UpdateOrder";
+      import ManageInvoices from "./admin/ManageInvoices";
+        import UpdateInvoice from "./admin/UpdateInvoice";
     import ReactGA from 'react-ga';
     import {TrackedRoute} from "./core/TrackedRoute";
 
@@ -69,7 +71,8 @@ ReactGA.plugin.require('ecommerce', {debug: true});
               <AdminRoute path="/create_product" exact component={AddProduct}/>
                   <AdminRoute path="/create_user" exact component={AddUser}/>
                 <TrackedRoute path="/cart" exact component={Cart} />
-                  <AdminRoute path="/admin_orders" exact component={Orders} />
+                  <AdminRoute path="/admin_orders" exact component={ManageOrders} />
+                      <AdminRoute path="/admin_invoices" exact component={ManageInvoices} />
                   <PrivateRoute
                       path="/profile/:userId"
                       exact
@@ -112,6 +115,11 @@ ReactGA.plugin.require('ecommerce', {debug: true});
                       component={ManageMessages}
                   />
                   <AdminRoute
+                      path="/admin_invoices"
+                      exact
+                      component={ManageInvoices}
+                  />
+                  <AdminRoute
                       path="/admin/user/update/:userId"
                       exact
                       component={UpdateUser}
@@ -150,6 +158,11 @@ ReactGA.plugin.require('ecommerce', {debug: true});
                       path="/admin/message/update/:messageId"
                       exact
                       component={UpdateMessage}
+                  />
+                  <AdminRoute
+                      path="/admin/invoice/update/:invoiceId"
+                      exact
+                      component={UpdateInvoice}
                   />
                  </Switch>
 
