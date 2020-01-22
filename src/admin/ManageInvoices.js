@@ -126,7 +126,7 @@ const ManageInvoices = () => {
                   </select>,
                 customer: o.user.name,
                 date: moment(o.createdAt).format("MMM Do YYYY"),
-                view:      <Link to={`/admin/invoice/update/${o._id}`}>
+                view:      <Link to={`/admin/invoice/view/${o._id}`}>
                          <button  className="btn btn-outline-primary">
                         View
                          </button>

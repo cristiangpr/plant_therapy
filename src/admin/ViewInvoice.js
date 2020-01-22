@@ -7,7 +7,7 @@ import moment from "moment";
 import AdminLinks from './AdminLinks';
 import Datatable from 'react-bs-datatable';
 
-const UpdateInvoice = ({match}) => {
+const ViewInvoice = ({match}) => {
 
     const [values, setValues] = useState({
 
@@ -231,7 +231,7 @@ const UpdateInvoice = ({match}) => {
                             </td>
                             <td></td>
                             <td>
-                                <input onChange={handleChange("customer")} value= {customer}/><br/>
+                                {customer}<br/>
                                 John Doe<br/>
                               {email}
                             </td>
@@ -283,9 +283,8 @@ const UpdateInvoice = ({match}) => {
                 <td>
                   {p.count}
                 </td>
-                <td  >
-
-                <input onChange={handleChange("price")} value= {p.price}/>
+                <td onChange={handleChange("price")} contenteditable= 'true' >
+                  {p.price}
                 </td>
                 </tr>
 ))}
@@ -308,15 +307,15 @@ const UpdateInvoice = ({match}) => {
                 <td>
 
                 </td>
-                <td >
-                <input onChange={handleChange("amount")} value= {amount}/>
+                <td contenteditable='true' id = "amount">
+                   Total:{amount}
                 </td>
             </tr>
          </tbody>
         </table>
 
     </div>
-  <button className="btn btn-outline-primary" onClick={clickSubmit} type="submit" style={{marginLeft:900,marginTop:25}}>Update</button>
+ <Link to={`/admin/invoice/update/${id}`}> <button className="btn btn-outline-primary"  style={{marginLeft:900,marginTop:25}}>Edit</button></Link>
 </div>
 
           </div>
@@ -325,4 +324,4 @@ const UpdateInvoice = ({match}) => {
     );
 };
 
-export default UpdateInvoice;
+export default ViewInvoice;
