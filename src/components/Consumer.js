@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Shop from "../core/Shop.js"
+import Shop from "../core/Shop.js";
+import Clothing from "../core/Clothing.js";
 import ScrollUpButton from "react-scroll-up-button";
 
   import {  Link } from 'react-router-dom';
@@ -20,6 +21,7 @@ const Consumer = () => {
 
 
 <Shop/>
+<Clothing/>
 
 
  <div className="section-header">

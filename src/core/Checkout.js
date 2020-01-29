@@ -8,7 +8,7 @@ import {
 
 } from "./apiCore";
 
-import Cart from "./Cart";
+
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import "braintree-web";
@@ -18,7 +18,7 @@ import Search from "./Search";
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-154425185-1');
 ReactGA.plugin.require('ecommerce', {debug: true});
-const Checkout = ({ products }) => {
+const Checkout = ({ products, inventory }) => {
     const [data, setData] = useState({
 
 
@@ -144,8 +144,10 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
                         // empty cart
                         // create order
 
+
                         const createOrderData = {
                             products: products,
+                            inventory: inventory,
                             transaction_id: response.transaction.id,
                             amount: response.transaction.amount,
                             street_address1: street_address1,
@@ -173,6 +175,7 @@ else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
 
                             const createInvoiceData = {
                                 products: products,
+                                  inventory: inventory,
                                 transaction_id: response.transaction.id,
                                 amount: response.transaction.amount,
                                 street_address1: street_address1,

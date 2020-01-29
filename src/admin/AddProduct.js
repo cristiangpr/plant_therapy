@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { createProduct, getCategories, getInventories } from "./apiAdmin";
+import { createProduct, getCategories, getInventories, getSizes } from "./apiAdmin";
 import AdminLinks from "./AdminLinks";
 import Layout from '../core/Layout';
 
@@ -17,6 +17,8 @@ const AddProduct = () => {
         inventories: [],
         inventory: "",
         quantity: "",
+        sizes: [],
+        size:"",
         photo: "",
         loading: false,
         error: "",
@@ -34,6 +36,8 @@ const AddProduct = () => {
         inventories,
         inventory,
         quantity,
+        sizes,
+        size,
         loading,
         error,
         createdProduct,
@@ -45,19 +49,32 @@ const AddProduct = () => {
     const init = () => {
         getCategories().then(data => {
            getInventories().then(idata => {
+             getSizes().then(sdata => {
               setValues({
                   ...values,
                   categories: data,
                   inventories: idata,
+                  sizes: sdata,
                   formData: new FormData()
               });
 
+})
 })
             }
         );
     };
 
+    const categoryItems = categories.map((category) =>
+                   <option key={category._id} value={category._id}>{category.name}</option>
+               );
 
+     const inventoryItems = inventories.map((inventory) =>
+                    <option key={inventory._id} value={inventory._id}>{inventory.name}</option>
+                          );
+
+      const sizeItems = sizes.map((size) =>
+                       <option key={size} value={size}>{size}</option>
+                                     );
     useEffect(() => {
         init();
     }, []);
@@ -88,6 +105,7 @@ const AddProduct = () => {
                     category: "",
                     inventory: "",
                     quantity: "",
+                    size: "",
                     loading: false,
                     createdProduct: data.name
                 });
@@ -150,12 +168,8 @@ const AddProduct = () => {
                     onChange={handleChange("category")}
                     className="form-control"
                 >
-                <option>Please select</option>
-                <option value="5dab5350fe6153076c4c808e">Retail</option>
-                <option value="5dab86889f624f3d5839d8e2">Wholesale</option>
-                  <option value="5dab877c9f624f3d5839d8e5">Farm</option>
-                  <option value="5dab878a9f624f3d5839d8e6">Distributor 25</option>
-                  <option value="5db747f7711507468c2f7ba5">Distributor 32</option>
+                    <option>Please select</option>
+        {categoryItems}
                 </select>
             </div>
             <div className="form-group col-md-6">
@@ -166,24 +180,21 @@ const AddProduct = () => {
                 >
                 >
                     <option>Please select</option>
-                    <option value="5db39bb2a60e8108f00ca030">12 Oz</option>
-                    <option value="5db39bc9a60e8108f00ca032">32 Oz</option>
-                      <option value="5db39bd2a60e8108f00ca033">1 Gallon</option>
-                      <option value="5db39bd9a60e8108f00ca034">2.5 Gallon</option>
+                {inventoryItems}
                 </select>
             </div>
             </div>
 <div className="form-row">
             <div className="form-group col-md-6">
-                <label className="text-muted">Shipping</label>
-                <select
-                    onChange={handleChange("shipping")}
-                    className="form-control"
-                >
-                    <option>Please select</option>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
+            <label className="text-muted">Size</label>
+            <select
+                onChange={handleChange("size")}
+                className="form-control"
+            >
+            >
+                <option>Please select</option>
+            {sizeItems}
+            </select>
             </div>
 
             <div className="form-group col-md-6">

@@ -41,13 +41,27 @@ export const getCategories = () => {
         method: "GET"
     })
         .then(response => {
+
             return response.json();
+
         })
         .catch(err => console.log(err));
 };
 export const getInventories = () => {
     return fetch(`${API}/inventories`, {
         method: "GET"
+    })
+        .then(response => {
+          console.log(response)
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const getSizes = () => {
+    return fetch(`${API}/products/sizes`, {
+        method: "GET",
+
     })
         .then(response => {
             return response.json();

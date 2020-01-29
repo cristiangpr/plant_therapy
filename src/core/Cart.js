@@ -11,6 +11,14 @@ import Footer from '../components/Footer'
 
 const Cart = () => {
     const [items, setItems] = useState([]);
+    const [inventory, setInventory] = useState("")
+
+
+
+          const handleSizeChange = name => e => {
+              setInventory({  [name]: e.target.value });
+                                  };
+
 
     useEffect(() => {
         setItems(getCart());
@@ -29,6 +37,8 @@ const Cart = () => {
                         cartUpdate={true}
                         showRemoveProductButton={true}
                         showStock={false}
+                         handleSizeChange={handleSizeChange}
+
                     />
                 ))}
           </>
@@ -63,7 +73,7 @@ const Cart = () => {
                    <div className="card-body">
                     <h4 className="">Checkout</h4>
                     <hr />
-                    <Checkout products={items} />
+                    <Checkout products={items} inventory={inventory}/>
                     </div>
                 </div>
                 </div>

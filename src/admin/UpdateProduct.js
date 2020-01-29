@@ -14,7 +14,7 @@ const UpdateProduct = ({ match }) => {
         category: "",
         inventories: [],
         inventory: "",
-        shipping: "",
+
         quantity: "",
         photo: "",
         loading: false,
@@ -34,7 +34,7 @@ const UpdateProduct = ({ match }) => {
         category,
         inventories,
         inventory,
-        shipping,
+
         quantity,
         loading,
         error,
@@ -46,6 +46,8 @@ const UpdateProduct = ({ match }) => {
 
     const init = productId => {
         getProduct(productId).then(data => {
+            getCategories().then(cdata => {
+                   getInventories().then(idata => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
@@ -55,27 +57,40 @@ const UpdateProduct = ({ match }) => {
                     name: data.name,
                     description: data.description,
                     price: data.price,
-                    category: data.category._id,
-                    inventory: data.inventory._id,
-
-                    shipping: data.shipping,
+                    categories: cdata,
+                    inventories: idata,
+                    category: data.category,
+                    inventory: data.inventory,
+                
                     quantity: data.quantity,
                     formData: new FormData()
                 });
                 // load categories
 
             }
-
+  });
+});
         });
     };
+
+
+
+    const categoryItems = categories.map((category) =>
+                   <option key={category._id} value={category._id}>{category.name}</option>
+               );
+
+               const inventoryItems = inventories.map((inventory) =>
+                              <option key={inventory._id} value={inventory._id}>{inventory.name}</option>
+                          );
 
     // load categories and set form data
 
 
     useEffect(() => {
+
         init(match.params.productId);
 
-    }, []);
+ }, []);
 
     const handleChange = name => event => {
         const value =
@@ -185,12 +200,8 @@ const UpdateProduct = ({ match }) => {
                     onChange={handleChange("category")}
                     className="form-control"
                 >
-                <option>Please select</option>
-                <option value="5dab5350fe6153076c4c808e">Retail</option>
-                <option value="5dab86889f624f3d5839d8e2">Wholesale</option>
-                  <option value="5dab877c9f624f3d5839d8e5">Farm</option>
-                  <option value="5dab878a9f624f3d5839d8e6">Distributor 25</option>
-                  <option value="5db747f7711507468c2f7ba5">Distributor 32</option>
+                    <option>Please select</option>
+        {categoryItems}
                 </select>
             </div>
             <div className="form-group col-md-6">
@@ -201,24 +212,13 @@ const UpdateProduct = ({ match }) => {
                 >
                 >
                     <option>Please select</option>
-                    <option value="5db39bb2a60e8108f00ca030">12 Oz</option>
-                    <option value="5db39bc9a60e8108f00ca032">32 Oz</option>
-                      <option value="5db39bd2a60e8108f00ca033">1 Gallon</option>
-                      <option value="5db39bd9a60e8108f00ca034">2.5 Gallon</option>
+                {inventoryItems}
                 </select>
             </div>
             </div>
 <div className="form-row">
             <div className="form-group col-md-6">
-                <label className="text-muted">Shipping</label>
-                <select
-                    onChange={handleChange("shipping")}
-                    className="form-control"
-                >
-                    <option>Please select</option>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
+
             </div>
 
             <div className="form-group col-md-6">

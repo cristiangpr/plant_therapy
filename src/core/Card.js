@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import Checkbox from "./Checkbox";
 import ShowImage from "./ShowImage";
 import { addItem, updateItem, removeItem } from "./cartHelpers";
+import { getInventories} from "../admin/apiAdmin";
 
 
-const Card = ({ product, history,  showAddToCartButton = true, cartUpdate = false, showRemoveProductButton = false}) => {
+const Card = ({ product, history,  showAddToCartButton = true, cartUpdate = false, showRemoveProductButton = false, handleSizeChange}) => {
     const [redirect, setRedirect] = useState(false);
       const [count, setCount] = useState(product.count);
+      const [inventories, setInventories] = useState([]);
+      const [inventory, setInventory] = useState('');
 
 
 
@@ -29,7 +32,7 @@ const Card = ({ product, history,  showAddToCartButton = true, cartUpdate = fals
                 <button
                     onClick={addToCart}
 
-                    className="btn btn-outline-success mt-2"
+                    className=" btn btn-outline-success mt-2"
                 >
                     Add to cart
                 </button>
@@ -84,18 +87,42 @@ const Card = ({ product, history,  showAddToCartButton = true, cartUpdate = fals
         );
     };
 
+    const getSizeOptions = () => {
+          getInventories().then(data => {
+        if (data.error){
+          console.log(data.error);
+        } else {
+          setInventories(data);
+
+        }
+          });
+
+    }
+
+     const filteredItems = inventories.filter(inventory => inventory.name.toLowerCase().includes(product.name.toLowerCase()));
+
+     const inventoryItems = filteredItems.map((inventory) =>
+            <option key={inventory._id} value={inventory._id}>{inventory.name}</option>
+                              );
 
 
+
+          useEffect(() => {
+
+              getSizeOptions();
+
+            }, []);
 
     return (
       <div className= {history.location.pathname === "/cart" ? "col-md-6 mb-3" : "col-md-4 mb-3"}>
-          <div className="single-product wow fadeIn" >
-          <div className="dark-card text-center" id="">
+          <div className="dark-card h-100 single-product wow fadeIn" >
+          <div className="dark-card text-center-bottom" id="">
         <ShowImage item={product} url="product" />
               <div className="card-body">
+
                   {shouldRedirect(redirect)}
 
-                  <p className="mb-2" >
+                  <p className="mt-auto mb-2" >
                       {product.name}
                   </p>
 
@@ -105,7 +132,16 @@ const Card = ({ product, history,  showAddToCartButton = true, cartUpdate = fals
                   <p className="mb-2 mt-0">${parseFloat(product.price).toFixed(2)}</p>
 
 
-                  {showStock(product.inventory.quantity)}
+                  {product.inventory || history.location.pathname !== "/cart" ? null :     <select
+                          onChange={handleSizeChange(["inventory"])}
+                          className="form-control"
+
+                      >
+                      >
+                          <option>Please select</option>
+                      {inventoryItems}
+                      </select>}
+                         {showStock(product.inventory.quantity)}
                   <br />
 
 
