@@ -76,7 +76,7 @@ export const getInventories = () => {
 };
 
 export const getSizeValues = () => {
-    return fetch(`${API}/gears/sizes`, {
+    return fetch(`${API}/products/sizes`, {
         method: "GET",
 
     })

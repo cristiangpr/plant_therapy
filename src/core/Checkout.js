@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-    
+
     getBraintreeClientToken,
     processPayment,
         createOrder,
@@ -91,6 +91,7 @@ isButtonDisabled} = data;
       }
 else  if ( isAuthenticated() && isAuthenticated().user.role === "Retail"
   || isAuthenticated().user.role === "Registered User"
+    || isAuthenticated().user.role === "Admin"
   || isAuthenticated().user.role === "Agricultural Commercial"){
   return getTotal() * .0725;
 } else {

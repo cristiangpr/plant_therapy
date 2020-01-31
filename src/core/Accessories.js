@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import Card from "./Card";
 import { isAuthenticated } from "../auth"
-import { getCategories, getFilteredGears} from "./apiCore";
+import { getCategories, getFilteredProducts} from "./apiCore";
 import Checkbox from "./Checkbox";
 import RadioBox from "./RadioBox";
 import { prices } from "./fixedPrices";
@@ -33,7 +33,7 @@ const Accessories = () => {
 
   const loadFilteredResults = newFilters => {
       // console.log(newFilters);
-      getFilteredGears(skip, limit, sortBy, newFilters).then(data => {
+      getFilteredProducts(skip, limit, sortBy, newFilters).then(data => {
           if (data.error) {
               setError(data.error);
           } else {
@@ -47,7 +47,7 @@ const Accessories = () => {
   const loadMore = () => {
       let toSkip = skip + limit;
       // console.log(newFilters);
-      getFilteredGears(toSkip, limit, sortBy, myFilters.filters).then(data => {
+      getFilteredProducts(toSkip, limit, sortBy, myFilters.filters).then(data => {
           if (data.error) {
               setError(data.error);
           } else {

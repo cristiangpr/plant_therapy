@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { createProduct, getCategories, getInventories } from "./apiAdmin";
+import { createProduct, getCategories, getInventories, getSizeValues } from "./apiAdmin";
 import AdminLinks from "./AdminLinks";
 import Layout from '../core/Layout';
 
@@ -17,7 +17,8 @@ const AddProduct = () => {
         inventories: [],
         inventory: "",
         quantity: "",
-
+        sizes: [],
+        size:"",
         photo: "",
         loading: false,
         error: "",
@@ -35,7 +36,8 @@ const AddProduct = () => {
         inventories,
         inventory,
         quantity,
-
+        size,
+        sizes,
         loading,
         error,
         createdProduct,
@@ -47,16 +49,16 @@ const AddProduct = () => {
     const init = () => {
         getCategories().then(data => {
            getInventories().then(idata => {
-
+             getSizeValues().then(sdata => {
               setValues({
                   ...values,
                   categories: data,
                   inventories: idata,
-
+                  sizes: sdata,
                   formData: new FormData()
               });
 
-
+})
 })
             }
         );
@@ -69,7 +71,9 @@ const AddProduct = () => {
      const inventoryItems = inventories.map((inventory) =>
                     <option key={inventory._id} value={inventory._id}>{inventory.name}</option>
                           );
-
+                          const sizeItems = sizes.map((size) =>
+                                           <option key={size} value={size}>{size}</option>
+                                                         );
 
     useEffect(() => {
         init();
@@ -101,7 +105,7 @@ const AddProduct = () => {
                     category: "",
                     inventory: "",
                     quantity: "",
-
+                    size: "",
                     loading: false,
                     createdProduct: data.name
                 });
@@ -182,7 +186,15 @@ const AddProduct = () => {
             </div>
 <div className="form-row">
             <div className="form-group col-md-6">
-      
+            <label className="text-muted">Size</label>
+            <select
+                onChange={handleChange("size")}
+                className="form-control"
+            >
+            >
+                <option>Please select</option>
+            {sizeItems}
+            </select>
             </div>
 
             <div className="form-group col-md-6">

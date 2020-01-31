@@ -284,7 +284,7 @@ const ViewInvoice = ({match}) => {
                   {p.count}
                 </td>
                 <td onChange={handleChange("price")} contenteditable= 'true' >
-                  {p.price}
+                ${parseFloat(p.price).toFixed(2)}
                 </td>
                 </tr>
 ))}
@@ -298,7 +298,7 @@ const ViewInvoice = ({match}) => {
 
                 </td>
                 <td>
-                  {tax}
+          ${parseFloat(tax).toFixed(2)}
                 </td>
             </tr>
 
@@ -308,7 +308,7 @@ const ViewInvoice = ({match}) => {
 
                 </td>
                 <td contenteditable='true' id = "amount">
-                   Total:{amount}
+                   Total:${parseFloat(amount).toFixed(2)}
                 </td>
             </tr>
          </tbody>

@@ -189,7 +189,7 @@ const UpdateOrder = ({match}) => {
                        Product name: {p.name}
                    </li>
                    <li className="list-group-item list-group-item-dark">
-                       Product price: {p.price}
+                       Product price: ${parseFloat(p.price).toFixed(2)}
                    </li>
                    <li className="list-group-item list-group-item-dark">
                        Product total: {p.count}

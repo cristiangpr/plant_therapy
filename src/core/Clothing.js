@@ -3,7 +3,7 @@ import Checkbox from "./Checkbox";
 import RadioBox2 from "./RadioBox2";
 import Card from "./Card";
 import { isAuthenticated } from "../auth"
-import { getCategories, getFilteredGears} from "./apiCore";
+import { getCategories, getFilteredProducts} from "./apiCore";
 import { sizes } from "./Sizes";
 
 
@@ -33,7 +33,7 @@ const Clothing = () => {
 
       const loadFilteredResults = newFilters => {
           // console.log(newFilters);
-          getFilteredGears(skip, limit, sortBy, newFilters).then(data => {
+          getFilteredProducts(skip, limit, sortBy, newFilters).then(data => {
               if (data.error) {
                   setError(data.error);
               } else {
@@ -47,7 +47,7 @@ const Clothing = () => {
       const loadMore = () => {
           let toSkip = skip + limit;
           // console.log(newFilters);
-          getFilteredGears(toSkip, limit, sortBy, myFilters.filters).then(data => {
+          getFilteredProducts(toSkip, limit, sortBy, myFilters.filters).then(data => {
               if (data.error) {
                   setError(data.error);
               } else {

@@ -29,11 +29,7 @@ const AdminLinks = () => {
                    Products
                      </Link>
                  </li>
-                 <li className="list-group-item list-group-item-dark">
-                     <Link className="nav-link" to="/admin_gears">
-                   Gear
-                     </Link>
-                 </li>
+            
                  <li className="list-group-item list-group-item-dark">
                      <Link className="nav-link" to="/admin_orders">
                          Orders
