@@ -19,6 +19,7 @@ const Shop = () => {
       const [skip, setSkip] = useState(0);
       const [size, setSize] = useState(0);
       const [filteredResults, setFilteredResults] = useState([]);
+      const [sortBy, setSortBy] = useState("price");
 
       const init = () => {
           getCategories().then(data => {
@@ -32,7 +33,7 @@ const Shop = () => {
 
       const loadFilteredResults = newFilters => {
           // console.log(newFilters);
-          getFilteredProducts(skip, limit, newFilters).then(data => {
+          getFilteredProducts(skip, limit, sortBy, newFilters).then(data => {
               if (data.error) {
                   setError(data.error);
               } else {
@@ -46,7 +47,7 @@ const Shop = () => {
       const loadMore = () => {
           let toSkip = skip + limit;
           // console.log(newFilters);
-          getFilteredProducts(toSkip, limit, myFilters.filters).then(data => {
+          getFilteredProducts(toSkip, limit, sortBy, myFilters.filters).then(data => {
               if (data.error) {
                   setError(data.error);
               } else {

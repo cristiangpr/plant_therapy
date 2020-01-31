@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { createProduct, getCategories, getInventories } from "./apiAdmin";
+import { createGear, getCategories, getInventories, getSizeValues } from "./apiAdmin";
 import AdminLinks from "./AdminLinks";
 import Layout from '../core/Layout';
 
 
-const AddProduct = () => {
+const AddGear = () => {
     const { user, token } = isAuthenticated();
     const [values, setValues] = useState({
         name: "",
@@ -17,11 +17,13 @@ const AddProduct = () => {
         inventories: [],
         inventory: "",
         quantity: "",
+        sizes: [],
+        size:"",
 
         photo: "",
         loading: false,
         error: "",
-        createdProduct: "",
+        createdGear: "",
         redirectToProfile: false,
         formData: ""
     });
@@ -35,10 +37,11 @@ const AddProduct = () => {
         inventories,
         inventory,
         quantity,
-
+        sizes,
+        size,
         loading,
         error,
-        createdProduct,
+        createdGear,
         redirectToProfile,
         formData
     } = values;
@@ -47,16 +50,16 @@ const AddProduct = () => {
     const init = () => {
         getCategories().then(data => {
            getInventories().then(idata => {
-
+             getSizeValues().then(sdata => {
               setValues({
                   ...values,
                   categories: data,
                   inventories: idata,
-
+                  sizes: sdata,
                   formData: new FormData()
               });
 
-
+})
 })
             }
         );
@@ -70,7 +73,9 @@ const AddProduct = () => {
                     <option key={inventory._id} value={inventory._id}>{inventory.name}</option>
                           );
 
-
+      const sizeItems = sizes.map((size) =>
+                       <option key={size} value={size}>{size}</option>
+                                     );
     useEffect(() => {
         init();
     }, []);
@@ -88,7 +93,7 @@ const AddProduct = () => {
         event.preventDefault();
         setValues({ ...values, error: "", loading: true });
 
-        createProduct(user._id, token, formData).then(data => {
+        createGear(user._id, token, formData).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
@@ -101,9 +106,9 @@ const AddProduct = () => {
                     category: "",
                     inventory: "",
                     quantity: "",
-
+                    size: "",
                     loading: false,
-                    createdProduct: data.name
+                    createdGear: data.name
                 });
             }
         });
@@ -182,7 +187,15 @@ const AddProduct = () => {
             </div>
 <div className="form-row">
             <div className="form-group col-md-6">
-      
+            <label className="text-muted">Size</label>
+            <select
+                onChange={handleChange("size")}
+                className="form-control"
+            >
+            >
+                <option>Please select</option>
+            {sizeItems}
+            </select>
             </div>
 
             <div className="form-group col-md-6">
@@ -195,7 +208,7 @@ const AddProduct = () => {
                 />
             </div>
 </div>
-            <button className="btn btn-outline-success">Create Product</button>
+            <button className="btn btn-outline-success">Create Gear</button>
 
         </form>
         </div>
@@ -213,9 +226,9 @@ const AddProduct = () => {
     const showSuccess = () => (
         <div
             className="alert alert-info"
-            style={{ display: createdProduct ? "" : "none" }}
+            style={{ display: createdGear ? "" : "none" }}
         >
-            <h2>{`${createdProduct}`} is created!</h2>
+            <h2>{`${createdGear}`} is created!</h2>
         </div>
     );
 
@@ -228,7 +241,7 @@ const AddProduct = () => {
         const goBack = () => (
 
             <div className="mt-5">
-                <Link to="/admin_products" className="text-warning">
+                <Link to="/admin_gears" className="text-warning">
                 Go Back
                 </Link>
             </div>
@@ -237,7 +250,7 @@ const AddProduct = () => {
 
     return (
       <Layout
-      title="Create Product"
+      title="Create Gear"
 
       className="container-fluid">
       <div className="row">
@@ -258,4 +271,4 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+export default AddGear;

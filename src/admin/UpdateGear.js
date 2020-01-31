@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
+import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
-import { Link } from "react-router-dom";
-import { createProduct, getCategories, getInventories } from "./apiAdmin";
-import AdminLinks from "./AdminLinks";
-import Layout from '../core/Layout';
+import { Link, Redirect } from "react-router-dom";
+import { getGear, getCategories, updateGear, getInventories, deleteGear} from "./apiAdmin";
+import AdminLinks from './AdminLinks';
 
-
-const AddProduct = () => {
-    const { user, token } = isAuthenticated();
+const UpdateGear = ({ match }) => {
     const [values, setValues] = useState({
         name: "",
         description: "",
@@ -16,16 +14,18 @@ const AddProduct = () => {
         category: "",
         inventories: [],
         inventory: "",
-        quantity: "",
 
+        quantity: "",
         photo: "",
         loading: false,
-        error: "",
-        createdProduct: "",
+        error: false,
+        success: false,
+        createdGear: "",
         redirectToProfile: false,
         formData: ""
     });
 
+    const { user, token } = isAuthenticated();
     const {
         name,
         description,
@@ -34,48 +34,63 @@ const AddProduct = () => {
         category,
         inventories,
         inventory,
-        quantity,
 
+        quantity,
         loading,
         error,
-        createdProduct,
-        redirectToProfile,
+        success,
+        createdGear,
+
         formData
     } = values;
 
-    // load categories and set form data
-    const init = () => {
-        getCategories().then(data => {
-           getInventories().then(idata => {
+    const init = gearId => {
+        getGear(gearId).then(data => {
+            getCategories().then(cdata => {
+                   getInventories().then(idata => {
+            if (data.error) {
+                setValues({ ...values, error: data.error });
+            } else {
+                // populate the state
+                setValues({
+                    ...values,
+                    name: data.name,
+                    description: data.description,
+                    price: data.price,
+                    categories: cdata,
+                    inventories: idata,
+                    category: data.category,
+                    inventory: data.inventory,
 
-              setValues({
-                  ...values,
-                  categories: data,
-                  inventories: idata,
+                    quantity: data.quantity,
+                    formData: new FormData()
+                });
+                // load categories
 
-                  formData: new FormData()
-              });
-
-
-})
             }
-        );
+  });
+});
+        });
     };
+
+
 
     const categoryItems = categories.map((category) =>
                    <option key={category._id} value={category._id}>{category.name}</option>
                );
 
-     const inventoryItems = inventories.map((inventory) =>
-                    <option key={inventory._id} value={inventory._id}>{inventory.name}</option>
+               const inventoryItems = inventories.map((inventory) =>
+                              <option key={inventory._id} value={inventory._id}>{inventory.name}</option>
                           );
+
+    // load categories and set form data
 
 
     useEffect(() => {
-        init();
-    }, []);
 
+        init(match.params.gearId);
 
+ }, []);
 
     const handleChange = name => event => {
         const value =
@@ -88,28 +103,49 @@ const AddProduct = () => {
         event.preventDefault();
         setValues({ ...values, error: "", loading: true });
 
-        createProduct(user._id, token, formData).then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                setValues({
-                    ...values,
-                    name: "",
-                    description: "",
-                    photo: "",
-                    price: "",
-                    category: "",
-                    inventory: "",
-                    quantity: "",
-
-                    loading: false,
-                    createdProduct: data.name
-                });
+        updateGear(match.params.gearId, user._id, token, formData).then(
+            data => {
+                if (data.error) {
+                    setValues({ ...values, error: data.error });
+                } else {
+                    setValues({
+                        ...values,
+                        name: "",
+                        description: "",
+                        photo: "",
+                        price: "",
+                        quantity: "",
+                        loading: false,
+                        error: false,
+                        success: true,
+                        createdGear: data.name
+                    });
+                    redirectUser();
+                }
             }
-        });
+        );
     };
 
+        const destroy = e => {
+            e.preventDefault();
+            deleteGear(match.params.gearId, user._id, token).then(data => {
+                if (data.error) {
+                    console.log(data.error);
+                } else {
+                  setValues({
+                       ...values,
+
+
+                      success: true
+                  });
+                    redirectUser();
+                }
+            });
+        };
+
+
     const newPostForm = () => (
+
       <div className="form">
         <form className="contactForm"  onSubmit={clickSubmit}>
 
@@ -182,7 +218,7 @@ const AddProduct = () => {
             </div>
 <div className="form-row">
             <div className="form-group col-md-6">
-      
+
             </div>
 
             <div className="form-group col-md-6">
@@ -195,8 +231,10 @@ const AddProduct = () => {
                 />
             </div>
 </div>
-            <button className="btn btn-outline-success">Create Product</button>
-
+            <button className="btn btn-outline-primary">Update Gear</button>
+            <button onClick={destroy} className="btn btn-outline-danger ml-3">
+                Delete
+            </button>
         </form>
         </div>
     );
@@ -213,9 +251,9 @@ const AddProduct = () => {
     const showSuccess = () => (
         <div
             className="alert alert-info"
-            style={{ display: createdProduct ? "" : "none" }}
+            style={{ display: createdGear ? "" : "none" }}
         >
-            <h2>{`${createdProduct}`} is created!</h2>
+            <h2>{`${createdGear}`} is updated!</h2>
         </div>
     );
 
@@ -225,37 +263,51 @@ const AddProduct = () => {
                 <h2>Loading...</h2>
             </div>
         );
-        const goBack = () => (
 
-            <div className="mt-5">
-                <Link to="/admin_products" className="text-warning">
-                Go Back
-                </Link>
-            </div>
+    const redirectUser = success => {
+        if (success) {
 
-        );
+                return <Redirect to="/admin_gears" />;
+            }
+        };
+
+
+    const goBack = () => (
+
+        <div className="mt-5">
+            <Link to="/admin_gears" className="text-warning">
+              Go Back
+            </Link>
+        </div>
+
+    );
 
     return (
-      <Layout
-      title="Create Product"
+        <Layout
+            title="Update gear"
+              className="container-fluid">
+        >
 
-      className="container-fluid">
-      <div className="row">
-      <div className="col-md-3">
-      {AdminLinks()}
-          </div>
-  <div className="col-md-3">  </div>
-        <div className="col-md-6">
-              {showLoading()}
-              {showSuccess()}
-              {showError()}
-              {newPostForm()}
-              {goBack()}
+            <div className="row">
+            <div className="col-md-3">
+            {AdminLinks()}
+            </div>
+            <div className="col-md-3">
 
-          </div>
-      </div>
-    </Layout>
+            </div>
+                <div className="col-md-6">
+                    {showLoading()}
+
+                    {showError()}
+                    {newPostForm()}
+                    {redirectUser(success)}
+                    {goBack()}
+                </div>
+
+            </div>
+
+        </Layout>
     );
 };
 
-export default AddProduct;
+export default UpdateGear;

@@ -38,9 +38,12 @@ import AddInventory from "./admin/AddInventory";
   import UpdateCoupon from "./admin/UpdateCoupon";
   import UpdateMessage from "./admin/UpdateMessage";
     import UpdateOrder from "./admin/UpdateOrder";
-      import ManageInvoices from "./admin/ManageInvoices";
-        import UpdateInvoice from "./admin/UpdateInvoice";
-          import ViewInvoice from "./admin/ViewInvoice";
+  import ManageInvoices from "./admin/ManageInvoices";
+    import UpdateInvoice from "./admin/UpdateInvoice";
+      import ViewInvoice from "./admin/ViewInvoice";
+    import ManageGears from "./admin/ManageGears";
+   import UpdateGear from "./admin/UpdateGear";
+   import AddGear from "./admin/AddGear";
     import ReactGA from 'react-ga';
     import {TrackedRoute} from "./core/TrackedRoute";
 
@@ -70,6 +73,7 @@ ReactGA.plugin.require('ecommerce', {debug: true});
             <AdminRoute path="/admin_dashboard" exact component={AdminDashboard}  />
               <AdminRoute path="/create_category" exact component={AddCategory}/>
               <AdminRoute path="/create_product" exact component={AddProduct}/>
+                  <AdminRoute path="/create_gear" exact component={AddGear}/>
                   <AdminRoute path="/create_user" exact component={AddUser}/>
                 <TrackedRoute path="/cart" exact component={Cart} />
                   <AdminRoute path="/admin_orders" exact component={ManageOrders} />
@@ -85,6 +89,12 @@ ReactGA.plugin.require('ecommerce', {debug: true});
                       exact
                       component={ManageProducts}
                   />
+
+                  <AdminRoute
+                     path="/admin_gears"
+                     exact
+                    component={ManageGears}
+                                    />
                   <AdminRoute
                       path="/admin_categories"
                       exact
@@ -104,6 +114,11 @@ ReactGA.plugin.require('ecommerce', {debug: true});
                       path="/admin/product/update/:productId"
                       exact
                       component={UpdateProduct}
+                  />
+                  <AdminRoute
+                      path="/admin/gear/update/:gearId"
+                      exact
+                      component={UpdateGear}
                   />
                   <AdminRoute
                       path="/admin_users"

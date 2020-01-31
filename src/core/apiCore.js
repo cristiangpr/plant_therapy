@@ -12,6 +12,17 @@ export const getProducts = sortBy => {
         .catch(err => console.log(err));
 };
 
+
+export const getGears = sortBy => {
+    return fetch(`${API}/gears?sortBy=${sortBy}&order=asc&limit=6`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
 export const getCategories = () => {
     return fetch(`${API}/categories`, {
         method: "GET"
@@ -30,10 +41,11 @@ export const getInventories = () => {
         })
         .catch(err => console.log(err));
 };
-export const getFilteredProducts = (skip, limit, filters = {}) => {
+export const getFilteredProducts = (skip, limit, sortBy, filters = {}) => {
     const data = {
         limit,
         skip,
+        sortBy,
         filters
     };
     return fetch(`${API}/products/by/search`, {
@@ -52,13 +64,14 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
         });
 };
 
-export const getFilteredProductsBySize = (skip, limit, filters = {}) => {
+export const getFilteredGears = (skip, limit, sortBy, filters = {}) => {
     const data = {
         limit,
         skip,
+        sortBy,
         filters
     };
-    return fetch(`${API}/products/by/size`, {
+    return fetch(`${API}/gears/by/search`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -73,6 +86,8 @@ export const getFilteredProductsBySize = (skip, limit, filters = {}) => {
             console.log(err);
         });
 };
+
+
 
 export const list = params => {
     const query = queryString.stringify(params);

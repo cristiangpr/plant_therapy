@@ -3,11 +3,11 @@ import Checkbox from "./Checkbox";
 import RadioBox2 from "./RadioBox2";
 import Card from "./Card";
 import { isAuthenticated } from "../auth"
-import { getCategories, getFilteredProductsBySize} from "./apiCore";
+import { getCategories, getFilteredGears} from "./apiCore";
 import { sizes } from "./Sizes";
 
 
-const Gear = () => {
+const Clothing = () => {
 
 
       const [myFilters, setMyFilters] = useState({
@@ -18,6 +18,7 @@ const Gear = () => {
       const [limit, setLimit] = useState(6);
       const [skip, setSkip] = useState(0);
       const [size, setSize] = useState(0);
+      const [sortBy, setSortBy] = useState("size");
       const [filteredResults, setFilteredResults] = useState([]);
 
       const init = () => {
@@ -32,7 +33,7 @@ const Gear = () => {
 
       const loadFilteredResults = newFilters => {
           // console.log(newFilters);
-          getFilteredProductsBySize(skip, limit, newFilters).then(data => {
+          getFilteredGears(skip, limit, sortBy, newFilters).then(data => {
               if (data.error) {
                   setError(data.error);
               } else {
@@ -46,7 +47,7 @@ const Gear = () => {
       const loadMore = () => {
           let toSkip = skip + limit;
           // console.log(newFilters);
-          getFilteredProductsBySize(toSkip, limit, myFilters.filters).then(data => {
+          getFilteredGears(toSkip, limit, sortBy, myFilters.filters).then(data => {
               if (data.error) {
                   setError(data.error);
               } else {
@@ -80,7 +81,7 @@ const Gear = () => {
       }
 
       const handleRole = () => {
-                 handleFilters(  ["5e305974ea41d558888fd36c"] , "category");
+                 handleFilters(  ["5e305974ea41d558888fd36c", "5e305986ea41d558888fd36d"] , "category");
 
       }
 
@@ -111,22 +112,24 @@ const Gear = () => {
           <div className="row justify-content-center">
 
 
-            <div className="col-lg-8">
+            <div className="col-lg-12">
               <div className="section-header">
-                <h3>GEAR</h3>
-                <h4>Filter by categories</h4>
-                <ul>
-                    <RadioBox2
-                        sizes={sizes}
-                        handleFilters={filters =>
-                            handleFilters(filters, "size")
-                        }
-                    />
-                </ul>
+                <h3>CLOTHING</h3>
+                <h4>SELECT SIZE</h4>
+
+
+
               </div>
             </div>
           </div>
-
+          <div className="row">
+          <RadioBox2
+              sizes={sizes}
+              handleFilters={filters =>
+                  handleFilters(filters, "size")
+              }
+          />
+</div>
           <div className="row">
 
               {filteredResults.map((product, i) => (
@@ -143,4 +146,4 @@ const Gear = () => {
     );
 };
 
-export default Gear;
+export default Clothing;

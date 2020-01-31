@@ -36,6 +36,23 @@ export const createProduct = (userId, token, product) => {
         });
 };
 
+export const createGear = (userId, token, gear) => {
+    return fetch(`${API}/gear/create/${userId}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: gear
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 export const getCategories = () => {
     return fetch(`${API}/categories`, {
         method: "GET"
@@ -58,8 +75,8 @@ export const getInventories = () => {
         .catch(err => console.log(err));
 };
 
-export const getSizes = () => {
-    return fetch(`${API}/products/sizes`, {
+export const getSizeValues = () => {
+    return fetch(`${API}/gears/sizes`, {
         method: "GET",
 
     })
@@ -141,8 +158,33 @@ export const getProducts = () => {
         .catch(err => console.log(err));
 };
 
+export const getGears = () => {
+    return fetch(`${API}/gears?limit=70`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
 export const deleteProduct = (productId, userId, token) => {
     return fetch(`${API}/product/${productId}/${userId}`, {
+        method: "DELETE",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const deleteGear = (gearId, userId, token) => {
+    return fetch(`${API}/product/${gearId}/${userId}`, {
         method: "DELETE",
         headers: {
             Accept: "application/json",
@@ -165,7 +207,15 @@ export const getProduct = productId => {
         })
         .catch(err => console.log(err));
 };
-
+export const getGear = gearId => {
+    return fetch(`${API}/gear/${gearId}`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 export const updateProduct = (productId, userId, token, product) => {
     return fetch(`${API}/product/${productId}/${userId}`, {
         method: "PUT",
@@ -181,6 +231,20 @@ export const updateProduct = (productId, userId, token, product) => {
         .catch(err => console.log(err));
 };
 
+export const updateGear = (gearId, userId, token, gear) => {
+    return fetch(`${API}/gear/${gearId}/${userId}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: gear
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 
 
 export const listUsers = () => {

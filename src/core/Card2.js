@@ -6,7 +6,7 @@ import { addItem, updateItem, removeItem } from "./cartHelpers";
 import { getInventories} from "../admin/apiAdmin";
 
 
-const Card = ({ product, history,  showAddToCartButton = true, cartUpdate = false, showRemoveProductButton = false}) => {
+const Card2 = ({ product, history,  showAddToCartButton = true, cartUpdate = false, showRemoveProductButton = false}) => {
     const [redirect, setRedirect] = useState(false);
       const [count, setCount] = useState(product.count);
       const [inventories, setInventories] = useState([]);
@@ -117,7 +117,7 @@ const Card = ({ product, history,  showAddToCartButton = true, cartUpdate = fals
       <div className= {history.location.pathname === "/cart" ? "col-md-6 mb-3" : "col-md-4 mb-3"}>
           <div className="dark-card h-100 single-product wow fadeIn" >
           <div className="dark-card text-center-bottom" id="">
-        <ShowImage item={product} url={product.size ? "gear" : "product"}  />
+        <ShowImage item={product} url="gear" />
               <div className="card-body">
 
                   {shouldRedirect(redirect)}
@@ -148,4 +148,4 @@ const Card = ({ product, history,  showAddToCartButton = true, cartUpdate = fals
     );
 };
 
-export default withRouter(Card);
+export default withRouter(Card2);
