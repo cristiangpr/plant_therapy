@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
-import Card from "./Card";
+import Card2 from "./Card2";
 import { isAuthenticated } from "../auth"
 import { getCategories, getFilteredProducts} from "./apiCore";
 import Checkbox from "./Checkbox";
 import RadioBox from "./RadioBox";
 import { prices } from "./fixedPrices";
 
-const Accessories = () => {
+const AccessoryShop = () => {
 
 
   const [myFilters, setMyFilters] = useState({
@@ -127,16 +127,16 @@ return (
 
           {filteredResults.map((product, i) => (
 
-                  <Card key={i}  product={product} />
+                  <Card2 key={i}  product={product} />
 
           ))}
       </div>
       <hr />
-      {loadMoreButton()}
+    
       </div>
 
   </section>
 );
 };
 
-export default Accessories;
+export default AccessoryShop;

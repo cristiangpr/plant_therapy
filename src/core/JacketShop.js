@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Checkbox from "./Checkbox";
 import RadioBox2 from "./RadioBox2";
-import Card from "./Card";
+import Card2 from "./Card2";
 import { isAuthenticated } from "../auth"
 import { getCategories, getFilteredProducts} from "./apiCore";
 import { sizes } from "./Sizes";
 
 
-const Clothing = () => {
+const JacketShop = () => {
 
 
       const [myFilters, setMyFilters] = useState({
@@ -15,7 +15,7 @@ const Clothing = () => {
       });
       const [categories, setCategories] = useState([]);
       const [error, setError] = useState(false);
-      const [limit, setLimit] = useState(6);
+      const [limit, setLimit] = useState(2);
       const [skip, setSkip] = useState(0);
       const [size, setSize] = useState(0);
       const [sortBy, setSortBy] = useState("size");
@@ -81,7 +81,7 @@ const Clothing = () => {
       }
 
       const handleRole = () => {
-                 handleFilters(  ["5e305974ea41d558888fd36c", "5e305986ea41d558888fd36d"] , "category");
+                 handleFilters(  [ "5e305986ea41d558888fd36d"] , "category");
 
       }
 
@@ -114,7 +114,7 @@ const Clothing = () => {
 
             <div className="col-lg-12">
               <div className="section-header">
-                <h3>CLOTHING</h3>
+                <h3>Jackets</h3>
                 <h4>SELECT SIZE</h4>
 
 
@@ -134,16 +134,16 @@ const Clothing = () => {
 
               {filteredResults.map((product, i) => (
 
-                      <Card key={i}  product={product} />
+                      <Card2 key={i}  product={product} />
 
               ))}
           </div>
           <hr />
-          {loadMoreButton()}
+    
           </div>
 
       </section>
     );
 };
 
-export default Clothing;
+export default JacketShop;

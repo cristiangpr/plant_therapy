@@ -4,6 +4,9 @@ import './App.css';
  import Landing from './components/Landing';
   import { Route,Router, BrowserRouter, Switch } from 'react-router-dom';
   import Consumer from './components/Consumer';
+    import Tshirts from './components/Tshirts';
+      import Jackets from './components/Jackets';
+        import Accessories from './components/Accessories';
   import DistributorsLanding from './components/DistributorsLanding';
   import FarmsLanding from './components/FarmsLanding';
 
@@ -60,6 +63,9 @@ ReactGA.plugin.require('ecommerce', {debug: true});
           <Switch>
            <TrackedRoute exact path="/" component={Landing} />
             <TrackedRoute path="/consumer" component={Consumer} />
+                <TrackedRoute path="/t_shirts" component={Tshirts} />
+                  <TrackedRoute path="/jackets" component={Jackets} />
+              <TrackedRoute path="/accessories" component={Accessories} />
               <TrackedRoute path="/about" component={About} />
 
             <TrackedRoute path="/DistributorsLanding" component={DistributorsLanding} />

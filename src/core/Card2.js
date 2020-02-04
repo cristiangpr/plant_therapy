@@ -114,10 +114,10 @@ const Card2 = ({ product, history,  showAddToCartButton = true, cartUpdate = fal
             }, []);
 
     return (
-      <div className= {history.location.pathname === "/cart" ? "col-md-6 mb-3" : "col-md-4 mb-3"}>
+      <div className= "col-md-6 mb-3">
           <div className="dark-card h-100 single-product wow fadeIn" >
           <div className="dark-card text-center-bottom" id="">
-        <ShowImage item={product} url="gear" />
+        <ShowImage item={product} url="product" />
               <div className="card-body">
 
                   {shouldRedirect(redirect)}
