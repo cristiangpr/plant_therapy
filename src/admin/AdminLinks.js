@@ -25,11 +25,17 @@ const AdminLinks = () => {
                      </Link>
                  </li>
                  <li className="list-group-item list-group-item-dark">
+
+                <Link className="nav-link" to="/create_photo">
+            Product Photos
+                </Link>
+            </li>
+                 <li className="list-group-item list-group-item-dark">
                      <Link className="nav-link" to="/admin_products">
                    Products
                      </Link>
                  </li>
-            
+
                  <li className="list-group-item list-group-item-dark">
                      <Link className="nav-link" to="/admin_orders">
                          Orders

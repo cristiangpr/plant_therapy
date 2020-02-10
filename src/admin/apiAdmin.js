@@ -36,6 +36,23 @@ export const createProduct = (userId, token, product) => {
         });
 };
 
+export const createPhoto = (userId, token, photo) => {
+    return fetch(`${API}/product/create/${userId}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: photo
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 export const createGear = (userId, token, gear) => {
     return fetch(`${API}/gear/create/${userId}`, {
         method: "POST",
