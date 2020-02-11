@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import { createProduct, getCategories, getInventories, getSizeValues } from "./apiAdmin";
+import { createProduct, getCategories, getInventories, getSizeValues, getPhotos } from "./apiAdmin";
 import AdminLinks from "./AdminLinks";
 import Layout from '../core/Layout';
 
@@ -20,11 +20,12 @@ const AddProduct = () => {
         sizes: [],
         size:"",
         photo: "",
+        photos:[],
         loading: false,
         error: "",
         createdProduct: "",
         redirectToProfile: false,
-        formData: ""
+
     });
 
     const {
@@ -35,6 +36,8 @@ const AddProduct = () => {
         category,
         inventories,
         inventory,
+        photo,
+        photos,
         quantity,
         size,
         sizes,
@@ -42,7 +45,7 @@ const AddProduct = () => {
         error,
         createdProduct,
         redirectToProfile,
-        formData
+
     } = values;
 
     // load categories and set form data
@@ -50,20 +53,22 @@ const AddProduct = () => {
         getCategories().then(data => {
            getInventories().then(idata => {
              getSizeValues().then(sdata => {
+                getPhotos().then(pdata => {
               setValues({
                   ...values,
                   categories: data,
                   inventories: idata,
                   sizes: sdata,
-                  formData: new FormData()
+                  photos: pdata,
+
               });
 
 })
 })
-            }
-        );
-    };
+})
 
+});
+}
     const categoryItems = categories.map((category) =>
                    <option key={category._id} value={category._id}>{category.name}</option>
                );
@@ -71,9 +76,15 @@ const AddProduct = () => {
      const inventoryItems = inventories.map((inventory) =>
                     <option key={inventory._id} value={inventory._id}>{inventory.name}</option>
                           );
-                          const sizeItems = sizes.map((size) =>
-                                           <option key={size} value={size}>{size}</option>
+      const sizeItems = sizes.map((size) =>
+             <option key={size} value={size}>{size}</option>
                                                          );
+       const photoItems = photos.map((photo) =>
+             <option key={photo._id} value={photo._id}>{photo.name}</option>
+           );
+
+
+
 
     useEffect(() => {
         init();
@@ -82,32 +93,28 @@ const AddProduct = () => {
 
 
     const handleChange = name => event => {
-        const value =
-            name === "photo" ? event.target.files[0] : event.target.value;
-        formData.set(name, value);
-        setValues({ ...values, [name]: value });
+        setValues({ ...values, error: false, [name]: event.target.value });
     };
-
     const clickSubmit = event => {
         event.preventDefault();
         setValues({ ...values, error: "", loading: true });
 
-        createProduct(user._id, token, formData).then(data => {
+        createProduct(user._id, token, {name, description, photo, price, category, inventory, quantity, size}).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
                 setValues({
                     ...values,
-                    name: "",
+                    name: name,
                     description: "",
-                    photo: "",
-                    price: "",
-                    category: "",
-                    inventory: "",
+                    photo: photo,
+                    price: price,
+                    category: category,
+                    inventory: inventory,
                     quantity: "",
-                    size: "",
+                    size: size,
                     loading: false,
-                    createdProduct: data.name
+                    createdProduct: name
                 });
             }
         });
@@ -119,17 +126,16 @@ const AddProduct = () => {
 
            <div className="form-row">
 
-            <div className="form-group col-md-6">
-              <label className="text-muted">Photo</label> <br/>
-                <label className="btn btn-secondary">
-                    <input
-                        onChange={handleChange("photo")}
-                        type="file"
-                        name="photo"
-                        accept="image/*"
-                    />
-                </label>
-            </div>
+           <div className="form-group col-md-6">
+               <label className="text-muted">Photo</label>
+               <select
+                   onChange={handleChange("photo")}
+                   className="form-control"
+               >
+                   <option>Please select</option>
+       {photoItems}
+               </select>
+           </div>
 
             <div className="form-group col-md-6">
                 <label className="text-muted">Name</label>
@@ -222,7 +228,8 @@ const AddProduct = () => {
         </div>
     );
 
-    const showSuccess = () => (
+    const showSuccess = () =>
+    createdProduct &&(
         <div
             className="alert alert-info"
             style={{ display: createdProduct ? "" : "none" }}

@@ -64,14 +64,14 @@ export const getFilteredProducts = (skip, limit, sortBy, filters = {}) => {
         });
 };
 
-export const getFilteredGears = (skip, limit, sortBy, filters = {}) => {
+export const getFilteredProducts2 = (skip, limit, sortBy, filters = {}) => {
     const data = {
         limit,
         skip,
         sortBy,
         filters
     };
-    return fetch(`${API}/gears/by/search`, {
+    return fetch(`${API}/products2/by/search`, {
         method: "POST",
         headers: {
             Accept: "application/json",
