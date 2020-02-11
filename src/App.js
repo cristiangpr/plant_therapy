@@ -20,6 +20,7 @@ import AdminRoute from "./auth/AdminRoute";
 import AdminDashboard from "./components/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
+import AddProduct2 from "./admin/AddProduct2";
 import AddPhoto from "./admin/AddPhoto";
 import AddUser from "./admin/AddUser";
 import Cart from "./core/Cart";
@@ -80,6 +81,7 @@ ReactGA.plugin.require('ecommerce', {debug: true});
             <AdminRoute path="/admin_dashboard" exact component={AdminDashboard}  />
               <AdminRoute path="/create_category" exact component={AddCategory}/>
               <AdminRoute path="/create_product" exact component={AddProduct}/>
+                  <AdminRoute path="/add_product2" exact component={AddProduct2}/>
                 <AdminRoute path="/create_photo" exact component={AddPhoto}/>
                   <AdminRoute path="/create_gear" exact component={AddGear}/>
                   <AdminRoute path="/create_user" exact component={AddUser}/>

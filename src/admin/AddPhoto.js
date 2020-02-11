@@ -29,6 +29,20 @@ const AddPhoto = () => {
     } = values;
 
 
+    // load categories and set form data
+    const init = () => {
+
+
+
+              setValues({
+                  ...values,
+
+                  formData: new FormData()
+              });
+
+};
+
+
 
 
     const handleChange = name => event => {
@@ -49,7 +63,7 @@ const AddPhoto = () => {
                 setValues({
                     ...values,
                     name: "",
-                    createdPhoto: "",
+                    createdPhoto: data.name,
                     photo: "",
 
                     loading: false,
@@ -59,6 +73,11 @@ const AddPhoto = () => {
             }
         });
     };
+
+    useEffect(() => {
+        init();
+    }, []);
+
 
     const newPostForm = () => (
       <div className="form">

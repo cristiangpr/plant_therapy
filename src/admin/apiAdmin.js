@@ -36,8 +36,30 @@ export const createProduct = (userId, token, product) => {
         });
 };
 
+export const createProduct2 = (userId, token, product2) => {
+   const body = JSON.stringify(product2);
+   console.log(body)
+    return fetch(`${API}/product2/create/${userId}`, {
+
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+                "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: body
+
+})
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 export const createPhoto = (userId, token, photo) => {
-    return fetch(`${API}/product/create/${userId}`, {
+    return fetch(`${API}/photo/create/${userId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -91,7 +113,16 @@ export const getInventories = () => {
         })
         .catch(err => console.log(err));
 };
-
+export const getPhotos = () => {
+    return fetch(`${API}/photos`, {
+        method: "GET"
+    })
+        .then(response => {
+          console.log(response)
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 export const getSizeValues = () => {
     return fetch(`${API}/products/sizes`, {
         method: "GET",
@@ -201,7 +232,7 @@ export const deleteProduct = (productId, userId, token) => {
 };
 
 export const deleteGear = (gearId, userId, token) => {
-    return fetch(`${API}/product/${gearId}/${userId}`, {
+    return fetch(`${API}/gear/${gearId}/${userId}`, {
         method: "DELETE",
         headers: {
             Accept: "application/json",
